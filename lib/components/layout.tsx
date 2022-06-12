@@ -5,7 +5,11 @@ import { background } from "lib/colours";
 const Layout: FC<any> = ({ children }) => {
   return (
     <>
-      <SiteContainer>{children}</SiteContainer>
+      <SiteContainer>
+        <Header>Header</Header>
+        <Content>{children}</Content>
+        {/* <Footer></Footer> */}
+      </SiteContainer>
     </>
   );
 };
@@ -13,7 +17,25 @@ const Layout: FC<any> = ({ children }) => {
 export default Layout;
 
 const SiteContainer = styled.div`
-  height: 100vh;
+  border: 1px solid orange;
   width: 100vw;
+  height: 100vh;
+
   background-color: ${background};
+
+  display: flex;
+  flex-direction: column;
+`;
+
+const Header = styled.div`
+  background: black;
+  height: 4rem;
+`;
+
+const Content = styled.div`
+  padding-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
 `;
