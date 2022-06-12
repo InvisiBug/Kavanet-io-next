@@ -1,1 +1,7 @@
-export default ({ Component, pageProps }) => <Component {...pageProps} />;
+export default ({ Component, pageProps }) => {
+  return (
+    <>
+      <Component {...pageProps} />
+    </>
+  );
+};
