@@ -1,6 +1,8 @@
 import React, { FC } from "react";
 import styled from "@emotion/styled";
 import mushroom from "lib/components/mushroom.jpg";
+import { cardBackground } from "lib/colours";
+import { Tag } from "lib/components";
 
 const Card: FC<any> = () => {
   return (
@@ -14,7 +16,10 @@ const Card: FC<any> = () => {
           <Subtitle>My 3D printed glowing mushroom that runs of a drill battery</Subtitle>
           <BottomRow>
             <Open>Open</Open>
-            <Tags>tags</Tags>
+            <Tags>
+              <Tag>Glowy</Tag>
+              <Tag>LEDs</Tag>
+            </Tags>
           </BottomRow>
         </Content>
       </Conatiner>
@@ -24,19 +29,21 @@ const Card: FC<any> = () => {
 
 export default Card;
 
-const borders = true;
+const borders = false;
 
 const Conatiner = styled.div`
   border: ${borders ? "1px solid yellow" : "none"};
   margin-left: 100px;
   margin-top: 200px;
 
-  height: 25rem;
   width: 20rem;
+  border-radius: 15px;
 
-  /* color: black; */
+  background: ${cardBackground};
+
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 `;
 
 const Picture = styled.div`
@@ -49,11 +56,15 @@ const Picture = styled.div`
 const Icon = styled.img`
   width: 100%;
   border: ${borders ? "1px solid green" : "none"};
+
+  overflow: hidden;
+  object-fit: contain;
 `;
 
 // Content
 const Content = styled.div`
   border: ${borders ? "1px solid white" : "none"};
+  margin: 0 1rem 0 1rem;
 `;
 
 const Title = styled.div`
@@ -79,9 +90,25 @@ const BottomRow = styled.div`
 const Tags = styled.div`
   border: ${borders ? "1px solid white" : "none"};
   flex-grow: 1;
-  text-align: right;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
 `;
+
+// const Open = styled.button`
+//   border: ${borders ? "1px solid black" : "none"};
+// `;
 
 const Open = styled.button`
   border: ${borders ? "1px solid black" : "none"};
+  /* margin: 1rem 0 1rem 1.25rem; */
+  background-color: #1f2937;
+  border-radius: 0.5rem;
+  border: 1px solid transparent;
+  outline: none;
+  width: 5rem;
+  height: 2rem;
+  color: white;
+  text-align: center;
+  cursor: pointer;
 `;

@@ -11,7 +11,7 @@ const IndexPage: FC<any> = () => {
       <Global styles={globalStyles} />
       <Head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;900&display=swap" rel="stylesheet" />
       </Head>
       <Layout>
@@ -34,7 +34,7 @@ const globalStyles = css`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     box-sizing: border-box;
-    color: yellow;
+    color: white;
     /* font-family: Arial, Helvetica, sans-serif; */
     /* font-family: Nunito; */
     font-family: 'Nunito', sans-serif;
