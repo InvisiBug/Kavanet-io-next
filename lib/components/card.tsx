@@ -1,22 +1,24 @@
 import React, { FC } from "react";
 import styled from "@emotion/styled";
-import { Tag } from "lib/components";
 import { urlFor } from "lib/api";
 import { cardBackground } from "lib/colours";
 import { ProjectCardFields } from "lib/types";
+import Link from "next/link";
 
 const Card: FC<Props> = ({ project }) => {
-  const { Title: title, subTitle, thumnail, tags } = project;
+  const { Title: title, subTitle, thumnail, tags, slug } = project;
 
   return (
     <>
       <Conatiner>
-        <Thumnail src={urlFor(thumnail).url()} alt={"mushroom"} />
+        <Thumnail src={urlFor(thumnail).url()} alt={"Add alt"} />
         <Content>
           <Title>{title}</Title>
           <Subtitle>{subTitle}</Subtitle>
           <BottomRow>
-            <Open>Open</Open>
+            <Link href={"/projects/[slug]"} as={`projects/${slug}`}>
+              <Open>Open</Open>
+            </Link>
             {/* <Tags>
               <Tag>{tags}</Tag>
               <Tag>LEDs</Tag>

@@ -18,6 +18,7 @@ const blogCardFields = `
   Title,
   subTitle,
   "slug": slug.current,
+  coverImage,
   thumnail,
 `;
 
@@ -32,8 +33,8 @@ export const getAllProjects = async () => {
   return results;
 };
 
-export const getBlogBySlug = async (slug: string) => {
-  const query = `*[_type == "blog" && slug.current == $slug]{
+export const getProjectsBySlug = async (slug: string) => {
+  const query = `*[_type == "projects" && slug.current == $slug]{
     ${blogCardFields}
     content[]{..., "asset": asset->}
   }`;

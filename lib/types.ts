@@ -5,4 +5,5 @@ export type ProjectCardFields = {
   subTitle: string;
   thumnail: string;
   tags: string;
+  slug: string;
 };
