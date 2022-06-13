@@ -5,7 +5,7 @@ import { Global, css } from "@emotion/react";
 import { background } from "lib/colours";
 import { mq, px } from "lib/mediaQueries";
 
-const Layout: FC<any> = ({ children }) => {
+const Layout: FC<any> = ({ footer = true, children }) => {
   return (
     <>
       <Global styles={globalStyles} />
@@ -17,7 +17,7 @@ const Layout: FC<any> = ({ children }) => {
       <SiteContainer>
         <Header>Header</Header>
         <Content>{children}</Content>
-        <Footer>Footer</Footer>
+        {footer && <Footer>Footer</Footer>}
       </SiteContainer>
     </>
   );
@@ -39,7 +39,6 @@ const globalStyles = css`
 `;
 
 const SiteContainer = styled.div`
-  border: 1px solid orange;
   width: 100vw;
   min-height: 100vh;
 
@@ -64,9 +63,11 @@ const Content = styled.div`
 
   flex-wrap: wrap;
   flex-grow: 1;
+  margin-bottom: 0px;
 `;
 
 const Footer = styled.div`
-  background: black;
-  height: 4rem;
+  background: purple;
+  margin-top: 0px;
+  /* height: 4rem; */
 `;

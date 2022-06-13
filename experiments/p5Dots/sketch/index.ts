@@ -36,6 +36,7 @@ export const sketch = (p5: p5) => {
   };
 
   p5.draw = () => {
+    console.log(p5.frameRate());
     // drawGradientBackground(p5, "#18328B", "#084B38");
     // drawGradientBackground(p5, backgroundColours[0], backgroundColours[1]);
     // p5.background(0, 50);

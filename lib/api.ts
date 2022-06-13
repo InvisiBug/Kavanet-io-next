@@ -22,10 +22,27 @@ const blogCardFields = `
   thumnail,
 `;
 
+const experimentCardFields = `
+  Title,
+  subTitle,
+  "slug": slug.current,
+  thumnail,
+  `;
+
 // Cheet sheet https://www.sanity.io/docs/query-cheat-sheet
 export const getAllProjects = async () => {
   const query = `*[_type == "projects"]{
     ${projectCardFields}
+  }`;
+
+  const results = await client.fetch(query);
+
+  return results;
+};
+
+export const getAllExperiments = async () => {
+  const query = `*[_type == "experiments"]{
+    ${experimentCardFields}
   }`;
 
   const results = await client.fetch(query);

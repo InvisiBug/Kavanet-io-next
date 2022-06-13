@@ -2,10 +2,10 @@
 import React, { useEffect, useLayoutEffect, useRef } from "react";
 import dynamic from "next/dynamic";
 import { Layout } from "lib/components";
-
-const Sketch = dynamic(() => import("experiments/p5Dots"), { ssr: false });
+import App from "experiments/reactWrapper";
 
 const P5js: React.FC = () => {
+  const Sketch = dynamic(() => import("experiments/reactWrapper"), { ssr: false });
   let element = <h1>hello</h1>;
   // useLayoutEffect(() => {
   //   element = <P5Dots />;
@@ -25,6 +25,7 @@ const P5js: React.FC = () => {
         {/* <div></div> */}
         {/* <P5Dots /> */}
         <Sketch />
+        {/* <App /> */}
       </Layout>
       {/* {element} */}
       {/* <DynamicComponentWithNoSSR /> */}
