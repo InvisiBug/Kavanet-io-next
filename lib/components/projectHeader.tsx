@@ -6,7 +6,6 @@ import { mq, px } from "lib/mediaQueries";
 const ProjectHeader: FC<any> = ({ projectDetails }) => {
   const { Title: title, subTitle, coverImage } = projectDetails;
 
-  console.log(projectDetails);
   return (
     <>
       <Title>{title}</Title>
@@ -36,15 +35,12 @@ const CoverImage = styled.img`
   object-fit: contain;
 
   ${mq("small")} {
-    background-color: purple;
+    max-width: ${px("small")}px;
   }
   ${mq("medium")} {
     max-width: ${px("medium")}px;
   }
   ${mq("large")} {
-    /* max-width: 90vw; */
-
     max-width: ${px("large")}px;
-    /* height: 1000px; */
   }
 `;

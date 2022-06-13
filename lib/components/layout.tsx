@@ -31,7 +31,7 @@ const globalStyles = css`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     box-sizing: border-box;
-    color: white;
+    color: black;
     font-family: 'Nunito', sans-serif;
     user-select: none;
     scroll;

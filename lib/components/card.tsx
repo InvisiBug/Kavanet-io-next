@@ -43,6 +43,7 @@ const Conatiner = styled.div`
   width: 20rem;
   border-radius: 15px;
   margin-top: 1rem;
+  color: white;
 
   background: ${cardBackground};
 

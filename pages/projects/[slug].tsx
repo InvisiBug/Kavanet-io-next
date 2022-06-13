@@ -3,13 +3,15 @@ import { getProjectsBySlug } from "lib/api";
 import { Layout } from "lib/components";
 import ProjectHeader from "lib/components/projectHeader";
 
+import ProjectContent from "lib/components/ProjectContent";
+
 const ProjectDetail = ({ projectDetails }) => {
-  console.log(projectDetails);
   return (
     <>
       <Layout>
         <ProjectHeader projectDetails={projectDetails} />
         <h1>hello from ProjectDetail</h1>
+        <ProjectContent projectDetails={projectDetails} />
       </Layout>
     </>
   );
