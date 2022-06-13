@@ -2,7 +2,7 @@ import p5, { Element } from "p5";
 import Dot from "./dot";
 // import { drawGradientBackground } from "../../helpers";
 
-import * as colours from "nice-color-palettes";
+import colours from "nice-color-palettes";
 
 export const sketch = (p5: p5) => {
   const numColours = 5; // Max 5

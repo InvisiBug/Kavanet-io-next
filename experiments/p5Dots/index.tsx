@@ -1,32 +1,9 @@
-import React, { useEffect, useRef } from "react";
-import p5 from "p5";
-import { sketch } from "./sketch";
-import styled from "@emotion/styled";
+import React from "react";
+import { ReactP5Wrapper } from "react-p5-wrapper";
+import { sketch } from "experiments/p5Dots/sketch";
 
-const P5js: React.FC = () => {
-  let ref = useRef<HTMLInputElement | null>(null);
-  let canvas = null;
-
-  useEffect(() => {
-    if (ref && ref.current) {
-      canvas = new p5(sketch, ref.current);
-    }
-    return () => {
-      console.log("returned");
-      canvas = null;
-      ref = null;
-    };
-  }, []);
-
-  if (!ref) {
-    return <></>;
-  }
-
-  return <Container ref={ref}></Container>;
+const App = () => {
+  return <ReactP5Wrapper sketch={sketch} />;
 };
 
-export default P5js;
-
-const Container = styled.div`
-  margin-bottom: 0px;
-`;
+export default App;
