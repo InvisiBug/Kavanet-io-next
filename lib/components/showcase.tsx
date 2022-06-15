@@ -1,19 +1,20 @@
 import React, { FC, Fragment } from "react";
 import styled from "@emotion/styled";
-import { ProjectCardFields } from "lib/types";
+import { CardFields } from "lib/types";
 import { Card } from "lib/components";
 import { mq, px } from "lib/mediaQueries";
+import { capitalizeFirstLetter } from "lib/helpers";
 
-const ProjectShowcase: FC<Props> = ({ projects }) => {
+const Showcase: FC<Props> = ({ projects, name }) => {
   return (
     <>
       <Container>
-        <Title>My Projects</Title>
+        <Title>{`My ${capitalizeFirstLetter(name)}`}</Title>
         <CardHolder>
-          {projects.map((project: ProjectCardFields, index: number) => {
+          {projects.map((project: CardFields, index: number) => {
             return (
               <Fragment key={index}>
-                <Card project={project} />
+                <Card project={project} folder={name} />
               </Fragment>
             );
           })}
@@ -22,10 +23,11 @@ const ProjectShowcase: FC<Props> = ({ projects }) => {
     </>
   );
 };
-export default ProjectShowcase;
+export default Showcase;
 
 interface Props {
-  projects?: ProjectCardFields[];
+  projects: CardFields[];
+  name: string;
 }
 
 const borders = false;

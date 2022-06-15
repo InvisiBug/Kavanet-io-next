@@ -3,7 +3,7 @@ import { getProjectsBySlug } from "lib/api";
 import { Layout } from "lib/components";
 import ProjectHeader from "lib/components/projectHeader";
 
-import ProjectContent from "lib/components/ProjectContent";
+import ProjectContent from "lib/components/projectContent";
 
 const ProjectDetail = ({ projectDetails }) => {
   return (

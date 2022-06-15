@@ -1,9 +1,8 @@
 import React, { FC, Fragment } from "react";
 import { Layout } from "lib/components";
-import { getAllProjects, getAllExperiments } from "lib/api";
-import { ProjectCardFields } from "lib/types";
-import ProjectShowcase from "lib/components/projectShowcase";
-import ExperimentShowcase from "lib/components/experimentShowcase";
+import { getProjectCardData, getExperimentCardData } from "lib/api";
+import { CardFields } from "lib/types";
+import ProjectShowcase from "lib/components/showcase";
 import { useRouter } from "next/router";
 
 const IndexPage: FC<Props> = ({ projects, experiments }) => {
@@ -13,23 +12,23 @@ const IndexPage: FC<Props> = ({ projects, experiments }) => {
   return (
     <>
       <Layout>
-        <ExperimentShowcase projects={experiments} />
-        <ProjectShowcase projects={projects} />
+        <ProjectShowcase projects={experiments} name={"experiments"} />
+        <ProjectShowcase projects={projects} name={"projects"} />
       </Layout>
     </>
   );
 };
 
 interface Props {
-  projects: ProjectCardFields[];
+  projects: CardFields[];
   experiments: any;
 }
 
 export default IndexPage;
 
 export const getServerSideProps = async () => {
-  const projects: any = await getAllProjects();
-  const experiments = await getAllExperiments();
+  const projects: any = await getProjectCardData();
+  const experiments = await getExperimentCardData();
   console.log("🚀 ~ file: index.tsx ~ line 29 ~ getServerSideProps ~ experiments", experiments);
 
   return {

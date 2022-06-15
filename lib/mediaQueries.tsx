@@ -4,7 +4,7 @@
 const breakpoints: ObjectType = {
   small: 500,
   medium: 768,
-  large: 1500,
+  large: 1200,
 };
 
 export const mq = (n: "small" | "medium" | "large") => {

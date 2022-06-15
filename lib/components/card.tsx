@@ -2,21 +2,21 @@ import React, { FC } from "react";
 import styled from "@emotion/styled";
 import { urlFor } from "lib/api";
 import { cardBackground } from "lib/colours";
-import { ProjectCardFields } from "lib/types";
+import { CardFields } from "lib/types";
 import Link from "next/link";
 
-const Card: FC<Props> = ({ project }) => {
+const Card: FC<Props> = ({ project, folder }) => {
   const { Title: title, subTitle, thumnail, tags, slug } = project;
 
   return (
     <>
       <Conatiner>
-        <Thumnail src={urlFor(thumnail).url()} alt={"Add alt"} />
+        {thumnail && <Thumnail src={urlFor(thumnail).url()} alt={"Add alt"} />}
         <Content>
           <Title>{title}</Title>
           <Subtitle>{subTitle}</Subtitle>
           <BottomRow>
-            <Link href={"/projects/[slug]"} as={`projects/${slug}`}>
+            <Link href={`${folder}/[slug]`} as={`${folder}/${slug}`}>
               <Open>Open</Open>
             </Link>
             {/* <Tags>
@@ -33,14 +33,15 @@ const Card: FC<Props> = ({ project }) => {
 export default Card;
 
 interface Props {
-  project: ProjectCardFields;
+  project: CardFields;
+  folder: string;
 }
 
 const borders = false;
 
 const Conatiner = styled.div`
-  border: ${borders ? "1px solid yellow" : "none"};
-  width: 20rem;
+  border: ${borders ? "2px solid pink" : "none"};
+  width: 15rem;
   border-radius: 15px;
   margin-top: 1rem;
   color: white;
@@ -55,7 +56,7 @@ const Conatiner = styled.div`
 
 const Thumnail = styled.img`
   width: 100%;
-  border: ${borders ? "1px solid green" : "none"};
+  border: ${borders ? "1px solid black" : "none"};
 
   overflow: hidden;
   object-fit: contain;
@@ -65,26 +66,31 @@ const Thumnail = styled.img`
 const Content = styled.div`
   border: ${borders ? "1px solid white" : "none"};
   margin: 0 1rem 0 1rem;
+  display: flex;
+  flex-direction: column;
 `;
 
 const Title = styled.div`
   border: ${borders ? "1px solid black" : "none"};
-  font-size: 2rem;
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
   font-weight: bold;
 `;
 
 const Subtitle = styled.div`
   border: ${borders ? "1px solid pink" : "none"};
-  min-height: 50px;
+  /* min-height: 50px; */
   width: 100%;
   font-weight: 400;
-  font-size: 1.2rem;
+  font-size: 0.9rem;
+  font-size: 1rem;
 `;
 
 // Bottom Row
 const BottomRow = styled.div`
+  border: ${borders ? "1px solid white" : "none"};
   display: flex;
-  margin: 1rem 0 1rem 1rem;
+  margin: 1rem 0 1rem 0rem;
 `;
 
 const Tags = styled.div`

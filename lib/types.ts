@@ -1,6 +1,6 @@
 export type test = any;
 
-export type ProjectCardFields = {
+export type CardFields = {
   Title: string;
   subTitle: string;
   thumnail: string;

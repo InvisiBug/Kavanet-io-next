@@ -30,7 +30,7 @@ const experimentCardFields = `
   `;
 
 // Cheet sheet https://www.sanity.io/docs/query-cheat-sheet
-export const getAllProjects = async () => {
+export const getProjectCardData = async () => {
   const query = `*[_type == "projects"]{
     ${projectCardFields}
   }`;
@@ -40,7 +40,7 @@ export const getAllProjects = async () => {
   return results;
 };
 
-export const getAllExperiments = async () => {
+export const getExperimentCardData = async () => {
   const query = `*[_type == "experiments"]{
     ${experimentCardFields}
   }`;
