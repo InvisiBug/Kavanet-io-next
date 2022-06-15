@@ -3,12 +3,8 @@ import { Layout } from "lib/components";
 import { getProjectCardData, getExperimentCardData } from "lib/api";
 import { CardFields } from "lib/types";
 import ProjectShowcase from "lib/components/showcase";
-import { useRouter } from "next/router";
 
 const IndexPage: FC<Props> = ({ projects, experiments }) => {
-  const router = useRouter();
-  // router.reload();
-
   return (
     <>
       <Layout>

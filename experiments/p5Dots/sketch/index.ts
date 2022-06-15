@@ -11,7 +11,7 @@ export const sketch = (p5: p5) => {
     speed: 0.1,
     colours: p5.shuffle(colours[Math.floor(p5.random(0, colours.length))]).slice(0, numColours),
     connectionDistance: 150,
-    numDots: 100,
+    numDots: 30,
   };
 
   let sliderGroup: Element[] = [];
@@ -41,7 +41,7 @@ export const sketch = (p5: p5) => {
     // drawGradientBackground(p5, backgroundColours[0], backgroundColours[1]);
     // p5.background(0, 50);
     // p5.background(0, 100);
-    p5.background(10);
+    p5.background(30);
 
     // let X = sliderGroup[0].value();
     // let Y = sliderGroup[1].value();

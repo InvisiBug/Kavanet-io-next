@@ -1,10 +1,9 @@
 import React from "react";
 import { ReactP5Wrapper } from "react-p5-wrapper";
+import { sketch } from "./sketch";
 
-import { sketch } from "experiments/p5Dots/sketch";
-
-const App = () => {
+const Experiment = () => {
   return <ReactP5Wrapper sketch={sketch} />;
 };
 
-export default App;
+export default Experiment;

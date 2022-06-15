@@ -5,7 +5,7 @@ import ProjectHeader from "lib/components/projectHeader";
 
 import ProjectContent from "lib/components/projectContent";
 
-const ProjectDetail = ({ projectDetails }) => {
+const ProjectDetail = ({ projectDetails }: any) => {
   return (
     <>
       <Layout>
@@ -19,7 +19,13 @@ const ProjectDetail = ({ projectDetails }) => {
 
 export default ProjectDetail;
 
-export const getServerSideProps = async ({ params }) => {
+interface Params {
+  params: {
+    slug: string;
+  };
+}
+
+export const getServerSideProps = async ({ params }: Params) => {
   const projectDetails: any = await getProjectsBySlug(params.slug);
 
   return {

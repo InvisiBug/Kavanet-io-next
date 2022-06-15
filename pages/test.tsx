@@ -2,10 +2,9 @@
 import React, { useEffect, useLayoutEffect, useRef } from "react";
 import dynamic from "next/dynamic";
 import { Layout } from "lib/components";
-import App from "experiments/reactWrapper";
 
 const P5js: React.FC = () => {
-  const Sketch = dynamic(() => import("experiments/smartRockets"), { ssr: false });
+  const Sketch = dynamic(() => import("experiments/rayCasting"), { ssr: false });
   let element = <h1>hello</h1>;
   // useLayoutEffect(() => {
   //   element = <P5Dots />;
