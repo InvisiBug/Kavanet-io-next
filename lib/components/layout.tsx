@@ -5,7 +5,7 @@ import { Global, css } from "@emotion/react";
 import { background } from "lib/colours";
 import { mq, px } from "lib/mediaQueries";
 
-const Layout: FC<any> = ({ footer = true, children }) => {
+const Layout: FC<any> = ({ header = true, footer = true, children }) => {
   return (
     <>
       <Global styles={globalStyles} />
@@ -15,7 +15,11 @@ const Layout: FC<any> = ({ footer = true, children }) => {
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;900&display=swap" rel="stylesheet" />
       </Head>
       <SiteContainer>
-        <Header>Header</Header>
+        {header && (
+          <Header>
+            <Title>Kavanet.io</Title>
+          </Header>
+        )}
         <Content>{children}</Content>
         {footer && <Footer>Footer</Footer>}
       </SiteContainer>
@@ -50,10 +54,20 @@ const SiteContainer = styled.div`
 
 const Header = styled.div`
   background: black;
+  text-align: center;
+  border: 1px solid orange;
+
   height: 4rem;
   ${mq("small")} {
     height: 4rem;
   }
+`;
+
+const Title = styled.h1`
+  color: white;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 0;
 `;
 
 const Content = styled.div`

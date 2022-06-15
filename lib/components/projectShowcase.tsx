@@ -28,7 +28,7 @@ interface Props {
   projects?: ProjectCardFields[];
 }
 
-const borders = true;
+const borders = false;
 
 const Container = styled.div`
   border: ${borders ? "1px solid green" : "none"};
@@ -39,15 +39,15 @@ const Container = styled.div`
 
   padding-bottom: 1rem;
   ${mq("small")} {
-    background-color: purple;
+    /* background-color: purple; */
   }
   ${mq("medium")} {
-    background-color: red;
+    /* background-color: red; */
   }
   ${mq("large")} {
     /* max-width: 90vw; */
 
-    background-color: orange;
+    /* background-color: orange; */
     max-width: ${px("large")}px;
     /* height: 1000px; */
   }
@@ -62,5 +62,5 @@ const CardHolder = styled.div`
 `;
 
 const Title = styled.h1`
-  color: white;
+  color: black;
 `;

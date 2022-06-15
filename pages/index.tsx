@@ -13,8 +13,8 @@ const IndexPage: FC<Props> = ({ projects, experiments }) => {
   return (
     <>
       <Layout>
-        <ProjectShowcase projects={projects} />
         <ExperimentShowcase projects={experiments} />
+        <ProjectShowcase projects={projects} />
       </Layout>
     </>
   );

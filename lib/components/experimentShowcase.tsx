@@ -28,7 +28,7 @@ interface Props {
   projects?: ProjectCardFields[];
 }
 
-const borders = true;
+const borders = false;
 
 const Container = styled.div`
   border: ${borders ? "1px solid green" : "none"};
@@ -62,5 +62,5 @@ const CardHolder = styled.div`
 `;
 
 const Title = styled.h1`
-  color: white;
+  color: black;
 `;

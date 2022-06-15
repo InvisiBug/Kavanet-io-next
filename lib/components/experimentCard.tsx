@@ -7,7 +7,6 @@ import Link from "next/link";
 
 const Card: FC<Props> = ({ project }) => {
   const { Title: title, subTitle, thumnail, tags, slug } = project;
-  console.log("🚀 ~ file: experimentCard.tsx ~ line 10 ~ slug", slug);
 
   return (
     <>
