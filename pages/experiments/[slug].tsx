@@ -17,9 +17,7 @@ const Experiments: FC<any> = ({ slug }) => {
   );
 };
 
-export const getServerSideProps = async ({ params }) => {
-  // const projectDetails: any = await getProjectsBySlug(params.slug);
-
+export const getServerSideProps = async ({ params }: args) => {
   return {
     props: {
       slug: params.slug,
@@ -28,3 +26,9 @@ export const getServerSideProps = async ({ params }) => {
 };
 
 export default Experiments;
+
+interface args {
+  params: {
+    slug: string;
+  };
+}

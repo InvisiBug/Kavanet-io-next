@@ -5,7 +5,7 @@ import { Layout } from "lib/components";
 import App from "experiments/reactWrapper";
 
 const P5js: React.FC = () => {
-  const Sketch = dynamic(() => import("experiments/zombies"), { ssr: false });
+  const Sketch = dynamic(() => import("experiments/smartRockets"), { ssr: false });
   let element = <h1>hello</h1>;
   // useLayoutEffect(() => {
   //   element = <P5Dots />;
