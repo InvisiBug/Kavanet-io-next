@@ -10,22 +10,22 @@ const Card: FC<Props> = ({ project, folder }) => {
 
   return (
     <>
-      <Conatiner>
-        {thumnail && <Thumnail src={urlFor(thumnail).url()} alt={"Add alt"} />}
-        <Content>
-          <Title>{title}</Title>
-          <Subtitle>{subTitle}</Subtitle>
-          <BottomRow>
-            <Link href={`${folder}/[slug]`} as={`${folder}/${slug}`}>
+      <Link href={`${folder}/[slug]`} as={`${folder}/${slug}`}>
+        <Container>
+          {thumnail && <Thumnail src={urlFor(thumnail).url()} alt={"Add alt"} />}
+          <Content>
+            <Title>{title}</Title>
+            <Subtitle>{subTitle}</Subtitle>
+            <BottomRow>
               <Open>Open</Open>
-            </Link>
-            {/* <Tags>
+              {/* <Tags>
               <Tag>{tags}</Tag>
               <Tag>LEDs</Tag>
             </Tags> */}
-          </BottomRow>
-        </Content>
-      </Conatiner>
+            </BottomRow>
+          </Content>
+        </Container>
+      </Link>
     </>
   );
 };
@@ -39,7 +39,7 @@ interface Props {
 
 const borders = false;
 
-const Conatiner = styled.div`
+const Container = styled.div`
   border: ${borders ? "2px solid pink" : "none"};
   width: 15rem;
   border-radius: 15px;

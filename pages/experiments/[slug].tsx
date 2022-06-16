@@ -1,13 +1,15 @@
 import React, { FC } from "react";
 import dynamic from "next/dynamic";
-import { Layout } from "lib/components";
+import { Layout, BackArrow } from "lib/components";
 
 const Experiments: FC<any> = ({ slug }) => {
   const Sketch = dynamic(() => import(`experiments/${slug}`), { ssr: false });
+  console.log("🚀 ~ file: [slug].tsx ~ line 7 ~ slug", slug);
 
   return (
     <>
       <Layout header={false} footer={false}>
+        <BackArrow />
         <Sketch />
       </Layout>
     </>

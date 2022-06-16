@@ -14,18 +14,31 @@ const Layout: FC<any> = ({ header = true, footer = true, children }) => {
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;900&display=swap" rel="stylesheet" />
       </Head>
+      <Pic src="https://i.imgur.com/XJSPI8o.png"></Pic>
       <SiteContainer>
         {header && (
           <Header>
             <Title>Kavanet.io</Title>
           </Header>
         )}
+
         <Content>{children}</Content>
         {footer && <Footer>Footer</Footer>}
       </SiteContainer>
     </>
   );
 };
+
+const Pic = styled.img`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -50;
+`;
+
+const Layer = styled.div`
+  z-index: 100;
+`;
 
 export default Layout;
 
@@ -75,10 +88,15 @@ const Content = styled.div`
   align-items: center;
   flex-direction: column;
 
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   flex-grow: 1;
   margin-bottom: 0px;
 `;
+// background-image: url("${"https://i.imgur.com/XJSPI8o.png"}");
+//   background-position: center center;
+//   background-size: cover;
+
+//   transition: opacity 0.4s linear;
 
 const Footer = styled.div`
   background: purple;
