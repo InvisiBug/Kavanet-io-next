@@ -72,6 +72,7 @@ const FileUpload = ({ label, updateFilesCb, maxFileSizeInBytes = DEFAULT_MAX_FIL
         </UploadFileBtn>
         <FormField type="file" ref={fileInputField} onChange={handleNewFileUpload} title="" value="" {...otherProps} />
       </FileUploadContainer>
+
       <FilePreviewContainer>
         <span>To Upload</span>
         <PreviewList>

@@ -1,4 +1,4 @@
-import React, { FC, useRef } from "react";
+import React, { FC, useRef, useState } from "react";
 import styled from "@emotion/styled";
 import Input from "./Components/Input";
 import Preview from "./Components/Preview";
@@ -10,10 +10,12 @@ const PoiImageConverter: FC = () => {
   const calculationImageCanvas = useRef<HTMLCanvasElement>(null);
   const upsidedownImageCanvas = useRef<HTMLCanvasElement>(null);
 
+  const [image, setImage] = useState<any>(null);
+
   return (
     <>
       <Instructions />
-      <Input />
+      <Input setImage={setImage} />
       <Preview canvasRef={previewCanvasRef} />
       <Info />
       <CalculationImageCanvas ref={calculationImageCanvas} />

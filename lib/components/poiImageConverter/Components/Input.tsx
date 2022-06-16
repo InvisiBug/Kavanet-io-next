@@ -1,34 +1,82 @@
 // https://dev.to/chandrapantachhetri/responsive-react-file-upload-component-with-drag-and-drop-4ef8
-import React, { FC, useState, useRef, FormEvent } from "react";
+import React, { FC, useState, useRef, FormEvent, useEffect } from "react";
 import styled from "@emotion/styled";
+import { useDropzone } from "react-dropzone";
 
-const Input: FC = () => {
-  const fileInputField = useRef(null);
-  const [files, setFiles] = useState<any>({});
+const Input: FC<any> = () => {
+  const [files, setFiles] = useState([]);
+  const { getRootProps, getInputProps } = useDropzone({
+    accept: {
+      "image/*": [],
+    },
+    onDrop: (acceptedFiles) => {
+      setFiles(
+        acceptedFiles.map((file: any) =>
+          Object.assign(file, {
+            preview: URL.createObjectURL(file),
+          })
+        )
+      );
+    },
+  });
+
+  const thumbs = files.map((file) => (
+    <div key={file.name}>
+      <div>
+        <img
+          src={file.preview}
+          // Revoke data uri after image is loaded
+          onLoad={() => {
+            URL.revokeObjectURL(file.preview);
+          }}
+        />
+      </div>
+    </div>
+  ));
+
+  useEffect(() => {
+    // Make sure to revoke the data uris to avoid memory leaks, will run on unmount
+    return () => files.forEach((file) => URL.revokeObjectURL(file.preview));
+  }, []);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log(event);
   };
 
-  const setFilesCallback = (files: any) => {
-    setFiles(files);
+  const setFilesCallback = (e: any) => {
+    const { files: newFiles } = e.target;
+    // setFiles(newFiles);
   };
 
+  // useEffect(() => {
+  //   if (files) {
+  //     console.log(files.target);
+  //   }
+  //   const blob = new Blob([files], { type: "image/png" });
+  //   const img = URL.createObjectURL(blob);
+  //   console.log(blob);
+  //   setSrc(img);
+
+  //   // if (typeof window !== "undefined") {
+  //   //   // console.log(window.URL.createObjectURL(files));
+  //   // }
+  // }, [files]);
+
+  console.log(thumbs);
   return (
     <>
       <InputContainer>
         <Title>Image Input</Title>
         <Form onSubmit={handleSubmit}>
-          <FormInput
-            type="file"
-            id="fileInput"
-            ref={fileInputField}
-            onChange={(e) => {
-              console.log(e);
-            }}
-          ></FormInput>
+          {/* <FormInput type="file" id="fileInput" ref={fileInputField} onChange={setFilesCallback}></FormInput> */}
           <Go />
+          {/* <img src={src} /> */}
+          <div {...getRootProps({ className: "dropzone" })}>
+            <input {...getInputProps()} />
+            <p>Drag 'n' drop some files here, or click to select files</p>
+          </div>
+          <div>{thumbs}</div>
         </Form>
       </InputContainer>
     </>
