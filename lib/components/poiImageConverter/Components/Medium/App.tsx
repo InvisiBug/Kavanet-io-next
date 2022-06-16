@@ -1,4 +1,5 @@
 // @ts-nocheck
+// https://dev.to/chandrapantachhetri/responsive-react-file-upload-component-with-drag-and-drop-4ef8
 import React, { useState } from "react";
 import FileUpload from "./components/file-upload/file-upload.component";
 

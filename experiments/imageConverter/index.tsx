@@ -1,8 +1,8 @@
-import React from "react";
+import React, { FC } from "react";
 import { Layout, PoiImageConverter } from "lib/components";
 import styled from "@emotion/styled";
 
-const ImageConverter = () => {
+const ImageConverter: FC = () => {
   return (
     <>
       <Layout>

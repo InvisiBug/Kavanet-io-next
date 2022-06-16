@@ -14,7 +14,7 @@ const Layout: FC<any> = ({ header = true, footer = true, children }) => {
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;900&display=swap" rel="stylesheet" />
       </Head>
-      <Pic src="https://i.imgur.com/XJSPI8o.png"></Pic>
+      {/* <Pic src="https://i.imgur.com/RWzeCAO.png"></Pic> */}
       <SiteContainer>
         {header && (
           <Header>
@@ -33,6 +33,7 @@ const Pic = styled.img`
   position: absolute;
   width: 100%;
   height: 100%;
+  object-fit: cover;
   z-index: -50;
 `;
 
@@ -92,7 +93,8 @@ const Content = styled.div`
   flex-grow: 1;
   margin-bottom: 0px;
 `;
-// background-image: url("${"https://i.imgur.com/XJSPI8o.png"}");
+
+// background-image: url("${"https://i.imgur.com/RWzeCAO.png"}");
 //   background-position: center center;
 //   background-size: cover;
 
