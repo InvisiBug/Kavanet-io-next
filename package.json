@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "next lint",
     "up": "clear && ./bin/start-container.sh",
-    "down": "docker-compose down"
+    "down": "docker-compose down",
+    "push": "./bin/push.sh",
+    "deploy": "./bin/deploy.sh"
   },
   "dependencies": {
     "@emotion/react": "^11.9.0",

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 clear && cd helm && \
-helm upgrade kavanest-client . \
+helm upgrade kavanet-io . \
 --install \
---namespace kavanest \
+--namespace kavanet-io \
 -f values/live.yaml

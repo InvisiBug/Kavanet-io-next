@@ -1,4 +1,5 @@
-FROM node:16-alpine AS deps
+FROM node:16-alpine
+# FROM arm64v8/node
 WORKDIR /app
 
 COPY package.json yarn.lock ./

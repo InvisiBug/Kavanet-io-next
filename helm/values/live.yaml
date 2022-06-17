@@ -1,0 +1,28 @@
+name: kavanet-io
+
+namespace: kavanet-io
+
+deployment:
+  - name: kavanet-io
+    image: 192.168.1.61:5000/kavanet-io
+    ports:
+    - port: 27017
+    env:
+    - name: SANITY_DATASET_NAME
+      value: production
+    - name: SANITY_PROJECT_ID
+      value: u8e0al0h
+
+service:
+  loadBalancer:
+    - name: kavanet-io
+      selector: kavanet-io
+      port: 80
+      containerPort: 4000
+
+# ingress:
+#   - name: socket.kavanet.io
+#     selector: kavanet-io
+#     path: /
+#     port: 3100
+#     host: socket.kavanet.io
