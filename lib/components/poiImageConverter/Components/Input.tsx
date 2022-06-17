@@ -4,12 +4,13 @@ import styled from "@emotion/styled";
 import { useDropzone } from "react-dropzone";
 
 const Input: FC<any> = () => {
-  const [files, setFiles] = useState([]);
+  const [files, setFiles] = useState<any>();
   const { getRootProps, getInputProps } = useDropzone({
     accept: {
       "image/*": [],
     },
-    onDrop: (acceptedFiles) => {
+    onDrop: (acceptedFiles: any) => {
+      if (!acceptedFiles) return;
       setFiles(
         acceptedFiles.map((file: any) =>
           Object.assign(file, {
@@ -20,7 +21,7 @@ const Input: FC<any> = () => {
     },
   });
 
-  const thumbs = files.map((file) => (
+  const thumbs = files.map((file: any) => (
     <div key={file.name}>
       <div>
         <img
@@ -36,7 +37,9 @@ const Input: FC<any> = () => {
 
   useEffect(() => {
     // Make sure to revoke the data uris to avoid memory leaks, will run on unmount
-    return () => files.forEach((file) => URL.revokeObjectURL(file.preview));
+    if (files) {
+      return () => files.forEach((file: any) => URL.revokeObjectURL(file.preview));
+    }
   }, []);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {

@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "up": "clear && ./bin/start-container.sh",
+    "down": "docker-compose down"
   },
   "dependencies": {
     "@emotion/react": "^11.9.0",
@@ -16,14 +18,14 @@
     "@sanity/image-url": "^1.0.1",
     "@types/p5": "^1.4.2",
     "@types/react-dropzone": "^5.1.0",
+    "canvas-sketch-util": "^1.10.0",
     "next": "12.1.6",
+    "nice-color-palettes": "^3.0.0",
     "p5": "^1.4.1",
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "react-dropzone": "^14.2.1",
-    "react-p5-wrapper": "^3.3.0",
-    "simulations": "https://github.com/InvisiBug/Simulations.git",
-    "test-package": "https://github.com/InvisiBug/test-package.git"
+    "react-p5-wrapper": "^3.3.0"
   },
   "devDependencies": {
     "@types/node": "^17.0.42",

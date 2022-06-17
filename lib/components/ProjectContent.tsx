@@ -45,6 +45,7 @@ export default ProjectContent;
 const borders = false;
 
 const Container = styled.div`
+  color: #cecdcd;
   ${mq("small")} {
     max-width: ${px("small")}px;
   }

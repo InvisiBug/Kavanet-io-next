@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[2885],{2885:function(e,t,c){c.r(t),t.default={src:"/_next/static/media/hunter.ae0c7cfc.gif",height:216,width:253}}}]);

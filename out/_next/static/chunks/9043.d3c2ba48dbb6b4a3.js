@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[9043],{9043:function(n,u,e){e.r(u),e.d(u,{buildings:function(){return o},woodland:function(){return r},woodlandEdge:function(){return t}});var r=1,t=2,o=3}}]);
