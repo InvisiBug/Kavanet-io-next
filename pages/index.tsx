@@ -6,10 +6,10 @@ import { CardFields } from "lib/types";
 
 const IndexPage: FC<Props> = ({ projects, experiments }) => {
   const testProject = {
-    Title: "Image Converter",
+    Title: "Lisajouis Curve Table",
     folder: "projects",
-    subTitle: "The inage convert for the orbit poi",
-    slug: "imageConverter",
+    subTitle: "The cool table thing",
+    slug: "lisajous",
   };
 
   console.log();

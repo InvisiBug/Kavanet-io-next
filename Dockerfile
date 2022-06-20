@@ -1,5 +1,4 @@
 # FROM node:16-alpine
-# # FROM arm64v8/node
 # WORKDIR /app
 
 # COPY package.json yarn.lock ./
@@ -11,26 +10,43 @@
 # ENV SANITY_PROJECT_ID u8e0al0h
 # ENV SANITY_DATASET_NAME production
 
-# RUN yarn build
+# # RUN yarn build
 # EXPOSE 3000
 
 # CMD ["yarn", "start"]
 
+######
+# Trying to get multi stage builds working
 
-# FROM node:16-alpine
-FROM arm64v8/node
-WORKDIR /app
+# FROM node:16-alpine AS build
+# WORKDIR /app
+# COPY package*.json ./
 
-COPY package.json yarn.lock ./
+# COPY . ./
+# RUN yarn install
+# RUN yarn build
 
-RUN yarn install
-COPY . .
-# COPY ./ ./app
 
-ENV NODE_ENV production
-ENV SANITY_PROJECT_ID u8e0al0h
-ENV SANITY_DATASET_NAME production
+# ENV NODE_ENV production
+# ENV SANITY_PROJECT_ID u8e0al0h
+# ENV SANITY_DATASET_NAME production
 
-EXPOSE 3000
 
-CMD ["yarn", "start"]
+# FROM node as runner
+# # FROM arm64v8/node
+# WORKDIR /app
+
+# COPY package.json yarn.lock ./
+
+# RUN yarn install
+# # COPY . .
+# COPY --from=build /app .
+# # COPY ./ ./app
+
+# # ENV NODE_ENV production
+# # ENV SANITY_PROJECT_ID u8e0al0h
+# # ENV SANITY_DATASET_NAME production
+
+# EXPOSE 3000
+
+# CMD ["yarn", "start"]

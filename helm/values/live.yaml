@@ -5,8 +5,6 @@ namespace: kavanet-io
 deployment:
   - name: kavanet-io
     image: 192.168.1.61:5000/kavanet-io
-    ports:
-    - port: 27017
     env:
     - name: SANITY_DATASET_NAME
       value: production
