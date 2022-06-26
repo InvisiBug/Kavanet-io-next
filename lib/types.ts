@@ -6,4 +6,5 @@ export type CardFields = {
   thumnail?: string;
   tags?: string;
   slug: string;
+  status?: string;
 };

@@ -1,6 +1,15 @@
 import client from "./sanity";
 import imageUrlBuilder from "@sanity/image-url";
 
+// Notion
+const NOTION_BLOG_ID = "cb41f95f1ee848959683500a3bb8ff44";
+
+export const getNotionPosts = async () => {
+  const response = await fetch(`https://notion-api.splitbee.io/v1/table/${NOTION_BLOG_ID}`).then((res) => res.json());
+  // console.log(response);
+  return response;
+};
+
 export const urlFor = (source: object | string) => {
   return imageUrlBuilder(client).image(source);
 };

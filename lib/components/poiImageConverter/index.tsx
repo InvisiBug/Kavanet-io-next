@@ -1,3 +1,5 @@
+// https://www.google.com/search?q=react+upload+image+and+read+file&oq=react+upload+image+and+read+file&aqs=chrome..69i57.4442j0j1&sourceid=chrome&ie=UTF-8
+// https://blog.logrocket.com/using-filereader-api-preview-images-react/
 import React, { FC, useState } from "react";
 import styled from "@emotion/styled";
 import ImageConverter from "./ImageConverter";

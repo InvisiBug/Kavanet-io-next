@@ -1,18 +1,18 @@
 import React, { FC } from "react";
-import { Layout, Showcase, Card } from "lib/components";
-import { getProjectCardData, getExperimentCardData } from "lib/api";
+import { Layout, Showcase, Card, NotionShowcase } from "lib/components";
+import { getDatabase } from "lib/notion";
+import { getProjectCardData, getExperimentCardData, getNotionPosts } from "lib/api";
 import { CardFields } from "lib/types";
+import { test } from "lib/notion";
 // import "dotenv/config";
 
-const IndexPage: FC<Props> = ({ projects, experiments }) => {
+const IndexPage: FC<Props> = ({ projects, experiments, notionPosts }) => {
   const testProject = {
-    Title: "Lisajouis Curve Table",
+    Title: "Image Converter",
     folder: "projects",
-    subTitle: "The cool table thing",
-    slug: "lisajous",
+    subTitle: "Poi image converter",
+    slug: "imageConverter",
   };
-
-  console.log();
 
   return (
     <>
@@ -20,6 +20,7 @@ const IndexPage: FC<Props> = ({ projects, experiments }) => {
         {process.env.NEXT_PUBLIC_LOCAL === "true" && <Card project={testProject} folder={"experiments"} />}
         <Showcase projects={experiments} name={"experiments"} />
         <Showcase projects={projects} name={"projects"} />
+        <NotionShowcase projects={notionPosts} name={"notion"} />
       </Layout>
     </>
   );
@@ -28,6 +29,7 @@ const IndexPage: FC<Props> = ({ projects, experiments }) => {
 interface Props {
   projects: CardFields[];
   experiments: any;
+  notionPosts: any;
 }
 
 export default IndexPage;
@@ -35,12 +37,13 @@ export default IndexPage;
 export const getServerSideProps = async () => {
   const projects: any = await getProjectCardData();
   const experiments = await getExperimentCardData();
-  // console.log("🚀 ~ file: index.tsx ~ line 29 ~ getServerSideProps ~ experiments", experiments);
+  const notionPosts = await getDatabase();
 
   return {
     props: {
       projects,
       experiments,
+      notionPosts,
     },
   };
 };

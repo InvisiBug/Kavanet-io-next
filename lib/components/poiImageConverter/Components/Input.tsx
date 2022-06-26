@@ -5,42 +5,42 @@ import { useDropzone } from "react-dropzone";
 
 const Input: FC<any> = () => {
   const [files, setFiles] = useState<any>();
-  const { getRootProps, getInputProps } = useDropzone({
-    accept: {
-      "image/*": [],
-    },
-    onDrop: (acceptedFiles: any) => {
-      if (!acceptedFiles) return;
-      setFiles(
-        acceptedFiles.map((file: any) =>
-          Object.assign(file, {
-            preview: URL.createObjectURL(file),
-          })
-        )
-      );
-    },
-  });
+  // const { getRootProps, getInputProps } = useDropzone({
+  //   accept: {
+  //     "image/*": [],
+  //   },
+  //   onDrop: (acceptedFiles: any) => {
+  //     if (!acceptedFiles) return;
+  //     setFiles(
+  //       acceptedFiles.map((file: any) =>
+  //         Object.assign(file, {
+  //           preview: URL.createObjectURL(file),
+  //         })
+  //       )
+  //     );
+  //   },
+  // });
 
-  const thumbs = files.map((file: any) => (
-    <div key={file.name}>
-      <div>
-        <img
-          src={file.preview}
-          // Revoke data uri after image is loaded
-          onLoad={() => {
-            URL.revokeObjectURL(file.preview);
-          }}
-        />
-      </div>
-    </div>
-  ));
+  // const thumbs = files.map((file: any) => (
+  //   <div key={file.name}>
+  //     <div>
+  //       <img
+  //         src={file.preview}
+  //         // Revoke data uri after image is loaded
+  //         onLoad={() => {
+  //           URL.revokeObjectURL(file.preview);
+  //         }}
+  //       />
+  //     </div>
+  //   </div>
+  // ));
 
-  useEffect(() => {
-    // Make sure to revoke the data uris to avoid memory leaks, will run on unmount
-    if (files) {
-      return () => files.forEach((file: any) => URL.revokeObjectURL(file.preview));
-    }
-  }, []);
+  // useEffect(() => {
+  //   // Make sure to revoke the data uris to avoid memory leaks, will run on unmount
+  //   if (files) {
+  //     return () => files.forEach((file: any) => URL.revokeObjectURL(file.preview));
+  //   }
+  // }, []);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -66,26 +66,25 @@ const Input: FC<any> = () => {
   //   // }
   // }, [files]);
 
-  console.log(thumbs);
+  // console.log(thumbs);
   return (
     <>
       <InputContainer>
         <Title>Image Input</Title>
         <Form onSubmit={handleSubmit}>
-          {/* <FormInput type="file" id="fileInput" ref={fileInputField} onChange={setFilesCallback}></FormInput> */}
+          <FormInput type="file" id="fileInput" onChange={setFilesCallback}></FormInput>
           <Go />
-          {/* <img src={src} /> */}
-          <div {...getRootProps({ className: "dropzone" })}>
-            <input {...getInputProps()} />
-            <p>Drag 'n' drop some files here, or click to select files</p>
-          </div>
-          <div>{thumbs}</div>
         </Form>
       </InputContainer>
     </>
   );
 };
-
+// {/* <img src={src} /> */}
+// <div {...getRootProps({ className: "dropzone" })}>
+// <input {...getInputProps()} />
+// <p>Drag 'n' drop some files here, or click to select files</p>
+// </div>
+// <div>{thumbs}</div>
 export default Input;
 
 const InputContainer = styled.div`

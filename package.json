@@ -15,6 +15,7 @@
   "dependencies": {
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
+    "@notionhq/client": "^1.0.4",
     "@portabletext/react": "^1.0.6",
     "@sanity/client": "^3.3.2",
     "@sanity/image-url": "^1.0.1",
@@ -23,10 +24,12 @@
     "canvas-sketch-util": "^1.10.0",
     "next": "12.1.6",
     "nice-color-palettes": "^3.0.0",
+    "notion-api-worker": "^0.1.0",
     "p5": "^1.4.1",
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "react-dropzone": "^14.2.1",
+    "react-notion": "^0.10.0",
     "react-p5-wrapper": "^3.3.0"
   },
   "devDependencies": {
