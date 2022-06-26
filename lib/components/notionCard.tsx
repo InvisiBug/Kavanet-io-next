@@ -1,16 +1,14 @@
 import React, { FC } from "react";
 import styled from "@emotion/styled";
-import { urlFor } from "lib/api";
 import { cardBackground } from "lib/colours";
-import { CardFields } from "lib/types";
 import Link from "next/link";
 
 const Card: FC<Props> = ({ project, folder }) => {
   const fields = {
-    title: project.properties?.title.title[0].text.content,
-    subTitle: project.properties?.["Sub title"].rich_text[0]?.text.content,
-    thumnail: project.properties?.["Card image"].files[0]?.file.url,
-    slug: project.properties?.slug.rich_text[0]?.text.content,
+    title: project.properties?.title.title[0]?.text?.content,
+    subTitle: project.properties?.["Sub title"]?.rich_text[0]?.text.content,
+    thumnail: project.properties?.["Card image"]?.files[0]?.file.url,
+    slug: project.properties?.slug?.rich_text[0]?.text.content,
     tags: undefined,
     status: project.properties.Status.select?.name,
   };
