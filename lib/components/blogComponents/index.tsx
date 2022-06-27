@@ -3,6 +3,7 @@ import H1 from "./h1";
 import H2 from "./h2";
 import MyParagraph from "./paragraph";
 
+// https://samuelkraft.com/blog/building-a-notion-blog-with-public-api
 export const renderBlock = (block: any) => {
   const { type } = block;
 

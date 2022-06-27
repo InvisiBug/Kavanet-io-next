@@ -5,16 +5,16 @@ import { Card } from "lib/components";
 import { mq, px } from "lib/mediaQueries";
 import { capitalizeFirstLetter } from "lib/helpers";
 
-const Showcase: FC<Props> = ({ projects, name }) => {
+const Showcase: FC<Props> = ({ items, name }) => {
   return (
     <>
       <Container>
         <Title>{`My ${capitalizeFirstLetter(name)}`}</Title>
         <CardHolder>
-          {projects.map((project: CardFields, index: number) => {
+          {items.map((item: CardFields, index: number) => {
             return (
               <Fragment key={index}>
-                <Card project={project} folder={name} />
+                <Card items={item} folder={name} />
               </Fragment>
             );
           })}
@@ -26,7 +26,7 @@ const Showcase: FC<Props> = ({ projects, name }) => {
 export default Showcase;
 
 interface Props {
-  projects: CardFields[];
+  items: CardFields[];
   name: string;
 }
 

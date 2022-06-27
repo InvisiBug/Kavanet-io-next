@@ -16,8 +16,6 @@
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
     "@notionhq/client": "^1.0.4",
-    "@portabletext/react": "^1.0.6",
-    "@sanity/client": "^3.3.2",
     "@sanity/image-url": "^1.0.1",
     "@types/p5": "^1.4.2",
     "@types/react-dropzone": "^5.1.0",

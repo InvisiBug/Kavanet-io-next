@@ -1,74 +1,39 @@
-import client from "./sanity";
-import imageUrlBuilder from "@sanity/image-url";
+import { Client } from "@notionhq/client";
 
-// Notion
-const NOTION_BLOG_ID = "cb41f95f1ee848959683500a3bb8ff44";
+export const projectsDbId = "cb41f95f1ee848959683500a3bb8ff44";
+export const experimentsDbId = "23cd889925e44059a5b60eaa2934a4a0";
 
-export const getNotionPosts = async () => {
-  const response = await fetch(`https://notion-api.splitbee.io/v1/table/${NOTION_BLOG_ID}`).then((res) => res.json());
-  // console.log(response);
+const notion = new Client({
+  auth: "secret_WqHz8aDusPmGu1CvlPfyFB7qPGWewnT4x0cNtzjfqK9", // save this in the env
+});
+
+export const getDatabase = async (databaseId = "cb41f95f1ee848959683500a3bb8ff44") => {
+  const response = await notion.databases.query({
+    database_id: databaseId,
+  });
+  return response.results;
+};
+
+export const getPage = async (pageId: string) => {
+  const response = await notion.pages.retrieve({ page_id: pageId });
   return response;
 };
 
-export const urlFor = (source: object | string) => {
-  return imageUrlBuilder(client).image(source);
-};
+export const getBlocks = async (blockId: any) => {
+  const blocks = [];
+  let cursor;
+  while (true) {
+    const { results, next_cursor }: { results: any; next_cursor: any } = await notion.blocks?.children?.list({
+      start_cursor: cursor,
+      block_id: blockId,
+    });
+    blocks.push(...results);
+    if (!next_cursor) {
+      break;
+    }
+    cursor = next_cursor;
+  }
 
-const projectCardFields = `
-  Title,
-  subTitle,
-  "slug": slug.current,
-  coverImage,
-  thumnail,
-  tags,
-`;
-
-const blogCardFields = `
-  Title,
-  subTitle,
-  "slug": slug.current,
-  coverImage,
-  thumnail,
-`;
-
-const experimentCardFields = `
-  Title,
-  subTitle,
-  "slug": slug.current,
-  thumnail,
-  `;
-
-// Cheet sheet https://www.sanity.io/docs/query-cheat-sheet
-export const getProjectCardData = async () => {
-  const query = `*[_type == "projects"]{
-    ${projectCardFields}
-  }`;
-
-  const results = await client.fetch(query);
-
-  return results;
-};
-
-export const getExperimentCardData = async () => {
-  const query = `*[_type == "experiments"]{
-    ${experimentCardFields}
-  }`;
-
-  const results = await client.fetch(query);
-
-  return results;
-};
-
-export const getProjectsBySlug = async (slug: string) => {
-  const query = `*[_type == "projects" && slug.current == $slug]{
-    ${blogCardFields}
-    content[]{..., "asset": asset->}
-  }`;
-
-  const params = { slug };
-
-  const results = await client.fetch(query, params).then((response) => response?.[0]);
-
-  // console.log(results);
-  return results;
+  console.log(blocks);
+  return blocks;
 };

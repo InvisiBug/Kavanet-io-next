@@ -1,31 +1,40 @@
 import React, { FC } from "react";
 import styled from "@emotion/styled";
-import { urlFor } from "lib/api";
 import { cardBackground } from "lib/colours";
-import { CardFields } from "lib/types";
 import Link from "next/link";
 
-const Card: FC<Props> = ({ project, folder }) => {
-  const { Title: title, subTitle, thumnail, tags, slug } = project;
+const Card: FC<Props> = ({ items, folder }) => {
+  const { properties } = items;
+
+  const fields = {
+    title: properties?.title.title[0]?.text?.content,
+    subTitle: properties?.["Sub title"]?.rich_text[0]?.text.content,
+    thumnail: properties?.["Card image"]?.files[0]?.file.url,
+    slug: properties?.slug?.rich_text[0]?.text.content,
+    tags: undefined,
+    status: properties?.Status.select?.name,
+  };
 
   return (
     <>
-      <Link href={`${folder}/[slug]`} as={`${folder}/${slug}`}>
-        <Container>
-          {thumnail && <Thumnail src={urlFor(thumnail).url()} alt={"Add alt"} />}
-          <Content>
-            <Title>{title}</Title>
-            <Subtitle>{subTitle}</Subtitle>
-            <BottomRow>
-              <Open>Open</Open>
-              {/* <Tags>
+      {fields.status === "Live" && (
+        <Link href={`${folder}/[slug]`} as={`${folder}/${fields.slug}`}>
+          <Container>
+            {fields.thumnail && <Thumnail src={fields.thumnail} alt={"Add alt"} />}
+            <Content>
+              <Title>{fields.title}</Title>
+              <Subtitle>{fields.subTitle}</Subtitle>
+              <BottomRow>
+                <Open>Open</Open>
+                {/* <Tags>
               <Tag>{tags}</Tag>
               <Tag>LEDs</Tag>
             </Tags> */}
-            </BottomRow>
-          </Content>
-        </Container>
-      </Link>
+              </BottomRow>
+            </Content>
+          </Container>
+        </Link>
+      )}
     </>
   );
 };
@@ -33,7 +42,7 @@ const Card: FC<Props> = ({ project, folder }) => {
 export default Card;
 
 interface Props {
-  project: CardFields;
+  items: any;
   folder: string;
 }
 
@@ -47,6 +56,8 @@ const Container = styled.div`
   color: white;
 
   background: ${cardBackground};
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 
   display: flex;
   flex-direction: column;

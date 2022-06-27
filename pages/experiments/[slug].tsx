@@ -4,7 +4,6 @@ import { Layout, BackArrow } from "lib/components";
 
 const Experiments: FC<any> = ({ slug }) => {
   const Sketch = dynamic(() => import(`experiments/${slug}`), { ssr: false });
-  console.log("🚀 ~ file: [slug].tsx ~ line 7 ~ slug", slug);
 
   return (
     <>

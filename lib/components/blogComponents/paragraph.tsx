@@ -7,7 +7,7 @@ const Paragraph: FC<any> = ({ children }) => {
     <>
       <Container>
         {children.map((child: any) => {
-          return <div>{child?.text.content}</div>;
+          return <div key={child?.text.content}>{child?.text.content}</div>;
         })}
       </Container>
     </>
