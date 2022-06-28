@@ -15,9 +15,10 @@ export const renderBlock = (block: any) => {
       return <H2>{block[type].rich_text[0]?.text.content}</H2>;
 
     case "paragraph": // convert in to its own component
-      return <MyParagraph>{block[type].rich_text}</MyParagraph>;
+      return <MyParagraph>{block[type]?.rich_text}</MyParagraph>;
 
     case "image":
-      return <Image src={block[type].file.url} />;
+      // console.log(block);
+      return <Image src={block[type]?.file.url} />;
   }
 };

@@ -5,13 +5,24 @@ import styled from "@emotion/styled";
 import { renderBlock } from "lib/components/blogComponents";
 import { Layout, BackArrow } from "lib/components";
 import { mq, px } from "lib/mediaQueries";
-import { getBlocks } from "lib/api";
+import { getBlocks, getPage } from "lib/api";
+import Header from "./header";
 
-const Experiments: FC<any> = ({ blocks }) => {
+const Experiments: FC<any> = ({ blocks, page }) => {
+  const { properties: pageData } = page;
+
+  const pageMetaData = {
+    title: page.properties?.title.title[0]?.text?.content,
+    subTitle: page.properties?.["Sub title"]?.rich_text[0]?.text.content,
+    description: page.properties?.["Description"]?.rich_text[0]?.text.content,
+    coverImage: page.properties?.["Cover Image"]?.files[0]?.file.url,
+  };
+
   return (
     <>
       <Layout header={true} footer={false}>
         <BackArrow />
+        <Header pageMetaData={pageMetaData} />
         <Content>
           {blocks.map((block: any) => {
             return <Fragment key={Math.random()}>{renderBlock(block)}</Fragment>;
@@ -24,6 +35,8 @@ const Experiments: FC<any> = ({ blocks }) => {
 
 export const getServerSideProps = async ({ params }: args) => {
   const blocks = await getBlocks(params.slug);
+  const page = await getPage(params.slug);
+
   const childBlocks = await Promise.all(
     blocks
       .filter((block) => block.has_children)
@@ -45,6 +58,7 @@ export const getServerSideProps = async ({ params }: args) => {
 
   return {
     props: {
+      page,
       blocks: blocksWithChildren,
     },
   };

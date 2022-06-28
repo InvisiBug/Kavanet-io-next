@@ -1,16 +1,17 @@
 import React, { FC } from "react";
 import styled from "@emotion/styled";
-import { urlFor } from "lib/api";
+
 import { mq, px } from "lib/mediaQueries";
 
-const ProjectHeader: FC<any> = ({ projectDetails }) => {
-  const { Title: title, subTitle, coverImage } = projectDetails;
+const ProjectHeader: FC<any> = ({ pageMetaData }) => {
+  const { title, subTitle, coverImage } = pageMetaData;
 
   return (
     <>
       <Title>{title}</Title>
       <SubTitle>{subTitle}</SubTitle>
-      {coverImage && <CoverImage src={urlFor(coverImage).url()} alt={"Add alt"} />}
+      {coverImage && <CoverImage src={coverImage} alt={"Add alt"} />}
+      <br />
     </>
   );
 };
