@@ -12,10 +12,10 @@ const Experiments: FC<any> = ({ blocks, page }) => {
   const { properties: pageData } = page;
 
   const pageMetaData = {
-    title: page.properties?.title.title[0]?.text?.content,
-    subTitle: page.properties?.["Sub title"]?.rich_text[0]?.text.content,
-    description: page.properties?.["Description"]?.rich_text[0]?.text.content,
-    coverImage: page.properties?.["Cover Image"]?.files[0]?.file.url,
+    title: pageData?.title.title[0]?.text?.content,
+    subTitle: pageData?.["Sub title"]?.rich_text[0]?.text.content,
+    description: pageData?.["Description"]?.rich_text[0]?.text.content,
+    coverImage: pageData?.["Cover Image"]?.files[0]?.file?.url,
   };
 
   return (

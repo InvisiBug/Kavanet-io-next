@@ -19,5 +19,9 @@
     "titleBar.inactiveForeground": "#e7e7e799"
   },
   "peacock.color": "#1b1b11",
-  "eslint.workingDirectories": ["./Kavanet-io-next", "./Kavanet-io-sanity"]
+  "eslint.workingDirectories": [
+    "./Kavanet-io-next",
+    "./Kavanet-io-sanity"
+  ],
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

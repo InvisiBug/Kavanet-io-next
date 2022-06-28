@@ -22,6 +22,7 @@ export const getPage = async (pageId: string) => {
 export const getBlocks = async (blockId: any) => {
   const blocks = [];
   let cursor;
+
   while (true) {
     const { results, next_cursor }: { results: any; next_cursor: any } = await notion.blocks?.children?.list({
       start_cursor: cursor,
@@ -34,6 +35,5 @@ export const getBlocks = async (blockId: any) => {
     cursor = next_cursor;
   }
 
-  console.log(blocks);
   return blocks;
 };

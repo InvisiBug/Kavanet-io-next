@@ -2,19 +2,20 @@ import React, { FC } from "react";
 import { projectsDbId, experimentsDbId, getDatabase } from "lib/api";
 import { Layout, Showcase, Card } from "lib/components";
 import { CardFields } from "lib/types";
+import { generateTestCard } from "lib/helpers";
 
 const IndexPage: FC<Props> = ({ projects, experiments }) => {
-  const testProject = {
-    Title: "Image Converter",
-    folder: "projects",
-    subTitle: "Poi image converter",
+  const testCard = {
+    title: "Poi Image Converter",
+    subTitle: "Poi Image Converter that im currently working on",
+    status: "Live",
     slug: "imageConverter",
   };
 
   return (
     <>
-      <Layout>
-        {process.env.NEXT_PUBLIC_LOCAL === "true" && <Card items={testProject} folder={"experiments"} />}
+      <Layout footer={false}>
+        {process.env.NEXT_PUBLIC_LOCAL === "true" && <Card items={generateTestCard(testCard)} folder={"experiments"} />}
         <Showcase items={projects} name={"projects"} />
         <Showcase items={experiments} name={"experiments"} />
       </Layout>

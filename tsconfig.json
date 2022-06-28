@@ -7,6 +7,11 @@
       "dom.iterable",
       "esnext"
     ],
+    "plugins": [
+      {
+        "name": "typescript-styled-plugin"
+      }
+    ],
     "allowJs": true,
     "alwaysStrict": true,
     "strictNullChecks": true,

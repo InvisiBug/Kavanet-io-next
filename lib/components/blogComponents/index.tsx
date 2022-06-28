@@ -19,6 +19,6 @@ export const renderBlock = (block: any) => {
 
     case "image":
       // console.log(block);
-      return <Image src={block[type]?.file.url} />;
+      return <Image src={block[type]?.file?.url} />;
   }
 };
