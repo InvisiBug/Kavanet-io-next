@@ -4,7 +4,8 @@ services: # Not the same as Kubernetes service
     container_name: kavanet.io
     build: # Command
       context: . # This folder on the left
-      dockerfile: ./Dockerfile
+      # dockerfile: ./Dockerfile
+      dockerfile: ./Dockerfile.nextExample
     image: kavanet.io
     hostname: kavanet.io
     ports:

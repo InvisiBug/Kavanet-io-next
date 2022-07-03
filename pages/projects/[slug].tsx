@@ -2,11 +2,10 @@
 // https://developers.notion.com/docs/working-with-page-content#reading-nested-blocks
 import React, { FC, Fragment } from "react";
 import styled from "@emotion/styled";
-import { renderBlock } from "lib/components/blogComponents";
+import { renderBlock, Header } from "lib/components/blogComponents";
 import { Layout, BackArrow } from "lib/components";
-import { mq, px } from "lib/mediaQueries";
 import { getBlocks, getPage } from "lib/api";
-import Header from "./header";
+import { mq, px } from "lib/mediaQueries";
 
 const Experiments: FC<any> = ({ blocks, page }) => {
   const { properties: pageData } = page;

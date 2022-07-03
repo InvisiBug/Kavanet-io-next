@@ -4,13 +4,13 @@ import styled from "@emotion/styled";
 import { mq, px } from "lib/mediaQueries";
 
 const ProjectHeader: FC<any> = ({ pageMetaData }) => {
-  const { title, subTitle, coverImage } = pageMetaData;
+  // const { title, subTitle, coverImage } = pageMetaData;
 
   return (
     <>
-      <Title>{title}</Title>
-      <SubTitle>{subTitle}</SubTitle>
-      {coverImage && <CoverImage src={coverImage} alt={"Add alt"} />}
+      <Title>{pageMetaData.title}</Title>
+      <SubTitle>{pageMetaData.subTitle}</SubTitle>
+      {pageMetaData.coverImage && <CoverImage src={pageMetaData.coverImage} alt={"Add alt"} />}
       <br />
     </>
   );
