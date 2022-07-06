@@ -14,7 +14,6 @@ const Layout: FC<any> = ({ header = true, footer = true, children }) => {
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;900&display=swap" rel="stylesheet" />
       </Head>
-      {/* <Pic src="https://i.imgur.com/RWzeCAO.png"></Pic> */}
       <SiteContainer>
         {header && (
           <Header>

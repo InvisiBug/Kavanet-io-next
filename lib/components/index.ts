@@ -5,4 +5,3 @@ export { default as Showcase } from "./showcase";
 export { default as BackArrow } from "./backArrow";
 export { default as NotionShowcase } from "./showcase";
 export { default as PoiImageConverter } from "./poiImageConverter";
-export { default as NotionCard } from "./card";

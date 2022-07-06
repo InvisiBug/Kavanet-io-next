@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[2694],{2694:function(e,t,i){i.r(t),t.default={src:"/_next/static/media/zombie.073784c4.gif",height:311,width:288}}}]);

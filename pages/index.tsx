@@ -12,11 +12,20 @@ const IndexPage: FC<Props> = ({ projects, experiments }) => {
   //   slug: "imageConverter",
   // };
 
+  // const testCard = {
+  //   title: "Blank Default p5 experiment",
+  //   subTitle: "This is a blank P5js sketch template",
+  //   status: "Live",
+  //   slug: "blankSlate",
+  //   // types: ["Test", "Experiment"], //* Not implemented yet
+  // };
+
   const testCard = {
-    title: "Blank Default p5 experiment",
-    subTitle: "This is a blank P5js sketch template",
+    title: "Swing gems",
+    subTitle: "My attempt at the swing gems game",
     status: "Live",
-    slug: "blankSlate",
+    slug: "swingGems",
+    // types: ["Test", "Experiment"], //* Not implemented yet
   };
 
   return (
@@ -38,10 +47,26 @@ interface Props {
 export default IndexPage;
 
 export const getServerSideProps = async () => {
-  // const projects = await getDatabase(projectsDbId);
-  const projects = null;
-  // const experiments = await getDatabase(experimentsDbId);
-  const experiments = null;
+  const online = false;
+  let projects;
+  let experiments;
+
+  if (online) {
+    try {
+      projects = await getDatabase(projectsDbId);
+    } catch {
+      projects = null;
+    }
+
+    try {
+      experiments = await getDatabase(experimentsDbId);
+    } catch {
+      experiments = null;
+    }
+  } else {
+    projects = null;
+    experiments = null;
+  }
 
   return {
     props: {

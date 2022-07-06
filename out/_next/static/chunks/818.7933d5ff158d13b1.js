@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[818],{818:function(e,t,c){c.r(t),t.default={src:"/_next/static/media/rocket.73a37e18.gif",height:512,width:512}}}]);

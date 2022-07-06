@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[2992],{2992:function(e,t,c){c.r(t),t.default={src:"/_next/static/media/moon.7042dc81.gif",height:160,width:160}}}]);

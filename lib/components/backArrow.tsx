@@ -20,9 +20,6 @@ const Arrow = styled.div`
 
   top: 0rem;
   left: 2rem;
-  /* height: 100px; */
-  /* width: 100px; */
-  /* font-size: 900; */
   font-size: 6rem;
   color: white;
   cursor: pointer;

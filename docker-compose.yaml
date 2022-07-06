@@ -5,6 +5,7 @@ services: # Not the same as Kubernetes service
     build: # Command
       context: . # This folder on the left
       # dockerfile: ./Dockerfile
+      # dockerfile: ./Dockerfile.kube
       dockerfile: ./Dockerfile.nextExample
     image: kavanet.io
     hostname: kavanet.io
