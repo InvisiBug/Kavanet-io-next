@@ -5,11 +5,18 @@ import { CardFields } from "lib/types";
 import { generateTestCard } from "lib/helpers";
 
 const IndexPage: FC<Props> = ({ projects, experiments }) => {
+  // const testCard = {
+  //   title: "Poi Image Converter",
+  //   subTitle: "Poi Image Converter that im currently working on",
+  //   status: "Live",
+  //   slug: "imageConverter",
+  // };
+
   const testCard = {
-    title: "Poi Image Converter",
-    subTitle: "Poi Image Converter that im currently working on",
+    title: "Blank Default p5 experiment",
+    subTitle: "This is a blank P5js sketch template",
     status: "Live",
-    slug: "imageConverter",
+    slug: "blankSlate",
   };
 
   return (
@@ -31,8 +38,10 @@ interface Props {
 export default IndexPage;
 
 export const getServerSideProps = async () => {
-  const projects = await getDatabase(projectsDbId);
-  const experiments = await getDatabase(experimentsDbId);
+  // const projects = await getDatabase(projectsDbId);
+  const projects = null;
+  // const experiments = await getDatabase(experimentsDbId);
+  const experiments = null;
 
   return {
     props: {

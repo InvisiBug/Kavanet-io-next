@@ -6,6 +6,8 @@ import { mq, px } from "lib/mediaQueries";
 import { capitalizeFirstLetter } from "lib/helpers";
 
 const Showcase: FC<Props> = ({ items, name }) => {
+  if (!items) return <></>;
+
   return (
     <>
       <Container>
