@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 import { Layout, BackArrow } from "src/lib/components";
 
 const Experiments: FC<any> = ({ slug }) => {
-  const Sketch = dynamic(() => import(`experiments/${slug}`), { ssr: false });
+  const Sketch = dynamic(() => import(`src/experiments/${slug}`), { ssr: false });
 
   return (
     <>
