@@ -1,0 +1,21 @@
+[
+  {
+    "name": "Screenshot 2022-06-27 at 10.17.32 pm.png",
+    "type": "file",
+    "file": {
+      "url": "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/82859be4-0724-471f-90b4-8f385c8189c0/Screenshot_2022-06-27_at_10.17.32_pm.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220707%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220707T165659Z&X-Amz-Expires=3600&X-Amz-Signature=3e4f0de3a2141e42b783afbf47b167d95ea1d69c442ce2acd0b000858958a978&X-Amz-SignedHeaders=host&x-id=GetObject",
+      "expiry_time": "2022-07-07T17:56:59.509Z"
+    }
+  }
+]
+
+
+[
+  {
+      "name": "https://i.imgur.com/NOWVNPk.jpeg",
+      "type": "external",
+      "external": {
+          "url": "https://i.imgur.com/NOWVNPk.jpeg"
+      }
+  }
+]
