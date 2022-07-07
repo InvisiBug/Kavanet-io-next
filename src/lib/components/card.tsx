@@ -2,15 +2,16 @@ import React, { FC, Fragment } from "react";
 import styled from "@emotion/styled";
 import { cardBackground } from "src/lib/colours";
 import Link from "next/link";
-import { getCardFields } from "src/lib/helpers";
+import { getPageMetaData } from "src/lib/helpers";
 import { Tag } from "src/lib/components";
+import { PageMetaData, NotionResponse } from "src/lib/types";
 
-const Card: FC<Props> = ({ item, folder }) => {
-  const { title, subTitle, thumbnail, slug, status, tags } = getCardFields(item);
+const Card: FC<Props> = ({ pageData, folder }) => {
+  const { title, subTitle, thumbnail, slug, status, tags } = getPageMetaData(pageData);
 
   return (
     <>
-      {status === "Live" && (
+      {status === "Live" || (process.env.NEXT_PUBLIC_LOCAL === "true" && status === "Dev") ? (
         <Link href={`${folder}/[slug]`} as={`${folder}/${slug}`}>
           <Container>
             {thumbnail && <Thumnail src={thumbnail} alt={"Add alt"} />}
@@ -28,11 +29,12 @@ const Card: FC<Props> = ({ item, folder }) => {
                     );
                   })}
                 </Tags>
+                {status === "Dev" ? <div>dev</div> : null}
               </BottomRow>
             </Content>
           </Container>
         </Link>
-      )}
+      ) : null}
     </>
   );
 };
@@ -40,7 +42,7 @@ const Card: FC<Props> = ({ item, folder }) => {
 export default Card;
 
 interface Props {
-  item: any;
+  pageData: NotionResponse;
   folder: string;
 }
 

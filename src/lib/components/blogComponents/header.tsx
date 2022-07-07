@@ -4,13 +4,14 @@ import styled from "@emotion/styled";
 import { mq, px } from "src/lib/mediaQueries";
 
 const ProjectHeader: FC<any> = ({ pageMetaData }) => {
-  // const { title, subTitle, coverImage } = pageMetaData;
+  const { title, subTitle, coverImage, description } = pageMetaData;
 
   return (
     <>
-      <Title>{pageMetaData.title}</Title>
-      <SubTitle>{pageMetaData.subTitle}</SubTitle>
-      {pageMetaData.coverImage && <CoverImage src={pageMetaData.coverImage} alt={"Add alt"} />}
+      <Title>{title}</Title>
+      <SubTitle>{subTitle}</SubTitle>
+      {coverImage && <CoverImage src={coverImage} alt={"Add alt"} />}
+      <p>{description}</p>
       <br />
     </>
   );
@@ -29,7 +30,7 @@ const SubTitle = styled.h2`
 `;
 
 const CoverImage = styled.img`
-  width: 90%;
+  max-height: 50rem;
   border: ${borders ? "1px solid green" : "none"};
 
   overflow: hidden;

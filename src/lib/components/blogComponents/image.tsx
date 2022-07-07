@@ -1,13 +1,13 @@
 import React, { FC } from "react";
 import styled from "@emotion/styled";
-
 import { mq, px } from "src/lib/mediaQueries";
+import { getImageBlockUrl } from "src/lib/helpers";
 
-const Image: FC<any> = ({ src }) => {
+const Image: FC<any> = ({ data }) => {
   return (
     <>
       <ImageContainer>
-        <Img src={src} />
+        <Img src={getImageBlockUrl(data)} />
       </ImageContainer>
     </>
   );

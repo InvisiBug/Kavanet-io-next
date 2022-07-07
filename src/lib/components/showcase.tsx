@@ -1,9 +1,9 @@
 import React, { FC, Fragment } from "react";
 import styled from "@emotion/styled";
-import { CardFields } from "src/lib/types";
 import { Card } from "src/lib/components";
 import { mq, px } from "src/lib/mediaQueries";
-import { capitalizeFirstLetter } from "src/lib/helpers";
+import { capitalizeFirstLetter, getPageMetaData } from "src/lib/helpers";
+import { NotionResponse } from "src/lib/types";
 
 const Showcase: FC<Props> = ({ thingsToShowcase, folder }) => {
   if (!thingsToShowcase) return <></>;
@@ -13,10 +13,10 @@ const Showcase: FC<Props> = ({ thingsToShowcase, folder }) => {
       <Container>
         <Title>{`My ${capitalizeFirstLetter(folder)}`}</Title>
         <CardHolder>
-          {thingsToShowcase.map((item: CardFields, index: number) => {
+          {thingsToShowcase.map((showcaseItem: NotionResponse, index: number) => {
             return (
               <Fragment key={index}>
-                <Card item={item} folder={folder} />
+                <Card pageData={showcaseItem} folder={folder} />
               </Fragment>
             );
           })}
@@ -28,7 +28,7 @@ const Showcase: FC<Props> = ({ thingsToShowcase, folder }) => {
 export default Showcase;
 
 interface Props {
-  thingsToShowcase: CardFields[];
+  thingsToShowcase: NotionResponse[];
   folder: string;
 }
 

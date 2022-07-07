@@ -28,6 +28,7 @@ export const getBlocks = async (blockId: any) => {
       start_cursor: cursor,
       block_id: blockId,
     });
+
     blocks.push(...results);
     if (!next_cursor) {
       break;

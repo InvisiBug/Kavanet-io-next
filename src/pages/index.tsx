@@ -1,8 +1,8 @@
 import React, { FC } from "react";
-import { projectsDbId, experimentsDbId, getDatabase } from "src/lib/api";
 import { Layout, Showcase, Card } from "src/lib/components";
-import { CardFields } from "src/lib/types";
 import { generateTestCard } from "src/lib/helpers";
+import { getServerSideProps } from "./query";
+import { NotionResponse } from "src/lib/types";
 
 const IndexPage: FC<Props> = ({ projects, experiments }) => {
   // console.log("Projects:", projects.properties);
@@ -32,47 +32,18 @@ const IndexPage: FC<Props> = ({ projects, experiments }) => {
   return (
     <>
       <Layout footer={false}>
-        {process.env.NEXT_PUBLIC_LOCAL === "true" && <Card item={generateTestCard(testCard)} folder={"experiments"} />}
-        <Showcase thingsToShowcase={projects} folder={"projects"} />
+        {process.env.NEXT_PUBLIC_LOCAL === "true" && <Card pageData={generateTestCard(testCard)} folder={"experiments"} />}
         <Showcase thingsToShowcase={experiments} folder={"experiments"} />
+        <Showcase thingsToShowcase={projects} folder={"projects"} />
       </Layout>
     </>
   );
 };
 
 interface Props {
-  experiments: any;
-  projects: any;
+  experiments: NotionResponse[]; // Not pageMetaData type at this point
+  projects: NotionResponse[];
 }
 
 export default IndexPage;
-
-export const getServerSideProps = async () => {
-  const online = true;
-  let projects;
-  let experiments;
-
-  if (online) {
-    try {
-      projects = await getDatabase(projectsDbId);
-    } catch {
-      projects = null;
-    }
-
-    try {
-      experiments = await getDatabase(experimentsDbId);
-    } catch {
-      experiments = null;
-    }
-  } else {
-    projects = null;
-    experiments = null;
-  }
-
-  return {
-    props: {
-      projects,
-      experiments,
-    },
-  };
-};
+export { getServerSideProps };
