@@ -2,7 +2,7 @@ import React, { FC, Fragment } from "react";
 import styled from "@emotion/styled";
 import { Card } from "src/lib/components";
 import { mq, px } from "src/lib/mediaQueries";
-import { capitalizeFirstLetter, getPageMetaData } from "src/lib/helpers";
+import { capitalizeFirstLetter } from "src/lib/helpers";
 import { NotionResponse } from "src/lib/types";
 
 const Showcase: FC<Props> = ({ thingsToShowcase, folder }) => {

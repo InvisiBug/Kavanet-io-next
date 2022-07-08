@@ -3,6 +3,7 @@
 export const background = "#222222";
 export const cardBackground = "#3E4146";
 export const borders = "#FFFEDF";
+export const devBackground = "#592E2E";
 
 // "#3E4146"
 // "#FFFEDF"

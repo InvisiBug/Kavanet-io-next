@@ -1,6 +1,5 @@
 import React, { FC } from "react";
 import styled from "@emotion/styled";
-import Head from "next/head";
 import { Global, css } from "@emotion/react";
 import { background } from "src/lib/colours";
 import { mq, px } from "src/lib/mediaQueries";
@@ -9,11 +8,6 @@ const Layout: FC<any> = ({ header = true, footer = true, children }) => {
   return (
     <>
       <Global styles={globalStyles} />
-      <Head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;900&display=swap" rel="stylesheet" />
-      </Head>
       <SiteContainer>
         {header && (
           <Header>

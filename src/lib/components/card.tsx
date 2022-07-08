@@ -1,11 +1,13 @@
 import React, { FC, Fragment } from "react";
 import styled from "@emotion/styled";
-import { cardBackground } from "src/lib/colours";
 import Link from "next/link";
-import { getPageMetaData } from "src/lib/helpers";
 import { Tag } from "src/lib/components";
-import { PageMetaData, NotionResponse } from "src/lib/types";
+import { NotionResponse } from "src/lib/types";
+import { getPageMetaData } from "src/lib/helpers";
+import { cardBackground, devBackground } from "src/lib/colours";
 
+//* Live pages are allways shown
+//* Dev pages are only shown when running locally
 const Card: FC<Props> = ({ pageData, folder }) => {
   const { title, subTitle, thumbnail, slug, status, tags } = getPageMetaData(pageData);
 
@@ -29,7 +31,7 @@ const Card: FC<Props> = ({ pageData, folder }) => {
                     );
                   })}
                 </Tags>
-                {status === "Dev" ? <div>dev</div> : null}
+                {status === "Dev" ? <Dev>Dev</Dev> : null}
               </BottomRow>
             </Content>
           </Container>
@@ -49,7 +51,7 @@ interface Props {
 const borders = false;
 
 const Container = styled.div`
-  border: ${borders ? "2px solid pink" : "none"};
+  border: ${borders ? "2px solid black" : "none"};
   width: 15rem;
   border-radius: 15px;
   margin-top: 1rem;
@@ -67,7 +69,7 @@ const Container = styled.div`
 
 const Thumnail = styled.img`
   width: 100%;
-  border: ${borders ? "1px solid black" : "none"};
+  border: ${borders ? "1px solid white" : "none"};
 
   overflow: hidden;
   object-fit: contain;
@@ -75,21 +77,21 @@ const Thumnail = styled.img`
 
 // Content
 const Content = styled.div`
-  border: ${borders ? "1px solid white" : "none"};
-  margin: 0 1rem 0 1rem;
+  border: ${borders ? "1px solid orange" : "none"};
+  padding: 0 1rem 0 1rem;
   display: flex;
   flex-direction: column;
 `;
 
 const Title = styled.div`
-  border: ${borders ? "1px solid black" : "none"};
+  border: ${borders ? "1px solid red" : "none"};
   font-size: 1.2rem;
   margin-top: 0.5rem;
   font-weight: bold;
 `;
 
 const Subtitle = styled.div`
-  border: ${borders ? "1px solid pink" : "none"};
+  border: ${borders ? "1px solid yellow" : "none"};
   /* min-height: 50px; */
   width: 100%;
   font-weight: 400;
@@ -99,7 +101,7 @@ const Subtitle = styled.div`
 
 // Bottom Row
 const BottomRow = styled.div`
-  border: ${borders ? "1px solid white" : "none"};
+  border: ${borders ? "1px solid purple" : "none"};
   display: flex;
   margin: 1rem 0 1rem 0rem;
 `;
@@ -113,15 +115,24 @@ const Tags = styled.div`
 `;
 
 const Open = styled.button`
-  border: ${borders ? "1px solid black" : "none"};
+  border: ${borders ? "1px solid yellow" : "1px solid transparent"};
 
   background-color: #1f2937;
   border-radius: 0.5rem;
-  border: 1px solid transparent;
+
   outline: none;
   width: 5rem;
   height: 2rem;
   color: white;
   text-align: center;
   cursor: pointer;
+`;
+
+const Dev = styled.div`
+  background: ${devBackground};
+  border-radius: 0.5rem;
+  display: grid;
+  padding: 0 1rem 0 1rem;
+  align-content: center;
+  color: white;
 `;

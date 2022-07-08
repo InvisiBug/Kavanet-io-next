@@ -1,8 +1,9 @@
 import React, { FC } from "react";
 import { Layout, Showcase, Card } from "src/lib/components";
 import { generateTestCard } from "src/lib/helpers";
-import { getServerSideProps } from "./query";
+
 import { NotionResponse } from "src/lib/types";
+import { projectsDbId, experimentsDbId, getDatabase } from "src/lib/api";
 
 const IndexPage: FC<Props> = ({ projects, experiments }) => {
   // console.log("Projects:", projects.properties);
@@ -46,4 +47,36 @@ interface Props {
 }
 
 export default IndexPage;
-export { getServerSideProps };
+
+export const getServerSideProps = async () => {
+  const online = true;
+  // let projects;
+  // let experiments;
+
+  // if (online) {
+  //   try {
+  //     projects = await getDatabase(projectsDbId);
+  //   } catch {
+  //     projects = null;
+  //   }
+
+  //   try {
+  //     experiments = await getDatabase(experimentsDbId);
+  //   } catch {
+  //     experiments = null;
+  //   }
+  // } else {
+  //   projects = null;
+  //   experiments = null;
+  // }
+
+  const projects = await getDatabase(projectsDbId);
+  const experiments = await getDatabase(experimentsDbId);
+
+  return {
+    props: {
+      projects,
+      experiments,
+    },
+  };
+};
