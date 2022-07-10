@@ -27,10 +27,10 @@ export default class TrailMap {
 
     this.trailMap = [];
 
-    this.scale = 15;
+    this.scale = 10;
     this.xscale = this.scale;
     this.yscale = this.scale;
-    this.size = 7;
+    this.size = 2;
   }
 
   //* Generates a new blank map
@@ -45,7 +45,7 @@ export default class TrailMap {
         // this.trailMap[y][x] = 0;
         // this.trailMap[y][x] = this.p5.random(0, 255);
         // this.trailMap[y][x] = this.p5.map(this.p5.noise(x, y), 0, 1, 0, 255);
-        this.trailMap[y][x] = 25;
+        // this.trailMap[y][x] = 25;
       }
     }
   };
@@ -61,7 +61,7 @@ export default class TrailMap {
         if (this.trailMap[y][x] > 0) {
           this.colour.setAlpha(this.trailMap[y][x]);
           this.p5.fill(this.colour);
-          const useOffsetVals = true;
+          const useOffsetVals = this.offset;
 
           if (useOffsetVals) {
             // const x = lerp(margin, width - margin, u);
@@ -221,8 +221,10 @@ export default class TrailMap {
 
     directions.forEach((direction, index) => {
       trailMapVal = this.getCompensatedVal(xpos + direction.x, ypos + direction.y);
+
       if (trailMapVal && trailMapVal < weakestVal) {
         directionVector.set(direction.x, direction.y).setMag(0.5);
+
         weakestVal = trailMapVal;
       }
     });

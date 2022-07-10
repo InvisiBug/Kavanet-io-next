@@ -129,6 +129,7 @@ export default class Human {
       if (!this.hasFood) {
         toHomeMap.setVal(this.pos.x, this.pos.y, 255);
         this.acceleration = toFoodMap.getWeakest(this.pos.x, this.pos.y, this.hasFood).setMag(1);
+        // console.log(this.acceleration);
       } else {
         toFoodMap.setVal(this.pos.x, this.pos.y, 255);
         this.acceleration = toHomeMap.getWeakest(this.pos.x, this.pos.y, this.hasFood).setMag(1);

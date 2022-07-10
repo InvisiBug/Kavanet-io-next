@@ -3,9 +3,9 @@ import { Layout, Showcase, Card } from "src/lib/components";
 import { generateTestCard } from "src/lib/helpers";
 
 import { NotionResponse } from "src/lib/types";
-import { projectsDbId, experimentsDbId, getDatabase } from "src/lib/api";
+import { projectsDbId, experimentsDbId, plotsDbId, getDatabase } from "src/lib/api";
 
-const IndexPage: FC<Props> = ({ projects, experiments }) => {
+const IndexPage: FC<Props> = ({ projects, experiments, plots }) => {
   // console.log("Projects:", projects.properties);
   // const testCard = {
   //   title: "Poi Image Converter",
@@ -34,6 +34,7 @@ const IndexPage: FC<Props> = ({ projects, experiments }) => {
     <>
       <Layout footer={false}>
         {process.env.NEXT_PUBLIC_LOCAL === "true" && <Card pageData={generateTestCard(testCard)} folder={"experiments"} />}
+        <Showcase thingsToShowcase={plots} folder={"plots"} />
         <Showcase thingsToShowcase={experiments} folder={"experiments"} />
         <Showcase thingsToShowcase={projects} folder={"projects"} />
       </Layout>
@@ -44,6 +45,7 @@ const IndexPage: FC<Props> = ({ projects, experiments }) => {
 interface Props {
   experiments: NotionResponse[]; // Not pageMetaData type at this point
   projects: NotionResponse[];
+  plots: NotionResponse[];
 }
 
 export default IndexPage;
@@ -70,13 +72,15 @@ export const getServerSideProps = async () => {
   //   experiments = null;
   // }
 
-  const projects = await getDatabase(projectsDbId);
   const experiments = await getDatabase(experimentsDbId);
+  const projects = await getDatabase(projectsDbId);
+  const plots = await getDatabase(plotsDbId);
 
   return {
     props: {
       projects,
       experiments,
+      plots,
     },
   };
 };

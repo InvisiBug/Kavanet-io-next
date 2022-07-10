@@ -63,6 +63,8 @@ const CardHolder = styled.div`
   align-items: center;
   width: 100%;
   flex-wrap: wrap;
+  /* transform-style: preserve-3d; */
+  /* transform: rotate(10deg) skew(-45deg); */
 `;
 
 const Title = styled.h1`
