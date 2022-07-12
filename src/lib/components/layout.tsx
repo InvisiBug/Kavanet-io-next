@@ -3,24 +3,22 @@ import styled from "@emotion/styled";
 import { Global, css } from "@emotion/react";
 import { background } from "src/lib/colours";
 import { mq, px } from "src/lib/mediaQueries";
+import { Header } from "src/lib/components";
 
 const Layout: FC<any> = ({ header = true, footer = true, children }) => {
   return (
     <>
       <Global styles={globalStyles} />
       <SiteContainer>
-        {header && (
-          <Header>
-            <Title>Kavanet.io</Title>
-          </Header>
-        )}
-
-        <Content>{children}</Content>
+        {header && <Header />}
+        <Content header={header}>{children}</Content>
         {footer && <Footer>Footer</Footer>}
       </SiteContainer>
     </>
   );
 };
+
+const borders = false;
 
 const Pic = styled.img`
   position: absolute;
@@ -36,8 +34,6 @@ const Layer = styled.div`
 
 export default Layout;
 
-const borders = false;
-
 const globalStyles = css`
   body {
     margin: 0;
@@ -48,6 +44,8 @@ const globalStyles = css`
     font-family: "Nunito", sans-serif;
     user-select: none;
     overflow: scroll;
+    /* overscroll-behavior: none; */
+    background-color: ${background};
   }
 `;
 
@@ -55,23 +53,10 @@ const SiteContainer = styled.div`
   width: 100vw;
   min-height: 100vh;
 
-  background-color: ${background};
+  /* background-color: ${background}; */
 
   display: flex;
   flex-direction: column;
-`;
-
-const Header = styled.div`
-  border: ${borders ? "2px solid orange" : "none"};
-  background: none;
-  display: flex;
-  align-items: center;
-  /* flex: 1 0 10%; */
-
-  height: 4rem;
-  ${mq("small")} {
-    height: 4rem;
-  }
 `;
 
 const Content = styled.div`
@@ -82,6 +67,7 @@ const Content = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+  margin-top: ${(props: { header: boolean }) => (props.header ? "4rem" : "0")};
 
   /* flex-wrap: wrap; */
   /* flex-grow: 1; */
@@ -92,12 +78,4 @@ const Footer = styled.div`
   background: purple;
   margin-top: 0px;
   /* height: 4rem; */
-`;
-
-const Title = styled.h1`
-  color: white;
-  margin-top: 0;
-  margin-bottom: 0;
-  padding-top: 0;
-  margin-left: 2rem;
 `;
