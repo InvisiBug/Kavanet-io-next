@@ -60,7 +60,7 @@ const Container = styled.div`
 const CardHolder = styled.div`
   display: flex;
   justify-content: space-around;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
   flex-wrap: wrap;
   /* transform-style: preserve-3d; */

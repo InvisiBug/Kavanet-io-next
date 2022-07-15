@@ -57,6 +57,8 @@ const Container = styled.div`
   margin-top: 1rem;
   color: white;
 
+  /* min-height: 20rem; */
+
   background: ${cardBackground};
   margin-left: 0.5rem;
   margin-right: 0.5rem;
@@ -89,6 +91,7 @@ const Content = styled.div`
   padding: 0 1rem 0 1rem;
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
 `;
 
 const Title = styled.div`
@@ -105,6 +108,7 @@ const Subtitle = styled.div`
   font-weight: 400;
   font-size: 0.9rem;
   font-size: 1rem;
+  flex-grow: 1;
 `;
 
 // Bottom Row

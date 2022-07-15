@@ -40,7 +40,7 @@ const globalStyles = css`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     box-sizing: border-box;
-    color: black;
+    color: white;
     font-family: "Nunito", sans-serif;
     user-select: none;
     overflow: scroll;
@@ -57,17 +57,19 @@ const SiteContainer = styled.div`
 
   display: flex;
   flex-direction: column;
+  align-items: center;
 `;
 
 const Content = styled.div`
   border: ${borders ? "2px solid green" : "none"};
+
   flex: auto;
   overflow-y: auto;
 
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin-top: ${(props: { header: boolean }) => (props.header ? "4rem" : "0")};
+  margin-top: ${(props: { header: boolean }) => (props.header ? "6rem" : "0")};
 
   /* flex-wrap: wrap; */
   /* flex-grow: 1; */

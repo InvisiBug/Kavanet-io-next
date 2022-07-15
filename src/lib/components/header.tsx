@@ -4,19 +4,34 @@ import { mq, px } from "src/lib/mediaQueries";
 import { background } from "src/lib/colours";
 import Link from "next/link";
 
+const links = ["Experiments", "Plots", "Projects"];
+
 const Header: FC = () => {
   return (
     <>
       <Container>
-        <Link href={"/"} as={"/"}>
-          <Title>Kavanet.io</Title>
-        </Link>
+        <NavBar>
+          <Link href={"/"} as={"/"}>
+            <Title>
+              <div>Kavanet.io</div>
+            </Title>
+          </Link>
 
-        <Links>
-          <Github href="https://github.com/InvisiBug" target="_blank">
-            <Image src={"https://icon-library.com/images/github-icon-white/github-icon-white-6.jpg"} />
-          </Github>
-        </Links>
+          <Links>
+            {links.map((link, index) => {
+              return (
+                <Link href={link.toLocaleLowerCase()} as={`/${link.toLocaleLowerCase()}`} key={index}>
+                  <LinkItem>
+                    <div>{link}</div>
+                  </LinkItem>
+                </Link>
+              );
+            })}
+            <Github href="https://github.com/InvisiBug" target="_blank">
+              <Image src={"https://icon-library.com/images/github-icon-white/github-icon-white-6.jpg"} />
+            </Github>
+          </Links>
+        </NavBar>
       </Container>
     </>
   );
@@ -35,13 +50,26 @@ const Container = styled.div`
   background: ${background};
   display: flex;
   color: white;
-  justify-content: space-between;
-  align-items: center;
+
+  justify-content: center;
+  /* align-items: center; */
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 
-  height: 4rem;
+  height: 5rem;
+`;
+
+const NavBar = styled.div`
+  border: ${borders ? "1px solid limegreen" : "none"};
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 100%;
   ${mq("small")} {
-    height: 4rem;
+    width: ${px("small")}px;
+  }
+  ${mq("large")} {
+    width: ${px("large")}px;
   }
 `;
 
@@ -50,7 +78,18 @@ const Links = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
-  margin-right: 4rem;
+  /* margin-right: 4rem; */
+`;
+
+const LinkItem = styled.div`
+  border: ${borders ? "1px solid purple" : "none"};
+  min-width: 100px;
+  margin-right: 2rem;
+
+  font-weight: bold;
+  text-align: center;
+  font-size: large;
+  cursor: pointer;
 `;
 
 const Github = styled.a`
@@ -62,11 +101,16 @@ const Image = styled.img`
   height: 100%;
 `;
 
-const Title = styled.h1`
+const Title = styled.div`
   border: ${borders ? "1px solid pink" : "none"};
-  color: white;
+  /* height: 100%; */
   cursor: pointer;
-  margin-left: 1rem;
+  /* margin-bottom: 0; */
+  /* margin-left: 1rem; */
+
+  font-weight: bold;
+  /* text-align: center; */
+  font-size: 2rem;
   /* margin-top: 0; */
   /* margin-bottom: 0; */
   /* padding-top: 0; */
