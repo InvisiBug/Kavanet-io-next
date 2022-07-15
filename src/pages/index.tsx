@@ -1,10 +1,11 @@
 import React, { FC } from "react";
-import { projectsDbId, experimentsDbId, getDatabase } from "src/lib/api";
 import { Layout, Showcase, Card } from "src/lib/components";
-import { CardFields } from "src/lib/types";
 import { generateTestCard } from "src/lib/helpers";
 
-const IndexPage: FC<Props> = ({ projects, experiments }) => {
+import { NotionResponse } from "src/lib/types";
+import { projectsDbId, experimentsDbId, plotsDbId, getDatabase } from "src/lib/api";
+
+const IndexPage: FC<Props> = ({ projects, experiments, plots }) => {
   // console.log("Projects:", projects.properties);
   // const testCard = {
   //   title: "Poi Image Converter",
@@ -32,47 +33,54 @@ const IndexPage: FC<Props> = ({ projects, experiments }) => {
   return (
     <>
       <Layout footer={false}>
-        {process.env.NEXT_PUBLIC_LOCAL === "true" && <Card item={generateTestCard(testCard)} folder={"experiments"} />}
-        <Showcase thingsToShowcase={projects} folder={"projects"} />
+        {process.env.NEXT_PUBLIC_LOCAL === "true" && <Card pageData={generateTestCard(testCard)} folder={"experiments"} />}
+        <Showcase thingsToShowcase={plots} folder={"plots"} />
         <Showcase thingsToShowcase={experiments} folder={"experiments"} />
+        <Showcase thingsToShowcase={projects} folder={"projects"} />
       </Layout>
     </>
   );
 };
 
 interface Props {
-  experiments: any;
-  projects: any;
+  experiments: NotionResponse[]; // Not pageMetaData type at this point
+  projects: NotionResponse[];
+  plots: NotionResponse[];
 }
 
 export default IndexPage;
 
 export const getServerSideProps = async () => {
   const online = true;
-  let projects;
-  let experiments;
+  // let projects;
+  // let experiments;
 
-  if (online) {
-    try {
-      projects = await getDatabase(projectsDbId);
-    } catch {
-      projects = null;
-    }
+  // if (online) {
+  //   try {
+  //     projects = await getDatabase(projectsDbId);
+  //   } catch {
+  //     projects = null;
+  //   }
 
-    try {
-      experiments = await getDatabase(experimentsDbId);
-    } catch {
-      experiments = null;
-    }
-  } else {
-    projects = null;
-    experiments = null;
-  }
+  //   try {
+  //     experiments = await getDatabase(experimentsDbId);
+  //   } catch {
+  //     experiments = null;
+  //   }
+  // } else {
+  //   projects = null;
+  //   experiments = null;
+  // }
+
+  const experiments = await getDatabase(experimentsDbId);
+  const projects = await getDatabase(projectsDbId);
+  const plots = await getDatabase(plotsDbId);
 
   return {
     props: {
       projects,
       experiments,
+      plots,
     },
   };
 };

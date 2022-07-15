@@ -29,7 +29,7 @@ export const sketch = (p5: p5) => {
     showFood: true,
     //
     zombies: 10,
-    humans: 10,
+    humans: 1,
     hunters: 5,
     //
     safezones: 2,
@@ -54,7 +54,7 @@ export const sketch = (p5: p5) => {
   const sliders = new Sliders(config);
   const food: Food[] = [];
 
-  const toFoodMap = new TrailMap(config, p5.color("#73f974"), true);
+  const toFoodMap = new TrailMap(config, p5.color("#73f974"));
   const toHomeMap = new TrailMap(config, p5.color("#ff2f7f"));
 
   p5.setup = () => {
@@ -103,26 +103,26 @@ export const sketch = (p5: p5) => {
   p5.draw = () => {
     // console.log(p5.frameRate());
     p5.background(50);
-    // toFoodMap.show();
-    // toHomeMap.show();
+    toFoodMap.show();
+    toHomeMap.show();
 
     // console.log(p5.frameRate());
 
-    // if (p5.frameCount % 5 === 0) {
-    //   toFoodMap.fade();
-    //   toHomeMap.fade();
-    // }
+    if (p5.frameCount % 5 === 0) {
+      toFoodMap.fade();
+      toHomeMap.fade();
+    }
 
     // p5.background(50, 20);
     // p5.background(0, 50);
-    // zombies.forEach((zombie) => {
-    //   // if (zombie.food < 1) {
-    //   //   zombies.splice(zombies.indexOf(zombie), 1);
-    //   // }
-    //   const speed = Number(sliders.getVals().zombieSpeed);
-    //   zombie.update(zombies, humans, safezones, speed);
-    //   zombie.show();
-    // });
+    zombies.forEach((zombie) => {
+      // if (zombie.food < 1) {
+      //   zombies.splice(zombies.indexOf(zombie), 1);
+      // }
+      const speed = Number(sliders.getVals().zombieSpeed);
+      zombie.update(zombies, humans, safezones, speed);
+      zombie.show();
+    });
 
     humans.forEach((human) => {
       // if (human.food < 1) {
@@ -164,9 +164,8 @@ export const sketch = (p5: p5) => {
 
     // if (p5.mouseIsPressed && p5.frameCount % 5 === 0) {
     if (p5.mouseIsPressed) {
-      toFoodMap.followScent(p5.mouseX, p5.mouseY);
+      // toFoodMap.followScent(p5.mouseX, p5.mouseY);
       // toFoodMap.setVal(p5.mouseX, p5.mouseY, 255);
-
       // const vect = toFoodMap.getWeakest(p5.mouseX, p5.mouseY, true);
       // console.log(vect.x, vect.y);
     }

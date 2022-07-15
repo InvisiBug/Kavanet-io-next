@@ -1,8 +1,10 @@
+import { PageMetaData } from "src/lib/types";
+
 export const capitalizeFirstLetter = (string: string) => {
   return string.charAt(0).toUpperCase() + string.slice(1);
 };
 
-export const generateTestCard = ({ title, subTitle, status, slug }: Args) => {
+export const generateTestCard = ({ title, subTitle, status, slug }: Args): any => {
   return {
     properties: {
       title: {
@@ -14,14 +16,14 @@ export const generateTestCard = ({ title, subTitle, status, slug }: Args) => {
           },
         ],
       },
-      "Sub title": {
+      subTitle: {
         rich_text: [
           {
             text: { content: subTitle },
           },
         ],
       },
-      Status: {
+      status: {
         select: { name: status },
       },
       slug: {
@@ -35,17 +37,10 @@ export const generateTestCard = ({ title, subTitle, status, slug }: Args) => {
   };
 };
 
-export const getCardFields = (rawCardInfo: any) => {
+export const getPageMetaData = (rawCardInfo: any) => {
   const { properties } = rawCardInfo;
 
-  let data: {
-    title?: string;
-    slug?: string;
-    subTitle?: string;
-    thumbnail?: string;
-    tags?: string[];
-    status?: string;
-  } = {};
+  let data: PageMetaData = {};
 
   for (const property in properties) {
     switch (property) {
@@ -83,10 +78,26 @@ export const getCardFields = (rawCardInfo: any) => {
       case "status":
         data.status = properties[property].select?.name;
         break;
+
+      case "description":
+        data.description = properties[property]?.rich_text[0]?.text.content;
+        break;
+
+      case "coverImage":
+        const uploadedImage2 = properties[property]?.files[0]?.file?.url;
+        const linkedImage2 = properties[property]?.files[0]?.external?.url;
+
+        data.coverImage = uploadedImage2 ? uploadedImage2 : linkedImage2;
+        break;
     }
   }
 
   return data;
+};
+
+export const getImageBlockUrl = (data: any) => {
+  const { image } = data;
+  return image?.file?.url ? image?.file?.url : image?.external?.url;
 };
 
 interface Args {

@@ -3,25 +3,18 @@
 import React, { FC, Fragment } from "react";
 import styled from "@emotion/styled";
 import { renderBlock, Header } from "src/lib/components/blogComponents";
-import { Layout, BackArrow } from "src/lib/components";
 import { getBlocks, getPage } from "src/lib/api";
+import { Layout, BackArrow } from "src/lib/components";
+import { getPageMetaData } from "src/lib/helpers";
+
 import { mq, px } from "src/lib/mediaQueries";
 
 const Experiments: FC<any> = ({ blocks, page }) => {
-  const { properties: pageData } = page;
-
-  const pageMetaData = {
-    title: pageData?.title.title[0]?.text?.content,
-    subTitle: pageData?.["Sub title"]?.rich_text[0]?.text.content,
-    description: pageData?.["Description"]?.rich_text[0]?.text.content,
-    coverImage: pageData?.["Cover Image"]?.files[0]?.file?.url,
-  };
-
   return (
     <>
       <Layout header={true} footer={false}>
         <BackArrow />
-        <Header pageMetaData={pageMetaData} />
+        <Header pageMetaData={getPageMetaData(page)} />
         <Content>
           {blocks.map((block: any) => {
             return <Fragment key={Math.random()}>{renderBlock(block)}</Fragment>;
@@ -31,6 +24,24 @@ const Experiments: FC<any> = ({ blocks, page }) => {
     </>
   );
 };
+
+export default Experiments;
+
+const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  color: #cecdcd;
+  ${mq("small")} {
+    max-width: ${px("small")}px;
+  }
+  ${mq("medium")} {
+    max-width: ${px("medium")}px;
+  }
+  ${mq("large")} {
+    max-width: ${px("large")}px;
+  }
+`;
 
 export const getServerSideProps = async ({ params }: args) => {
   const blocks = await getBlocks(params.slug);
@@ -62,24 +73,6 @@ export const getServerSideProps = async ({ params }: args) => {
     },
   };
 };
-
-export default Experiments;
-
-const Content = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: left;
-  color: #cecdcd;
-  ${mq("small")} {
-    max-width: ${px("small")}px;
-  }
-  ${mq("medium")} {
-    max-width: ${px("medium")}px;
-  }
-  ${mq("large")} {
-    max-width: ${px("large")}px;
-  }
-`;
 
 interface args {
   params: {

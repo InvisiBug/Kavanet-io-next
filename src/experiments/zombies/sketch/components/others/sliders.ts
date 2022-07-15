@@ -29,7 +29,7 @@ export default class Zombie {
   create = () => {
     for (var i = 0; i < 3; i++) {
       const xPos = 10;
-      const startingYPos = 50;
+      const startingYPos = 100;
       const text: p5.Element = this.p5.createP();
 
       //* Speed
