@@ -57,25 +57,3 @@ EXPOSE 3000
 ENV PORT 3000
 
 CMD ["node", "server.js"]
-
-
-
-
-#* Working
-# # FROM node as runner
-# FROM arm64v8/node
-# # FROM node:16-alpine
-# WORKDIR /app
-
-# COPY package.json yarn.lock ./
-
-# RUN yarn install
-# COPY . .
-# # COPY ./ ./app
-
-# ENV NODE_ENV production
-
-
-# EXPOSE 3000
-
-# CMD ["yarn", "start"]
