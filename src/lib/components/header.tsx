@@ -3,8 +3,9 @@ import styled from "@emotion/styled";
 import { mq, px } from "src/lib/mediaQueries";
 import { background } from "src/lib/colours";
 import Link from "next/link";
+import { links } from "src/lib/constants";
 
-const links = ["Experiments", "Plots", "Projects"];
+// const links = ["Experiments", "Plots", "Projects"];
 
 const Header: FC = () => {
   return (

@@ -3,6 +3,7 @@
 REGISTRY_IP=192.168.1.61:5000
 APP_NAME=kavanet-io
 
+clear && \
 rm -rf .next && \
 yarn build && \
 docker build -f ./Dockerfile.kube -t $APP_NAME . && \

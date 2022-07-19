@@ -4,6 +4,7 @@ import { generateTestCard } from "src/lib/helpers";
 
 import { NotionResponse } from "src/lib/types";
 import { projectsDbId, experimentsDbId, plotsDbId, getDatabase } from "src/lib/api";
+import { links } from "src/lib/constants";
 
 const IndexPage: FC<Props> = ({ projects, experiments, plots }) => {
   // console.log("Projects:", projects.properties);
@@ -22,11 +23,19 @@ const IndexPage: FC<Props> = ({ projects, experiments, plots }) => {
   //   // types: ["Test", "Experiment"], //* Not implemented yet
   // };
 
+  // const testCard = {
+  //   title: "Swing gems",
+  //   subTitle: "My attempt at the swing gems game",
+  //   status: "Live",
+  //   slug: "swingGems",
+  //   // types: ["Test", "Experiment"], //* Not implemented yet
+  // };
+
   const testCard = {
-    title: "Swing gems",
-    subTitle: "My attempt at the swing gems game",
+    title: "Bubbles",
+    subTitle: "",
     status: "Live",
-    slug: "swingGems",
+    slug: "bubbles",
     // types: ["Test", "Experiment"], //* Not implemented yet
   };
 
