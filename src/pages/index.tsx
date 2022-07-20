@@ -32,10 +32,10 @@ const IndexPage: FC<Props> = ({ projects, experiments, plots }) => {
   // };
 
   const testCard = {
-    title: "Bubbles",
+    title: "Repulsor",
     subTitle: "",
     status: "Live",
-    slug: "bubbles",
+    slug: "repulserField",
     // types: ["Test", "Experiment"], //* Not implemented yet
   };
 
