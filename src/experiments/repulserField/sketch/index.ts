@@ -6,15 +6,16 @@ import Walker from "./walker";
 import Point from "./point";
 import colours from "nice-color-palettes";
 import { showFPS } from "src/experiments/helpers";
+import Points from "./points";
 
 export const sketch = (p5: p5) => {
   const numColours = 5; // Max 5
-  const config = {
+  const config: Config = {
     p5,
     speed: 10,
     colours: p5.shuffle(colours[Math.floor(p5.random(0, colours.length))]).slice(0, numColours),
     //
-    walkers: 2,
+    walkers: 1,
     //
     xpoints: 30,
     ypoints: 30,
@@ -26,6 +27,7 @@ export const sketch = (p5: p5) => {
 
   const walkers: Walker[] = [];
   const points: Point[] = [];
+  let newPoints: Points = new Points(config, 10, 10);
 
   p5.setup = () => {
     config["3D"] ? p5.createCanvas(p5.windowWidth, p5.windowHeight, p5.WEBGL) : p5.createCanvas(p5.windowWidth, p5.windowHeight);
@@ -33,17 +35,17 @@ export const sketch = (p5: p5) => {
     // p5.createCanvas(500, 500);
     // p5.createCanvas(500, 500, p5.WEBGL);
 
-    for (let x = 0; x < config.xpoints; x++) {
-      for (let y = 0; y < config.ypoints; y++) {
-        const u = x / (config.xpoints - 1);
-        const v = y / (config.ypoints - 1);
+    // for (let x = 0; x < config.xpoints; x++) {
+    //   for (let y = 0; y < config.ypoints; y++) {
+    //     const u = x / (config.xpoints - 1);
+    //     const v = y / (config.ypoints - 1);
 
-        const xpos = p5.lerp(config.margin, p5.width - config.margin, u);
-        const ypos = p5.lerp(config.margin, p5.height - config.margin, v);
+    //     const xpos = p5.lerp(config.margin, p5.width - config.margin, u);
+    //     const ypos = p5.lerp(config.margin, p5.height - config.margin, v);
 
-        points.push(new Point(config, p5.createVector(xpos, ypos)));
-      }
-    }
+    //     points.push(new Point(config, p5.createVector(xpos, ypos)));
+    //   }
+    // }
 
     for (let i = 0; i < config.walkers; i++) {
       walkers.push(new Walker(config, walkers, i));
@@ -61,23 +63,25 @@ export const sketch = (p5: p5) => {
       p5.translate(-p5.width / 2, -p5.height / 2);
     }
 
-    if (walkers.length > 1) {
+    newPoints.show();
+
+    if (walkers.length > 0) {
       walkers.forEach((walker) => {
         walker.update(walkers);
         walker.show();
 
-        points.forEach((point) => {
-          point.avoid(walkers);
-          point.spring();
-        });
+        // points.forEach((point) => {
+        //   point.avoid(walkers);
+        //   point.spring();
+        // });
       });
     }
 
-    if (points.length > 0) {
-      points.forEach((point) => {
-        point.show();
-      });
-    }
+    // if (points.length > 0) {
+    //   points.forEach((point) => {
+    //     point.show();
+    //   });
+    // }
   };
 
   p5.mouseClicked = () => {};
@@ -92,6 +96,10 @@ export const sketch = (p5: p5) => {
 export interface Config {
   p5: p5;
   speed: number;
+  walkers: number;
   colours: string[];
   "3D": boolean;
+  xpoints: number;
+  ypoints: number;
+  margin: number;
 }
