@@ -63,7 +63,7 @@ export const sketch = (p5: p5) => {
       }
     }
 
-    p5.textSize(200);
+    p5.textSize(p5.width / 8);
     p5.textAlign(p5.CENTER, p5.CENTER);
     p5.strokeWeight(5);
     p5.stroke(0);

@@ -43,9 +43,9 @@ const IndexPage: FC<Props> = ({ projects, experiments, plots }) => {
     <>
       <Layout footer={false}>
         {process.env.NEXT_PUBLIC_LOCAL === "true" && <Card pageData={generateTestCard(testCard)} folder={"experiments"} />}
-        <Showcase thingsToShowcase={plots} folder={"plots"} />
+        {/* <Showcase thingsToShowcase={plots} folder={"plots"} /> */}
         <Showcase thingsToShowcase={experiments} folder={"experiments"} />
-        <Showcase thingsToShowcase={projects} folder={"projects"} />
+        {/* <Showcase thingsToShowcase={projects} folder={"projects"} /> */}
       </Layout>
     </>
   );

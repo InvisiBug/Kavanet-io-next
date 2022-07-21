@@ -10,7 +10,7 @@ const Experiments: FC<any> = ({ slug, description }) => {
   return (
     <>
       <Layout header={false} footer={false}>
-        <Description>{description}</Description>
+        {description ? <Description>{description}</Description> : null}
         <BackArrow />
         <Sketch />
       </Layout>
@@ -28,6 +28,7 @@ const Description = styled.div`
   top: 10rem;
   left: 5rem;
 
+  min-width: 0px;
   max-width: 15rem;
   color: white;
   font-weight: 400;
