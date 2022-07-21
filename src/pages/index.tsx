@@ -4,6 +4,7 @@ import { generateTestCard } from "src/lib/helpers";
 
 import { NotionResponse } from "src/lib/types";
 import { projectsDbId, experimentsDbId, plotsDbId, getDatabase } from "src/lib/api";
+import { links } from "src/lib/constants";
 
 const IndexPage: FC<Props> = ({ projects, experiments, plots }) => {
   // console.log("Projects:", projects.properties);
@@ -22,11 +23,19 @@ const IndexPage: FC<Props> = ({ projects, experiments, plots }) => {
   //   // types: ["Test", "Experiment"], //* Not implemented yet
   // };
 
+  // const testCard = {
+  //   title: "Swing gems",
+  //   subTitle: "My attempt at the swing gems game",
+  //   status: "Live",
+  //   slug: "swingGems",
+  //   // types: ["Test", "Experiment"], //* Not implemented yet
+  // };
+
   const testCard = {
-    title: "Swing gems",
-    subTitle: "My attempt at the swing gems game",
+    title: "Repulsor",
+    subTitle: "",
     status: "Live",
-    slug: "swingGems",
+    slug: "repulserField",
     // types: ["Test", "Experiment"], //* Not implemented yet
   };
 
@@ -34,9 +43,9 @@ const IndexPage: FC<Props> = ({ projects, experiments, plots }) => {
     <>
       <Layout footer={false}>
         {process.env.NEXT_PUBLIC_LOCAL === "true" && <Card pageData={generateTestCard(testCard)} folder={"experiments"} />}
-        <Showcase thingsToShowcase={plots} folder={"plots"} />
+        {/* <Showcase thingsToShowcase={plots} folder={"plots"} /> */}
         <Showcase thingsToShowcase={experiments} folder={"experiments"} />
-        <Showcase thingsToShowcase={projects} folder={"projects"} />
+        {/* <Showcase thingsToShowcase={projects} folder={"projects"} /> */}
       </Layout>
     </>
   );

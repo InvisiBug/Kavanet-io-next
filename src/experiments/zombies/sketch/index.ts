@@ -3,6 +3,7 @@
 
 import p5, { Element } from "p5";
 import colours from "nice-color-palettes";
+import { showFPS } from "src/experiments/helpers";
 // Characters
 import Zombie from "./components/characters/zombie";
 import Human from "./components/characters/human";
@@ -103,6 +104,7 @@ export const sketch = (p5: p5) => {
   p5.draw = () => {
     // console.log(p5.frameRate());
     p5.background(50);
+    showFPS(p5);
     toFoodMap.show();
     toHomeMap.show();
 

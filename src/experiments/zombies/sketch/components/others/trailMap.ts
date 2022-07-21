@@ -42,7 +42,7 @@ export default class TrailMap {
     for (let y = 0; y < this.ypoints; y++) {
       this.trailMap[y] = [];
       for (let x = 0; x < this.xpoints; x++) {
-        // this.trailMap[y][x] = 0;
+        this.trailMap[y][x] = 0;
         // this.trailMap[y][x] = this.p5.random(0, 255);
         // this.trailMap[y][x] = this.p5.map(this.p5.noise(x, y), 0, 1, 0, 255);
         // this.trailMap[y][x] = 25;

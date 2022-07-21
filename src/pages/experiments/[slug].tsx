@@ -10,7 +10,7 @@ const Experiments: FC<any> = ({ slug, description }) => {
   return (
     <>
       <Layout header={false} footer={false}>
-        <Description>{description}</Description>
+        {description ? <Description>{description}</Description> : null}
         <BackArrow />
         <Sketch />
       </Layout>
@@ -28,12 +28,17 @@ const Description = styled.div`
   top: 10rem;
   left: 5rem;
 
+  min-width: 0px;
   max-width: 15rem;
   color: white;
   font-weight: 400;
   font-size: 0.9rem;
   font-size: 1rem;
   text-align: justify;
+  padding: 1rem;
+  border: 1px solid grey;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 5%;
 `;
 
 export const getServerSideProps = async ({ params }: args) => {
