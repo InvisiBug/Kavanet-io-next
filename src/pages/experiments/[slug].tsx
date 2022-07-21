@@ -34,6 +34,10 @@ const Description = styled.div`
   font-size: 0.9rem;
   font-size: 1rem;
   text-align: justify;
+  padding: 1rem;
+  border: 1px solid grey;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 5%;
 `;
 
 export const getServerSideProps = async ({ params }: args) => {

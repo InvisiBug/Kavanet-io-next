@@ -21,7 +21,7 @@ export default class Point {
 
     this.acceleration = this.p5.createVector(0, 0);
     this.colour = this.p5.random(config.colours);
-    this.diameter = 5;
+    this.diameter = config.pointSize;
   }
 
   update = () => {};
@@ -42,22 +42,6 @@ export default class Point {
     this.p5.pop();
   };
 
-  // distort = (m: Vector) => {
-  //   const sc = 100;
-  //   const dSq = m.copy().sub(this.pos).magSq();
-  //   if (dSq < ((this.diameter / 2) * this.diameter) / 2) {
-  //     console.log("here");
-  //     const fd = this.p5.pow(1 - this.p5.sqrt(dSq) / this.diameter / 2, 5);
-  //     const noize = this.p5.noise(this.pos.x * sc, this.pos.y * sc, this.p5.frameCount * sc);
-
-  //     const add = Vector.fromAngle(2 * this.p5.TAU * noize).mult(fd * 15);
-  //     const c = this.p5.color(180 * noize + 180 * fd, 100, 100);
-
-  //     this.pos.add(add);
-  //     console.log(this.pos);
-  //   }
-  // };
-
   avoid = (walkers: Walker[]) => {
     let closestWalker: any | null = null;
     let shortestDist = Infinity;
@@ -73,14 +57,14 @@ export default class Point {
     const avoidanceDistance = closestWalker.diameter / 2 + this.diameter / 2;
     if (closestWalker instanceof Walker) {
       if (closestWalker.pos.dist(this.pos) < avoidanceDistance) {
-        this.acceleration = Vector.sub(this.pos, closestWalker.pos);
+        this.acceleration = Vector.sub(this.pos, closestWalker.pos).setMag(20);
         this.pos.add(this.acceleration);
         this.acceleration.set(0, 0);
       }
     }
   };
 
-  spring = () => {
-    this.pos.lerp(this.startingPos, 0.001);
+  return = () => {
+    this.pos.lerp(this.startingPos, this.config.returnStrength);
   };
 }

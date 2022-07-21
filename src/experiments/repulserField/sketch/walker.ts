@@ -25,7 +25,7 @@ export default class Walker {
     this.velocity = Vector.random2D().setMag(5);
     this.acceleration = this.p5.createVector(0, 0);
     this.speed = config.speed;
-    this.diameter = 100;
+    this.diameter = 25;
 
     this.initialColour = this.p5.random(config.colours);
     this.colour = this.initialColour;
@@ -85,7 +85,6 @@ export default class Walker {
 
           // const angle = this.p5.atan2(this.pos.sub(walker.pos));
           // this.p5.fill("#ff0000");
-          console.log("Collide");
 
           const spring = 1;
           const collision = Vector.sub(walker.pos, this.pos);

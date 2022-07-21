@@ -10,24 +10,26 @@ import Points from "./points";
 
 export const sketch = (p5: p5) => {
   const numColours = 5; // Max 5
+
   const config: Config = {
     p5,
     speed: 10,
     colours: p5.shuffle(colours[Math.floor(p5.random(0, colours.length))]).slice(0, numColours),
     //
-    walkers: 1,
+    walkers: 10,
     //
-    xpoints: 30,
-    ypoints: 30,
-    margin: 100,
+    xpoints: 75,
+    ypoints: 50,
+    margin: 10,
+    pointSize: 10,
+    returnStrength: 0.05,
     //
     "3D": false,
   };
   let cameraSensitivity = 10;
 
   const walkers: Walker[] = [];
-  const points: Point[] = [];
-  let newPoints: Points = new Points(config, 10, 10);
+  let points: Points;
 
   p5.setup = () => {
     config["3D"] ? p5.createCanvas(p5.windowWidth, p5.windowHeight, p5.WEBGL) : p5.createCanvas(p5.windowWidth, p5.windowHeight);
@@ -35,17 +37,7 @@ export const sketch = (p5: p5) => {
     // p5.createCanvas(500, 500);
     // p5.createCanvas(500, 500, p5.WEBGL);
 
-    // for (let x = 0; x < config.xpoints; x++) {
-    //   for (let y = 0; y < config.ypoints; y++) {
-    //     const u = x / (config.xpoints - 1);
-    //     const v = y / (config.ypoints - 1);
-
-    //     const xpos = p5.lerp(config.margin, p5.width - config.margin, u);
-    //     const ypos = p5.lerp(config.margin, p5.height - config.margin, v);
-
-    //     points.push(new Point(config, p5.createVector(xpos, ypos)));
-    //   }
-    // }
+    points = new Points(config);
 
     for (let i = 0; i < config.walkers; i++) {
       walkers.push(new Walker(config, walkers, i));
@@ -56,14 +48,13 @@ export const sketch = (p5: p5) => {
     // p5.background(50, 50);
     p5.background(50);
 
-    showFPS(p5);
-
     if (config["3D"]) {
       p5.orbitControl(cameraSensitivity, cameraSensitivity, 0.5);
       p5.translate(-p5.width / 2, -p5.height / 2);
     }
 
-    newPoints.show();
+    points.show();
+    points.update(walkers);
 
     if (walkers.length > 0) {
       walkers.forEach((walker) => {
@@ -82,6 +73,7 @@ export const sketch = (p5: p5) => {
     //     point.show();
     //   });
     // }
+    showFPS(p5);
   };
 
   p5.mouseClicked = () => {};
@@ -102,4 +94,6 @@ export interface Config {
   xpoints: number;
   ypoints: number;
   margin: number;
+  pointSize: number;
+  returnStrength: number;
 }
