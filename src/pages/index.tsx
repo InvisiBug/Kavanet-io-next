@@ -36,16 +36,15 @@ const IndexPage: FC<Props> = ({ projects, experiments, plots }) => {
     subTitle: "",
     status: "Live",
     slug: "repulserField",
-    // types: ["Test", "Experiment"], //* Not implemented yet
   };
 
   return (
     <>
       <Layout footer={false}>
         {process.env.NEXT_PUBLIC_LOCAL === "true" && <Card pageData={generateTestCard(testCard)} folder={"experiments"} />}
-        {/* <Showcase thingsToShowcase={plots} folder={"plots"} /> */}
-        <Showcase thingsToShowcase={experiments} folder={"experiments"} />
-        {/* <Showcase thingsToShowcase={projects} folder={"projects"} /> */}
+        {links.includes("Plots") ? <Showcase thingsToShowcase={plots} folder={"plots"} /> : null}
+        {links.includes("Experiments") ? <Showcase thingsToShowcase={experiments} folder={"experiments"} /> : null}
+        {links.includes("Projects") ? <Showcase thingsToShowcase={projects} folder={"projects"} /> : null}
       </Layout>
     </>
   );
@@ -60,27 +59,6 @@ interface Props {
 export default IndexPage;
 
 export const getServerSideProps = async () => {
-  const online = true;
-  // let projects;
-  // let experiments;
-
-  // if (online) {
-  //   try {
-  //     projects = await getDatabase(projectsDbId);
-  //   } catch {
-  //     projects = null;
-  //   }
-
-  //   try {
-  //     experiments = await getDatabase(experimentsDbId);
-  //   } catch {
-  //     experiments = null;
-  //   }
-  // } else {
-  //   projects = null;
-  //   experiments = null;
-  // }
-
   const experiments = await getDatabase(experimentsDbId);
   const projects = await getDatabase(projectsDbId);
   const plots = await getDatabase(plotsDbId);
