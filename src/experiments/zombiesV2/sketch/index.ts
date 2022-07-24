@@ -16,6 +16,7 @@ import Food from "./components/others/food";
 // Zones
 import Darkzone from "./components/zones/darkzone";
 import Safezone from "./components/zones/safezone";
+import Supermarket from "./components/zones/supermarket";
 // Images
 import zombieImg from "./components/sprites/zombie.gif";
 import humanImg from "./components/sprites/human.gif";
@@ -31,11 +32,12 @@ export const sketch = (p5: p5) => {
     showFood: true,
     //
     zombies: 0,
-    humans: 5,
-    hunters: 5,
+    humans: 10,
+    hunters: 0,
     //
     safezones: 1,
-    darkzones: 2,
+    darkzones: 0,
+    supermarkets: 2,
     //
     imageSize: 15,
     zombieImg: p5.loadImage(zombieImg.src),
@@ -45,21 +47,20 @@ export const sketch = (p5: p5) => {
     speed: 1,
     avoidanceDistance: 50,
     // foodDeclineRate: p5.floor(p5.random(500, 600)),
-    foodDeclineRate: 10, // Higher is slower
+    foodDeclineRate: 20, // Higher is slower
   };
 
   const zombies: Zombie[] = [];
   const humans: Human[] = [];
   const hunters: Hunter[] = [];
   const safezones: Safezone[] = [];
+  const supermarkets: Supermarket[] = [];
   const darkzones: Darkzone[] = [];
   const sliders = new Sliders(config);
   let food: Food[] = [];
 
-  const toFoodMap = new TrailMap(config, p5.color("#73f974"));
-  const toHomeMap = new TrailMap(config, p5.color("#ff2f7f"));
-
-  const testMap = new TestMap(config, p5.color("#73f974"));
+  const toFoodMap = new TestMap(config, p5.color("#73f974"));
+  const toHomeMap = new TestMap(config, p5.color("#ff2f7f"));
 
   p5.setup = () => {
     p5.createCanvas(p5.windowWidth, p5.windowHeight);
@@ -67,33 +68,31 @@ export const sketch = (p5: p5) => {
     // console.log("Canvas Size,", p5.windowWidth, p5.windowHeight);
     p5.background(50);
 
-    // trailMap.generateNewMap();
-    toFoodMap.init();
-    toHomeMap.init();
-
     sliders.create();
-
-    testMap.createTestPoints(100);
 
     // p5.noLoop();
     // p5.frameRate(3);
 
-    // for (let i = 0; i < config.zombies; i++) {
-    //   zombies.push(new Zombie(config));
-    // }
+    for (let i = 0; i < config.zombies; i++) {
+      zombies.push(new Zombie(config));
+    }
 
     for (let i = 0; i < config.humans; i++) {
       humans.push(new Human(config));
     }
 
-    // for (let i = 0; i < config.hunters; i++) {
-    //   hunters.push(new Hunter(config));
-    // }
+    for (let i = 0; i < config.hunters; i++) {
+      hunters.push(new Hunter(config));
+    }
 
-    // for (let i = 0; i < config.safezones; i++) {
-    //   // safezones.push(new Safezone(config, p5.width / 2, p5.height / 2));
-    //   safezones.push(new Safezone(config, 50, p5.height / 2));
-    // }
+    for (let i = 0; i < config.safezones; i++) {
+      safezones.push(new Safezone(config, p5.width / 2, p5.height / 2));
+      // safezones.push(new Safezone(config, 50, p5.height / 2));
+    }
+
+    for (let i = 0; i < config.supermarkets; i++) {
+      supermarkets.push(new Supermarket(config));
+    }
 
     // for (let i = 0; i < config.darkzones; i++) {
     //   darkzones.push(new Darkzone(config));
@@ -108,11 +107,13 @@ export const sketch = (p5: p5) => {
   };
 
   p5.draw = () => {
-    // console.log(p5.frameRate());
     p5.background(50);
 
     toFoodMap.show();
-    // toHomeMap.show();
+    toFoodMap.update();
+
+    toHomeMap.show();
+    toHomeMap.update();
 
     // // console.log(p5.frameRate());
 
@@ -138,8 +139,8 @@ export const sketch = (p5: p5) => {
       // }
 
       const speed = Number(sliders.getVals().humanSpeed);
-      // human.update({ zombies, humans, safezones, food, speed, toFoodMap, toHomeMap });
-      human.update({ zombies, humans, safezones, food, speed, testMap });
+      human.update({ zombies, humans, safezones, food, speed, toFoodMap, toHomeMap });
+      // human.update({ zombies, humans, safezones, food, speed, TestMap });
       human.show();
 
       // if (p5.frameCount % 60 === 0) {
@@ -158,9 +159,14 @@ export const sketch = (p5: p5) => {
       safezone.show();
     });
 
-    food.forEach((food) => {
-      food.show();
+    supermarkets.forEach((supermarket) => {
+      supermarket.update(humans);
+      supermarket.show();
     });
+
+    // food.forEach((food) => {
+    //   food.show();
+    // });
 
     // darkzones.forEach((darkzone) => {
     //   darkzone.update(zombies);
@@ -171,18 +177,15 @@ export const sketch = (p5: p5) => {
     // humans.push(new Human(config, p5.mouseX, p5.mouseY));
     // food.push(new Food(config, p5.mouseX, p5.mouseY));
 
-    testMap.show();
-    // testMap.update();
-
     // if (p5.mouseIsPressed && p5.frameCount % 5 === 0) {
     // testMap.addPoint(p5.mouseX, p5.mouseY);
     if (p5.mouseIsPressed) {
       // toFoodMap.followScent(p5.mouseX, p5.mouseY);
       // food.push(new Food(config, p5.mouseX, p5.mouseY));
-      // toFoodMap.setVal(p5.mouseX, p5.mouseY, 255);
+      toFoodMap.addPoint(p5.createVector(p5.mouseX, p5.mouseY));
       // const vect = toFoodMap.getWeakest(p5.mouseX, p5.mouseY, true);
       // console.log(vect.x, vect.y);
-      mouseTest();
+      // mouseTest();
     }
     // trailMap.setVal(p5.mouseX, p5.mouseY, 5);
     // }
@@ -215,7 +218,7 @@ export const sketch = (p5: p5) => {
       p5.stroke(255);
 
       p5.ellipse(searchArea.x, searchArea.y, searchAreaSize);
-      console.log(index, testMap.getConcentrationAtLocation(p5.createVector(searchArea.x, searchArea.y), searchAreaSize));
+      // console.log(index, testMap.getConcentrationAtLocation(p5.createVector(searchArea.x, searchArea.y), searchAreaSize));
       p5.pop();
     });
   };
@@ -235,6 +238,8 @@ export interface Config {
 
   safezones: number;
   darkzones: number;
+  supermarkets: number;
+  //
   foodDeclineRate: number;
   showFood: boolean;
   humanImg: p5.Image;

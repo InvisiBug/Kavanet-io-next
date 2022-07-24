@@ -9,6 +9,11 @@ export default class TestMap {
 
   points: Point[];
 
+  //////////////////////
+  // Options
+  fadeRate = 0.2;
+  dotSize = 2;
+
   constructor(config: Config, colour: Color) {
     this.p5 = config.p5;
     this.config = config;
@@ -19,10 +24,13 @@ export default class TestMap {
 
   update = () => {
     for (let i = this.points.length - 1; i >= 0; i--) {
-      this.points[i].val -= 1;
+      this.points[i].val -= this.fadeRate;
       if (this.points[i].val < 0) {
         this.points.splice(i, 1);
       }
+    }
+    if (this.points.length > 1000) {
+      this.points.splice(0, 1);
     }
   };
 
@@ -32,13 +40,15 @@ export default class TestMap {
     });
   };
 
-  addPoint = (x: number, y: number) => {
-    this.points.push(new Point(this.p5, x, y, 255, this.colour));
+  addPoint = (pos: Vector) => {
+    this.points.push(new Point(this.p5, this.dotSize, pos.x, pos.y, 255, this.colour));
   };
 
   createTestPoints = (num: number) => {
     for (let i = 0; i < num; i++) {
-      this.points.push(new Point(this.p5, this.p5.random(this.p5.width), this.p5.random(this.p5.height), this.p5.random(255), this.colour));
+      this.points.push(
+        new Point(this.p5, this.dotSize, this.p5.random(this.p5.width), this.p5.random(this.p5.height), this.p5.random(255), this.colour)
+      );
     }
   };
 
@@ -60,9 +70,11 @@ class Point {
   pos;
   val;
   colour;
+  dotSize;
 
-  constructor(p5: p5, x: number, y: number, val: number = 255, colour: Color) {
+  constructor(p5: p5, dotSize: number, x: number, y: number, val: number = 255, colour: Color) {
     this.p5 = p5;
+    this.dotSize = dotSize;
 
     this.pos = p5.createVector(x, y);
     this.val = val;
@@ -74,6 +86,6 @@ class Point {
 
     this.colour.setAlpha(this.val);
     this.p5.fill(this.colour);
-    this.p5.ellipse(this.pos.x, this.pos.y, 10);
+    this.p5.ellipse(this.pos.x, this.pos.y, this.dotSize);
   };
 }

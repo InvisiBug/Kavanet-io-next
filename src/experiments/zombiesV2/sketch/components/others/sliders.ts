@@ -37,7 +37,7 @@ export default class Zombie {
         this.sliderGroup[i] = this.p5.createSlider(0, 2, this.speed + 0.2, 0.1);
         text.html("Zombie zpeed");
       } else if (i === 1) {
-        this.sliderGroup[i] = this.p5.createSlider(0, 2, this.speed + 0.5, 0.1);
+        this.sliderGroup[i] = this.p5.createSlider(0, 2, this.speed + 0.1, 0.1);
         text.html("Human speed");
       } else if (i === 2) {
         this.sliderGroup[i] = this.p5.createSlider(0, 2, this.speed - 0.1, 0.1);
