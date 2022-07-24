@@ -69,10 +69,12 @@ export const constrainCircle = (p5: p5, pos: Vector, velocity: Vector, accelerat
 };
 
 export const showFPS = (p5: p5) => {
+  p5.push();
   p5.textSize(32);
   p5.fill(255);
   p5.strokeWeight(5);
   p5.stroke(0);
   p5.fill(255);
   p5.text(`${p5.frameRate().toFixed(0)}FPS`, 10, 30);
+  p5.pop();
 };
