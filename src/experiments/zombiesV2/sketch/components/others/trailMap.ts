@@ -24,19 +24,27 @@ export default class TrailMap {
 
     this.trailMap = [];
 
-    this.xpoints = 100;
-    this.ypoints = 100;
-    this.margin = 0;
+    // this.xpoints = this.p5.width / 100;
+    this.ypoints = this.p5.height / 100;
 
-    this.size = 2;
+    this.xpoints = 20;
+    this.ypoints = 20;
+
+    this.margin = 10;
+
+    this.size = 5;
   }
 
   //* Generates a new blank map
   init = () => {
+    // Turning on these switches between points per row / col to a scale
+    this.xpoints = this.p5.round(this.p5.width / this.xpoints);
+    this.ypoints = this.p5.round(this.p5.height / this.ypoints);
+
     for (let x = 0; x < this.xpoints; x++) {
       this.trailMap[x] = [];
       for (let y = 0; y < this.ypoints; y++) {
-        this.trailMap[x][y] = 0;
+        // this.trailMap[x][y] = 0;
         // this.trailMap[x][y] = 100;
         // this.trailMap[x][y] = this.p5.random(0, 255);
         // this.trailMap[x][y] = this.p5.map(this.p5.noise(x, y), 0, 1, 0, 255);
@@ -91,6 +99,7 @@ export default class TrailMap {
     });
   };
 
+  //? Might not be using
   checkRegions = (x: number, y: number) => {
     const directions = [
       this.p5.createVector(0, 0), // Here
@@ -141,26 +150,22 @@ export default class TrailMap {
     }
   };
 
-  setVal = (x: number, y: number, val: number) => {
+  posToTrailMap = (x: number, y: number) => {
     const xpos = this.p5.map(x, 0, this.p5.width, 0, 1);
     const ypos = this.p5.map(y, 0, this.p5.height, 0, 1);
 
     const xval = this.p5.floor(xpos * this.xpoints);
     const yval = this.p5.floor(ypos * this.ypoints);
+    return {
+      xval,
+      yval,
+    };
+  };
+
+  setVal = (x: number, y: number, val: number) => {
+    const { xval, yval } = this.posToTrailMap(x < 0 ? 0 : x, y);
 
     this.trailMap[xval][yval] = val;
-
-    // try {
-    //   let xpos = this.p5.floor(x / this.xscale);
-    //   let ypos = this.p5.floor(y / this.xscale);
-
-    //   if (xpos >= this.xpoints) xpos = this.xpoints - 1;
-    //   if (ypos >= this.ypoints) ypos = this.ypoints - 1;
-
-    //   this.trailMap[ypos][xpos] = val;
-    // } catch {
-    //   console.log("Out of bounds: Fix me");
-    // }
   };
 
   //* Get strongest

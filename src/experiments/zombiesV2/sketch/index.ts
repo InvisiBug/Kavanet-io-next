@@ -1,7 +1,7 @@
 // C++ Ant sim => https://www.youtube.com/watch?v=81GQNPJip2Y
 // Pheromone Sim => https://openprocessing.org/sketch/15109/
 
-import p5, { Element } from "p5";
+import p5, { Element, Vector } from "p5";
 import colours from "nice-color-palettes";
 import { showFPS } from "src/experiments/helpers";
 // Characters
@@ -11,6 +11,7 @@ import Hunter from "./components/characters/hunter";
 // Others
 import Sliders from "./components/others/sliders";
 import TrailMap from "./components/others/trailMap";
+import TestMap from "./components/others/testMap";
 import Food from "./components/others/food";
 // Zones
 import Darkzone from "./components/zones/darkzone";
@@ -30,7 +31,7 @@ export const sketch = (p5: p5) => {
     showFood: true,
     //
     zombies: 0,
-    humans: 1,
+    humans: 5,
     hunters: 5,
     //
     safezones: 1,
@@ -44,7 +45,7 @@ export const sketch = (p5: p5) => {
     speed: 1,
     avoidanceDistance: 50,
     // foodDeclineRate: p5.floor(p5.random(500, 600)),
-    foodDeclineRate: 10,
+    foodDeclineRate: 10, // Higher is slower
   };
 
   const zombies: Zombie[] = [];
@@ -58,6 +59,8 @@ export const sketch = (p5: p5) => {
   const toFoodMap = new TrailMap(config, p5.color("#73f974"));
   const toHomeMap = new TrailMap(config, p5.color("#ff2f7f"));
 
+  const testMap = new TestMap(config, p5.color("#73f974"));
+
   p5.setup = () => {
     p5.createCanvas(p5.windowWidth, p5.windowHeight);
     // p5.createCanvas(500, 500);
@@ -69,6 +72,9 @@ export const sketch = (p5: p5) => {
     toHomeMap.init();
 
     sliders.create();
+
+    testMap.createTestPoints(100);
+
     // p5.noLoop();
     // p5.frameRate(3);
 
@@ -106,7 +112,7 @@ export const sketch = (p5: p5) => {
     p5.background(50);
 
     toFoodMap.show();
-    toHomeMap.show();
+    // toHomeMap.show();
 
     // // console.log(p5.frameRate());
 
@@ -132,8 +138,8 @@ export const sketch = (p5: p5) => {
       // }
 
       const speed = Number(sliders.getVals().humanSpeed);
-      human.update({ zombies, humans, safezones, food, speed, toFoodMap, toHomeMap });
-      // human.update({ zombies, humans, safezones, food, speed });
+      // human.update({ zombies, humans, safezones, food, speed, toFoodMap, toHomeMap });
+      human.update({ zombies, humans, safezones, food, speed, testMap });
       human.show();
 
       // if (p5.frameCount % 60 === 0) {
@@ -165,13 +171,18 @@ export const sketch = (p5: p5) => {
     // humans.push(new Human(config, p5.mouseX, p5.mouseY));
     // food.push(new Food(config, p5.mouseX, p5.mouseY));
 
-    if (p5.mouseIsPressed && p5.frameCount % 5 === 0) {
-      // if (p5.mouseIsPressed) {
+    testMap.show();
+    // testMap.update();
+
+    // if (p5.mouseIsPressed && p5.frameCount % 5 === 0) {
+    // testMap.addPoint(p5.mouseX, p5.mouseY);
+    if (p5.mouseIsPressed) {
       // toFoodMap.followScent(p5.mouseX, p5.mouseY);
-      food.push(new Food(config, p5.mouseX, p5.mouseY));
+      // food.push(new Food(config, p5.mouseX, p5.mouseY));
       // toFoodMap.setVal(p5.mouseX, p5.mouseY, 255);
       // const vect = toFoodMap.getWeakest(p5.mouseX, p5.mouseY, true);
       // console.log(vect.x, vect.y);
+      mouseTest();
     }
     // trailMap.setVal(p5.mouseX, p5.mouseY, 5);
     // }
@@ -181,6 +192,32 @@ export const sketch = (p5: p5) => {
     // }
 
     showFPS(p5);
+  };
+
+  const mouseTest = () => {
+    const pos = p5.createVector(p5.mouseX, p5.mouseY);
+    const directionVector = p5.createVector(0, -1).setMag(100);
+
+    const directionVectors = [
+      p5.createVector(-1, -1).setMag(100), // North West
+      p5.createVector(0, -1).setMag(100), // North
+      p5.createVector(1, -1).setMag(100), // North East
+    ];
+
+    const searchAreaPoss = directionVectors.map((directionVector) => {
+      return Vector.add(pos, directionVector);
+    });
+
+    const searchAreaSize = 50;
+
+    searchAreaPoss.forEach((searchArea, index) => {
+      p5.push();
+      p5.stroke(255);
+
+      p5.ellipse(searchArea.x, searchArea.y, searchAreaSize);
+      console.log(index, testMap.getConcentrationAtLocation(p5.createVector(searchArea.x, searchArea.y), searchAreaSize));
+      p5.pop();
+    });
   };
 };
 

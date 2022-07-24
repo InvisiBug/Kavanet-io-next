@@ -5,6 +5,7 @@ import Safezone from "../zones/safezone";
 import { constrain } from "../helpers";
 import Food from "../others/food";
 import TrailMap from "../others/trailMap";
+import TestMap from "../others/testMap";
 
 export default class Human {
   p5;
@@ -23,6 +24,8 @@ export default class Human {
   food;
   hasFood = false;
   foodDetectionDistance;
+
+  showCalculationMethods = false;
 
   constructor(config: Config, x: number | null = null, y: number | null = null) {
     this.p5 = config.p5;
@@ -48,17 +51,17 @@ export default class Human {
     }
   }
 
-  update = ({ zombies, humans, safezones, food: allFood, toFoodMap, toHomeMap, speed }: UpdateArgs) => {
+  update = ({ zombies, humans, safezones, food: allFood, toFoodMap, toHomeMap, speed, testMap }: UpdateArgs) => {
     if (speed) {
       this.velocity.setMag(speed);
       this.speed = speed;
     }
 
-    this.handleFood();
-    zombies ? this.avoid(zombies) : null;
-    // console.log(toFoodMap && toHomeMap ? "True" : "False");
+    // this.handleFood();
+    // zombies ? this.avoid(zombies) : null;
     this.handleMovement(toFoodMap, toHomeMap);
-    allFood ? this.checkForFood(allFood) : null;
+    testMap ? this.handleTestMap(testMap) : null;
+    // allFood ? this.checkForFood(allFood) : null;
   };
 
   show = () => {
@@ -70,7 +73,7 @@ export default class Human {
     this.p5.pop();
 
     //? Show direction vectors
-    if (true) {
+    if (this.showCalculationMethods) {
       // Direction
       this.p5.push();
       const directionVector = this.velocity.copy().setMag(10);
@@ -79,7 +82,7 @@ export default class Human {
       this.p5.line(this.pos.x, this.pos.y, this.pos.x + directionVector.x, this.pos.y + directionVector.y);
       this.p5.pop();
 
-      // Arc
+      // Food detection arc
       this.p5.push();
       this.p5.strokeWeight(2);
       this.p5.noStroke();
@@ -93,6 +96,51 @@ export default class Human {
     }
 
     this.showFoodLevel();
+  };
+
+  handleTestMap = (testMap: TestMap) => {
+    const searchAreaSize = 50;
+    const searchAngles = [-45, 0, 45, -180];
+
+    //* Crete an array of points for our search areas
+    const searchAreaPos = searchAngles.map((searchAngle) => {
+      const searchArea = Vector.fromAngle(this.velocity.heading() + this.p5.radians(searchAngle)).setMag(75);
+      return Vector.add(this.pos, searchArea);
+    });
+
+    //* Get the concentration in our search areas
+    const concentrations = searchAreaPos.map((pos) => {
+      return testMap.getConcentrationAtLocation(pos, searchAreaSize);
+    });
+
+    //* Returns true when a point is detected in any region
+    const pointsDetected = (arr: number[]) => {
+      return arr.filter((x) => x > 0).length > 0;
+    };
+
+    // console.log(
+    //   concentrations,
+    //   pointsDetected(concentrations) ? `Point detected in pos ${concentrations.indexOf(Math.max(...concentrations))}` : null
+    // );
+
+    //* Nudge the acceleration vector towards the highest concentration search area
+    if (pointsDetected(concentrations)) {
+      const location = concentrations.indexOf(Math.max(...concentrations));
+
+      this.acceleration.add(Vector.fromAngle(this.velocity.heading() + this.p5.radians(searchAngles[location])).setMag(1));
+    }
+
+    //* Show the search areas
+    if (this.showCalculationMethods) {
+      searchAreaPos.forEach((pos) => {
+        this.p5.push();
+
+        this.p5.strokeWeight(1);
+        this.p5.stroke(255);
+        this.p5.ellipse(pos.x, pos.y, searchAreaSize);
+        this.p5.pop();
+      });
+    }
   };
 
   handleFood = () => {
@@ -212,4 +260,5 @@ interface UpdateArgs {
   speed?: number | null;
   toFoodMap?: TrailMap;
   toHomeMap?: TrailMap;
+  testMap?: TestMap;
 }
