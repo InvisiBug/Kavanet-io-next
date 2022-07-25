@@ -1,12 +1,10 @@
-import { Config } from "../..";
 import { Vector } from "p5";
-import Zombie from "./zombie";
-import Safezone from "../zones/safezone";
+import { Config } from "../../";
 import { constrain } from "../helpers";
+import Safezone from "../zones/safezone";
+import TestMap from "../others/trailMap";
+import Zombie from "./zombie";
 import Food from "../others/food";
-import TrailMap from "../others/trailMap";
-import TestMap from "../others/testMap";
-import { Console } from "console";
 
 export default class Human {
   p5;
@@ -15,17 +13,17 @@ export default class Human {
   size;
   speed;
   colour;
-  avoidanceDistance;
 
   img;
 
   acceleration;
   velocity;
   pos;
+
   food;
   hasFood = false;
-
   previousHasFood = false;
+
   //////////////////////////
   //* Options
   foodDetectionDistance = 50;
@@ -33,6 +31,7 @@ export default class Human {
   foodDeclineRate = 1e20; // Higher is better
   hasFoodLimit = 10;
   followStrength = 1;
+  avoidanceDistance = 50;
 
   showCalculationMethods = false;
 
@@ -41,13 +40,12 @@ export default class Human {
     this.config = config;
 
     this.colour = this.p5.color("#3087B4");
-    this.avoidanceDistance = 50;
-    this.speed = config.speed;
     this.size = 10;
     this.food = 10;
 
     this.img = config.humanImg;
 
+    this.speed = config.speed;
     this.acceleration = this.p5.createVector(0, 0);
     this.velocity = Vector.random2D();
     this.velocity.setMag(config.speed);
@@ -99,29 +97,6 @@ export default class Human {
     this.p5.imageMode(this.p5.CENTER);
     this.p5.image(this.img, 0, 0, this.config.imageSize, this.config.imageSize);
     this.p5.pop();
-
-    //? Show direction vectors
-    if (this.showCalculationMethods) {
-      // Direction
-      this.p5.push();
-      const directionVector = this.velocity.copy().setMag(10);
-      this.p5.strokeWeight(2);
-      this.p5.stroke(255);
-      this.p5.line(this.pos.x, this.pos.y, this.pos.x + directionVector.x, this.pos.y + directionVector.y);
-      this.p5.pop();
-
-      // Food detection arc
-      this.p5.push();
-      this.p5.strokeWeight(2);
-      this.p5.noStroke();
-      this.p5.fill("rgba(255, 255, 255, 0.2)");
-
-      this.p5.translate(this.pos.x, this.pos.y);
-      this.p5.rotate(this.velocity.heading() - this.p5.radians(45));
-      this.p5.arc(0, 0, 100, 100, 0, this.p5.HALF_PI);
-
-      this.p5.pop();
-    }
 
     this.showFoodLevel();
   };
@@ -175,8 +150,8 @@ export default class Human {
       this.hasFood = true;
     }
 
+    //* Just ate something
     if (this.hasFood !== this.previousHasFood) {
-      console.log("just ate something");
       this.velocity.mult(-1);
     }
     this.previousHasFood = this.hasFood;
@@ -226,6 +201,29 @@ export default class Human {
 
     this.pos.add(this.velocity);
     constrain(this.p5, this.pos, this.velocity, this.acceleration);
+
+    //? Show direction vectors
+    if (this.showCalculationMethods) {
+      // Direction
+      this.p5.push();
+      const directionVector = this.velocity.copy().setMag(10);
+      this.p5.strokeWeight(2);
+      this.p5.stroke(255);
+      this.p5.line(this.pos.x, this.pos.y, this.pos.x + directionVector.x, this.pos.y + directionVector.y);
+      this.p5.pop();
+
+      // Food detection arc
+      this.p5.push();
+      this.p5.strokeWeight(2);
+      this.p5.noStroke();
+      this.p5.fill("rgba(255, 255, 255, 0.2)");
+
+      this.p5.translate(this.pos.x, this.pos.y);
+      this.p5.rotate(this.velocity.heading() - this.p5.radians(45));
+      this.p5.arc(0, 0, 100, 100, 0, this.p5.HALF_PI);
+
+      this.p5.pop();
+    }
   };
 
   // https://editor.p5js.org/mtchl/sketches/HJYeik7Al
