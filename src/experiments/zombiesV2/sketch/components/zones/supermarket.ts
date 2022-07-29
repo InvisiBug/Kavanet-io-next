@@ -43,13 +43,20 @@ export default class Supermarket {
     }
   }
 
-  update = (humans: Human[]) => {
+  update = ({ humans, supermarkets }: { humans: Human[]; supermarkets: Supermarket[] }) => {
     // if (this.p5.frameCount % this.foodDeclineRate === 0) {
     //   // this.food -= this.survivors;
     //   this.sendOutHumans(humans);
     // }
 
     this.checkForSurvivor(humans);
+
+    for (let i = supermarkets.length - 1; i >= 0; i--) {
+      supermarkets[i].food > 0;
+      if (supermarkets[i].food < 0) {
+        supermarkets.splice(i, 1);
+      }
+    }
   };
 
   checkForSurvivor = (humans: Human[]) => {

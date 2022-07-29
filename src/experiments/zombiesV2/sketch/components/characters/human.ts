@@ -32,10 +32,13 @@ export default class Human {
   hasFoodLimit = 10;
   followStrength = 1;
   avoidanceDistance = 50;
+  footstepInterval = 10;
+  trailSearchDistance = 100;
 
   showCalculationMethods = false;
 
-  constructor(config: Config, x: number | null = null, y: number | null = null) {
+  // config: Config, pos?: Vector, velocity?: Vector
+  constructor({ config, pos, velocity }: { config: Config; pos?: Vector; velocity?: Vector }) {
     this.p5 = config.p5;
     this.config = config;
 
@@ -47,14 +50,10 @@ export default class Human {
 
     this.speed = config.speed;
     this.acceleration = this.p5.createVector(0, 0);
-    this.velocity = Vector.random2D();
+    velocity ? (this.velocity = velocity) : (this.velocity = Vector.random2D());
     this.velocity.setMag(config.speed);
 
-    if (x && y) {
-      this.pos = this.p5.createVector(x, y);
-    } else {
-      this.pos = this.p5.createVector(this.p5.random(this.p5.width), this.p5.random(this.p5.height));
-    }
+    pos ? (this.pos = pos) : (this.pos = this.p5.createVector(this.p5.random(this.p5.width), this.p5.random(this.p5.height)));
   }
 
   update = ({ zombies, humans, safezones, food: allFood, toFoodMap, toHomeMap, speed }: UpdateArgs) => {
@@ -65,7 +64,6 @@ export default class Human {
 
     // zombies ? this.avoid(zombies) : null;
     this.baseMovement();
-
     allFood ? this.handleFood(allFood) : null;
     // toFoodMap ? this.followFootSteps(toFoodMap) : null;
 
@@ -73,20 +71,20 @@ export default class Human {
   };
 
   handleMaps = (toFoodMap: TestMap, toHomeMap: TestMap) => {
-    if (this.p5.frameCount % 8 === 0) {
-      if (!this.hasFood) {
-        // Don't have food so
-        // Add to "to home" map
-        // Follow "to food" map
-        toHomeMap.addPoint(this.pos);
-        this.followFootSteps(toFoodMap);
-      } else {
-        // Does have food so
-        // Add to "to food" map
-        // Follow "to home" map
-        toFoodMap.addPoint(this.pos);
-        this.followFootSteps(toHomeMap);
-      }
+    if (!this.hasFood) {
+      // Don't have food so
+      // Add to "to home" map
+      // Follow "to food" map
+
+      if (this.p5.frameCount % this.footstepInterval === 0) toHomeMap.addPoint(this.pos);
+      this.followFootSteps(toFoodMap);
+    } else {
+      // Does have food so
+      // Add to "to food" map
+      // Follow "to home" map
+
+      if (this.p5.frameCount % this.footstepInterval === 0) toFoodMap.addPoint(this.pos);
+      this.followFootSteps(toHomeMap);
     }
   };
 
@@ -103,11 +101,12 @@ export default class Human {
 
   followFootSteps = (testMap: TestMap) => {
     const searchAreaSize = 50;
-    const searchAngles = [-45, 0, 45, -180];
+    // const searchAngles = [-45, 0, 45, -180];
+    const searchAngles = [-45, 0, 45];
 
     //* Crete an array of points for our search areas
     const searchAreaPos = searchAngles.map((searchAngle) => {
-      const searchArea = Vector.fromAngle(this.velocity.heading() + this.p5.radians(searchAngle)).setMag(75);
+      const searchArea = Vector.fromAngle(this.velocity.heading() + this.p5.radians(searchAngle)).setMag(this.trailSearchDistance);
       return Vector.add(this.pos, searchArea);
     });
 
@@ -131,10 +130,14 @@ export default class Human {
     //* Show the search areas
     if (this.showCalculationMethods) {
       searchAreaPos.forEach((pos) => {
+        const colour = this.p5.color("#274666");
+        colour.setAlpha(255 / 10);
+
         this.p5.push();
 
         this.p5.strokeWeight(1);
         this.p5.stroke(255);
+        this.p5.fill(colour);
         this.p5.ellipse(pos.x, pos.y, searchAreaSize);
         this.p5.pop();
       });

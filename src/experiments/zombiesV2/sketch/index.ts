@@ -30,13 +30,13 @@ export const sketch = (p5: p5) => {
     //
     showFood: true,
     //
-    zombies: 0,
+    zombies: 1,
     humans: 0,
-    hunters: 0,
+    hunters: 10,
     //
     safezones: 1,
     darkzones: 0,
-    supermarkets: 2,
+    supermarkets: 5,
     //
     imageSize: 15,
     zombieImg: p5.loadImage(zombieImg.src),
@@ -71,7 +71,7 @@ export const sketch = (p5: p5) => {
     }
 
     for (let i = 0; i < config.humans; i++) {
-      humans.push(new Human(config));
+      humans.push(new Human({ config }));
     }
 
     for (let i = 0; i < config.hunters; i++) {
@@ -79,33 +79,19 @@ export const sketch = (p5: p5) => {
     }
 
     for (let i = 0; i < config.safezones; i++) {
-      safezones.push(new Safezone(config, p5.width / 2, p5.height / 2));
-      // safezones.push(new Safezone(config, 50, p5.height / 2));
+      // safezones.push(new Safezone(config, p5.width / 2, p5.height / 2));
+      safezones.push(new Safezone(config, 50, p5.height / 2));
     }
 
     for (let i = 0; i < config.supermarkets; i++) {
       supermarkets.push(new Supermarket(config));
     }
-
-    // for (let i = 0; i < config.darkzones; i++) {
-    //   darkzones.push(new Darkzone(config));
-    // }
-
-    // for (let i = 0; i < 500; i++) {
-    //   food.push(new Food(config, p5.random(200, 500), p5.random(100, 150)));
-    //   food.push(new Food(config, p5.random(100, 500), p5.random(p5.height - 200, p5.height - 100)));
-    //   food.push(new Food(config, p5.random(p5.width - 500, p5.width - 400), p5.random(100, 150)));
-    //   food.push(new Food(config, p5.random(p5.width - 500, p5.width - 400), p5.random(p5.height - 200, p5.height - 100)));
-    // }
   };
 
   p5.draw = () => {
     p5.background(50);
 
-    toFoodMap.show();
     toFoodMap.update();
-
-    toHomeMap.show();
     toHomeMap.update();
 
     // if (p5.frameCount % 5 === 0) {
@@ -140,7 +126,7 @@ export const sketch = (p5: p5) => {
     });
 
     supermarkets.forEach((supermarket) => {
-      supermarket.update(humans);
+      supermarket.update({ humans, supermarkets });
       supermarket.show();
     });
 
@@ -160,9 +146,11 @@ export const sketch = (p5: p5) => {
     // if (p5.mouseIsPressed && p5.frameCount % 5 === 0) {
     // testMap.addPoint(p5.mouseX, p5.mouseY);
     if (p5.mouseIsPressed) {
+      toHomeMap.show();
+      toFoodMap.show();
       // toFoodMap.followScent(p5.mouseX, p5.mouseY);
       // food.push(new Food(config, p5.mouseX, p5.mouseY));
-      toFoodMap.addPoint(p5.createVector(p5.mouseX, p5.mouseY));
+      // toFoodMap.addPoint(p5.createVector(p5.mouseX, p5.mouseY));
       // const vect = toFoodMap.getWeakest(p5.mouseX, p5.mouseY, true);
       // console.log(vect.x, vect.y);
       // mouseTest();

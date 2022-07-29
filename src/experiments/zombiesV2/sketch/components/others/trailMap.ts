@@ -10,7 +10,7 @@ export default class TrailMap {
 
   //////////////////////
   // Options
-  fadeRate = 0.2;
+  fadeRate = 0.05;
   dotSize = 2;
 
   constructor(config: Config, colour: Color) {
@@ -56,7 +56,8 @@ export default class TrailMap {
 
     this.points.forEach((point) => {
       if (pos.dist(point.pos) < size / 2) {
-        totalConcentration++;
+        totalConcentration += point.val;
+        // totalConcentration += 1;
       }
     });
 

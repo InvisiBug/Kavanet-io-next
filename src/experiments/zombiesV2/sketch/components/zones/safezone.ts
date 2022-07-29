@@ -79,12 +79,27 @@ export default class Safezone {
     if (!this.flag) {
       this.flag = true;
 
-      for (let angle = 0; angle < 360; angle += 360 / 20) {
-        const spawnLocation = Vector.fromAngle(angle);
-        spawnLocation.setMag(50);
+      const startingAngle = -90;
+      const humansToSpawn = 10;
 
-        // humans.push(new Human(this.config, this.pos.x , this.pos.y + spawnLocation.y));
-        humans.push(new Human(this.config, this.pos.x, this.pos.y));
+      for (let angle = startingAngle; angle < 180 + startingAngle; angle += (180 + startingAngle) / humansToSpawn) {
+        // console.log(angle);
+        const spawnLocation = Vector.fromAngle(this.p5.radians(angle));
+        spawnLocation.setMag(this.size / 2 + 5);
+
+        const direction = Vector.fromAngle(this.p5.radians(this.p5.random(10)));
+
+        humans.push(
+          new Human({
+            config: this.config,
+            velocity: direction,
+            pos: Vector.add(spawnLocation, this.pos),
+          })
+        );
+
+        // humans.push(new Human(this.config, this.pos.x, this.pos.y + spawnLocation.y, this.p5.createVector(-1, -1)));
+        // humans.push(new Human(this.config, this.pos.x, this.pos.y));
+        // humans.push(new Human(this.config, this.pos.x + spawnLocation.x, this.pos.y + spawnLocation.y));
       }
     }
     // if (this.food < 10) {

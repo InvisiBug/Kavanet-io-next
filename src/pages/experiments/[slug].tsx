@@ -25,7 +25,8 @@ const borders = false;
 const Description = styled.div`
   border: ${borders ? "2px solid red" : "none"};
   position: absolute;
-  top: 10rem;
+  transform: translateY(-50%);
+  top: 50%;
   left: 5rem;
 
   min-width: 0px;
