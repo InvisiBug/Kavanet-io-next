@@ -35,7 +35,6 @@ export default class Points {
 
         const xpos = this.p5.lerp(this.config.margin, this.p5.width - this.config.margin, u);
         const ypos = this.p5.lerp(this.config.margin, this.p5.height - this.config.margin, v);
-        // console.log(xpos, ypos);
 
         this.points[x][y] = new Point(this.config, this.p5.createVector(xpos, ypos));
       }

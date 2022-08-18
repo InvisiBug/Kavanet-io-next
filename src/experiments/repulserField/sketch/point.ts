@@ -33,6 +33,7 @@ export default class Point {
     this.p5.stroke(this.colour);
     this.p5.fill(this.colour);
     if (this.config["3D"]) {
+      console.log("3D");
       this.p5.translate(this.pos);
       this.p5.sphere(this.diameter / 2);
     } else {

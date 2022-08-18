@@ -1,16 +1,28 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import dynamic from "next/dynamic";
 import styled from "@emotion/styled";
 import { Layout, BackArrow } from "src/lib/components";
 import { getDatabase, experimentsDbId } from "src/lib/api";
 
 const Experiments: FC<any> = ({ slug, description }) => {
+  const [showDetails, setShowDetails] = useState(true);
   const Sketch = dynamic(() => import(`src/experiments/${slug}`), { ssr: false });
 
   return (
     <>
       <Layout header={false} footer={false}>
-        {description ? <Description>{description}</Description> : null}
+        {showDetails ? (
+          description ? (
+            <Description>
+              <Close
+                onClick={() => {
+                  setShowDetails(false);
+                }}
+              />
+              {description}
+            </Description>
+          ) : null
+        ) : null}
         <BackArrow />
         <Sketch />
       </Layout>
@@ -22,10 +34,20 @@ export default Experiments;
 
 const borders = false;
 
+const Close = styled.div`
+  width: 10px;
+  height: 10px;
+  margin-left: auto;
+  margin-right: 0;
+  background: white;
+  display: show;
+`;
+
 const Description = styled.div`
   border: ${borders ? "2px solid red" : "none"};
   position: absolute;
-  top: 10rem;
+  transform: translateY(-50%);
+  top: 50%;
   left: 5rem;
 
   min-width: 0px;
