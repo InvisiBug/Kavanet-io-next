@@ -4,7 +4,7 @@ export const capitalizeFirstLetter = (string: string) => {
   return string.charAt(0).toUpperCase() + string.slice(1);
 };
 
-export const generateTestCard = ({ title, subTitle, status, slug }: Args): any => {
+export const generateTestCard = ({ title, subTitle, status = "Live", slug }: Args): any => {
   return {
     properties: {
       title: {
@@ -103,6 +103,6 @@ export const getImageBlockUrl = (data: any) => {
 interface Args {
   title: string;
   subTitle: string;
-  status: string;
+  status?: string;
   slug: string;
 }

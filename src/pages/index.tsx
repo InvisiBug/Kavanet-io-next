@@ -32,10 +32,9 @@ const IndexPage: FC<Props> = ({ projects, experiments, plots }) => {
   // };
 
   const testCard = {
-    title: "Repulsor",
+    title: "SVG Tester",
     subTitle: "",
-    status: "Live",
-    slug: "repulserField",
+    slug: "svgTest",
   };
 
   return (

@@ -6,7 +6,15 @@ import { getDatabase, experimentsDbId } from "src/lib/api";
 
 const Experiments: FC<any> = ({ slug, description }) => {
   const [showDetails, setShowDetails] = useState(true);
-  const Sketch = dynamic(() => import(`src/experiments/${slug}`), { ssr: false });
+  const Sketch = dynamic(
+    () =>
+      import(`src/experiments/${slug}`).then((mod) => {
+        require("p5.js-svg");
+
+        return mod.default;
+      }),
+    { ssr: false }
+  );
 
   return (
     <>
