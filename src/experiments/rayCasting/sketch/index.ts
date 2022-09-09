@@ -1,6 +1,9 @@
 // https://www.youtube.com/watch?v=TOEi6T2mtHo
 // Possible easy library https://github.com/bmoren/p5.collide2D
 
+//* Future improvements
+// Mutiple particles
+
 import p5, { Vector } from "p5";
 import Boundry from "./boundry";
 import Ray from "./ray";
@@ -39,6 +42,7 @@ export const sketch = (p5: p5) => {
     }
 
     particles.push(new Particle(config));
+    // particles.push(new Particle(config));
     // particles.push(new Particle(config));
     // rays.push(new Ray(config, p5.width / 2, p5.height / 2));
     // p5.noLoop();

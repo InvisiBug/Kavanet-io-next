@@ -11,7 +11,7 @@ export const sketch = (p5: p5) => {
     speed: 0.1,
     colours: p5.shuffle(colours[Math.floor(p5.random(0, colours.length))]).slice(0, numColours),
     connectionDistance: 150,
-    numDots: 30,
+    numDots: 150,
   };
 
   let sliderGroup: Element[] = [];
