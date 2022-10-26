@@ -8,9 +8,9 @@ const notion = new Client({
   auth: "secret_WqHz8aDusPmGu1CvlPfyFB7qPGWewnT4x0cNtzjfqK9", // save this in the env
 });
 
-export const getDatabase = async (databaseId = "cb41f95f1ee848959683500a3bb8ff44") => {
+export const getDatabase = async (database_id = "cb41f95f1ee848959683500a3bb8ff44") => {
   const response = await notion.databases.query({
-    database_id: databaseId,
+    database_id,
   });
   return response.results;
 };
@@ -29,6 +29,8 @@ export const getBlocks = async (blockId: any) => {
       start_cursor: cursor,
       block_id: blockId,
     });
+
+    // console.log(results);
 
     blocks.push(...results);
     if (!next_cursor) {

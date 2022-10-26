@@ -1,5 +1,7 @@
 // https://samuelkraft.com/blog/building-a-notion-blog-with-public-api
 // https://developers.notion.com/docs/working-with-page-content#reading-nested-blocks
+
+// Method using a render buffer
 import React, { FC, Fragment } from "react";
 import styled from "@emotion/styled";
 import { renderBlock, Header } from "src/lib/components/blogComponents";
@@ -10,6 +12,8 @@ import { getPageMetaData } from "src/lib/helpers";
 import { mq, px } from "src/lib/mediaQueries";
 
 const Experiments: FC<any> = ({ blocks, page }) => {
+  // console.log("Prop blocks:", blocks);
+
   return (
     <>
       <Layout header={true} footer={false}>
@@ -17,6 +21,7 @@ const Experiments: FC<any> = ({ blocks, page }) => {
         <Header pageMetaData={getPageMetaData(page)} />
         <Content>
           {blocks.map((block: any) => {
+            // console.log("Block", block);
             return <Fragment key={Math.random()}>{renderBlock(block)}</Fragment>;
           })}
         </Content>
@@ -46,6 +51,7 @@ const Content = styled.div`
 export const getServerSideProps = async ({ params }: args) => {
   const blocks = await getBlocks(params.slug);
   const page = await getPage(params.slug);
+  console.log("All blocks", blocks);
 
   const childBlocks = await Promise.all(
     blocks
@@ -59,12 +65,20 @@ export const getServerSideProps = async ({ params }: args) => {
   );
 
   const blocksWithChildren = blocks.map((block) => {
+    const { type } = block;
+
+    console.log(block);
     // Add child blocks if the block should contain children but none exists
-    if (block.has_children && !block[block.type].children) {
-      block[block.type]["children"] = childBlocks.find((x) => x.id === block.id)?.children;
+    if (block.has_children && !block[type].children) {
+      block[type]["children"] = childBlocks.find((x) => x.id === block.id)?.children;
     }
+    // console.log(block);
     return block;
   });
+
+  console.log("\n");
+  // console.log(blocksWithChildren[0]["column_list"]);
+  console.log(blocksWithChildren);
 
   return {
     props: {

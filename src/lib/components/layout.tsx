@@ -43,9 +43,13 @@ const globalStyles = css`
     color: white;
     font-family: "Nunito", sans-serif;
     user-select: none;
-    overflow: scroll;
+    /* overflow: none; */
     /* overscroll-behavior: none; */
     background-color: ${background};
+    -ms-overflow-style: none;
+    ::-webkit-scrollbar {
+      display: none;
+    }
   }
 `;
 
