@@ -1,7 +1,6 @@
 import React, { FC } from "react";
-import { Layout, Showcase, Card } from "src/lib/components";
+import { Layout, Showcase, Card, LandingPage } from "src/lib/components";
 import { generateTestCard } from "src/lib/helpers";
-
 import { NotionResponse } from "src/lib/types";
 import { projectsDbId, experimentsDbId, plotsDbId, getDatabase } from "src/lib/api";
 import { links } from "src/lib/constants";
@@ -38,14 +37,20 @@ const IndexPage: FC<Props> = ({ projects, experiments, plots }) => {
     slug: "thermometer",
   };
 
+  const landingPage = true;
+
   return (
     <>
-      <Layout footer={false}>
-        {process.env.NEXT_PUBLIC_LOCAL === "true" && <Card pageData={generateTestCard(testCard)} folder={"experiments"} />}
-        {links.includes("Plots") ? <Showcase thingsToShowcase={plots} folder={"plots"} /> : null}
-        {links.includes("Experiments") ? <Showcase thingsToShowcase={experiments} folder={"experiments"} /> : null}
-        {links.includes("Projects") ? <Showcase thingsToShowcase={projects} folder={"projects"} /> : null}
-      </Layout>
+      {landingPage ? (
+        <LandingPage />
+      ) : (
+        <Layout footer={false}>
+          {process.env.NEXT_PUBLIC_LOCAL === "true" && <Card pageData={generateTestCard(testCard)} folder={"experiments"} />}
+          {links.includes("Plots") ? <Showcase thingsToShowcase={plots} folder={"plots"} /> : null}
+          {links.includes("Experiments") ? <Showcase thingsToShowcase={experiments} folder={"experiments"} /> : null}
+          {links.includes("Projects") ? <Showcase thingsToShowcase={projects} folder={"projects"} /> : null}
+        </Layout>
+      )}
     </>
   );
 };
