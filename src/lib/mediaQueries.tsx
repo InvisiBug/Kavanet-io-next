@@ -5,9 +5,12 @@ const breakpoints: Record<string, number> = {
   small: 500,
   medium: 768,
   large: 1200,
+  xl: 2000,
 };
 
-export const mq = (n: "small" | "medium" | "large") => {
+type Sizes = "small" | "medium" | "large" | "xl";
+
+export const mq = (n: Sizes) => {
   const bpArray = Object.keys(breakpoints).map((key) => [key, breakpoints[key]]);
 
   const [result] = bpArray.reduce((acc, [name, size]) => {
@@ -18,6 +21,6 @@ export const mq = (n: "small" | "medium" | "large") => {
   return result;
 };
 
-export const px = (size: "small" | "medium" | "large") => {
+export const px = (size: Sizes) => {
   return breakpoints[size];
 };

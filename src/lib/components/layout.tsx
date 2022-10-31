@@ -34,7 +34,7 @@ const Layer = styled.div`
 
 export default Layout;
 
-const globalStyles = css`
+export const globalStyles = css`
   body {
     margin: 0;
     -webkit-font-smoothing: antialiased;
