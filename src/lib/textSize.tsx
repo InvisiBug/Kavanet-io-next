@@ -2,10 +2,10 @@
 // https://tailwindcss.com/docs/breakpoints
 
 const sizes: Record<string, number> = {
-  small: 2,
-  regular: 8,
-  large: 5,
-  xl: 5,
+  small: 0.5,
+  regular: 1,
+  large: 2,
+  xl: 3,
 };
 
 type Sizes = "small" | "regular" | "large" | "xl";

@@ -4,11 +4,11 @@
 const breakpoints: Record<string, number> = {
   small: 500,
   medium: 768,
-  large: 1200,
-  xl: 2000,
+  large: 1500,
+  xlarge: 1750,
 };
 
-type Sizes = "small" | "medium" | "large" | "xl";
+type Sizes = "small" | "medium" | "large" | "xlarge";
 
 export const mq = (n: Sizes) => {
   const bpArray = Object.keys(breakpoints).map((key) => [key, breakpoints[key]]);

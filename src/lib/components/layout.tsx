@@ -66,9 +66,14 @@ const SiteContainer = styled.div`
 
 const Content = styled.div`
   border: ${borders ? "2px solid green" : "none"};
+  ${mq("large")} {
+    width: ${px("large")}px;
+    /* margin: 2rem 5rem 0 5rem; */
+    /* width: 100%; */
+  }
 
-  flex: auto;
-  overflow-y: auto;
+  /* flex: auto; */
+  /* overflow-y: auto; */
 
   display: flex;
   align-items: center;

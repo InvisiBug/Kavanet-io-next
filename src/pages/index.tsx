@@ -31,17 +31,10 @@ const IndexPage: FC<Props> = ({ projects, experiments, plots }) => {
   // };
 
   const testCard = {
-<<<<<<< HEAD
     title: "Landscape",
     subTitle: "",
     status: "Live",
     slug: "landscape",
-=======
-    title: "Thermometer",
-    subTitle: "",
-    status: "Live",
-    slug: "thermometer",
->>>>>>> redesign
   };
 
   const landingPage = true;

@@ -28,7 +28,7 @@ export const sketch = (p5: p5) => {
 
   const xSquares = 50;
   const ySquares = 50;
-  const size = 15;
+  const size = 13;
 
   const noiseZoom = 0.1;
   const boxMultiplier = 100;
@@ -83,8 +83,8 @@ export const sketch = (p5: p5) => {
     }
 
     if (!freeMove) {
-      yOffset -= p5.noise(yOffset);
-      xOffset += p5.noise(xOffset);
+      yOffset -= p5.noise(yOffset) / 2;
+      xOffset += p5.noise(xOffset) / 2;
     }
   };
 
