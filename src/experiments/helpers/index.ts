@@ -1,4 +1,9 @@
 import p5, { Vector } from "p5";
+import colours from "nice-color-palettes";
+
+export const generateColours = (p5: p5, numColours: number) => {
+  return p5.shuffle(colours[Math.floor(p5.random(0, colours.length))]).slice(0, numColours);
+};
 
 export const test = () => {
   console.log("test");

@@ -31,13 +31,13 @@ const IndexPage: FC<Props> = ({ projects, experiments, plots }) => {
   // };
 
   const testCard = {
-    title: "Landscape",
+    title: "Cicle Packing",
     subTitle: "",
     status: "Live",
-    slug: "landscape",
+    slug: "circlePacking",
   };
 
-  const landingPage = true;
+  const landingPage = false;
 
   return (
     <>

@@ -1,5 +1,6 @@
 import p5, { Element } from "p5";
 import Dot from "./dot";
+import { generateColours } from "src/experiments/helpers";
 // import { drawGradientBackground } from "../../helpers";
 
 import colours from "nice-color-palettes";
@@ -9,7 +10,7 @@ export const sketch = (p5: p5) => {
   const config: Config = {
     p5: p5,
     speed: 0.1,
-    colours: p5.shuffle(colours[Math.floor(p5.random(0, colours.length))]).slice(0, numColours),
+    colours: generateColours(p5, 5),
     connectionDistance: 150,
     numDots: 150,
   };
