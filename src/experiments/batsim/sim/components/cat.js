@@ -1,7 +1,7 @@
 import random from "canvas-sketch-util/random";
 import { lerp } from "canvas-sketch-util/math";
 import { woodland, woodlandEdge, buildings } from "./constants";
-import { getRandomInt } from "../../../helpers";
+import { getRandomInt } from "../../../../plots/helpers";
 
 /*
   Bat species preference

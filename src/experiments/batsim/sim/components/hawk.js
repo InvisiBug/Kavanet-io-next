@@ -1,7 +1,7 @@
 import random from "canvas-sketch-util/random";
 import { lerp } from "canvas-sketch-util/math";
 import { woodland, woodlandEdge, buildings } from "./constants";
-import { getRandomInt } from "../../../helpers";
+import { getRandomInt } from "../../../../plots/helpers";
 
 /*
   Bat species preference
@@ -15,15 +15,7 @@ export default class Hawk {
   lookAroundSize = 4; // This is a symetrical distance from the current x,y coord
   buildingFound = false;
 
-  constructor(
-    ctx,
-    env,
-    habitat,
-    pos = [
-      random.rangeFloor(0, env.gridSize - 1),
-      random.rangeFloor(0, env.gridSize - 1),
-    ]
-  ) {
+  constructor(ctx, env, habitat, pos = [random.rangeFloor(0, env.gridSize - 1), random.rangeFloor(0, env.gridSize - 1)]) {
     this.ctx = ctx;
     this.env = env;
 
@@ -140,12 +132,8 @@ export default class Hawk {
     let newY = 0;
 
     do {
-      newX =
-        this.x +
-        random.pick([-this.env.moveDistance, 0, this.env.moveDistance]); // need to have a possibility to not move otherwise we can
-      newY =
-        this.y +
-        random.pick([-this.env.moveDistance, 0, this.env.moveDistance]); // get stuck in a endless loop trying to pick a new location
+      newX = this.x + random.pick([-this.env.moveDistance, 0, this.env.moveDistance]); // need to have a possibility to not move otherwise we can
+      newY = this.y + random.pick([-this.env.moveDistance, 0, this.env.moveDistance]); // get stuck in a endless loop trying to pick a new location
 
       if (this.avoidEdges(newX, newY)) {
         if (this.avoidBadHabitats(newX, newY)) {
@@ -185,16 +173,8 @@ export default class Hawk {
     return true if there is a building
   */
   searchForBuildingProximity = (xPoint, yPoint) => {
-    for (
-      let y = yPoint - this.lookAroundSize;
-      y < yPoint + this.lookAroundSize + 1;
-      y++
-    ) {
-      for (
-        let x = xPoint - this.lookAroundSize;
-        x < xPoint + this.lookAroundSize + 1;
-        x++
-      ) {
+    for (let y = yPoint - this.lookAroundSize; y < yPoint + this.lookAroundSize + 1; y++) {
+      for (let x = xPoint - this.lookAroundSize; x < xPoint + this.lookAroundSize + 1; x++) {
         if (this.habitat.getHabitat(x, y) === buildings) {
           return true;
         }
@@ -210,13 +190,7 @@ export default class Hawk {
     const v = this.y / (this.env.gridSize - 1);
 
     // Dirty hack to make the canvas a square
-    this.ctx.arc(
-      this.env.marginX + lerp(0, this.env.height, u) - this.size / 2,
-      lerp(0, this.env.height, v),
-      this.size,
-      0,
-      Math.PI * 2
-    );
+    this.ctx.arc(this.env.marginX + lerp(0, this.env.height, u) - this.size / 2, lerp(0, this.env.height, v), this.size, 0, Math.PI * 2);
 
     // this.ctx.fillStyle = "#AC6200";
     // this.ctx.fillStyle = "#fff";

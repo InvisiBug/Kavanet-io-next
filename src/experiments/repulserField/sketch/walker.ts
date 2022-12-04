@@ -1,6 +1,6 @@
 import { Vector } from "p5";
 import { Config } from ".";
-import { constrainCircle } from "../../helpers";
+import { constrainCircle } from "../../../plots/helpers";
 
 export default class Walker {
   p5;

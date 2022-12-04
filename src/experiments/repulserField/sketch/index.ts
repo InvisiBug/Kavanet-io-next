@@ -5,7 +5,7 @@ import p5, { Vector } from "p5";
 import Walker from "./walker";
 import Point from "./point";
 import colours from "nice-color-palettes";
-import { showFPS } from "src/experiments/helpers";
+import { showFPS } from "src/plots/helpers";
 import Points from "./points";
 
 export const sketch = (p5: p5) => {

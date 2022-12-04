@@ -1,4 +1,4 @@
-import { getRandomInt } from "../../../helpers";
+import { getRandomInt } from "../../../../plots/helpers";
 import { ElizasHabitat } from "./elizasHabitat";
 
 export default class HabitatGenerator {

@@ -3,7 +3,7 @@
 
 import p5, { Element } from "p5";
 import colours from "nice-color-palettes";
-import { showFPS } from "src/experiments/helpers";
+import { showFPS } from "src/plots/helpers";
 // Characters
 import Zombie from "./components/characters/zombie";
 import Human from "./components/characters/human";

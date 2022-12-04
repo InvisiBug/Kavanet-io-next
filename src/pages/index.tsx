@@ -31,10 +31,11 @@ const IndexPage: FC<Props> = ({ projects, experiments, plots }) => {
   // };
 
   const testCard = {
-    title: "Cicle Packing",
+    title: "first",
     subTitle: "",
     status: "Live",
-    slug: "circlePacking",
+    slug: "first",
+    folder: "plots",
   };
 
   const landingPage = false;
@@ -45,7 +46,7 @@ const IndexPage: FC<Props> = ({ projects, experiments, plots }) => {
         <LandingPage />
       ) : (
         <Layout footer={false}>
-          {process.env.NEXT_PUBLIC_LOCAL === "true" && <Card pageData={generateTestCard(testCard)} folder={"experiments"} />}
+          {process.env.NEXT_PUBLIC_LOCAL === "true" && <Card pageData={generateTestCard(testCard)} folder={"plots"} />}
           {links.includes("Plots") ? <Showcase thingsToShowcase={plots} folder={"plots"} /> : null}
           {links.includes("Experiments") ? <Showcase thingsToShowcase={experiments} folder={"experiments"} /> : null}
           {links.includes("Projects") ? <Showcase thingsToShowcase={projects} folder={"projects"} /> : null}

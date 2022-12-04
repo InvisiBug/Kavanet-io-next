@@ -1,7 +1,7 @@
 // import random from "canvas-sketch-util/random";
 import { lerp } from "canvas-sketch-util/math";
 import HabitatGenerator from "./habitatGenerator";
-import { getRandomInt } from "../../../helpers";
+import { getRandomInt } from "../../../../plots/helpers";
 
 /* 
   Habitat types
