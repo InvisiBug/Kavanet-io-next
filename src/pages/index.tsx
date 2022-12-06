@@ -31,11 +31,11 @@ const IndexPage: FC<Props> = ({ projects, experiments, plots }) => {
   // };
 
   const testCard = {
-    title: "first",
+    title: "gravityBalls",
     subTitle: "",
     status: "Live",
-    slug: "first",
-    folder: "plots",
+    slug: "gravityBalls",
+    folder: "experiments",
   };
 
   const landingPage = false;
