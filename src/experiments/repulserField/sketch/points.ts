@@ -7,7 +7,6 @@ export default class Points {
   config;
   p5;
 
-  acceleration;
   colour;
   diameter;
 
@@ -19,7 +18,6 @@ export default class Points {
 
     this.points = [];
 
-    this.acceleration = this.p5.createVector(0, 0);
     this.colour = this.p5.random(config.colours);
     this.diameter = 5;
 

@@ -16,10 +16,11 @@ export default class Point {
   constructor(config: Config, pos: Vector) {
     this.config = config;
     this.p5 = config.p5;
-    this.startingPos = pos;
-    this.pos = pos.copy();
 
+    this.startingPos = pos.copy();
+    this.pos = pos.copy();
     this.acceleration = this.p5.createVector(0, 0);
+
     this.colour = this.p5.random(config.colours);
     this.diameter = config.pointSize;
   }
@@ -66,6 +67,9 @@ export default class Point {
   };
 
   return = () => {
+    const desired = Vector.sub(this.startingPos, this.pos);
+
     this.pos.lerp(this.startingPos, this.config.returnStrength);
+    const distance = desired.mag();
   };
 }
