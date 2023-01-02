@@ -31,7 +31,7 @@ const Card: FC<Props> = ({ pageData, folder }) => {
                     );
                   })}
                 </Tags>
-                {status === "Dev" ? <Dev>Dev</Dev> : null}
+                {status === "Dev" ? <Dev>Work In Progres</Dev> : null}
               </BottomRow>
             </Content>
           </Container>
@@ -143,6 +143,7 @@ const Open = styled.button`
 const Dev = styled.div`
   background: ${devBackground};
   border-radius: 0.5rem;
+  font-size: 0.75rem;
   display: grid;
   padding: 0 1rem 0 1rem;
   align-content: center;

@@ -51,15 +51,12 @@ export default class Ball {
   }
 
   update = (balls: Ball[]) => {
-    // if (!this.growing && this.stopped) {
-    //   console.log("finished");
-    //   return;
-    // }
     // The update you know and love
     this.pos.add(this.vel);
     this.vel.add(this.acc);
     this.acc.mult(0);
 
+    // Stop the ball is its velocity is small
     if (this.vel.mag() < 2) {
       this.stopped = true;
       this.vel.set(0);
@@ -67,6 +64,7 @@ export default class Ball {
       this.stopped = false;
     }
 
+    // Stop the ball from growing if it touches an edge or another ball
     if (this.growing && this.stopped) {
       if (this.touchingEdge() || this.touchingBall(balls)) {
         this.growing = false;
@@ -110,76 +108,44 @@ export default class Ball {
         if (this.pos !== other.pos) {
           const vectBetween = Vector.sub(this.pos, other.pos);
           if (vectBetween.mag() <= this.radius + other.radius) {
-            //* We are colliding
-            console.log("Colliding");
-            // 1 = this
-            // 2 = other
-
-            console.log(other.vel);
-
-            let num1 = Vector.dot(Vector.sub(this.vel, other.vel), Vector.sub(this.pos, other.pos)); // Numerator 1
-            let num2 = Vector.sub(this.pos, other.pos); // Numerator 2
-            let den1 = Vector.mag(Vector.sub(this.pos, other.pos)) ** 2; // Denominator 1
-
-            let num3 = Vector.dot(Vector.sub(other.vel, this.vel), Vector.sub(other.pos, this.pos)); // Numerator 3
-            let num4 = Vector.sub(other.pos, this.pos); // Numerator 4
-            let den2 = Vector.mag(Vector.sub(other.pos, this.pos)) ** 2; // Denominator 2
-
-            const x: any = Vector.mult(num2, num1 / den1);
-            const y: any = Vector.mult(num4, num3 / den2);
-
-            // // @ts-ignore
-            // const x = Vector.mult(num2, num1 / den1) * ((2 * other.mass) / this.mass + other.mass);
-            // // @ts-ignore
-            // const y = Vector.mult(num4, num3 / den2) * ((2 * this.mass) / this.mass + other.mass);
-
-            // // @ts-ignore
-            // let newv1 = Vector.sub(this.vel, x);
-            // // @ts-ignore
-            // let newv2 = Vector.sub(other.vel, y);
-
-            let newv1 = Vector.sub(this.vel, x);
-            let newv2 = Vector.sub(other.vel, y);
-
-            this.vel.set(newv1);
-            other.vel.set(newv2);
-
-            /*
-          if (dist(ballx1, bally1, ballx2, bally2) <= 50) {
-            background(255, 0, 0);
-            let x1 = [ballx1, bally1];
-            let x2 = [ballx2, bally2];
-            let v1 = [sballx1, sbally1];
-            let v2 = [sballx2, sbally2];
-        
-            let num1 = dotProduct(vectorSub(v1, v2), vectorSub(x1, x2)); // Numerator 1
-            let num2 = vectorSub(x1, x2); // Numerator 2
-            let den1 = vectorMag(vectorSub(x1, x2)) ** 2; // Denominator 1
-
-            let num3 = dotProduct(vectorSub(v2, v1), vectorSub(x2, x1)); // Numerator 3
-            let num4 = vectorSub(x2, x1); // Numerator 4
-            let den2 = vectorMag(vectorSub(x2, x1)) ** 2; // Denominator 2
-
-            let newv1 = vectorSub(v1, vectorMult(num2, num1 / den1));
-            let newv2 = vectorSub(v2, vectorMult(num4, num3 / den2));
-        
-            // Update the velocities
-            sballx1 = newv1[0];
-            sbally1 = newv1[1];
-            sballx2 = newv2[0];
-            sbally2 = newv2[1];
-        
-            // Update the positions
-            ballx1 += sballx1;
-            bally1 += sbally1;
-            ballx2 += sballx2;
-            bally2 += sbally2; */
-
+            //* We are colliding :)
+            this.collision(other);
             break;
           }
         }
       }
     }
+  };
+
+  collisionV2 = () => {
+    // let newV1 = p5.Vector.add(v1, p5.Vector.mult(p5.Vector.sub(v2, v1), (2 * m2) / (m1 + m2)));
+    // // @ts-ignore
+    // const x = Vector.mult(num2, num1 / den1) * ((2 * other.mass) / this.mass + other.mass);
+    // // @ts-ignore
+    // const y = Vector.mult(num4, num3 / den2) * ((2 * this.mass) / this.mass + other.mass);
+    // // @ts-ignore
+    // let newv1 = Vector.sub(this.vel, x);
+    // // @ts-ignore
+    // let newv2 = Vector.sub(other.vel, y);
+  };
+
+  collision = (other: Ball) => {
+    let num1 = Vector.dot(Vector.sub(this.vel, other.vel), Vector.sub(this.pos, other.pos)); // Numerator 1
+    let num2 = Vector.sub(this.pos, other.pos); // Numerator 2
+    let den1 = Vector.mag(Vector.sub(this.pos, other.pos)) ** 2; // Denominator 1
+
+    let num3 = Vector.dot(Vector.sub(other.vel, this.vel), Vector.sub(other.pos, this.pos)); // Numerator 3
+    let num4 = Vector.sub(other.pos, this.pos); // Numerator 4
+    let den2 = Vector.mag(Vector.sub(other.pos, this.pos)) ** 2; // Denominator 2
+
+    const x: any = Vector.mult(num2, num1 / den1);
+    const y: any = Vector.mult(num4, num3 / den2);
+
+    let newv1 = Vector.sub(this.vel, x);
+    let newv2 = Vector.sub(other.vel, y);
+
+    this.vel.set(newv1);
+    other.vel.set(newv2);
   };
 
   showSize = () => {
@@ -195,12 +161,7 @@ export default class Ball {
     this.acc.add(force);
   };
 
-  applyBehaviors = () => {
-    // var mouse = this.p5.createVector(this.p5.mouseX, this.p5.mouseY);
-    // const arrive = this.arrive(this.target);
-    // arrive.mult(1.5);
-    // this.applyForce(arrive);
-  };
+  applyBehaviors = () => {};
 
   show = () => {
     this.p5.push();

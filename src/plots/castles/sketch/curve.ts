@@ -1,6 +1,7 @@
+import { Vector } from "p5";
 import { Config } from ".";
 
-export default class Class {
+export default class Curve {
   p5;
 
   constructor(config: Config) {

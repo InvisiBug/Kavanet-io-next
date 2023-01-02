@@ -14,12 +14,6 @@ export const sketch = (p5: p5) => {
 
   p5.setup = () => {
     p5.createCanvas(p5.windowWidth, p5.windowHeight);
-
-    Array(20).forEach(() => {
-      balls.push(new Ball(config, Vector.random2D()));
-    });
-
-    console.log(balls.length);
   };
 
   p5.draw = () => {

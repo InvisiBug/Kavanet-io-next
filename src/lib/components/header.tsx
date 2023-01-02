@@ -5,8 +5,6 @@ import { background } from "src/lib/colours";
 import Link from "next/link";
 import { links } from "src/lib/constants";
 
-// const links = ["Experiments", "Plots", "Projects"];
-
 const Header: FC = () => {
   return (
     <>
@@ -53,7 +51,6 @@ const Container = styled.div`
   color: white;
 
   justify-content: center;
-  /* align-items: center; */
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 
   height: 5rem;
@@ -79,7 +76,6 @@ const Links = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
-  /* margin-right: 4rem; */
 `;
 
 const LinkItem = styled.div`
@@ -104,15 +100,13 @@ const Image = styled.img`
 
 const Title = styled.div`
   border: ${borders ? "1px solid pink" : "none"};
-  /* height: 100%; */
-  cursor: pointer;
-  /* margin-bottom: 0; */
-  /* margin-left: 1rem; */
-
   font-weight: bold;
-  /* text-align: center; */
   font-size: 2rem;
-  /* margin-top: 0; */
-  /* margin-bottom: 0; */
-  /* padding-top: 0; */
+
+  cursor: pointer;
+
+  display: none;
+  ${mq("small")} {
+    display: block;
+  }
 `;
