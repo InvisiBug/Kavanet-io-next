@@ -31,10 +31,10 @@ const IndexPage: FC<Props> = ({ projects, experiments, plots }) => {
   // };
 
   const testCard = {
-    title: "gravityBalls",
+    title: "Landscape",
     subTitle: "",
     status: "Dev",
-    slug: "gravityBalls",
+    slug: "landscape",
     folder: "experiments",
   };
 

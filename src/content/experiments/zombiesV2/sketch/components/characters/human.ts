@@ -1,5 +1,5 @@
 import { Vector } from "p5";
-import { Config } from "../../";
+import { Config } from "../..";
 import { constrain } from "../helpers";
 import Safezone from "../zones/safezone";
 import TestMap from "../others/trailMap";

@@ -1,6 +1,6 @@
 import p5, { Element } from "p5";
 import Dot from "./dot";
-import { generateColours } from "src/plots/helpers";
+import { generateColours } from "src/content/plots/helpers";
 // import { drawGradientBackground } from "../../helpers";
 
 import colours from "nice-color-palettes";

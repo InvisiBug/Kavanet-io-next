@@ -6,7 +6,7 @@ import { getDatabase, experimentsDbId } from "src/lib/api";
 
 const Experiments: FC<any> = ({ slug, description }) => {
   const [showDetails, setShowDetails] = useState(true);
-  const Sketch = dynamic(() => import(`src/experiments/${slug}`), { ssr: false });
+  const Sketch = dynamic(() => import(`src/content/experiments/${slug}`), { ssr: false });
 
   return (
     <>

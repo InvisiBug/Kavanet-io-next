@@ -23,24 +23,11 @@ const Recipes: FC<Props> = ({ data }) => {
   );
 };
 
+export default Recipes;
+
 interface Props {
   data: Array<Ingredients>;
 }
-
-const borders = false;
-
-const Row = styled.div`
-  min-width: 95vw;
-  margin-bottom: 1rem;
-  ${mq("medium")} {
-    min-width: 50vw;
-  }
-  ${mq("medium")} {
-    min-width: 25vw;
-  }
-`;
-
-export default Recipes;
 
 export const getServerSideProps = async () => {
   const data = generateUniqueIngredientArray(recipes).map((ingredient) => {
@@ -55,3 +42,16 @@ export const getServerSideProps = async () => {
     },
   };
 };
+
+const borders = false;
+
+const Row = styled.div`
+  min-width: 95vw;
+  margin-bottom: 1rem;
+  ${mq("medium")} {
+    min-width: 50vw;
+  }
+  ${mq("medium")} {
+    min-width: 25vw;
+  }
+`;

@@ -33,7 +33,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "src/experiments/landscape/code.js"  ],
+, "src/content/experiments/3dLandscape/code.js"  ],
   "exclude": [
     "node_modules"
   ]

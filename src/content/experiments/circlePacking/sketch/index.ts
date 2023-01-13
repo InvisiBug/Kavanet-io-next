@@ -1,6 +1,6 @@
 import p5 from "p5";
 import Circle from "./circle";
-import { generateColours } from "src/plots/helpers";
+import { generateColours } from "src/content/plots/helpers";
 
 export const sketch = (p5: p5) => {
   const config = {
@@ -55,11 +55,10 @@ export const sketch = (p5: p5) => {
   };
 
   p5.mouseClicked = () => {
-    const cnv = p5.createImage(p5.width, p5.height);
-    p5.save(cnv, "myCanvas.jpg");
-
-    // Saves the canvas as an image by default
-    p5.save("myCanvas.jpg");
+    // const cnv = p5.createImage(p5.width, p5.height);
+    // p5.save(cnv, "myCanvas.jpg");
+    // // Saves the canvas as an image by default
+    // p5.save("myCanvas.jpg");
   };
 
   const newCircle = () => {

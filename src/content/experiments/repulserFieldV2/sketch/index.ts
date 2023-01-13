@@ -5,8 +5,9 @@ import p5, { Vector } from "p5";
 import Walker from "./walker";
 import Point from "./point";
 import colours from "nice-color-palettes";
-import { showFPS } from "src/plots/helpers";
+import { showFPS } from "src/content/plots/helpers";
 import Points from "./points";
+import sharkImg from "./shark.gif";
 
 export const sketch = (p5: p5) => {
   const numColours = 5; // Max 5
@@ -25,6 +26,8 @@ export const sketch = (p5: p5) => {
     returnStrength: 0.05,
     //
     "3D": false,
+    sharkImg: p5.loadImage(sharkImg.src),
+    sharks: false,
   };
   let cameraSensitivity = 10;
 
@@ -32,10 +35,12 @@ export const sketch = (p5: p5) => {
   let points: Points;
 
   p5.setup = () => {
-    config["3D"] ? p5.createCanvas(p5.windowWidth, p5.windowHeight, p5.WEBGL) : p5.createCanvas(p5.windowWidth, p5.windowHeight);
-    // p5.createCanvas(p5.windowWidth, p5.windowHeight, p5.WEBGL);
-    // p5.createCanvas(500, 500);
-    // p5.createCanvas(500, 500, p5.WEBGL);
+    if (config["3D"]) {
+      p5.createCanvas(p5.windowWidth, p5.windowHeight, p5.WEBGL);
+      p5.directionalLight(200, 200, 200, -1, 0.75, -1);
+    } else {
+      p5.createCanvas(p5.windowWidth, p5.windowHeight);
+    }
 
     points = new Points(config);
 
@@ -45,12 +50,12 @@ export const sketch = (p5: p5) => {
   };
 
   p5.draw = () => {
-    // p5.background(50, 50);
     p5.background(50);
 
     if (config["3D"]) {
       p5.orbitControl(cameraSensitivity, cameraSensitivity, 0.5);
       p5.translate(-p5.width / 2, -p5.height / 2);
+      p5.lights();
     }
 
     points.update(walkers);
@@ -60,29 +65,11 @@ export const sketch = (p5: p5) => {
       walkers.forEach((walker) => {
         walker.update(walkers);
         walker.show();
-
-        // points.forEach((point) => {
-        //   point.avoid(walkers);
-        //   point.spring();
-        // });
       });
     }
 
-    // if (points.length > 0) {
-    //   points.forEach((point) => {
-    //     point.show();
-    //   });
-    // }
     showFPS(p5);
   };
-
-  p5.mouseClicked = () => {};
-
-  // p5.mouseDragged = () => {
-  //   points.forEach((point) => {
-  //     point.distort(p5.createVector(p5.mouseX, p5.mouseY));
-  //   });
-  // };
 };
 
 export interface Config {
@@ -96,4 +83,6 @@ export interface Config {
   margin: number;
   pointSize: number;
   returnStrength: number;
+  sharkImg: p5.Image;
+  sharks: boolean;
 }

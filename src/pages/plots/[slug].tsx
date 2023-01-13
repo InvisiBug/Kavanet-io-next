@@ -5,7 +5,7 @@ import { Layout, BackArrow } from "src/lib/components";
 import { getDatabase, experimentsDbId } from "src/lib/api";
 
 const Experiments: FC<any> = ({ slug, description }) => {
-  const Sketch = dynamic(() => import(`src/plots/${slug}`), { ssr: false });
+  const Sketch = dynamic(() => import(`src/content/plots/${slug}`), { ssr: false });
 
   return (
     <>
