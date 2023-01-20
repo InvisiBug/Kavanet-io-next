@@ -22,6 +22,7 @@ export const sketch = (p5: p5) => {
 
   p5.setup = () => {
     p5.createCanvas(p5.windowWidth, p5.windowHeight);
+    console.log("hello from dots");
 
     for (let i = 0; i < config.numDots; i++) {
       dots.push(new Dot(config));
@@ -42,7 +43,7 @@ export const sketch = (p5: p5) => {
     // drawGradientBackground(p5, backgroundColours[0], backgroundColours[1]);
     // p5.background(0, 50);
     // p5.background(0, 100);
-    p5.background(30);
+    // p5.background(30);
 
     // let X = sliderGroup[0].value();
     // let Y = sliderGroup[1].value();
