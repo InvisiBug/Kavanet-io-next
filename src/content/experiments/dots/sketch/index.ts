@@ -43,7 +43,7 @@ export const sketch = (p5: p5) => {
     // drawGradientBackground(p5, backgroundColours[0], backgroundColours[1]);
     // p5.background(0, 50);
     // p5.background(0, 100);
-    // p5.background(30);
+    p5.background(30);
 
     // let X = sliderGroup[0].value();
     // let Y = sliderGroup[1].value();

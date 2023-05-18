@@ -66,15 +66,25 @@ interface Props {
 export default IndexPage;
 
 export const getServerSideProps = async () => {
-  const experiments = await getDatabase(experimentsDbId);
-  const projects = await getDatabase(projectsDbId);
-  const plots = await getDatabase(plotsDbId);
+  try {
+    const experiments = await getDatabase(experimentsDbId);
+    const projects = await getDatabase(projectsDbId);
+    const plots = await getDatabase(plotsDbId);
 
-  return {
-    props: {
-      projects,
-      experiments,
-      plots,
-    },
-  };
+    return {
+      props: {
+        projects,
+        experiments,
+        plots,
+      },
+    };
+  } catch (error) {
+    return {
+      props: {
+        projects: [],
+        experiments: [],
+        plots: [],
+      },
+    };
+  }
 };

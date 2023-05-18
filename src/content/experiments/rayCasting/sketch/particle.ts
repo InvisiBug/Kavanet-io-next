@@ -9,6 +9,11 @@ export default class Particle {
   config;
   totalRays;
 
+  xoffset;
+  yoffset;
+
+  movement;
+
   rays: Array<Ray> = [];
 
   constructor(config: Config) {
@@ -16,7 +21,14 @@ export default class Particle {
     this.config = config;
     this.totalRays = 100;
 
-    this.pos = this.p5.createVector(this.p5.random(this.p5.width / 2), this.p5.random(this.p5.height / 2));
+    this.xoffset = this.p5.random(100);
+    this.yoffset = this.p5.random(100);
+
+    this.movement = 0.0005;
+
+    const margin = 10;
+
+    this.pos = this.p5.createVector(this.p5.random(margin, this.p5.width - margin), this.p5.random(margin, this.p5.height - margin));
 
     for (let angle = 0; angle < 360; angle += 360 / this.totalRays) {
       this.rays.push(new Ray(config, this.pos, this.p5.radians(angle)));
@@ -68,7 +80,16 @@ export default class Particle {
   //   });
   // };
 
-  update = (x: number, y: number) => {
-    this.pos.set(x, y);
+  // update = (x: number, y: number) => {
+  update = () => {
+    const margin = -500;
+    const xpos = this.p5.map(this.p5.noise(this.xoffset), 0, 1, margin, this.p5.width - margin);
+    const ypos = this.p5.map(this.p5.noise(this.yoffset), 0, 1, margin, this.p5.height - margin);
+
+    this.pos.set(xpos, ypos);
+
+    // this.pos.set(this.pos.x + this.p5.noise(this.xoffset), this.p5.noise(this.yoffset) * this.p5.height);
+    this.xoffset += this.movement;
+    this.yoffset += this.movement;
   };
 }

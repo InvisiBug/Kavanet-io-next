@@ -6,9 +6,10 @@ export type PageMetaData = {
   subTitle?: string;
   thumbnail?: string;
   tags?: string[];
-  status?: string;
+  status?: "Live" | "Dev";
   description?: string;
   coverImage?: string;
+  cardType?: "small" | "large";
 };
 
 export type NotionResponse = any;

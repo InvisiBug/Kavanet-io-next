@@ -6,4 +6,5 @@ export { default as Showcase } from "./showcase";
 export { default as Header } from "./header";
 export { default as Layout } from "./layout";
 export { default as Card } from "./card";
+export { default as CardLarge } from "./cardLarge";
 export { default as Tag } from "./tag";

@@ -1,8 +1,8 @@
 import React, { FC, Fragment } from "react";
 import styled from "@emotion/styled";
-import { Card } from "src/lib/components";
+import { Card, CardLarge } from "src/lib/components";
 import { mq, px } from "src/lib/mediaQueries";
-import { capitalizeFirstLetter } from "src/lib/helpers";
+import { capitalizeFirstLetter, getPageMetaData } from "src/lib/helpers";
 import { NotionResponse } from "src/lib/types";
 
 const Showcase: FC<Props> = ({ thingsToShowcase, folder }) => {
@@ -14,11 +14,23 @@ const Showcase: FC<Props> = ({ thingsToShowcase, folder }) => {
         <Title>{`My ${capitalizeFirstLetter(folder)}`}</Title>
         <CardHolder>
           {thingsToShowcase.map((showcaseItem: NotionResponse, index: number) => {
-            return (
-              <Fragment key={index}>
-                <Card pageData={showcaseItem} folder={folder} />
-              </Fragment>
-            );
+            const pageData = getPageMetaData(showcaseItem);
+
+            switch (pageData.cardType) {
+              case "small":
+                return (
+                  <Fragment key={index}>
+                    <Card pageData={pageData} folder={folder} />
+                  </Fragment>
+                );
+
+              case "large":
+                return (
+                  <Fragment key={index}>
+                    <CardLarge pageData={pageData} folder={folder} />
+                  </Fragment>
+                );
+            }
           })}
         </CardHolder>
       </Container>
@@ -36,23 +48,25 @@ const borders = false;
 
 const Container = styled.div`
   border: ${borders ? "1px solid green" : "none"};
-  width: 100%;
+  /* width: ${px("xmedium")}px; */
   display: flex;
   align-items: center;
   flex-direction: column;
 
   padding-bottom: 1rem;
   ${mq("small")} {
+    max-width: ${px("small")}px;
     /* background-color: purple; */
   }
   ${mq("medium")} {
     /* background-color: red; */
+    max-width: ${px("medium")}px;
   }
   ${mq("large")} {
     /* max-width: 90vw; */
 
     /* background-color: orange; */
-    max-width: ${px("large")}px;
+    max-width: ${px("xmedium")}px;
     /* height: 1000px; */
   }
 `;

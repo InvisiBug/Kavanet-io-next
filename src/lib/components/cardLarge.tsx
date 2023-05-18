@@ -7,7 +7,7 @@ import { cardBackground, devBackground } from "src/lib/colours";
 
 //* Live pages are allways shown
 //* Dev pages are only shown when running locally
-const Card: FC<Props> = ({ pageData, folder }) => {
+const CardLarge: FC<Props> = ({ pageData, folder }) => {
   const { title, subTitle, thumbnail, slug, status, tags } = pageData;
   console.log(pageData);
 
@@ -43,7 +43,7 @@ const Card: FC<Props> = ({ pageData, folder }) => {
   );
 };
 
-export default Card;
+export default CardLarge;
 
 interface Props {
   pageData: PageMetaData;
@@ -54,7 +54,8 @@ const borders = false;
 
 const Container = styled.div`
   border: ${borders ? "2px solid black" : "none"};
-  width: 15rem;
+  width: 45rem;
+  height: 10rem;
   border-radius: 15px;
   margin-top: 1rem;
   color: white;
@@ -66,7 +67,7 @@ const Container = styled.div`
   margin-right: 0.5rem;
 
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   overflow: hidden;
   box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 
@@ -80,11 +81,12 @@ const Container = styled.div`
 `;
 
 const Thumnail = styled.img`
-  width: 100%;
+  width: 25%;
+  /* height: 5rem; */
   border: ${borders ? "1px solid white" : "none"};
 
   overflow: hidden;
-  object-fit: contain;
+  object-fit: cover;
 `;
 
 // Content

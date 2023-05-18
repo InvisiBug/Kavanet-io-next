@@ -89,6 +89,9 @@ export const getPageMetaData = (rawCardInfo: any) => {
 
         data.coverImage = uploadedImage2 ? uploadedImage2 : linkedImage2;
         break;
+
+      case "cardType":
+        data.cardType = properties[property].select?.name;
     }
   }
 
@@ -109,7 +112,6 @@ interface Args {
 
 ////////////////////////////////////////////////////////////////////////
 //
-// ######  #######
 // ######  #######
 // #     # #
 // #     # #

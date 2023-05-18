@@ -42,8 +42,8 @@ export const sketch = (p5: p5) => {
     }
 
     particles.push(new Particle(config));
-    // particles.push(new Particle(config));
-    // particles.push(new Particle(config));
+    particles.push(new Particle(config));
+    particles.push(new Particle(config));
     // rays.push(new Ray(config, p5.width / 2, p5.height / 2));
     // p5.noLoop();
   };
@@ -60,7 +60,8 @@ export const sketch = (p5: p5) => {
       particle.show();
       // particle.update(p5.mouseX, p5.mouseY);
       particle.look(boundries);
-      particle.update(p5.noise(xoff) * p5.width, p5.noise(yoff) * p5.height);
+      // particle.update(p5.noise(xoff) * p5.width, p5.noise(yoff) * p5.height);
+      particle.update();
       // particle.update(particle.pos.x + p5.noise(xoff) * p5.width, particle.pos.y + p5.noise(yoff) * p5.height);
 
       // particle.oldLook(boundries[0]); // old implementation of look, think it may be useful later
@@ -69,8 +70,6 @@ export const sketch = (p5: p5) => {
       //   particle.look(boundry);
       // });
     });
-    xoff += movement;
-    yoff += movement;
 
     // rays.forEach((ray) => {
     //   boundries.forEach((boundry) => {

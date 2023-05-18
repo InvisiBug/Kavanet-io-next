@@ -1,7 +1,6 @@
 import React, { FC } from "react";
 import styled from "@emotion/styled";
 import { mq, px } from "src/lib/mediaQueries";
-import { background } from "src/lib/colours";
 import Link from "next/link";
 import { links } from "src/lib/constants";
 import { textSize } from "src/lib/textSize";
@@ -35,24 +34,7 @@ const Header: FC = () => {
 
 export default Header;
 
-const borders = false;
-
-// const NavBar = styled.div`
-//   border: ${borders ? "1px solid orange" : "none"};
-
-//   position: fixed;
-//   width: 100vw;
-
-//   background: ${background};
-//   display: flex;
-//   color: white;
-
-//   justify-content: center;
-//   /* align-items: center; */
-//   /* border-bottom: 1px solid rgba(255, 255, 255, 0.1); */
-
-//   height: 5rem;
-// `;
+const borders = true;
 
 const NavBar = styled.div`
   position: absolute;
@@ -65,11 +47,13 @@ const Container = styled.div`
   border: ${borders ? "1px solid limegreen" : "none"};
   display: flex;
   /* height: 5rem; */
+  background: red;
 
-  align-items: center;
+  /* align-items: center; */
+  /* align-items: flex-start; */
 
   margin: auto;
-  padding-top: 2rem;
+  /* padding-top: 2rem; */
   /* padding-bottom: 3rem; */
 
   /* display: grid; */
@@ -91,10 +75,14 @@ const Container = styled.div`
   }
 `;
 
+type NavbarProps = {
+  showBackground: boolean;
+};
+
 const Title = styled.div`
   border: ${borders ? "1px solid pink" : "none"};
-  font-size: ${textSize("xl")}rem;
-  width: 15%;
+  font-size: ${textSize("large")}rem;
+  width: 10%;
 
   cursor: pointer;
 `;
@@ -108,6 +96,7 @@ const Links = styled.div`
 
   display: flex;
   position: relative;
+  align-items: center;
 
   justify-content: space-between;
 
@@ -121,18 +110,21 @@ const LinkItem = styled.div`
   font-size: ${textSize("large")}rem;
   color: #acacac;
 
+  /* margin-top:100px; */
+
+  width: 180px;
+
   cursor: pointer;
   margin-right: 2rem;
 `;
 
 const Github = styled.a`
   border: ${borders ? "1px solid red" : "none"};
-  width: 15%;
+  width: 10%;
   display: flex;
+  align-items: center;
   justify-content: flex-end;
   cursor: default;
-
-  /* margin-left: auto; */
 `;
 
 const Image = styled.img`

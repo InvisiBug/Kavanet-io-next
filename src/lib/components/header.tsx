@@ -5,10 +5,10 @@ import { background } from "src/lib/colours";
 import Link from "next/link";
 import { links } from "src/lib/constants";
 
-const Header: FC = () => {
+const Header: FC<Props> = ({ background = true }) => {
   return (
     <>
-      <Container>
+      <Container showBackground={background}>
         <NavBar>
           <Link href={"/"} as={"/"}>
             <Title>
@@ -38,23 +38,33 @@ const Header: FC = () => {
 
 export default Header;
 
+type Props = {
+  background?: boolean;
+};
+
 const borders = false;
 
-const Container = styled.div`
+const Container = styled.div<NavbarProps>`
   border: ${borders ? "1px solid orange" : "none"};
 
   position: fixed;
   width: 100vw;
 
-  background: ${background};
+  /* background: ${background}; */
+
+  background: ${({ showBackground }) => (showBackground ? background : null)};
   display: flex;
   color: white;
 
   justify-content: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: ${({ showBackground }) => (showBackground ? "1px solid rgba(255, 255, 255, 0.1)" : null)};
 
   height: 5rem;
 `;
+
+type NavbarProps = {
+  showBackground: boolean;
+};
 
 const NavBar = styled.div`
   border: ${borders ? "1px solid limegreen" : "none"};
@@ -63,8 +73,8 @@ const NavBar = styled.div`
   align-items: center;
 
   height: 100%;
-  ${mq("small")} {
-    width: ${px("small")}px;
+  ${mq("medium")} {
+    width: ${px("medium")}px;
   }
   ${mq("large")} {
     width: ${px("large")}px;
