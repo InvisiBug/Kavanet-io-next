@@ -25,11 +25,7 @@ const Showcase: FC<Props> = ({ thingsToShowcase, folder }) => {
                 );
 
               case "large":
-                return (
-                  <Fragment key={index}>
-                    <CardLarge pageData={pageData} folder={folder} />
-                  </Fragment>
-                );
+                return <Fragment key={index}>{/* <CardLarge pageData={pageData} folder={folder} /> */}</Fragment>;
             }
           })}
         </CardHolder>

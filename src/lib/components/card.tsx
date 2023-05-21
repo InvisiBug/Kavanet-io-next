@@ -9,9 +9,10 @@ import { cardBackground, devBackground } from "src/lib/colours";
 //* Dev pages are only shown when running locally
 const Card: FC<Props> = ({ pageData, folder }) => {
   const { title, subTitle, thumbnail, slug, status, tags } = pageData;
-  console.log(pageData);
 
-  if (!JSON.parse(process.env.NEXT_PUBLIC_LOCAL || "") && status !== "Live") {
+  const local = process.env.NEXT_PUBLIC_LOCAL;
+
+  if (!local && status !== "Live") {
     return null;
   }
 

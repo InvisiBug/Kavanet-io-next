@@ -46,7 +46,7 @@ const IndexPage: FC<Props> = ({ projects, experiments, plots }) => {
         <LandingPage />
       ) : (
         <Layout footer={false}>
-          {process.env.NEXT_PUBLIC_LOCAL === "true" && <Card pageData={generateTestCard(testCard)} folder={testCard.folder} />}
+          {/* {process.env.NEXT_PUBLIC_LOCAL === "true" && <Card pageData={generateTestCard(testCard)} folder={testCard.folder} />} */}
           {links.includes("Plots") ? <Showcase thingsToShowcase={plots} folder={"plots"} /> : null}
           {links.includes("Experiments") ? <Showcase thingsToShowcase={experiments} folder={"experiments"} /> : null}
           {links.includes("Projects") ? <Showcase thingsToShowcase={projects} folder={"projects"} /> : null}
