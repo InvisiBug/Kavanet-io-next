@@ -23,4 +23,5 @@ const Arrow = styled.div`
   font-size: 6rem;
   color: white;
   cursor: pointer;
+  z-index: 20;
 `;

@@ -6,7 +6,7 @@ import { capitalizeFirstLetter, getPageMetaData } from "src/lib/helpers";
 import { NotionResponse } from "src/lib/types";
 
 const Showcase: FC<Props> = ({ thingsToShowcase, folder }) => {
-  if (!thingsToShowcase) return <></>;
+  if (!thingsToShowcase) return null;
 
   return (
     <>
@@ -25,7 +25,7 @@ const Showcase: FC<Props> = ({ thingsToShowcase, folder }) => {
                 );
 
               case "large":
-                return <Fragment key={index}>{/* <CardLarge pageData={pageData} folder={folder} /> */}</Fragment>;
+                return <Fragment key={index}>{<CardLarge pageData={pageData} folder={folder} />}</Fragment>;
             }
           })}
         </CardHolder>

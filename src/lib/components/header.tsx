@@ -60,6 +60,7 @@ const Container = styled.div<NavbarProps>`
   border-bottom: ${({ showBackground }) => (showBackground ? "1px solid rgba(255, 255, 255, 0.1)" : null)};
 
   height: 5rem;
+  z-index: 10;
 `;
 
 type NavbarProps = {

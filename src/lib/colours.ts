@@ -1,6 +1,7 @@
 // export const background = "#2A2C31";
 // export const background = "#FFFEDF";
-export const background = "#222222";
+// export const background = "#222222";
+export const background = "#2F3437";
 export const cardBackground = "#3E4146";
 export const borders = "#FFFEDF";
 export const devBackground = "#592E2E";

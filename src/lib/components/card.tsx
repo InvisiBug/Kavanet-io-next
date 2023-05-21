@@ -10,6 +10,10 @@ import { cardBackground, devBackground } from "src/lib/colours";
 const Card: FC<Props> = ({ pageData, folder }) => {
   const { title, subTitle, thumbnail, slug, status, tags } = pageData;
 
+  if (status === "Hidden") {
+    return null;
+  }
+
   const local = process.env.NEXT_PUBLIC_LOCAL;
 
   if (!local && status !== "Live") {

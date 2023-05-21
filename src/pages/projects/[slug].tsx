@@ -8,22 +8,26 @@ import { renderBlock, Header } from "src/lib/components/blogComponents";
 import { getBlocks, getPage } from "src/lib/api";
 import { Layout, BackArrow } from "src/lib/components";
 import { getPageMetaData } from "src/lib/helpers";
+import { NotionAPI } from "notion-client";
 
 import { mq, px } from "src/lib/mediaQueries";
 
-const Experiments: FC<any> = ({ blocks, page }) => {
+import { NotionRenderer } from "react-notion-x";
+
+const Experiments: FC<any> = ({ blocks, page, recordMap }) => {
   // console.log("Prop blocks:", blocks);
 
   return (
     <>
       <Layout header={true} footer={false}>
         <BackArrow />
-        <Header pageMetaData={getPageMetaData(page)} />
+        {/* <Header pageMetaData={getPageMetaData(page)} /> */}
         <Content>
-          {blocks.map((block: any) => {
+          <NotionRenderer recordMap={recordMap} fullPage={false} darkMode={true} />
+          {/* {blocks.map((block: any) => {
             // console.log("Block", block);
             return <Fragment key={Math.random()}>{renderBlock(block)}</Fragment>;
-          })}
+          })} */}
         </Content>
       </Layout>
     </>
@@ -37,6 +41,7 @@ const Content = styled.div`
   flex-direction: column;
   align-items: left;
   color: #cecdcd;
+  /* z-index: -1; */
   ${mq("small")} {
     max-width: ${px("small")}px;
   }
@@ -49,9 +54,13 @@ const Content = styled.div`
 `;
 
 export const getServerSideProps = async ({ params }: args) => {
+  const notion = new NotionAPI();
+
+  const recordMap = await notion.getPage(params.slug);
+  console.log(recordMap);
+
   const blocks = await getBlocks(params.slug);
   const page = await getPage(params.slug);
-  console.log("All blocks", blocks);
 
   const childBlocks = await Promise.all(
     blocks
@@ -84,6 +93,7 @@ export const getServerSideProps = async ({ params }: args) => {
     props: {
       page,
       blocks: blocksWithChildren,
+      recordMap,
     },
   };
 };

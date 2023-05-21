@@ -6,7 +6,7 @@ export type PageMetaData = {
   subTitle?: string;
   thumbnail?: string;
   tags?: string[];
-  status?: "Live" | "Dev";
+  status?: "Live" | "Dev" | "Hidden";
   description?: string;
   coverImage?: string;
   cardType?: "small" | "large";
