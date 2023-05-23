@@ -86,7 +86,8 @@ const Container = styled.div`
 `;
 
 const Thumnail = styled.img`
-  width: 25%;
+  min-width: 30%;
+  max-width: 30%;
   /* height: 5rem; */
   border: ${borders ? "1px solid white" : "none"};
 

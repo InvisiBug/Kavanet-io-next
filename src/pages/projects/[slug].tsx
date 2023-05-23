@@ -4,30 +4,21 @@
 // Method using a render buffer
 import React, { FC, Fragment } from "react";
 import styled from "@emotion/styled";
-import { renderBlock, Header } from "src/lib/components/blogComponents";
-import { getBlocks, getPage } from "src/lib/api";
 import { Layout, BackArrow } from "src/lib/components";
-import { getPageMetaData } from "src/lib/helpers";
 import { NotionAPI } from "notion-client";
 
 import { mq, px } from "src/lib/mediaQueries";
 
 import { NotionRenderer } from "react-notion-x";
 
-const Experiments: FC<any> = ({ blocks, page, recordMap }) => {
-  // console.log("Prop blocks:", blocks);
-
+const Experiments: FC<any> = ({ recordMap }) => {
   return (
     <>
       <Layout header={true} footer={false}>
         <BackArrow />
-        {/* <Header pageMetaData={getPageMetaData(page)} /> */}
+
         <Content>
           <NotionRenderer recordMap={recordMap} fullPage={false} darkMode={true} />
-          {/* {blocks.map((block: any) => {
-            // console.log("Block", block);
-            return <Fragment key={Math.random()}>{renderBlock(block)}</Fragment>;
-          })} */}
         </Content>
       </Layout>
     </>
@@ -41,7 +32,8 @@ const Content = styled.div`
   flex-direction: column;
   align-items: left;
   color: #cecdcd;
-  /* z-index: -1; */
+  margin-bottom: 2rem;
+
   ${mq("small")} {
     max-width: ${px("small")}px;
   }
@@ -55,44 +47,10 @@ const Content = styled.div`
 
 export const getServerSideProps = async ({ params }: args) => {
   const notion = new NotionAPI();
-
   const recordMap = await notion.getPage(params.slug);
-  console.log(recordMap);
-
-  const blocks = await getBlocks(params.slug);
-  const page = await getPage(params.slug);
-
-  const childBlocks = await Promise.all(
-    blocks
-      .filter((block) => block.has_children)
-      .map(async (block) => {
-        return {
-          id: block.id,
-          children: await getBlocks(block.id),
-        };
-      })
-  );
-
-  const blocksWithChildren = blocks.map((block) => {
-    const { type } = block;
-
-    console.log(block);
-    // Add child blocks if the block should contain children but none exists
-    if (block.has_children && !block[type].children) {
-      block[type]["children"] = childBlocks.find((x) => x.id === block.id)?.children;
-    }
-    // console.log(block);
-    return block;
-  });
-
-  console.log("\n");
-  // console.log(blocksWithChildren[0]["column_list"]);
-  console.log(blocksWithChildren);
 
   return {
     props: {
-      page,
-      blocks: blocksWithChildren,
       recordMap,
     },
   };
