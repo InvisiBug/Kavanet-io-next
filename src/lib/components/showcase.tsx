@@ -1,9 +1,9 @@
-import React, { FC, Fragment } from "react";
+import React, { FC } from "react";
 import styled from "@emotion/styled";
-import { Card, CardLarge } from "src/lib/components";
 import { mq, px } from "src/lib/mediaQueries";
 import { capitalizeFirstLetter, getPageMetaData } from "src/lib/helpers";
 import { NotionResponse } from "src/lib/types";
+import { CardGenerator } from "./cardFactory";
 
 const Showcase: FC<Props> = ({ thingsToShowcase, folder }) => {
   if (!thingsToShowcase) return null;
@@ -14,19 +14,7 @@ const Showcase: FC<Props> = ({ thingsToShowcase, folder }) => {
         <Title>{`My ${capitalizeFirstLetter(folder)}`}</Title>
         <CardHolder>
           {thingsToShowcase.map((showcaseItem: NotionResponse, index: number) => {
-            const pageData = getPageMetaData(showcaseItem);
-
-            switch (pageData.cardType) {
-              case "small":
-                return (
-                  <Fragment key={index}>
-                    <Card pageData={pageData} folder={folder} />
-                  </Fragment>
-                );
-
-              case "large":
-                return <Fragment key={index}>{<CardLarge pageData={pageData} folder={folder} />}</Fragment>;
-            }
+            return <CardGenerator cardData={showcaseItem} folder={folder} key={index} />;
           })}
         </CardHolder>
       </Container>

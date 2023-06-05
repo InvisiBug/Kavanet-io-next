@@ -1,5 +1,6 @@
 import React, { FC } from "react";
-import { Layout, Showcase, Card, LandingPage } from "src/lib/components";
+import { Layout, Showcase, LandingPage } from "src/lib/components";
+import Card from "../lib/components/cardFactory/card";
 import { generateTestCard } from "src/lib/helpers";
 import { NotionResponse } from "src/lib/types";
 import { projectsDbId, experimentsDbId, plotsDbId, getDatabase } from "src/lib/api";
@@ -38,12 +39,12 @@ const IndexPage: FC<Props> = ({ projects, experiments, plots }) => {
     folder: "experiments",
   };
 
-  const landingPage = false;
+  const landingPage = true;
 
   return (
     <>
       {landingPage ? (
-        <LandingPage />
+        <LandingPage data={projects} />
       ) : (
         <Layout footer={false}>
           {/* {process.env.NEXT_PUBLIC_LOCAL === "true" && <Card pageData={generateTestCard(testCard)} folder={testCard.folder} />} */}

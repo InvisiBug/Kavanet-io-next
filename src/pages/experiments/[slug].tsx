@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 import styled from "@emotion/styled";
 import { Layout, BackArrow } from "src/lib/components";
 import { getDatabase, experimentsDbId } from "src/lib/api";
+import { ProjectType } from "src/lib/types";
 
 const Experiments: FC<any> = ({ slug, description }) => {
   const [showDetails, setShowDetails] = useState(true);
@@ -69,7 +70,9 @@ export const getServerSideProps = async ({ params }: args) => {
   let description = null;
 
   try {
+    console.log(projects[0]);
     projects.forEach((project: any) => {
+      //* Type out the raw notion response and use it here
       if (project?.properties?.slug?.rich_text[0]?.plain_text === params.slug) {
         description = project?.properties?.description?.rich_text[0]?.plain_text || null;
       }

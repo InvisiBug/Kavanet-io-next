@@ -1,4 +1,4 @@
-import React, { FC, Fragment } from "react";
+import React, { FC, Fragment, useState, useEffect } from "react";
 import styled from "@emotion/styled";
 import Link from "next/link";
 import { Tag } from "src/lib/components";
@@ -7,8 +7,9 @@ import { cardBackground, devBackground } from "src/lib/colours";
 
 //* Live pages are allways shown
 //* Dev pages are only shown when running locally
-const Card: FC<Props> = ({ pageData, folder }) => {
+const CardClean: FC<Props> = ({ pageData, folder }) => {
   const { title, subTitle, thumbnail, slug, status, tags } = pageData;
+  const [isShown, setIsShown] = useState(false);
 
   if (status === "Hidden") {
     return null;
@@ -21,34 +22,41 @@ const Card: FC<Props> = ({ pageData, folder }) => {
   }
 
   return (
-    <>
+    <div onMouseEnter={() => setIsShown(true)} onMouseLeave={() => setIsShown(false)}>
       <Link href={`${folder}/[slug]`} as={`${folder}/${slug}`}>
-        <Container>
-          {thumbnail && <Thumnail src={thumbnail} alt={"Add alt"} />}
-          <Content>
-            <Title>{title}</Title>
-            <Subtitle>{subTitle}</Subtitle>
-            <BottomRow>
-              <Open>Open</Open>
-              <Tags>
+        <div>
+          <Container>
+            {thumbnail && <Thumnail src={thumbnail} alt={"Add alt"} />}
+            {isShown && (
+              <Content>
+                <Title>{title}</Title>
+                <Subtitle>{subTitle}</Subtitle>
+
+                {/* <BottomRow>
+                <Open>Open</Open>
+
+                <Tags>
                 {tags?.map((tag) => {
                   return (
                     <Fragment key={tag}>
-                      <Tag>{tag}</Tag>
+                    <Tag>{tag}</Tag>
                     </Fragment>
-                  );
-                })}
-              </Tags>
-              {status === "Dev" ? <Dev>Work In Progres</Dev> : null}
-            </BottomRow>
-          </Content>
-        </Container>
+                    );
+                  })}
+                  </Tags>
+
+                  {status === "Dev" ? <Dev>Work In Progres</Dev> : null}
+                </BottomRow> */}
+              </Content>
+            )}
+          </Container>
+        </div>
       </Link>
-    </>
+    </div>
   );
 };
 
-export default Card;
+export default CardClean;
 
 interface Props {
   pageData: PageMetaData;
@@ -60,6 +68,7 @@ const borders = false;
 const Container = styled.div`
   border: ${borders ? "2px solid black" : "none"};
   width: 15rem;
+  /* height: 15rem; */
   border-radius: 15px;
   margin-top: 1rem;
   color: white;
@@ -70,8 +79,11 @@ const Container = styled.div`
   margin-left: 0.5rem;
   margin-right: 0.5rem;
 
-  display: flex;
-  flex-direction: column;
+  /* display: flex; */
+  /* flex-direction: column; */
+
+  display: grid;
+
   overflow: hidden;
   box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 
@@ -89,13 +101,38 @@ const Thumnail = styled.img`
   border: ${borders ? "1px solid white" : "none"};
 
   overflow: hidden;
-  object-fit: contain;
+  object-fit: scale-down;
+  grid-area: 1/1;
 `;
 
 // Content
 const Content = styled.div`
+  background: linear-gradient(0deg, #0000003c 10%, #2b2c2bc9 100%);
+  z-index: 10;
+  grid-area: 1/1;
+
+  animation: slide-in 500ms;
+
+  @keyframes slide-in {
+    from {
+      transform: translatey(+100%);
+    }
+    to {
+      transform: translatey(0%);
+    }
+  }
+
+  /* width: 100%; */
+
+  /* top: 0;
+  left: 0;
+  width: 15rem;
+height: 15rem; */
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+
   border: ${borders ? "1px solid orange" : "none"};
-  padding: 0 1rem 0 1rem;
+  /* padding: 0 1rem 0 1rem; */
   display: flex;
   flex-direction: column;
   flex-grow: 1;

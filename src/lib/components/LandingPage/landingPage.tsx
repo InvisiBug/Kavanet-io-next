@@ -4,8 +4,9 @@ import { Global, css } from "@emotion/react";
 import { globalStyles } from "../layout";
 import NavBar from "./NavBar";
 import { Header } from "src/lib/components";
+import Projects from "./projects";
 
-const LandingPage: FC<any> = () => {
+const LandingPage: FC<any> = ({ data }) => {
   return (
     <>
       <Global styles={globalStyles} />
@@ -13,14 +14,15 @@ const LandingPage: FC<any> = () => {
       {/* <NavBar></NavBar> */}
       {/* <NavBar /> */}
       <Header background={false} />
-      <Container />
+      <Picture />
+      <Projects data={data} />
     </>
   );
 };
 
 export default LandingPage;
 
-const Container = styled.div`
+const Picture = styled.div`
   /* width: 100vw; */
   height: 100vh;
   width: 100vw;
@@ -38,10 +40,10 @@ const Container = styled.div`
 
   @keyframes image {
     0% {
-      background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("https://i.imgur.com/uBzjBrT.jpg");
+      background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("https://i.imgur.com/c6LKIfd.jpg");
     }
     100% {
-      background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("https://i.imgur.com/uBzjBrT.jpg");
+      background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("https://i.imgur.com/c6LKIfd.jpg");
     }
   }
 
@@ -53,10 +55,6 @@ const Container = styled.div`
   /* vertical-align: bottom; */
   /* position: relative; */
   /* object-fit: contain; */
-`;
-
-const Container2 = styled.div`
-  height: 100vh;
 `;
 
 const Image = styled.img`

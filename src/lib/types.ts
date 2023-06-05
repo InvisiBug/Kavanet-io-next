@@ -1,5 +1,9 @@
 export type test = any;
 
+export type ProjectType = {
+  properties: PageMetaData;
+};
+
 export type PageMetaData = {
   title?: string;
   slug?: string;
@@ -9,7 +13,7 @@ export type PageMetaData = {
   status?: "Live" | "Dev" | "Hidden";
   description?: string;
   coverImage?: string;
-  cardType?: "small" | "large";
+  cardType?: "small" | "large" | "clean";
 };
 
 export type NotionResponse = any;
