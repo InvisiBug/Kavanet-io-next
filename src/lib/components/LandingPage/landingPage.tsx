@@ -7,16 +7,15 @@ import { Header } from "src/lib/components";
 import Projects from "./projects";
 
 const LandingPage: FC<any> = ({ data }) => {
-  console.log("🚀 ~ file: landingPage.tsx:10 ~ data:", data);
-
   return (
     <>
       <Global styles={globalStyles} />
-      {/* <h1>Landing Page</h1> */}
-      {/* <NavBar></NavBar> */}
-      {/* <NavBar /> */}
       <Header background={false} />
-      <Picture />
+      <Picture>
+        <Image src="https://i.imgur.com/c6LKIfd.jpg"></Image>
+
+        {/* <Image src="https://i.imgur.com/uBzjBrT.jpg"></Image> */}
+      </Picture>
       <Projects data={data} />
     </>
   );
@@ -26,26 +25,24 @@ export default LandingPage;
 
 const Picture = styled.div`
   /* width: 100vw; */
-  height: 100vh;
+  max-height: 100vh;
   width: 100vw;
   position: relative;
   z-index: -1;
   display: flex;
-  justify-content: center;
+  /* justify-content: spacebetween; */
 
-  animation: image 5s infinite alternate;
-
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
+  /* animation: image 5s infinite alternate; */
 
   @keyframes image {
     0% {
-      background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("https://i.imgur.com/c6LKIfd.jpg");
+      /* background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("https://i.imgur.com/c6LKIfd.jpg"); */
+      /* background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)); */
+      transform: translatex(100%);
     }
     100% {
-      background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("https://i.imgur.com/c6LKIfd.jpg");
+      /* background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("https://i.imgur.com/uBzjBrT.jpg"); */
+      transform: translatex(0%);
     }
   }
 
@@ -59,10 +56,19 @@ const Picture = styled.div`
   /* object-fit: contain; */
 `;
 
+const Pic = styled.div`
+  height: 100vh;
+  width: 100vw;
+
+  /* background-position: center; */
+  /* background-repeat: no-repeat; */
+  /* background-size: cover; */
+`;
+
 const Image = styled.img`
   z-index: 1;
   width: 100vw;
-  align-self: flex-end;
+  /* align-self: flex-end; */
   /* width: 100%; */
   /* bottom: 0; */
   /* height: 100%; */

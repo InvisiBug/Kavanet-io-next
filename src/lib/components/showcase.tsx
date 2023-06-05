@@ -8,8 +8,6 @@ import { CardGenerator } from "./cardFactory";
 const Showcase: FC<Props> = ({ thingsToShowcase, folder }) => {
   if (!thingsToShowcase) return null;
 
-  console.log(thingsToShowcase);
-
   return (
     <>
       <Container>
@@ -17,7 +15,6 @@ const Showcase: FC<Props> = ({ thingsToShowcase, folder }) => {
         <CardHolder>
           {thingsToShowcase.map((showcaseItem, index: number) => {
             const cardData = getPageMetaData(showcaseItem);
-            console.log(cardData.folder);
             return <CardGenerator cardData={cardData} folder={cardData.folder} key={index} />;
           })}
         </CardHolder>
