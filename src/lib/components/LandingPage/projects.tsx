@@ -12,11 +12,12 @@ const Projects: FC<Props> = ({ data }) => {
         <InnerContainer>
           {data.map((card: any, index: number) => {
             //? Override the card type to be a clean card
-            if (card?.properties?.cardType?.select?.name) {
-              card.properties.cardType.select.name = "clean";
-            }
+            // if (card?.properties?.cardType?.select?.name) {
+            //   card.properties.cardType.select.name = "clean";
+            // }
+            const cardData = getPageMetaData(card);
 
-            return <CardGenerator cardData={card} folder={"Some folder"} key={index} />;
+            return <CardGenerator cardData={cardData} folder={cardData.folder} key={index} />;
           })}
         </InnerContainer>
       </OuterContainer>
@@ -31,9 +32,8 @@ type Props = {
 };
 
 const OuterContainer = styled.div`
-  border: 1px solid red;
   width: 100vw;
-  /* height: 10vh; */
+  min-height: 100vh;
 
   display: flex;
   justify-content: space-around;
@@ -42,7 +42,8 @@ const OuterContainer = styled.div`
 const InnerContainer = styled.div`
   width: 100%;
   margin: 1rem 5rem 1rem 5rem;
-  border: 1px solid white;
+  padding: 5rem;
+
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;

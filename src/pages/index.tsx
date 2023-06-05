@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { Layout, Showcase, LandingPage } from "src/lib/components";
 import Card from "../lib/components/cardFactory/card";
-import { generateTestCard } from "src/lib/helpers";
+import { generateTestCard, getPageMetaData } from "src/lib/helpers";
 import { NotionResponse } from "src/lib/types";
 import { projectsDbId, experimentsDbId, plotsDbId, getDatabase } from "src/lib/api";
 import { links } from "src/lib/constants";

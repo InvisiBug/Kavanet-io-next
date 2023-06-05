@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Layout, Showcase, Card } from "src/lib/components";
+import { Layout, Showcase } from "src/lib/components";
 import { NotionResponse } from "src/lib/types";
 import { plotsDbId, getDatabase } from "src/lib/api";
 

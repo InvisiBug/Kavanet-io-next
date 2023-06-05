@@ -7,6 +7,8 @@ import { Header } from "src/lib/components";
 import Projects from "./projects";
 
 const LandingPage: FC<any> = ({ data }) => {
+  console.log("🚀 ~ file: landingPage.tsx:10 ~ data:", data);
+
   return (
     <>
       <Global styles={globalStyles} />

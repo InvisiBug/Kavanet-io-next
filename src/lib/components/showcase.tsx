@@ -8,13 +8,17 @@ import { CardGenerator } from "./cardFactory";
 const Showcase: FC<Props> = ({ thingsToShowcase, folder }) => {
   if (!thingsToShowcase) return null;
 
+  console.log(thingsToShowcase);
+
   return (
     <>
       <Container>
         <Title>{`My ${capitalizeFirstLetter(folder)}`}</Title>
         <CardHolder>
-          {thingsToShowcase.map((showcaseItem: NotionResponse, index: number) => {
-            return <CardGenerator cardData={showcaseItem} folder={folder} key={index} />;
+          {thingsToShowcase.map((showcaseItem, index: number) => {
+            const cardData = getPageMetaData(showcaseItem);
+            console.log(cardData.folder);
+            return <CardGenerator cardData={cardData} folder={cardData.folder} key={index} />;
           })}
         </CardHolder>
       </Container>

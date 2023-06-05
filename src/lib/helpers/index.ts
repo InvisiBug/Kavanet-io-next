@@ -40,7 +40,7 @@ export const generateTestCard = ({ title, subTitle, status, slug }: Args): any =
 export const getPageMetaData = (rawCardInfo: any) => {
   const { properties } = rawCardInfo;
 
-  let data: PageMetaData = {};
+  let data: PageMetaData = { folder: "experiments" };
 
   for (const property in properties) {
     switch (property) {
@@ -92,6 +92,11 @@ export const getPageMetaData = (rawCardInfo: any) => {
 
       case "cardType":
         data.cardType = properties[property].select?.name;
+        break;
+
+      case "folder":
+        data.folder = properties[property].select?.name;
+        break;
     }
   }
 
