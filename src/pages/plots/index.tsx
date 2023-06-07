@@ -4,7 +4,6 @@ import { NotionResponse } from "src/lib/types";
 import { plotsDbId, getDatabase } from "src/lib/api";
 
 const PlotsPage: FC<Props> = ({ plots }) => {
-  console.log(plots);
   return (
     <>
       <Layout footer={false}>

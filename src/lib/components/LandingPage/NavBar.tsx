@@ -6,6 +6,8 @@ import { links } from "src/lib/constants";
 import { textSize } from "src/lib/textSize";
 
 const Header: FC = () => {
+  // const local = process.env.NEXT_PUBLIC_LOCAL;
+
   return (
     <>
       <NavBar>
@@ -16,6 +18,10 @@ const Header: FC = () => {
 
           <Links>
             {links.map((link, index) => {
+              // console.log(local);
+              // if (!local) {
+              //   return null;
+              // }
               return (
                 <Link href={link.toLocaleLowerCase()} as={`/${link.toLocaleLowerCase()}`} key={index}>
                   <LinkItem>{link}</LinkItem>

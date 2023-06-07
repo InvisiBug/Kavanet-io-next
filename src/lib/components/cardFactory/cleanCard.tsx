@@ -9,6 +9,7 @@ import { cardBackground, devBackground } from "src/lib/colours";
 //* Dev pages are only shown when running locally
 const CardClean: FC<Props> = ({ pageData, folder }) => {
   const { title, subTitle, thumbnail, slug, status, tags } = pageData;
+  console.log(pageData);
   const [isShown, setIsShown] = useState(false);
 
   if (status === "Hidden") {
@@ -20,39 +21,38 @@ const CardClean: FC<Props> = ({ pageData, folder }) => {
   if (!local && status !== "Live") {
     return null;
   }
+  console.log(tags);
 
   return (
-    <div onMouseEnter={() => setIsShown(true)} onMouseLeave={() => setIsShown(false)}>
+    <OuterContainer>
       <Link href={`${folder}/[slug]`} as={`${folder}/${slug}`}>
-        <div>
-          <Container>
-            {thumbnail && <Thumnail src={thumbnail} alt={"Add alt"} />}
-            {isShown && (
-              <Content>
-                <Title>{title}</Title>
-                <Subtitle>{subTitle}</Subtitle>
+        <Container onMouseEnter={() => setIsShown(true)} onMouseLeave={() => setIsShown(false)}>
+          {thumbnail && <Thumnail src={thumbnail} alt={"Add alt"} />}
+          {isShown && (
+            <Content>
+              <Title>{title}</Title>
+              <Subtitle>{subTitle}</Subtitle>
 
-                {/* <BottomRow>
+              <BottomRow>
                 <Open>Open</Open>
 
                 <Tags>
-                {tags?.map((tag) => {
-                  return (
-                    <Fragment key={tag}>
-                    <Tag>{tag}</Tag>
-                    </Fragment>
+                  {tags?.map((tag) => {
+                    return (
+                      <Fragment key={tag}>
+                        <Tag>{tag}</Tag>
+                      </Fragment>
                     );
                   })}
-                  </Tags>
+                </Tags>
 
-                  {status === "Dev" ? <Dev>Work In Progres</Dev> : null}
-                </BottomRow> */}
-              </Content>
-            )}
-          </Container>
-        </div>
+                {status === "Dev" ? <Dev>Work In Progres</Dev> : null}
+              </BottomRow>
+            </Content>
+          )}
+        </Container>
       </Link>
-    </div>
+    </OuterContainer>
   );
 };
 
@@ -64,6 +64,10 @@ interface Props {
 }
 
 const borders = false;
+
+const OuterContainer = styled.div`
+  border: 1px solid red;
+`;
 
 const Container = styled.div`
   border: ${borders ? "2px solid black" : "none"};

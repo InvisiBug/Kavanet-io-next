@@ -6,12 +6,11 @@ import React, { FC, Fragment } from "react";
 import styled from "@emotion/styled";
 import { Layout, BackArrow } from "src/lib/components";
 import { NotionAPI } from "notion-client";
-
+import { ExtendedRecordMap } from "notion-types";
 import { mq, px } from "src/lib/mediaQueries";
-
 import { NotionRenderer } from "react-notion-x";
 
-const Experiments: FC<any> = ({ recordMap }) => {
+const Experiments: FC<Props> = ({ recordMap }) => {
   return (
     <>
       <Layout header={true} footer={false}>
@@ -23,6 +22,10 @@ const Experiments: FC<any> = ({ recordMap }) => {
       </Layout>
     </>
   );
+};
+
+type Props = {
+  recordMap: ExtendedRecordMap;
 };
 
 export default Experiments;

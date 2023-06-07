@@ -1,7 +1,5 @@
 import React, { FC } from "react";
 import styled from "@emotion/styled";
-import ProjectCard from "./projectCard";
-import Card from "../cardFactory/card";
 import { getPageMetaData } from "src/lib/helpers";
 import { CardGenerator } from "../cardFactory";
 
@@ -11,10 +9,6 @@ const Projects: FC<Props> = ({ data }) => {
       <OuterContainer>
         <InnerContainer>
           {data.map((card: any, index: number) => {
-            //? Override the card type to be a clean card
-            // if (card?.properties?.cardType?.select?.name) {
-            //   card.properties.cardType.select.name = "clean";
-            // }
             const cardData = getPageMetaData(card);
 
             return <CardGenerator cardData={cardData} folder={cardData.folder} key={index} />;
