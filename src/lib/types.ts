@@ -9,7 +9,7 @@ export type PageMetaData = {
   slug?: string;
   subTitle?: string;
   thumbnail?: string;
-  tags?: string[];
+  categories?: string[];
   status?: "Live" | "Dev" | "Hidden";
   description?: string;
   coverImage?: string;

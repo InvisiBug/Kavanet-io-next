@@ -63,15 +63,15 @@ export const getPageMetaData = (rawCardInfo: any) => {
         data.thumbnail = uploadedImage ? uploadedImage : linkedImage;
         break;
 
-      case "tags":
-        const tags: string[] = [];
+      case "categories":
+        const categories: string[] = [];
 
         properties[property].multi_select.forEach((element: any) => {
-          tags.push(element.name);
+          categories.push(element.name);
         });
 
-        if (tags.length > 0) {
-          data.tags = tags;
+        if (categories.length > 0) {
+          data.categories = categories;
         }
         break;
 

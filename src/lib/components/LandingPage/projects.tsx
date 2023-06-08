@@ -25,20 +25,31 @@ type Props = {
   data: any;
 };
 
+const borders = false;
+
 const OuterContainer = styled.div`
+  border: ${borders ? "1px solid orange" : "none"};
   width: 100vw;
   min-height: 100vh;
 
   display: flex;
-  justify-content: space-around;
+  /* justify-content: space-around; */
 `;
 
 const InnerContainer = styled.div`
+  border: ${borders ? "1px solid white" : "none"};
   width: 100%;
-  margin: 1rem 5rem 1rem 5rem;
+  /* margin: 1rem 5rem 1rem 5rem; */
   padding: 5rem;
 
   display: flex;
   justify-content: space-around;
+  align-items: center;
   flex-wrap: wrap;
+
+  /* width: 600px; */
+  /* display: grid;
+  align-items: center;
+  grid-gap: 10px;
+  grid-template-columns: repeat(6, 15%); */
 `;

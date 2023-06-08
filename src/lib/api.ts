@@ -19,25 +19,3 @@ export const getPage = async (pageId: string) => {
   const response = await notion.pages.retrieve({ page_id: pageId });
   return response;
 };
-
-export const getBlocks = async (blockId: any) => {
-  const blocks = [];
-  let cursor;
-
-  while (true) {
-    const { results, next_cursor }: { results: any; next_cursor: any } = await notion.blocks?.children?.list({
-      start_cursor: cursor,
-      block_id: blockId,
-    });
-
-    // console.log(results);
-
-    blocks.push(...results);
-    if (!next_cursor) {
-      break;
-    }
-    cursor = next_cursor;
-  }
-
-  return blocks;
-};

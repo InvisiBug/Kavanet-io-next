@@ -8,8 +8,8 @@ import { cardBackground, devBackground } from "src/lib/colours";
 //* Live pages are allways shown
 //* Dev pages are only shown when running locally
 const CardClean: FC<Props> = ({ pageData, folder }) => {
-  const { title, subTitle, thumbnail, slug, status, tags } = pageData;
-  console.log(pageData);
+  const { title, subTitle, thumbnail, slug, status, categories } = pageData;
+
   const [isShown, setIsShown] = useState(false);
 
   if (status === "Hidden") {
@@ -21,7 +21,6 @@ const CardClean: FC<Props> = ({ pageData, folder }) => {
   if (!local && status !== "Live") {
     return null;
   }
-  console.log(tags);
 
   return (
     <OuterContainer>
@@ -34,13 +33,11 @@ const CardClean: FC<Props> = ({ pageData, folder }) => {
               <Subtitle>{subTitle}</Subtitle>
 
               <BottomRow>
-                <Open>Open</Open>
-
                 <Tags>
-                  {tags?.map((tag) => {
+                  {categories?.map((category) => {
                     return (
-                      <Fragment key={tag}>
-                        <Tag>{tag}</Tag>
+                      <Fragment key={category}>
+                        <Tag>{category}</Tag>
                       </Fragment>
                     );
                   })}
@@ -66,7 +63,7 @@ interface Props {
 const borders = false;
 
 const OuterContainer = styled.div`
-  border: 1px solid red;
+  border: ${borders ? "2px solid red" : "none"};
 `;
 
 const Container = styled.div`
