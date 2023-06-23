@@ -5,28 +5,27 @@ import { capitalizeFirstLetter, getPageMetaData } from "src/lib/helpers";
 import { NotionResponse } from "src/lib/types";
 import { CardGenerator } from "./cardFactory";
 
-const Showcase: FC<Props> = ({ thingsToShowcase, folder }) => {
+const Showcase: FC<Props> = ({ thingsToShowcase }) => {
   if (!thingsToShowcase) return null;
 
   return (
     <>
       <Container>
-        <Title>{`My ${capitalizeFirstLetter(folder)}`}</Title>
+        <Title>{`My ${capitalizeFirstLetter(thingsToShowcase[0].folder)}`}</Title>
         <CardHolder>
           {thingsToShowcase.map((showcaseItem, index: number) => {
-            const cardData = getPageMetaData(showcaseItem);
-            return <CardGenerator cardData={cardData} folder={cardData.folder} key={index} />;
+            return <CardGenerator cardData={showcaseItem} folder={showcaseItem.folder} key={index} />;
           })}
         </CardHolder>
       </Container>
     </>
   );
 };
+
 export default Showcase;
 
 interface Props {
   thingsToShowcase: NotionResponse[];
-  folder: string;
 }
 
 const borders = false;

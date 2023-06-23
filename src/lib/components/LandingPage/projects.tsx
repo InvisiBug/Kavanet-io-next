@@ -11,6 +11,8 @@ const Projects: FC<Props> = ({ data }) => {
           {data.map((card: any, index: number) => {
             const cardData = getPageMetaData(card);
 
+            if (cardData.folder === undefined) return null;
+
             return <CardGenerator cardData={cardData} folder={cardData.folder} key={index} />;
           })}
         </InnerContainer>

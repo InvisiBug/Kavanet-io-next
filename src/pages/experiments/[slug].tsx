@@ -70,7 +70,7 @@ export const getServerSideProps = async ({ params }: args) => {
   let description = null;
 
   try {
-    console.log(projects[0]);
+    // console.log(projects[0]);
     projects.forEach((project: any) => {
       //* Type out the raw notion response and use it here
       if (project?.properties?.slug?.rich_text[0]?.plain_text === params.slug) {

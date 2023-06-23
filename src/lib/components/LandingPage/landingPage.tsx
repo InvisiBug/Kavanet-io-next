@@ -42,11 +42,11 @@ const Picture = styled.div`
     0% {
       /* background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("https://i.imgur.com/c6LKIfd.jpg"); */
       /* background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)); */
-      transform: translatex(100%);
+      /* transform: translatex(100%); */
     }
     100% {
       /* background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("https://i.imgur.com/uBzjBrT.jpg"); */
-      transform: translatex(0%);
+      /* transform: translatex(0%); */
     }
   }
 
