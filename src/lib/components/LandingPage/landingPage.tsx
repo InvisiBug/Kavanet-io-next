@@ -15,7 +15,7 @@ const LandingPage: FC<any> = ({ data }) => {
       <Picture>
         {/* <Image src="https://i.imgur.com/c6LKIfd.jpg"></Image> */}
         <Image src={Pic.src}></Image>
-        <Image src={Pic.src}></Image>
+        {/* <Image src={Pic.src}></Image> */}
         {/* <Image src="https://lh3.googleusercontent.com/pw/AJFCJaXF6u37enhP_zY_VUBoWxp8K5mhPYqcv2FxNYjqcpUGdbP2_O9wLGiD5b7M7Uzm6K6rvZMbRVi-h9gVKYavyx3HvnGm5CHJUHORlTBv9_j9E4v7Q9I-qMFBMEXfJO1MJnAiE84VJ2SvfnMxydYQq3ytfA=w2952-h1968-s-no?authuser=0"></Image> */}
 
         {/* <Image src="https://i.imgur.com/uBzjBrT.jpg"></Image> */}
@@ -27,12 +27,16 @@ const LandingPage: FC<any> = ({ data }) => {
 
 export default LandingPage;
 
+const borders = false;
+
 const Picture = styled.div`
+  border: ${borders ? "2px solid green" : "none"};
   /* width: 100vw; */
   max-height: 100vh;
   width: 100vw;
   position: relative;
   z-index: -1;
+  object-fit: contain;
   display: flex;
   /* justify-content: spacebetween; */
 
@@ -40,12 +44,12 @@ const Picture = styled.div`
 
   @keyframes image {
     0% {
-      /* background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("https://i.imgur.com/c6LKIfd.jpg"); */
+      background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("https://i.imgur.com/c6LKIfd.jpg");
       /* background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)); */
       /* transform: translatex(100%); */
     }
     100% {
-      /* background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("https://i.imgur.com/uBzjBrT.jpg"); */
+      background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("https://i.imgur.com/uBzjBrT.jpg");
       /* transform: translatex(0%); */
     }
   }
@@ -73,8 +77,8 @@ const Image = styled.img`
   z-index: 1;
   width: 100vw;
   /* align-self: flex-end; */
-  /* width: 100%; */
-  /* bottom: 0; */
+  width: 100%;
+  bottom: 0;
   /* height: 100%; */
   /* object-fit: contain; */
   /* object-position: 0% 0%; */

@@ -32,8 +32,9 @@ const borders = false;
 
 const Container = styled.div`
   border: ${borders ? "1px solid green" : "none"};
-  /* width: ${px("xmedium")}px; */
+  width: ${px("xmedium")}px;
   display: flex;
+  margin: auto;
   align-items: center;
   flex-direction: column;
 

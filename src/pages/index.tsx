@@ -68,11 +68,24 @@ export default IndexPage;
 
 export const getServerSideProps = async () => {
   try {
-    const experiments = await getDatabase(projectsDbId);
+    const data = await getDatabase(projectsDbId);
+    // console.log(data.length);
+
+    // @ts-ignore
+    const test = data.filter((item) => item.properties.status.select.name === "Live");
+
+    const shuffledArray = test.sort(() => 0.5 - Math.random()).slice(0, 10);
+    // console.log(shuffledArray.length);
+
+    const experiments: typeof data = [];
+
+    while (experiments.length > 10) {
+      experiments.splice(Math.random() / experiments.length, 1);
+    }
 
     return {
       props: {
-        experiments,
+        experiments: shuffledArray,
       },
     };
   } catch (error) {

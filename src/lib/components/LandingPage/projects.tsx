@@ -34,16 +34,13 @@ const OuterContainer = styled.div`
   width: 100vw;
   min-height: 100vh;
 
-  display: flex;
+  /* display: flex; */
   /* justify-content: space-around; */
 `;
 
 const InnerContainer = styled.div`
   border: ${borders ? "1px solid white" : "none"};
-  width: 100%;
-  /* margin: 1rem 5rem 1rem 5rem; */
   padding: 5rem;
-
   display: flex;
   justify-content: space-around;
   align-items: center;

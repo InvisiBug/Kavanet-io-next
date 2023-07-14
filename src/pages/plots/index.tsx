@@ -1,11 +1,11 @@
 import React, { FC } from "react";
 import { Layout, Showcase } from "src/lib/components";
-import { NotionResponse } from "src/lib/types";
+import { NotionResponse, PageMetaData } from "src/lib/types";
 import { projectsDbId, getDatabase } from "src/lib/api";
 import { getPageMetaData } from "src/lib/helpers";
 
 const PlotsPage: FC<Props> = ({ plots }) => {
-  const formattedExperiments: NotionResponse = [];
+  const formattedExperiments: PageMetaData[] = [];
 
   plots.forEach((plot) => {
     formattedExperiments.push(getPageMetaData(plot));

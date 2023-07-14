@@ -49,6 +49,7 @@ const Container = styled.div<NavbarProps>`
 
   position: fixed;
   width: 100vw;
+  margin-top: 0px;
 
   /* background: ${background}; */
 

@@ -61,21 +61,21 @@ const SiteContainer = styled.div`
 
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
 `;
 
 const Content = styled.div`
   border: ${borders ? "2px solid green" : "none"};
-  ${mq("large")} {
+  /* ${mq("large")} {
     width: ${px("large")}px;
-  }
+  } */
 
   /* flex: auto; */
   /* overflow-y: auto; */
 
-  display: flex;
+  /* display: flex;
   align-items: center;
-  flex-direction: column;
+  flex-direction: column; */
   margin-top: ${(props: { header: boolean }) => (props.header ? "6rem" : "0")};
 
   /* flex-wrap: wrap; */
