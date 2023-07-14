@@ -29,7 +29,7 @@ interface Props {
 export default ExperimentsPage;
 
 export const getServerSideProps = async () => {
-  const experiments = await getDatabase(projectsDbId);
+  const experiments = await getDatabase();
 
   return {
     props: {

@@ -37,7 +37,7 @@ const Description = styled.div`
 `;
 
 export const getServerSideProps = async ({ params }: args) => {
-  const projects = await getDatabase(experimentsDbId);
+  const projects = await getDatabase();
 
   let description = null;
 

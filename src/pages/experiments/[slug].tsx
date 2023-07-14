@@ -65,14 +65,14 @@ const Description = styled.div`
 `;
 
 export const getServerSideProps = async ({ params }: args) => {
-  const projects: any = await getDatabase(experimentsDbId);
+  const projects: any = await getDatabase();
 
   let description = null;
 
   try {
     // console.log(projects[0]);
     projects.forEach((project: any) => {
-      //* Type out the raw notion response and use it here
+      // find the page matching the slug passed in and return its description
       if (project?.properties?.slug?.rich_text[0]?.plain_text === params.slug) {
         description = project?.properties?.description?.rich_text[0]?.plain_text || null;
       }

@@ -1,11 +1,9 @@
-import React, { FC } from "react";
-import { Layout, Showcase, BackArrow } from "src/lib/components";
-import { NotionResponse } from "src/lib/types";
+import React from "react";
+import { Layout, BackArrow } from "src/lib/components";
 import styled from "@emotion/styled";
-import { experimentsDbId, getDatabase } from "src/lib/api";
 import dynamic from "next/dynamic";
 
-const ExperimentsPage: FC<Props> = ({ experiments }) => {
+const WIPpage = () => {
   const folder = "experiments";
   const name = "repulser";
 
@@ -21,11 +19,7 @@ const ExperimentsPage: FC<Props> = ({ experiments }) => {
   );
 };
 
-interface Props {
-  experiments: NotionResponse[]; // Not pageMetaData type at this point
-}
-
-export default ExperimentsPage;
+export default WIPpage;
 
 const borders = false;
 

@@ -3,13 +3,13 @@ import styled from "@emotion/styled";
 import { getPageMetaData } from "src/lib/helpers";
 import { CardGenerator } from "../cardFactory";
 
-const Projects: FC<Props> = ({ data }) => {
+const Projects: FC<Props> = ({ dbItems }) => {
   return (
     <>
       <OuterContainer>
         <InnerContainer>
-          {data.map((card: any, index: number) => {
-            const cardData = getPageMetaData(card);
+          {dbItems.map((dbItem: any, index: number) => {
+            const cardData = getPageMetaData(dbItem);
 
             if (cardData.folder === undefined) return null;
 
@@ -24,7 +24,7 @@ const Projects: FC<Props> = ({ data }) => {
 export default Projects;
 
 type Props = {
-  data: any;
+  dbItems: any;
 };
 
 const borders = false;

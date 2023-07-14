@@ -29,7 +29,7 @@ interface Props {
 export default PlotsPage;
 
 export const getServerSideProps = async () => {
-  const plots = await getDatabase(projectsDbId);
+  const plots = await getDatabase();
 
   return {
     props: {

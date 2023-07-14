@@ -7,7 +7,7 @@ import { Header } from "src/lib/components";
 import Projects from "./projects";
 import Pic from "./pics/1.jpg";
 
-const LandingPage: FC<any> = ({ data }) => {
+const LandingPage: FC<any> = ({ dbItems }) => {
   return (
     <>
       <Global styles={globalStyles} />
@@ -20,7 +20,7 @@ const LandingPage: FC<any> = ({ data }) => {
 
         {/* <Image src="https://i.imgur.com/uBzjBrT.jpg"></Image> */}
       </Picture>
-      <Projects data={data} />
+      <Projects dbItems={dbItems} />
     </>
   );
 };
