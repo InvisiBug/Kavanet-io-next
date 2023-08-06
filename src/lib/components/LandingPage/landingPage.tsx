@@ -2,7 +2,6 @@ import React, { FC } from "react";
 import styled from "@emotion/styled";
 import { Global, css } from "@emotion/react";
 import { globalStyles } from "../layout";
-import NavBar from "./NavBar";
 import { Header } from "src/lib/components";
 import Projects from "./projects";
 import Pic from "./pics/1.jpg";

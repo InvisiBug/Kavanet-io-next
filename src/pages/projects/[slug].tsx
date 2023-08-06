@@ -14,7 +14,7 @@ const Experiments: FC<Props> = ({ recordMap }) => {
   return (
     <>
       <Layout header={true} footer={false}>
-        <BackArrow />
+        {/* <BackArrow /> */}
 
         {/* <Content> */}
         <NotionRenderer recordMap={recordMap} fullPage={false} darkMode={true} />

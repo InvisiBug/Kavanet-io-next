@@ -1,18 +1,12 @@
 import React, { FC } from "react";
-import { Layout, Showcase, LandingPage } from "src/lib/components";
-import Card from "../lib/components/cardFactory/card";
-import { generateTestCard, getPageMetaData } from "src/lib/helpers";
+import { LandingPage } from "src/lib/components";
 import { NotionResponse } from "src/lib/types";
-import { projectsDbId, experimentsDbId, plotsDbId, getDatabase } from "src/lib/api";
-import { links } from "src/lib/constants";
+import { getDatabase } from "src/lib/api";
 
 const IndexPage: FC<Props> = ({ dbItems }) => {
-  console.log("🚀 ~ file: index.tsx:10 ~ dbItems:", dbItems);
-
   const landingPage = true;
 
   return <>{landingPage ? <LandingPage dbItems={dbItems} /> : null}</>;
-  // return <h1>hello</h1>;
 };
 
 interface Props {
