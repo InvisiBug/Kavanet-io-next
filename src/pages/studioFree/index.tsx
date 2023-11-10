@@ -6,16 +6,13 @@ import axios from "axios";
 import { Gym } from "./p5/types";
 
 const StudioFree: FC<Props> = ({ data }) => {
-  const folder = "experiments";
-  const name = "studioFree";
-
   const Sketch = dynamic(() => import(`./p5`), { ssr: false });
 
   return (
     <>
       <Layout header={false} footer={false}>
         <BackArrow />
-        <Sketch data={data} />
+        {/* <Sketch data={data} /> */}
       </Layout>
     </>
   );
@@ -27,23 +24,23 @@ type Props = {
 
 export default StudioFree;
 
-export const getServerSideProps = async () => {
-  try {
-    const { data } = await axios.get<Gym>("https://businessgateway.puregym.com/api/bookings/v1/timetable/75/scheduled-class");
+// export const getServerSideProps = async () => {
+//   try {
+//     const { data } = await axios.get<Gym>("https://businessgateway.puregym.com/api/bookings/v1/timetable/75/scheduled-class");
 
-    return {
-      props: {
-        data,
-      },
-    };
-  } catch (error) {
-    return {
-      props: {
-        data: null,
-      },
-    };
-  }
-};
+//     return {
+//       props: {
+//         data,
+//       },
+//     };
+//   } catch (error) {
+//     return {
+//       props: {
+//         data: null,
+//       },
+//     };
+//   }
+// };
 
 const borders = false;
 

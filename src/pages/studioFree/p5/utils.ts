@@ -1,5 +1,8 @@
 import { Gym, ActivitiesEntity } from "./types";
 
+/*
+  Returns a 2D array of the schedule for the next x days (set to 5)
+*/
 export const parseSchedule = (data: ActivitiesEntity[]) => {
   const numDays = 5;
   let busySchedule: Schedule[][] = [];
@@ -41,12 +44,7 @@ export const parseSchedule = (data: ActivitiesEntity[]) => {
     busySchedule.push(todaysSchedule);
   });
 
-  // //* Create an array of times the studio is free over the next 3 days
-  // Array.from({ length: numDays }).forEach((_, dayIndex: number) => {
-  //   freeSchedule.push(getFreeTimes(busySchedule[dayIndex]));
-  // });
-
-  let finalSchedule = new Array<string[]>();
+  let finalSchedule = new Array<number[]>();
 
   Array.from({ length: numDays }).forEach((_, dayIndex: number) => {
     finalSchedule.push(markTimeline(busySchedule[dayIndex]));
@@ -101,7 +99,7 @@ export function getFreeTimesSchedule(schedule: { start: string; end: string; dur
 
 export function markTimeline(studioInUseToday: { start: string; end: string }[]) {
   // Initialize the timeline
-  let timeline = new Array<string>((24 * 60) / 15).fill(" ");
+  let timeline = new Array<number>((24 * 60) / 15).fill(0);
 
   // Mark the times in the timeline
   for (let timeSlot of studioInUseToday) {
@@ -109,7 +107,7 @@ export function markTimeline(studioInUseToday: { start: string; end: string }[])
     let end = (parseInt(timeSlot.end.split(":")[0]) * 60 + parseInt(timeSlot.end.split(":")[1])) / 15;
 
     for (let i = start; i < end; i++) {
-      timeline[i] = "X";
+      timeline[i] = 1;
     }
   }
   return timeline;
