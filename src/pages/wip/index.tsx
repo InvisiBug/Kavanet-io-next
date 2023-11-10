@@ -2,10 +2,13 @@ import React from "react";
 import { Layout, BackArrow } from "src/lib/components";
 import styled from "@emotion/styled";
 import dynamic from "next/dynamic";
+import axios from "axios";
 
-const WIPpage = () => {
+const WIPpage = (props: any) => {
   const folder = "experiments";
-  const name = "repulser";
+  const name = "studioFree";
+
+  console.log(props.data);
 
   const Sketch = dynamic(() => import(`src/content/${folder}/${name}`), { ssr: false });
 
@@ -20,6 +23,28 @@ const WIPpage = () => {
 };
 
 export default WIPpage;
+
+// export const getServerSideProps = async () => {
+//   try {
+//     let dataa;
+//     console.log("boop");
+//     const { data } = await axios.get("https://businessgateway.puregym.com/api/bookings/v1/timetable/75/scheduled-class");
+
+//     console.log(data);
+
+//     return {
+//       props: {
+//         data,
+//       },
+//     };
+//   } catch (error) {
+//     return {
+//       props: {
+//         experiments: [],
+//       },
+//     };
+//   }
+// };
 
 const borders = false;
 
