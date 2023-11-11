@@ -1,2 +1,2 @@
-// export const links = ["Experiments", "Plots", "Projects"];
-export const links = ["Experiments"];
+export const links = ["WIP", "StudioFree", "Projects", "Experiments", "Plots"];
+// export const links = ["Experiments", "Recipes"];

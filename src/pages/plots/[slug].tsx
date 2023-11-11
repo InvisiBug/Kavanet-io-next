@@ -5,7 +5,7 @@ import { Layout, BackArrow } from "src/lib/components";
 import { getDatabase, experimentsDbId } from "src/lib/api";
 
 const Experiments: FC<any> = ({ slug, description }) => {
-  const Sketch = dynamic(() => import(`src/plots/${slug}`), { ssr: false });
+  const Sketch = dynamic(() => import(`src/content/plots/${slug}`), { ssr: false });
 
   return (
     <>
@@ -37,7 +37,7 @@ const Description = styled.div`
 `;
 
 export const getServerSideProps = async ({ params }: args) => {
-  const projects: any = await getDatabase(experimentsDbId);
+  const projects = await getDatabase();
 
   let description = null;
 

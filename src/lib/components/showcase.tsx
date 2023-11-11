@@ -1,58 +1,57 @@
-import React, { FC, Fragment } from "react";
+import React, { FC } from "react";
 import styled from "@emotion/styled";
-import { Card } from "src/lib/components";
 import { mq, px } from "src/lib/mediaQueries";
-import { capitalizeFirstLetter } from "src/lib/helpers";
+import { capitalizeFirstLetter, getPageMetaData } from "src/lib/helpers";
 import { NotionResponse } from "src/lib/types";
+import { CardGenerator } from "./cardFactory";
 
-const Showcase: FC<Props> = ({ thingsToShowcase, folder }) => {
-  if (!thingsToShowcase) return <></>;
+const Showcase: FC<Props> = ({ thingsToShowcase }) => {
+  if (!thingsToShowcase) return null;
 
   return (
     <>
       <Container>
-        <Title>{`My ${capitalizeFirstLetter(folder)}`}</Title>
+        <Title>{`My ${capitalizeFirstLetter(thingsToShowcase[0].folder)}`}</Title>
         <CardHolder>
-          {thingsToShowcase.map((showcaseItem: NotionResponse, index: number) => {
-            return (
-              <Fragment key={index}>
-                <Card pageData={showcaseItem} folder={folder} />
-              </Fragment>
-            );
+          {thingsToShowcase.map((showcaseItem, index: number) => {
+            return <CardGenerator cardData={showcaseItem} folder={showcaseItem.folder} key={index} />;
           })}
         </CardHolder>
       </Container>
     </>
   );
 };
+
 export default Showcase;
 
 interface Props {
   thingsToShowcase: NotionResponse[];
-  folder: string;
 }
 
 const borders = false;
 
 const Container = styled.div`
   border: ${borders ? "1px solid green" : "none"};
-  width: 100%;
+  width: ${px("xmedium")}px;
   display: flex;
+  margin: auto;
   align-items: center;
   flex-direction: column;
 
   padding-bottom: 1rem;
   ${mq("small")} {
+    max-width: ${px("small")}px;
     /* background-color: purple; */
   }
   ${mq("medium")} {
     /* background-color: red; */
+    max-width: ${px("medium")}px;
   }
   ${mq("large")} {
     /* max-width: 90vw; */
 
     /* background-color: orange; */
-    max-width: ${px("large")}px;
+    max-width: ${px("xmedium")}px;
     /* height: 1000px; */
   }
 `;

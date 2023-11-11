@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  imageConverter:
+    container_name: imageConverter
+    image: nginx
+    ports:
+      - 3000:80
+    build: # Command
+      context: . # This folder on the left
+      dockerfile: ./Dockerfile

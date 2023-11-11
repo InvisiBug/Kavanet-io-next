@@ -34,7 +34,7 @@ const Layer = styled.div`
 
 export default Layout;
 
-const globalStyles = css`
+export const globalStyles = css`
   body {
     margin: 0;
     -webkit-font-smoothing: antialiased;
@@ -43,9 +43,13 @@ const globalStyles = css`
     color: white;
     font-family: "Nunito", sans-serif;
     user-select: none;
-    overflow: scroll;
+    /* overflow: none; */
     /* overscroll-behavior: none; */
     background-color: ${background};
+    -ms-overflow-style: none;
+    ::-webkit-scrollbar {
+      display: none;
+    }
   }
 `;
 
@@ -57,18 +61,21 @@ const SiteContainer = styled.div`
 
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
 `;
 
 const Content = styled.div`
   border: ${borders ? "2px solid green" : "none"};
+  /* ${mq("large")} {
+    width: ${px("large")}px;
+  } */
 
-  flex: auto;
-  overflow-y: auto;
+  /* flex: auto; */
+  /* overflow-y: auto; */
 
-  display: flex;
+  /* display: flex;
   align-items: center;
-  flex-direction: column;
+  flex-direction: column; */
   margin-top: ${(props: { header: boolean }) => (props.header ? "6rem" : "0")};
 
   /* flex-wrap: wrap; */

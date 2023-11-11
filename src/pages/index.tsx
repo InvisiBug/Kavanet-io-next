@@ -1,73 +1,42 @@
 import React, { FC } from "react";
-import { Layout, Showcase, Card } from "src/lib/components";
-import { generateTestCard } from "src/lib/helpers";
-
+import { LandingPage } from "src/lib/components";
 import { NotionResponse } from "src/lib/types";
-import { projectsDbId, experimentsDbId, plotsDbId, getDatabase } from "src/lib/api";
-import { links } from "src/lib/constants";
+import { getDatabase } from "src/lib/api";
 
-const IndexPage: FC<Props> = ({ projects, experiments, plots }) => {
-  // console.log("Projects:", projects.properties);
-  // const testCard = {
-  //   title: "Poi Image Converter",
-  //   subTitle: "Poi Image Converter that im currently working on",
-  //   status: "Live",
-  //   slug: "imageConverter",
-  // };
+const IndexPage: FC<Props> = ({ dbItems }) => {
+  const landingPage = true;
 
-  // const testCard = {
-  //   title: "Blank Default p5 experiment",
-  //   subTitle: "This is a blank P5js sketch template",
-  //   status: "Live",
-  //   slug: "blankSlate",
-  //   // types: ["Test", "Experiment"], //* Not implemented yet
-  // };
-
-  // const testCard = {
-  //   title: "Swing gems",
-  //   subTitle: "My attempt at the swing gems game",
-  //   status: "Live",
-  //   slug: "swingGems",
-  //   // types: ["Test", "Experiment"], //* Not implemented yet
-  // };
-
-  const testCard = {
-    title: "Vertex",
-    subTitle: "",
-    status: "Live",
-    slug: "vertex",
-  };
-
-  return (
-    <>
-      <Layout footer={false}>
-        {process.env.NEXT_PUBLIC_LOCAL === "true" && <Card pageData={generateTestCard(testCard)} folder={"experiments"} />}
-        {links.includes("Plots") ? <Showcase thingsToShowcase={plots} folder={"plots"} /> : null}
-        {links.includes("Experiments") ? <Showcase thingsToShowcase={experiments} folder={"experiments"} /> : null}
-        {links.includes("Projects") ? <Showcase thingsToShowcase={projects} folder={"projects"} /> : null}
-      </Layout>
-    </>
-  );
+  return <>{landingPage ? <LandingPage dbItems={dbItems} /> : null}</>;
 };
 
 interface Props {
-  experiments: NotionResponse[]; // Not pageMetaData type at this point
-  projects: NotionResponse[];
-  plots: NotionResponse[];
+  dbItems: NotionResponse[]; // Not pageMetaData type at this point
 }
 
 export default IndexPage;
 
+/**
+ * Gets all elements in database and returns 10 random ones
+ */
 export const getServerSideProps = async () => {
-  const experiments = await getDatabase(experimentsDbId);
-  const projects = await getDatabase(projectsDbId);
-  const plots = await getDatabase(plotsDbId);
+  try {
+    const allDbItems = await getDatabase();
 
-  return {
-    props: {
-      projects,
-      experiments,
-      plots,
-    },
-  };
+    // @ts-ignore
+    const liveDbItems = allDbItems.filter((item) => item.properties.status.select.name === "Live");
+
+    const randomDbItems = liveDbItems.sort(() => 0.5 - Math.random()).slice(0, 10);
+
+    return {
+      props: {
+        dbItems: randomDbItems,
+      },
+    };
+  } catch (error) {
+    return {
+      props: {
+        experiments: [],
+      },
+    };
+  }
 };

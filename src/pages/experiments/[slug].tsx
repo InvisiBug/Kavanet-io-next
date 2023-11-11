@@ -3,10 +3,11 @@ import dynamic from "next/dynamic";
 import styled from "@emotion/styled";
 import { Layout, BackArrow } from "src/lib/components";
 import { getDatabase, experimentsDbId } from "src/lib/api";
+import { ProjectType } from "src/lib/types";
 
 const Experiments: FC<any> = ({ slug, description }) => {
   const [showDetails, setShowDetails] = useState(true);
-  const Sketch = dynamic(() => import(`src/experiments/${slug}`), { ssr: false });
+  const Sketch = dynamic(() => import(`src/content/experiments/${slug}`), { ssr: false });
 
   return (
     <>
@@ -64,12 +65,14 @@ const Description = styled.div`
 `;
 
 export const getServerSideProps = async ({ params }: args) => {
-  const projects: any = await getDatabase(experimentsDbId);
+  const projects: any = await getDatabase();
 
   let description = null;
 
   try {
+    // console.log(projects[0]);
     projects.forEach((project: any) => {
+      // find the page matching the slug passed in and return its description
       if (project?.properties?.slug?.rich_text[0]?.plain_text === params.slug) {
         description = project?.properties?.description?.rich_text[0]?.plain_text || null;
       }
