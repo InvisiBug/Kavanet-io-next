@@ -3,16 +3,16 @@ import { Layout, BackArrow } from "src/lib/components";
 import styled from "@emotion/styled";
 import dynamic from "next/dynamic";
 import axios from "axios";
-import { Gym } from "./p5/types";
+import { Gym } from "../../content/studioFree/types";
 
 const StudioFree: FC<Props> = ({ data }) => {
-  const Sketch = dynamic(() => import(`./p5`), { ssr: false });
+  const Sketch = dynamic(() => import(`src/content/studioFree`), { ssr: false }); // Have to import from not the pages folder
 
   return (
     <>
       <Layout header={false} footer={false}>
         <BackArrow />
-        {/* <Sketch data={data} /> */}
+        <Sketch data={data} />
       </Layout>
     </>
   );
@@ -24,23 +24,23 @@ type Props = {
 
 export default StudioFree;
 
-// export const getServerSideProps = async () => {
-//   try {
-//     const { data } = await axios.get<Gym>("https://businessgateway.puregym.com/api/bookings/v1/timetable/75/scheduled-class");
+export const getServerSideProps = async () => {
+  try {
+    const { data } = await axios.get<Gym>("https://businessgateway.puregym.com/api/bookings/v1/timetable/75/scheduled-class");
 
-//     return {
-//       props: {
-//         data,
-//       },
-//     };
-//   } catch (error) {
-//     return {
-//       props: {
-//         data: null,
-//       },
-//     };
-//   }
-// };
+    return {
+      props: {
+        data,
+      },
+    };
+  } catch (error) {
+    return {
+      props: {
+        data: null,
+      },
+    };
+  }
+};
 
 const borders = false;
 

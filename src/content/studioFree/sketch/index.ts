@@ -98,7 +98,6 @@ export const sketch = (p5: P5CanvasInstance<MySketchProps>) => {
     Raw schedule data is passed in
     Parse the data and save the parsed schedule
   */
-  // @ts-ignore:next-line
   p5.updateWithProps = ({ sketchProps }: { sketchProps: Gym }) => {
     const { activities } = sketchProps;
 

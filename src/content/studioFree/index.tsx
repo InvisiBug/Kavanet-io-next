@@ -5,6 +5,11 @@ import { sketch } from "./sketch";
 import { Gym } from "./types";
 
 const Experiment: FC<Props> = ({ data }) => {
+  // if (typeof window !== "undefined") {
+  //   return <ReactP5Wrapper sketch={sketch} sketchProps={data} />;
+  // } else {
+  //   return null;
+  // }
   return <ReactP5Wrapper sketch={sketch} sketchProps={data} />;
 };
 
