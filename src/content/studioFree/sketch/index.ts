@@ -22,8 +22,8 @@ export const sketch = (p5: P5CanvasInstance<MySketchProps>) => {
 
     const size = 10;
 
-    const xmargin = 150;
-    const ymargin = 300;
+    const xmargin = p5.windowWidth / 10;
+    const ymargin = p5.windowHeight / 3;
 
     const textColour = p5.color("#E6E6E6");
     const freeColour = p5.color("#86A95B");
@@ -36,11 +36,11 @@ export const sketch = (p5: P5CanvasInstance<MySketchProps>) => {
     p5.textSize(50);
     p5.textStyle(p5.BOLD);
     p5.textAlign(p5.CENTER);
-    p5.text("Studio Free", p5.width / 2, p5.height / 4 - 10);
+    p5.text("Studio Free", p5.width / 2, p5.height / 5 - 10);
 
     p5.textSize(25);
     p5.textStyle(p5.NORMAL);
-    p5.text("Studio availability at my local gym (in 15min intervals)", p5.width / 2, p5.height / 4 + 25);
+    p5.text("Studio availability at my local gym (in 15min intervals)", p5.width / 2, p5.height / 5 + 25);
 
     for (let x = 0; x < dimensions[1]; x++) {
       for (let y = 0; y < dimensions[0]; y++) {
