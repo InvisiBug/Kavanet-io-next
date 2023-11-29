@@ -7,6 +7,10 @@ type MySketchProps = SketchProps & {
   sketchProps: Gym;
 };
 
+/*
+ * schedule passed in as a prop from getServerSideProps ./pages/studioFree.tsx
+ * and parsed at the bottom of this file
+ */
 export const sketch = (p5: P5CanvasInstance<MySketchProps>) => {
   let schedule: number[][] = [];
 
