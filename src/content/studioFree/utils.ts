@@ -19,7 +19,8 @@ export const parseSchedule = (data: ActivitiesEntity[]) => {
     let todaysSchedule = new Array<Schedule>();
 
     data.forEach((element: ActivitiesEntity) => {
-      if (element.studio === "Studio") {
+      console.log(element.studio);
+      if (element.studio === "Studio" || element.studio === "Functional Area") {
         const d = new Date();
 
         const now = new Date(d.setDate(d.getDate() + dayIndex));
