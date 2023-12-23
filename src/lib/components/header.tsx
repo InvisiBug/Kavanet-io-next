@@ -17,6 +17,7 @@ const Header: FC<Props> = ({ background = true }) => {
           </Link>
 
           <Links>
+            boop
             {links.map((link, index) => {
               return (
                 <Link href={link.toLocaleLowerCase()} as={`/${link.toLocaleLowerCase()}`} key={index}>
