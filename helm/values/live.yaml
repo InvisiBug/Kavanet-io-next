@@ -1,15 +1,12 @@
 name: kavanet-io
 
 namespace: kavanet-io
+env:
+  APP_VERSION: f1c742b1a816970ff17ebfc8f3be74a3b62853e9
 
 deployment:
   - name: kavanet-io
-    image: 192.168.1.61:5000/kavanet-io
-    env:
-    - name: SANITY_DATASET_NAME
-      value: production
-    - name: SANITY_PROJECT_ID
-      value: u8e0al0h
+    image: invisibug/kavanet-io
 
 service:
   loadBalancer:
