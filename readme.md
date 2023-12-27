@@ -2,7 +2,7 @@
 
 This is my personal website thats hosted at [kavanet.io](https://kavanet.io)
 
-[![Live pipeline](https://github.com/InvisiBug/kavanet-io/actions/workflows/live.yaml/badge.svg)](https://github.com/InvisiBug/kavanet-io/actions/workflows/live.yaml)
+[![Live pipeline](https://github.com/InvisiBug/Kavanet-io-next/actions/workflows/live.yaml/badge.svg)](https://github.com/InvisiBug/Kavanet-io-next/actions/workflows/live.yaml)
 
 # Components
 
