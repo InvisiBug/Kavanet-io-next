@@ -16,9 +16,9 @@ const Experiments: FC<Props> = ({ recordMap }) => {
       <Layout header={true} footer={false}>
         {/* <BackArrow /> */}
 
-        {/* <Content> */}
-        <NotionRenderer recordMap={recordMap} fullPage={false} darkMode={true} />
-        {/* </Content> */}
+        <Content>
+          <NotionRenderer recordMap={recordMap} fullPage={false} darkMode={true} />
+        </Content>
       </Layout>
     </>
   );
@@ -32,22 +32,6 @@ export default Experiments;
 
 const Content = styled.div`
   margin-bottom: 2rem;
-  background: pink;
-  /* max-width: 50%; */
-
-  ${mq("small")} {
-    max-width: ${px("small")}px;
-    /* border: 1px solid green; */
-    background: red;
-  }
-  ${mq("medium")} {
-    max-width: ${px("medium")}px;
-    background: green;
-  }
-  ${mq("large")} {
-    max-width: ${px("large")}px;
-    background: purple;
-  }
 `;
 
 export const getServerSideProps = async ({ params }: args) => {
@@ -66,3 +50,17 @@ interface args {
     slug: string;
   };
 }
+
+// ${mq("small")} {
+//   max-width: ${px("small")}px;
+//   /* border: 1px solid green; */
+//   background: red;
+// }
+// ${mq("medium")} {
+//   max-width: ${px("medium")}px;
+//   background: green;
+// }
+// ${mq("large")} {
+//   max-width: ${px("large")}px;
+//   background: purple;
+// }

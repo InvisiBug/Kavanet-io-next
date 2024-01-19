@@ -2,6 +2,9 @@
   "name": "kavanet-io-next",
   "version": "0.1.0",
   "private": true,
+  "repository": "https://github.com/InvisiBug/kavanet-io-next.git",
+  "author": "InvisiBug <matthewjkavanagh@gmail.com>",
+  "license": "MIT",
   "scripts": {
     "dev": "rm -rf .next && next dev",
     "build": "next build",
