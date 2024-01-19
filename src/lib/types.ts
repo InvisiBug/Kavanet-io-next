@@ -15,6 +15,7 @@ export type PageMetaData = {
   coverImage?: string;
   cardType?: "small" | "large" | "clean";
   folder: "experiments" | "plots" | "projects";
+  tags?: string[];
 };
 
 export type NotionResponse = any;
