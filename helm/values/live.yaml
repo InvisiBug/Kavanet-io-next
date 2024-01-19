@@ -7,6 +7,9 @@ env:
 deployment:
   - name: kavanet-io
     image: invisibug/kavanet-io
+    env: # not sure if this is correct, val must be "true" to work so meh
+      - name: LOCAL
+        value: false
 
 service:
   loadBalancer:
