@@ -29,6 +29,9 @@ const Header: FC<Props> = ({ background = true }) => {
             <Github href="https://github.com/InvisiBug" target="_blank">
               <Image src={"https://icon-library.com/images/github-icon-white/github-icon-white-6.jpg"} />
             </Github>
+            <Insta href="https://www.instagram.com/invisibug/" target="_blank">
+              <Image src={"https://www.edigitalagency.com.au/wp-content/uploads/new-Instagram-logo-white-glyph.png"} />
+            </Insta>
           </Links>
         </NavBar>
       </Container>
@@ -104,6 +107,12 @@ const LinkItem = styled.div`
 const Github = styled.a`
   border: ${borders ? "1px solid red" : "none"};
   height: 50%;
+`;
+
+const Insta = styled.a`
+  border: ${borders ? "1px solid red" : "none"};
+  height: 50%;
+  margin-left: 2rem;
 `;
 
 const Image = styled.img`
