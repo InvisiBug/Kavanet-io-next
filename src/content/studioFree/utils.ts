@@ -19,20 +19,24 @@ export const parseSchedule = (data: ActivitiesEntity[]) => {
     let todaysSchedule = new Array<Schedule>();
 
     data.forEach((element: ActivitiesEntity) => {
-      console.log(element.studio);
       if (element.studio === "Studio" || element.studio === "Functional Area") {
+        const rawStartTime = element.startDateTime.dateTime.replace("T", " "); // They keep changing the date format so pulled it out here
         const d = new Date();
 
         const now = new Date(d.setDate(d.getDate() + dayIndex));
-        const date = new Date(Date.parse(element.startDateTime.dateTime));
+        const date = new Date(Date.parse(rawStartTime));
+
+        console.log(rawStartTime);
+        console.log(now.setHours(0, 0, 0, 0), date.setHours(0, 0, 0, 0));
 
         // Get only the events for the day
-        if (now.setHours(0, 0, 0, 0) == date.setHours(0, 0, 0, 0)) {
-          const startHours = String(new Date(element.startDateTime.dateTime).getHours()).padStart(2, "0");
-          const startMinutes = String(new Date(element.startDateTime.dateTime).getMinutes()).padStart(2, "0");
+        if (now.setHours(0, 0, 0, 0) === date.setHours(0, 0, 0, 0)) {
+          console.log("Here");
+          const startHours = String(new Date(rawStartTime).getHours()).padStart(2, "0");
+          const startMinutes = String(new Date(rawStartTime).getMinutes()).padStart(2, "0");
 
-          const endHours = String(new Date(Date.parse(element.startDateTime.dateTime) + element.duration * 60000).getHours()).padStart(2, "0");
-          const endMinutes = String(new Date(Date.parse(element.startDateTime.dateTime) + element.duration * 60000).getMinutes()).padStart(2, "0");
+          const endHours = String(new Date(Date.parse(rawStartTime) + element.duration * 60000).getHours()).padStart(2, "0");
+          const endMinutes = String(new Date(Date.parse(rawStartTime) + element.duration * 60000).getMinutes()).padStart(2, "0");
 
           todaysSchedule.push({
             start: `${startHours}:${startMinutes}`,
