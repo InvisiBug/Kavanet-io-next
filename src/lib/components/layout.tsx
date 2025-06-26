@@ -58,6 +58,7 @@ const SiteContainer = styled.div`
   min-height: 100vh;
 
   /* background-color: ${background}; */
+  border: ${borders ? "2px solid red" : "none"};
 
   display: flex;
   flex-direction: column;
