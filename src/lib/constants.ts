@@ -6,5 +6,5 @@ console.log("🚀 ~ local:", local);
 export const links = ["Projects", "Experiments"];
 
 if (local === "true") {
-  links.unshift("WIP");
+  // links.unshift("WIP");
 }

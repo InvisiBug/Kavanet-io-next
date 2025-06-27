@@ -25,11 +25,6 @@ const LandingPage: FC<any> = ({ dbItems }) => {
         </Item>
         <Item width={"100vw"}>
           <ImageContainer>
-            <Image src={two.src} height="600px" />
-          </ImageContainer>
-        </Item>
-        <Item width={"100vw"}>
-          <ImageContainer>
             <Image src={three.src} height="600px" />
           </ImageContainer>
         </Item>

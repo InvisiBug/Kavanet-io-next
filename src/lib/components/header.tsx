@@ -16,6 +16,8 @@ const Header: FC<Props> = ({ background = true, setIsHamburgerMenuOpen, isHambur
   const isMobile = width < px("medium");
   console.log("🚀 ~ isMobile:", isMobile);
 
+  const local = process.env.NEXT_PUBLIC_LOCAL;
+
   return (
     <>
       <Container showBackground={background} isMobile={isMobile}>
@@ -31,6 +33,13 @@ const Header: FC<Props> = ({ background = true, setIsHamburgerMenuOpen, isHambur
               </Link>
 
               <Links>
+                {local && (
+                  <Link href={"wip"} as={`/wip`}>
+                    <LinkItem>
+                      <div>{"WIP"}</div>
+                    </LinkItem>
+                  </Link>
+                )}
                 <Link href={"https://winterflowspace.com/"} as={"https://winterflowspace.com/"}>
                   <LinkItem>
                     <a target="_blank">Winter Flow Space</a>
@@ -103,13 +112,17 @@ const NavBar = styled.div`
   justify-content: space-between;
   align-items: center;
 
+  padding-left: 2rem;
+  padding-right: 2rem;
+
   height: 100%;
-  ${mq("medium")} {
+  width: 100%;
+  /* ${mq("medium")} {
     width: ${px("medium")}px;
-  }
-  ${mq("large")} {
+  } */
+  /* ${mq("large")} {
     width: ${px("large")}px;
-  }
+  } */
 `;
 
 const Links = styled.div`
