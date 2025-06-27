@@ -1,39 +1,69 @@
 import React, { FC } from "react";
+import Link from "next/link";
 import styled from "@emotion/styled";
 import { mq, px } from "src/lib/mediaQueries";
 import { background } from "src/lib/colours";
-import Link from "next/link";
 import { links } from "src/lib/constants";
+import { HamburgerButton } from "src/lib/components";
+import { useDeviceDimensions } from "src/lib/hooks";
 
-const Header: FC<Props> = ({ background = true }) => {
+const Header: FC<Props> = ({ background = true, setIsHamburgerMenuOpen, isHamburgerMenuOpen }) => {
+  const { width, height } = useDeviceDimensions();
+  console.log("🚀 ~ width:", width, "height:", height);
+
+  console.log(px("small"));
+
+  const isMobile = width < px("medium");
+  console.log("🚀 ~ isMobile:", isMobile);
+
+  const local = process.env.NEXT_PUBLIC_LOCAL;
+
   return (
     <>
-      <Container showBackground={background}>
-        <NavBar>
-          <Link href={"/"} as={"/"}>
-            <Title>
-              <div>Kavanet.io</div>
-            </Title>
-          </Link>
+      <Container showBackground={background} isMobile={isMobile}>
+        {isMobile ? (
+          <HamburgerButton setIsHamburgerMenuOpen={setIsHamburgerMenuOpen} isHamburgerMenuOpen={isHamburgerMenuOpen} />
+        ) : (
+          <NavBar>
+            <>
+              <Link href={"/"} as={"/"}>
+                <Title>
+                  <div>Kavanet.io</div>
+                </Title>
+              </Link>
 
-          <Links>
-            {links.map((link, index) => {
-              return (
-                <Link href={link.toLocaleLowerCase()} as={`/${link.toLocaleLowerCase()}`} key={index}>
+              <Links>
+                {local && (
+                  <Link href={"wip"} as={`/wip`}>
+                    <LinkItem>
+                      <div>{"WIP"}</div>
+                    </LinkItem>
+                  </Link>
+                )}
+                <Link href={"https://winterflowspace.com/"} as={"https://winterflowspace.com/"}>
                   <LinkItem>
-                    <div>{link}</div>
+                    <a target="_blank">Winter Flow Space</a>
                   </LinkItem>
                 </Link>
-              );
-            })}
-            <Github href="https://github.com/InvisiBug" target="_blank">
-              <Image src={"https://icon-library.com/images/github-icon-white/github-icon-white-6.jpg"} />
-            </Github>
-            <Insta href="https://www.instagram.com/invisibug/" target="_blank">
-              <Image src={"https://www.edigitalagency.com.au/wp-content/uploads/new-Instagram-logo-white-glyph.png"} />
-            </Insta>
-          </Links>
-        </NavBar>
+                {links.map((link, index) => {
+                  return (
+                    <Link href={link.toLocaleLowerCase()} as={`/${link.toLocaleLowerCase()}`} key={index}>
+                      <LinkItem>
+                        <div>{link}</div>
+                      </LinkItem>
+                    </Link>
+                  );
+                })}
+                <Github href="https://github.com/InvisiBug" target="_blank">
+                  <Image src={"https://icon-library.com/images/github-icon-white/github-icon-white-6.jpg"} />
+                </Github>
+                <Insta href="https://www.instagram.com/invisibug/" target="_blank">
+                  <Image src={"https://www.edigitalagency.com.au/wp-content/uploads/new-Instagram-logo-white-glyph.png"} />
+                </Insta>
+              </Links>
+            </>
+          </NavBar>
+        )}
       </Container>
     </>
   );
@@ -43,6 +73,8 @@ export default Header;
 
 type Props = {
   background?: boolean;
+  setIsHamburgerMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  isHamburgerMenuOpen: boolean;
 };
 
 const borders = false;
@@ -52,6 +84,7 @@ const Container = styled.div<NavbarProps>`
 
   position: fixed;
   width: 100vw;
+  height: 5rem;
   margin-top: 0px;
 
   /* background: ${background}; */
@@ -60,15 +93,17 @@ const Container = styled.div<NavbarProps>`
   display: flex;
   color: white;
 
-  justify-content: center;
+  /* justify-content: center; */
+  justify-content: ${({ isMobile }) => (isMobile ? "left" : "center")};
+  padding-left: ${({ isMobile }) => (isMobile ? "1rem" : "none")};
   border-bottom: ${({ showBackground }) => (showBackground ? "1px solid rgba(255, 255, 255, 0.1)" : null)};
 
-  height: 5rem;
-  z-index: 10;
+  z-index: 100;
 `;
 
 type NavbarProps = {
   showBackground: boolean;
+  isMobile: boolean;
 };
 
 const NavBar = styled.div`
@@ -77,13 +112,17 @@ const NavBar = styled.div`
   justify-content: space-between;
   align-items: center;
 
+  padding-left: 2rem;
+  padding-right: 2rem;
+
   height: 100%;
-  ${mq("medium")} {
+  width: 100%;
+  /* ${mq("medium")} {
     width: ${px("medium")}px;
-  }
-  ${mq("large")} {
+  } */
+  /* ${mq("large")} {
     width: ${px("large")}px;
-  }
+  } */
 `;
 
 const Links = styled.div`

@@ -28,7 +28,7 @@ interface Props {
   thingsToShowcase: NotionResponse[];
 }
 
-const borders = false;
+const borders = true;
 
 const Container = styled.div`
   border: ${borders ? "1px solid green" : "none"};
@@ -40,7 +40,8 @@ const Container = styled.div`
 
   padding-bottom: 1rem;
   ${mq("small")} {
-    max-width: ${px("small")}px;
+    /* max-width: ${px("small")}px; */
+    max-width: 100%;
     /* background-color: purple; */
   }
   ${mq("medium")} {

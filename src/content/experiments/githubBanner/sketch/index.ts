@@ -68,7 +68,7 @@ export const sketch = (p5: p5) => {
     p5.strokeWeight(5);
     p5.stroke(0);
     p5.fill(255);
-    p5.text("Matt Kavanagh", p5.width / 2, p5.height / 2);
+    p5.text("Em Kay", p5.width / 2, p5.height / 2);
     p5.frameRate(0.5);
   };
 

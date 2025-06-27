@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useRef } from "react";
+import React, { FC, useEffect, useRef, RefObject } from "react";
 import styled from "@emotion/styled";
 
 const Preview: FC<Props> = ({ canvasRef }) => {
@@ -30,7 +30,7 @@ const Preview: FC<Props> = ({ canvasRef }) => {
 export default Preview;
 
 interface Props {
-  canvasRef: React.RefObject<HTMLCanvasElement>;
+  canvasRef: RefObject<HTMLCanvasElement>;
 }
 
 const PreviewContainer = styled.div`
