@@ -18,7 +18,7 @@ export function CategoryPage({ category }: CategoryPageProps) {
     }
 
     return projects[Math.floor(Math.random() * projects.length)];
-  }, [category, projects]);
+  }, [projects]);
 
   return (
     <section className="grid gap-6" aria-labelledby="category-title">
