@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { getProjectImageSrc, projects } from "@/lib/data/projects";
+import { getProjectImageSrc, projects } from "@/lib/data/siteData";
 import type { ProjectEntry } from "@/lib/types";
 
 function getRandomProjects(limit: number): ProjectEntry[] {

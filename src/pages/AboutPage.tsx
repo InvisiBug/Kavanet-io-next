@@ -1,4 +1,4 @@
-import { siteConfig } from "@/siteConfig";
+import { siteConfig } from "@/lib/data/siteData";
 
 const experience = [
   {

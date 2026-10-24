@@ -1,6 +1,6 @@
 import { useEffect, useRef, type ReactNode } from "react";
 import { NavLink } from "react-router-dom";
-import { siteConfig } from "@/siteConfig";
+import { siteConfig } from "@/lib/data/siteData";
 
 const pageLinks = [
   { to: "/personal-projects", label: "Personal Projects" },

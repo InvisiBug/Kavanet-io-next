@@ -1,3 +1,5 @@
+import { siteConfig } from "@/lib/data/siteData";
+
 export type CategoryKey = "personal-projects" | "community-projects" | "system-simulations";
 export type SimulationKey = "project1" | "project2";
 
@@ -15,3 +17,5 @@ export interface ProjectEntry {
   demoUrl?: string;
   contentPath: string;
 }
+
+export type SiteConfig = typeof siteConfig;

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { getProjectImageSrc } from "@/lib/data/projects";
+import { getProjectImageSrc } from "@/lib/data/siteData";
 import type { ProjectEntry } from "@/lib/types";
 
 interface ProjectCardProps {

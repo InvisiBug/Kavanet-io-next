@@ -166,3 +166,28 @@ export function getMarkdownContent(path: string): string | null {
 export function getProjectImageSrc(path: string): string | null {
   return imageModules[path] ?? null;
 }
+
+export const siteConfig = {
+  name: "Your Name",
+  role: "Builder of projects, systems, and simulations",
+  githubUrl: "https://github.com/your-handle",
+  instagramUrl: "https://instagram.com/your-handle",
+  etsyUrl: "https://www.etsy.com/shop/your-shop",
+  otherSites: [
+    {
+      label: "Project Alpha",
+      url: "https://example.com/project-alpha",
+    },
+    {
+      label: "Studio Site",
+      url: "https://example.com/studio",
+    },
+    {
+      label: "Old Portfolio",
+      url: "https://example.com/old-portfolio",
+    },
+  ],
+  headline: "A living portfolio of what I build and learn",
+  subheadline: "Explore personal projects, community builds, and system simulations. Each project page is authored in markdown so it is easy to maintain and expand.",
+  aboutSummary: "I design and build practical software, with a focus on dependable systems and clear user experiences.",
+};
