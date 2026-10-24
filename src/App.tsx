@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { PageShell } from "@/components/PageShell";
+import { PageShell } from "@/lib/components/PageShell";
 import { AboutPage } from "@/pages/AboutPage";
 import { CategoryPage } from "@/pages/CategoryPage";
 import { HomePage } from "@/pages/HomePage";

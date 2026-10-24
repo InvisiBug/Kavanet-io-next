@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { getProjectImageSrc, projects } from "@/data/projects";
-import type { ProjectEntry } from "@/types";
+import { getProjectImageSrc, projects } from "@/lib/data/projects";
+import type { ProjectEntry } from "@/lib/types";
 
 function getRandomProjects(limit: number): ProjectEntry[] {
   const shuffled = [...projects].sort(() => Math.random() - 0.5);
@@ -38,8 +38,8 @@ export function HomeBannerRotator() {
   const activeImageSrc = getProjectImageSrc(activeProject.imagePath);
 
   return (
-    <section className="overflow-hidden rounded-[1.2rem] border border-[var(--line)] bg-[var(--surface)] shadow-[0_18px_36px_rgba(12,21,43,0.08)]" aria-label="Rotating project highlights">
-      <div className="relative grid min-h-[15rem] content-center gap-3 px-6 py-8 text-white">
+    <section className="overflow-hidden rounded-[1.2rem] border border-(--line) bg-(--surface) shadow-[0_18px_36px_rgba(12,21,43,0.08)]" aria-label="Rotating project highlights">
+      <div className="relative grid min-h-60 content-center gap-3 px-6 py-8 text-white">
         {activeImageSrc ? <img src={activeImageSrc} alt={`${activeProject.title} placeholder`} className="absolute inset-0 h-full w-full object-cover" /> : null}
         <div className="absolute inset-0 bg-[linear-gradient(140deg,rgba(20,33,61,0.92),rgba(27,82,129,0.9))]" />
 
@@ -59,7 +59,7 @@ export function HomeBannerRotator() {
             <button
               key={project.slug}
               type="button"
-              className={index === activeIndex ? "h-2.5 w-2.5 cursor-pointer rounded-full border-0 bg-[var(--accent)]" : "h-2.5 w-2.5 cursor-pointer rounded-full border-0 bg-slate-300"}
+              className={index === activeIndex ? "h-2.5 w-2.5 cursor-pointer rounded-full border-0 bg-(--accent)" : "h-2.5 w-2.5 cursor-pointer rounded-full border-0 bg-slate-300"}
               onClick={() => setActiveIndex(index)}
               aria-label={`Show banner ${index + 1}`}
               aria-pressed={index === activeIndex}

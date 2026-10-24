@@ -1,5 +1,5 @@
 import type { PropsWithChildren } from "react";
-import { SiteHeader } from "@/components/SiteHeader";
+import { SiteHeader } from "@/lib/components/SiteHeader";
 
 export function PageShell({ children }: PropsWithChildren) {
   return (

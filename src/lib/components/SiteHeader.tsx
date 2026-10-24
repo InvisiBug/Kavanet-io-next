@@ -60,18 +60,18 @@ function OtherSitesDropdown() {
 
   return (
     <details ref={dropdownRef} className="group relative">
-      <summary className="flex cursor-pointer list-none items-center gap-1 rounded-full border border-transparent px-3 py-1.5 text-[0.92rem] text-[var(--text-muted)] transition hover:border-[var(--line)] hover:bg-[var(--surface)] hover:text-[var(--text)]">
+      <summary className="flex cursor-pointer list-none items-center gap-1 rounded-full border border-transparent px-3 py-1.5 text-[0.92rem] text-(--text-muted) transition hover:border-(--line) hover:bg-(--surface) hover:text-(--text)">
         Other Sites
         <svg viewBox="0 0 20 20" className="h-3.5 w-3.5 transition group-open:rotate-180" aria-hidden="true">
           <path d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 11.12l3.71-3.9a.75.75 0 1 1 1.08 1.04l-4.25 4.47a.75.75 0 0 1-1.08 0L5.21 8.27a.75.75 0 0 1 .02-1.06Z" className="fill-current" />
         </svg>
       </summary>
 
-      <div className="absolute left-0 z-50 mt-2 min-w-[12rem] rounded-xl border border-[var(--line)] bg-[var(--surface)] p-2 shadow-[0_12px_30px_rgba(12,21,43,0.14)]">
+      <div className="absolute left-0 z-50 mt-2 min-w-48 rounded-xl border border-(--line) bg-(--surface) p-2 shadow-[0_12px_30px_rgba(12,21,43,0.14)]">
         <ul className="m-0 list-none p-0">
           {siteConfig.otherSites.map((site) => (
             <li key={site.url}>
-              <a href={site.url} target="_blank" rel="noreferrer" className="block rounded-lg px-3 py-2 text-[0.9rem] text-[var(--text-muted)] no-underline transition hover:bg-[var(--surface-soft)] hover:text-[var(--text)]">
+              <a href={site.url} target="_blank" rel="noreferrer" className="block rounded-lg px-3 py-2 text-[0.9rem] text-(--text-muted) no-underline transition hover:bg-(--surface-soft) hover:text-(--text)">
                 {site.label}
               </a>
             </li>
@@ -85,8 +85,8 @@ function OtherSitesDropdown() {
 export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-[rgba(216,222,235,0.8)] bg-[rgba(255,255,255,0.82)] backdrop-blur-[10px]">
-      <div className="mx-auto grid min-h-[4.25rem] w-[min(1120px,calc(100%-2rem))] grid-cols-[auto_1fr_auto] items-center gap-3 max-[920px]:grid-cols-1 max-[920px]:py-3">
-        <NavLink to="/" className="text-[1.1rem] font-extrabold text-[var(--text)] no-underline max-[920px]:justify-self-center max-[680px]:justify-self-start">
+      <div className="mx-auto grid min-h-17 w-[min(1120px,calc(100%-2rem))] grid-cols-[auto_1fr_auto] items-center gap-3 max-[920px]:grid-cols-1 max-[920px]:py-3">
+        <NavLink to="/" className="text-[1.1rem] font-extrabold text-(--text) no-underline max-[920px]:justify-self-center max-[680px]:justify-self-start">
           {siteConfig.name}
         </NavLink>
 
@@ -98,7 +98,7 @@ export function SiteHeader() {
               className={({ isActive }) =>
                 [
                   "rounded-full border px-3 py-1.5 text-[0.92rem] no-underline transition",
-                  isActive ? "border-[var(--line)] bg-[var(--surface)] text-[var(--text)]" : "border-transparent text-[var(--text-muted)] hover:border-[var(--line)] hover:bg-[var(--surface)] hover:text-[var(--text)]",
+                  isActive ? "border-(--line) bg-(--surface) text-(--text)" : "border-transparent text-(--text-muted) hover:border-(--line) hover:bg-(--surface) hover:text-(--text)",
                 ].join(" ")
               }
             >

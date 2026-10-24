@@ -1,4 +1,4 @@
-import type { CategoryKey, ProjectEntry } from "@/types";
+import type { CategoryKey, ProjectEntry } from "@/lib/types";
 
 const markdownModules = import.meta.glob("/src/content/**/*.md", {
   query: "?raw",
@@ -36,7 +36,7 @@ export const projects: ProjectEntry[] = [
     tags: ["TypeScript", "Canvas", "Creative Coding"],
     featured: true,
     repositoryUrl: "https://github.com/your-handle/generative-art-lab",
-    contentPath: "/src/content/personal/generative-art-lab.md",
+    contentPath: "/src/content/writeups/personal/generative-art-lab.md",
   },
   {
     slug: "focus-cli-time-tracker",
@@ -45,7 +45,7 @@ export const projects: ProjectEntry[] = [
     category: "personal-projects",
     imagePath: "/src/lib/images/personal/focus-cli-time-tracker.svg",
     tags: ["Node.js", "CLI", "Productivity"],
-    contentPath: "/src/content/personal/focus-cli-time-tracker.md",
+    contentPath: "/src/content/writeups/personal/focus-cli-time-tracker.md",
   },
   {
     slug: "homelab-observability-stack",
@@ -54,7 +54,7 @@ export const projects: ProjectEntry[] = [
     category: "personal-projects",
     imagePath: "/src/lib/images/personal/homelab-observability-stack.svg",
     tags: ["Docker", "Grafana", "Observability"],
-    contentPath: "/src/content/personal/homelab-observability-stack.md",
+    contentPath: "/src/content/writeups/personal/homelab-observability-stack.md",
   },
   {
     slug: "weekly-writing-publisher",
@@ -63,7 +63,7 @@ export const projects: ProjectEntry[] = [
     category: "personal-projects",
     imagePath: "/src/lib/images/personal/weekly-writing-publisher.svg",
     tags: ["Markdown", "Static Site", "Automation"],
-    contentPath: "/src/content/personal/weekly-writing-publisher.md",
+    contentPath: "/src/content/writeups/personal/weekly-writing-publisher.md",
   },
   {
     slug: "soundscape-sequencer",
@@ -72,7 +72,7 @@ export const projects: ProjectEntry[] = [
     category: "personal-projects",
     imagePath: "/src/lib/images/personal/soundscape-sequencer.svg",
     tags: ["Web Audio", "Creative Coding", "React"],
-    contentPath: "/src/content/personal/soundscape-sequencer.md",
+    contentPath: "/src/content/writeups/personal/soundscape-sequencer.md",
   },
   {
     slug: "local-recipe-engine",
@@ -81,7 +81,7 @@ export const projects: ProjectEntry[] = [
     category: "personal-projects",
     imagePath: "/src/lib/images/personal/local-recipe-engine.svg",
     tags: ["TypeScript", "PWA", "Data Modeling"],
-    contentPath: "/src/content/personal/local-recipe-engine.md",
+    contentPath: "/src/content/writeups/personal/local-recipe-engine.md",
   },
   {
     slug: "ejc-clubs-2024",
@@ -92,7 +92,7 @@ export const projects: ProjectEntry[] = [
     imagePath: "/src/lib/images/community/ejc-clubs-2024.svg",
     tags: ["Community", "Workshops", "Education"],
     featured: true,
-    contentPath: "/src/content/community/ejc-clubs-2024.md",
+    contentPath: "/src/content/writeups/community/ejc-clubs-2024.md",
   },
   {
     slug: "flowception-dome-slackfest-2025",
@@ -102,7 +102,7 @@ export const projects: ProjectEntry[] = [
     date: "2025-08-01",
     imagePath: "/src/lib/images/community/flowception-dome-slackfest-2025.svg",
     tags: ["Installation", "Community", "Creative Tech"],
-    contentPath: "/src/content/community/flowception-dome-slackfest-2025.md",
+    contentPath: "/src/content/writeups/community/flowception-dome-slackfest-2025.md",
   },
   {
     slug: "bjc-2026-led-space",
@@ -112,7 +112,7 @@ export const projects: ProjectEntry[] = [
     date: "2026-05-01",
     imagePath: "/src/lib/images/community/bjc-2026-led-space.svg",
     tags: ["LED", "Interactive", "Community"],
-    contentPath: "/src/content/community/bjc-2026-led-space.md",
+    contentPath: "/src/content/writeups/community/bjc-2026-led-space.md",
   },
   {
     slug: "distributed-cache-simulator",
@@ -123,7 +123,7 @@ export const projects: ProjectEntry[] = [
     imagePath: "/src/lib/images/simulations/distributed-cache-simulator.svg",
     tags: ["Distributed Systems", "Simulation", "Performance"],
     featured: true,
-    contentPath: "/src/content/simulations/distributed-cache-simulator.md",
+    contentPath: "/src/content/writeups/simulations/distributed-cache-simulator.md",
   },
   {
     slug: "grid-load-balancer-model",
@@ -133,7 +133,7 @@ export const projects: ProjectEntry[] = [
     simulationKey: "project2",
     imagePath: "/src/lib/images/simulations/grid-load-balancer-model.svg",
     tags: ["Reliability", "Routing", "Modeling"],
-    contentPath: "/src/content/simulations/grid-load-balancer-model.md",
+    contentPath: "/src/content/writeups/simulations/grid-load-balancer-model.md",
   },
 ];
 

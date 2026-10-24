@@ -1,5 +1,5 @@
 import type p5 from "p5";
-import type { SketchFactory } from "@/components/P5Canvas";
+import type { SketchFactory } from "@/lib/components/P5Canvas";
 
 function getCanvasSize(container: HTMLElement | null) {
   const fallbackWidth = 900;
