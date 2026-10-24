@@ -36,6 +36,17 @@ export const getRandomProjects = (limit: number): ProjectEntry[] => {
   return shuffled.slice(0, Math.max(1, limit));
 };
 
+export const getRandomProject = (excludeSlug?: string): ProjectEntry | undefined => {
+  const pool = excludeSlug ? projects.filter((project) => project.slug !== excludeSlug) : projects;
+
+  if (pool.length === 0) {
+    return undefined;
+  }
+
+  const index = Math.floor(Math.random() * pool.length);
+  return pool[index];
+};
+
 export const categoryMeta: Record<CategoryKey, { title: string; description: string }> = {
   "personal-projects": {
     title: "Personal Projects",

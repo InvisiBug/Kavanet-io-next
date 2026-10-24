@@ -1,8 +1,4 @@
-import type { CategoryKey, ProjectEntry } from "@/lib/types";
-
-
-
-
+import type { ProjectEntry } from "@/lib/types";
 
 export const personalProjects: ProjectEntry[] = [
   {

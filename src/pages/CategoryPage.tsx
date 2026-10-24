@@ -1,3 +1,4 @@
+import { HeroFeatured } from "@/lib/components/HeroFeatured";
 import { ProjectCard } from "@/lib/components/ProjectCard";
 import { categoryMeta } from "@/lib/helpers";
 import { getProjectsByCategory } from "@/lib/helpers";
@@ -10,6 +11,7 @@ interface CategoryPageProps {
 export function CategoryPage({ category }: CategoryPageProps) {
   const projects = getProjectsByCategory(category);
   const metadata = categoryMeta[category];
+  const randomProject = projects.length > 0 ? projects[Math.floor(Math.random() * projects.length)] : undefined;
 
   return (
     <section className="grid gap-6" aria-labelledby="category-title">
@@ -17,6 +19,8 @@ export function CategoryPage({ category }: CategoryPageProps) {
         <h1 id="category-title">{metadata.title}</h1>
         <p className="text-(--text-muted)">{metadata.description}</p>
       </header>
+
+      {randomProject ? <HeroFeatured featured={[randomProject]} showSimulationPreview={category === "system-simulations"} /> : null}
 
       <div className="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] items-stretch gap-4">
         {projects.map((project) => (
