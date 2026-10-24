@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { getProjectImageSrc } from "@/data/projects";
 import type { ProjectEntry } from "@/types";
 
 interface ProjectCardProps {
@@ -6,14 +7,14 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ project }: ProjectCardProps) {
+  const imageSrc = getProjectImageSrc(project.imagePath);
+
   return (
-    <article className="grid gap-4 rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-5">
+    <Link to={`/${project.category}/${project.slug}`} className="grid gap-4 rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-5 no-underline transition hover:border-[var(--accent)]" aria-label={`Open project ${project.title}`}>
+      {imageSrc ? <img src={imageSrc} alt={`${project.title} placeholder`} className="aspect-[16/9] w-full rounded-xl border border-[var(--line)] object-cover" loading="lazy" /> : null}
+
       <div>
-        <h3 className="m-0">
-          <Link className="text-[var(--text)] no-underline" to={`/${project.category}/${project.slug}`}>
-            {project.title}
-          </Link>
-        </h3>
+        <h3 className="m-0 text-[var(--text)]">{project.title}</h3>
         <p className="mt-2 mb-0 text-[var(--text-muted)]">{project.summary}</p>
       </div>
 
@@ -24,6 +25,6 @@ export function ProjectCard({ project }: ProjectCardProps) {
           </li>
         ))}
       </ul>
-    </article>
+    </Link>
   );
 }

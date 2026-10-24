@@ -8,6 +8,7 @@ export interface ProjectEntry {
   category: CategoryKey;
   simulationKey?: SimulationKey;
   date?: string;
+  imagePath: string;
   tags: string[];
   featured?: boolean;
   repositoryUrl?: string;

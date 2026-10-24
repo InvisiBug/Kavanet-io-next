@@ -6,6 +6,11 @@ const markdownModules = import.meta.glob("/src/content/**/*.md", {
   eager: true,
 }) as Record<string, string>;
 
+const imageModules = import.meta.glob("/src/images/**/*.{png,jpg,jpeg,webp,avif,gif,svg}", {
+  import: "default",
+  eager: true,
+}) as Record<string, string>;
+
 export const categoryMeta: Record<CategoryKey, { title: string; description: string }> = {
   "personal-projects": {
     title: "Personal Projects",
@@ -27,6 +32,7 @@ export const projects: ProjectEntry[] = [
     title: "Generative Art Lab",
     summary: "A browser-based sketchbook for procedural visuals and animation loops.",
     category: "personal-projects",
+    imagePath: "/src/images/personal/generative-art-lab.svg",
     tags: ["TypeScript", "Canvas", "Creative Coding"],
     featured: true,
     repositoryUrl: "https://github.com/your-handle/generative-art-lab",
@@ -37,6 +43,7 @@ export const projects: ProjectEntry[] = [
     title: "Focus CLI Time Tracker",
     summary: "A local-first command line tracker for focused work sessions and progress reports.",
     category: "personal-projects",
+    imagePath: "/src/images/personal/focus-cli-time-tracker.svg",
     tags: ["Node.js", "CLI", "Productivity"],
     contentPath: "/src/content/personal/focus-cli-time-tracker.md",
   },
@@ -45,6 +52,7 @@ export const projects: ProjectEntry[] = [
     title: "Homelab Observability Stack",
     summary: "A self-hosted monitoring stack for tracing uptime, logs, and service health in my lab.",
     category: "personal-projects",
+    imagePath: "/src/images/personal/homelab-observability-stack.svg",
     tags: ["Docker", "Grafana", "Observability"],
     contentPath: "/src/content/personal/homelab-observability-stack.md",
   },
@@ -53,6 +61,7 @@ export const projects: ProjectEntry[] = [
     title: "Weekly Writing Publisher",
     summary: "A small publishing pipeline that turns markdown drafts into a searchable static archive.",
     category: "personal-projects",
+    imagePath: "/src/images/personal/weekly-writing-publisher.svg",
     tags: ["Markdown", "Static Site", "Automation"],
     contentPath: "/src/content/personal/weekly-writing-publisher.md",
   },
@@ -61,6 +70,7 @@ export const projects: ProjectEntry[] = [
     title: "Soundscape Sequencer",
     summary: "An interactive browser sequencer for layering ambient loops and generative rhythms.",
     category: "personal-projects",
+    imagePath: "/src/images/personal/soundscape-sequencer.svg",
     tags: ["Web Audio", "Creative Coding", "React"],
     contentPath: "/src/content/personal/soundscape-sequencer.md",
   },
@@ -69,6 +79,7 @@ export const projects: ProjectEntry[] = [
     title: "Local Recipe Engine",
     summary: "A personal recipe app with ingredient scaling, shopping lists, and seasonal suggestions.",
     category: "personal-projects",
+    imagePath: "/src/images/personal/local-recipe-engine.svg",
     tags: ["TypeScript", "PWA", "Data Modeling"],
     contentPath: "/src/content/personal/local-recipe-engine.md",
   },
@@ -78,6 +89,7 @@ export const projects: ProjectEntry[] = [
     summary: "Community club sessions and hands-on workshops delivered throughout the 2024 program.",
     category: "community-projects",
     date: "2024-06-01",
+    imagePath: "/src/images/community/ejc-clubs-2024.svg",
     tags: ["Community", "Workshops", "Education"],
     featured: true,
     contentPath: "/src/content/community/ejc-clubs-2024.md",
@@ -88,6 +100,7 @@ export const projects: ProjectEntry[] = [
     summary: "An interactive community installation combining visuals, sound, and collaborative live controls.",
     category: "community-projects",
     date: "2025-08-01",
+    imagePath: "/src/images/community/flowception-dome-slackfest-2025.svg",
     tags: ["Installation", "Community", "Creative Tech"],
     contentPath: "/src/content/community/flowception-dome-slackfest-2025.md",
   },
@@ -97,6 +110,7 @@ export const projects: ProjectEntry[] = [
     summary: "A large-scale LED environment project for BJC 2026 with programmable zones and reactive patterns.",
     category: "community-projects",
     date: "2026-05-01",
+    imagePath: "/src/images/community/bjc-2026-led-space.svg",
     tags: ["LED", "Interactive", "Community"],
     contentPath: "/src/content/community/bjc-2026-led-space.md",
   },
@@ -106,6 +120,7 @@ export const projects: ProjectEntry[] = [
     summary: "Simulation environment for cache hit rates, key skew, and replication tradeoffs.",
     category: "system-simulations",
     simulationKey: "project1",
+    imagePath: "/src/images/simulations/distributed-cache-simulator.svg",
     tags: ["Distributed Systems", "Simulation", "Performance"],
     featured: true,
     contentPath: "/src/content/simulations/distributed-cache-simulator.md",
@@ -116,6 +131,7 @@ export const projects: ProjectEntry[] = [
     summary: "A model for balancing requests across regions with latency and failure constraints.",
     category: "system-simulations",
     simulationKey: "project2",
+    imagePath: "/src/images/simulations/grid-load-balancer-model.svg",
     tags: ["Reliability", "Routing", "Modeling"],
     contentPath: "/src/content/simulations/grid-load-balancer-model.md",
   },
@@ -145,4 +161,8 @@ export function getProject(category: string, slug: string): ProjectEntry | undef
 
 export function getMarkdownContent(path: string): string | null {
   return markdownModules[path] ?? null;
+}
+
+export function getProjectImageSrc(path: string): string | null {
+  return imageModules[path] ?? null;
 }

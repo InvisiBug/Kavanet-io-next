@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">EJC Clubs 2024</title>
+  <desc id="desc">Placeholder image for EJC Clubs 2024.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1d4ed8" />
+      <stop offset="100%" stop-color="#2563eb" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="720" fill="url(#bg)" />
+  <circle cx="230" cy="220" r="90" fill="#bfdbfe" fill-opacity="0.35" />
+  <circle cx="430" cy="220" r="90" fill="#bfdbfe" fill-opacity="0.35" />
+  <circle cx="630" cy="220" r="90" fill="#bfdbfe" fill-opacity="0.35" />
+  <rect x="180" y="360" width="820" height="150" rx="20" fill="#dbeafe" fill-opacity="0.25" />
+  <text x="70" y="650" fill="#ffffff" font-size="58" font-family="Arial, sans-serif" font-weight="700">EJC Clubs 2024</text>
+</svg>

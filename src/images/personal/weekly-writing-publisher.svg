@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">Weekly Writing Publisher</title>
+  <desc id="desc">Placeholder image for Weekly Writing Publisher.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#312e81" />
+      <stop offset="100%" stop-color="#4338ca" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="720" fill="url(#bg)" />
+  <rect x="170" y="130" width="860" height="460" rx="24" fill="#e0e7ff" fill-opacity="0.25" />
+  <text x="250" y="280" fill="#eef2ff" font-size="46" font-family="Arial, sans-serif" font-weight="700">Weekly Notes</text>
+  <text x="250" y="350" fill="#c7d2fe" font-size="30" font-family="Arial, sans-serif">Draft -> Publish -> Archive</text>
+  <text x="70" y="650" fill="#ffffff" font-size="56" font-family="Arial, sans-serif" font-weight="700">Weekly Writing Publisher</text>
+</svg>

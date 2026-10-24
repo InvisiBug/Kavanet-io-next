@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">Distributed Cache Simulator</title>
+  <desc id="desc">Placeholder image for Distributed Cache Simulator.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1e1b4b" />
+      <stop offset="100%" stop-color="#4338ca" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="720" fill="url(#bg)" />
+  <g stroke="#c7d2fe" stroke-width="3" fill="none" stroke-opacity="0.8">
+    <rect x="160" y="180" width="220" height="130" rx="12" />
+    <rect x="490" y="180" width="220" height="130" rx="12" />
+    <rect x="820" y="180" width="220" height="130" rx="12" />
+    <path d="M380 245 H490" />
+    <path d="M710 245 H820" />
+  </g>
+  <text x="70" y="650" fill="#ffffff" font-size="54" font-family="Arial, sans-serif" font-weight="700">Distributed Cache Simulator</text>
+</svg>

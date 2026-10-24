@@ -13,28 +13,9 @@ const markdownComponents: Components = {
   ul: ({ node: _node, ...props }) => <ul className="mt-3 mb-0 list-disc pl-5" {...props} />,
   ol: ({ node: _node, ...props }) => <ol className="mt-3 mb-0 list-decimal pl-5" {...props} />,
   li: ({ node: _node, ...props }) => <li className="text-[var(--text-muted)]" {...props} />,
-  pre: ({ node: _node, ...props }) => (
-    <pre
-      className="mt-3 mb-0 overflow-x-auto rounded-xl border border-[var(--line)] bg-[#f8f9fd] p-3"
-      {...props}
-    />
-  ),
-  code: ({ node: _node, className, ...props }) => (
-    <code
-      className={
-        className
-          ? `${className} rounded-md bg-[#eef1f8] px-1.5 py-0.5`
-          : "rounded-md bg-[#eef1f8] px-1.5 py-0.5"
-      }
-      {...props}
-    />
-  ),
-  img: ({ node: _node, ...props }) => (
-    <img
-      {...props}
-      className="mx-auto mt-3 mb-4 block w-full max-w-[640px] rounded-xl border border-[var(--line)] bg-[#f8f9fd]"
-    />
-  ),
+  pre: ({ node: _node, ...props }) => <pre className="mt-3 mb-0 overflow-x-auto rounded-xl border border-[var(--line)] bg-[#f8f9fd] p-3" {...props} />,
+  code: ({ node: _node, className, ...props }) => <code className={className ? `${className} rounded-md bg-[#eef1f8] px-1.5 py-0.5` : "rounded-md bg-[#eef1f8] px-1.5 py-0.5"} {...props} />,
+  img: ({ node: _node, ...props }) => <img {...props} className="mx-auto mt-3 mb-4 block w-full max-w-[640px] rounded-xl border border-[var(--line)] bg-[#f8f9fd]" />,
 };
 
 export function MarkdownContent({ markdown }: MarkdownContentProps) {
