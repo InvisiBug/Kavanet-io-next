@@ -47,21 +47,6 @@ export const getRandomProject = (excludeSlug?: string): ProjectEntry | undefined
   return pool[index];
 };
 
-export const categoryMeta: Record<CategoryKey, { title: string; description: string }> = {
-  "personal-projects": {
-    title: "Personal Projects",
-    description: "Independent projects where I test ideas, build products, and sharpen my engineering craft.",
-  },
-  "community-projects": {
-    title: "Community Projects",
-    description: "Collaborative work with open-source groups, local communities, and shared initiatives.",
-  },
-  "system-simulations": {
-    title: "System Simulations",
-    description: "Experiments and models that explore behavior of systems under load, failures, and scaling events.",
-  },
-};
-
 const markdownModules = import.meta.glob("/src/content/**/*.md", {
   query: "?raw",
   import: "default",
