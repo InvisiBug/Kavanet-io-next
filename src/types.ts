@@ -7,6 +7,7 @@ export interface ProjectEntry {
   summary: string;
   category: CategoryKey;
   simulationKey?: SimulationKey;
+  date?: string;
   tags: string[];
   featured?: boolean;
   repositoryUrl?: string;

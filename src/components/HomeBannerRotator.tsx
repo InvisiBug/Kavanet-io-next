@@ -52,7 +52,11 @@ export function HomeBannerRotator() {
             <button
               key={banner.src}
               type="button"
-              className={index === activeIndex ? "h-2.5 w-2.5 cursor-pointer rounded-full border-0 bg-[var(--accent)]" : "h-2.5 w-2.5 cursor-pointer rounded-full border-0 bg-slate-300"}
+              className={
+                index === activeIndex
+                  ? "h-2.5 w-2.5 cursor-pointer rounded-full border-0 bg-[var(--accent)]"
+                  : "h-2.5 w-2.5 cursor-pointer rounded-full border-0 bg-slate-300"
+              }
               onClick={() => setActiveIndex(index)}
               aria-label={`Show banner ${index + 1}`}
               aria-pressed={index === activeIndex}

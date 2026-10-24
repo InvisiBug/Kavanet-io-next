@@ -73,54 +73,32 @@ export const projects: ProjectEntry[] = [
     contentPath: "/src/content/personal/local-recipe-engine.md",
   },
   {
-    slug: "docs-sprint-kit",
-    title: "Docs Sprint Kit",
-    summary: "Templates and tooling to run community documentation sprints with less overhead.",
+    slug: "ejc-clubs-2024",
+    title: "EJC Clubs 2024",
+    summary: "Community club sessions and hands-on workshops delivered throughout the 2024 program.",
     category: "community-projects",
-    tags: ["Open Source", "Documentation", "Workflows"],
+    date: "2024-06-01",
+    tags: ["Community", "Workshops", "Education"],
     featured: true,
-    repositoryUrl: "https://github.com/your-handle/docs-sprint-kit",
-    contentPath: "/src/content/community/docs-sprint-kit.md",
+    contentPath: "/src/content/community/ejc-clubs-2024.md",
   },
   {
-    slug: "local-stem-workshops",
-    title: "Local STEM Workshops",
-    summary: "Project curriculum and session guides for practical coding and electronics events.",
+    slug: "flowception-dome-slackfest-2025",
+    title: "Flowception Dome Slackfest 2025",
+    summary: "An interactive community installation combining visuals, sound, and collaborative live controls.",
     category: "community-projects",
-    tags: ["Education", "Community", "Mentoring"],
-    contentPath: "/src/content/community/local-stem-workshops.md",
+    date: "2025-08-01",
+    tags: ["Installation", "Community", "Creative Tech"],
+    contentPath: "/src/content/community/flowception-dome-slackfest-2025.md",
   },
   {
-    slug: "accessibility-audit-clinic",
-    title: "Accessibility Audit Clinic",
-    summary: "A volunteer clinic model for rapid accessibility reviews and actionable fixes for local organizations.",
+    slug: "bjc-2026-led-space",
+    title: "BJC 2026 LED Space",
+    summary: "A large-scale LED environment project for BJC 2026 with programmable zones and reactive patterns.",
     category: "community-projects",
-    tags: ["Accessibility", "Community", "Frontend"],
-    contentPath: "/src/content/community/accessibility-audit-clinic.md",
-  },
-  {
-    slug: "open-data-map-nights",
-    title: "Open Data Map Nights",
-    summary: "Recurring meetups where contributors clean, enrich, and visualize neighborhood open datasets.",
-    category: "community-projects",
-    tags: ["Open Data", "GIS", "Collaboration"],
-    contentPath: "/src/content/community/open-data-map-nights.md",
-  },
-  {
-    slug: "community-job-board-api",
-    title: "Community Job Board API",
-    summary: "A shared API service that powers a local jobs board with moderation and lightweight analytics.",
-    category: "community-projects",
-    tags: ["API", "Node.js", "Open Source"],
-    contentPath: "/src/content/community/community-job-board-api.md",
-  },
-  {
-    slug: "onboarding-playbook-library",
-    title: "Onboarding Playbook Library",
-    summary: "A repository of onboarding playbooks to help new volunteers contribute quickly to active projects.",
-    category: "community-projects",
-    tags: ["Documentation", "Process", "Mentoring"],
-    contentPath: "/src/content/community/onboarding-playbook-library.md",
+    date: "2026-05-01",
+    tags: ["LED", "Interactive", "Community"],
+    contentPath: "/src/content/community/bjc-2026-led-space.md",
   },
   {
     slug: "distributed-cache-simulator",
@@ -144,7 +122,17 @@ export const projects: ProjectEntry[] = [
 ];
 
 export function getProjectsByCategory(category: CategoryKey): ProjectEntry[] {
-  return projects.filter((project) => project.category === category);
+  const filtered = projects.filter((project) => project.category === category);
+
+  if (category !== "community-projects") {
+    return filtered;
+  }
+
+  return [...filtered].sort((left, right) => {
+    const leftTime = left.date ? new Date(left.date).getTime() : 0;
+    const rightTime = right.date ? new Date(right.date).getTime() : 0;
+    return rightTime - leftTime;
+  });
 }
 
 export function getFeaturedProjects(limit = 3): ProjectEntry[] {
