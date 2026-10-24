@@ -4,6 +4,18 @@ import p5 from "p5";
 let activeP5Instance: p5 | null = null;
 let activeP5Host: HTMLDivElement | null = null;
 
+function keepOnlyLatestCanvas(host: HTMLDivElement) {
+  const canvases = Array.from(host.querySelectorAll("canvas"));
+
+  if (canvases.length <= 1) {
+    return;
+  }
+
+  for (let index = 0; index < canvases.length - 1; index += 1) {
+    canvases[index].remove();
+  }
+}
+
 export function P5Canvas({ sketch, className }: P5CanvasProps) {
   const canvasRootRef = useRef<HTMLDivElement | null>(null);
   const instanceRef = useRef<p5 | null>(null);
@@ -34,7 +46,13 @@ export function P5Canvas({ sketch, className }: P5CanvasProps) {
     activeP5Instance = instance;
     activeP5Host = host;
 
+    // Back/forward navigation plus StrictMode can briefly leave duplicate
+    // canvas nodes in the same host; prune aggressively.
+    keepOnlyLatestCanvas(host);
+    const frameId = requestAnimationFrame(() => keepOnlyLatestCanvas(host));
+
     return () => {
+      cancelAnimationFrame(frameId);
       instance.remove();
       if (instanceRef.current === instance) {
         instanceRef.current = null;

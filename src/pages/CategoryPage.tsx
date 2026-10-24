@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { HeroFeatured } from "@/lib/components/HeroFeatured";
 import { ProjectCard } from "@/lib/components/ProjectCard";
 import { categoryMeta } from "@/lib/helpers";
@@ -11,7 +12,13 @@ interface CategoryPageProps {
 export function CategoryPage({ category }: CategoryPageProps) {
   const projects = getProjectsByCategory(category);
   const metadata = categoryMeta[category];
-  const randomProject = projects.length > 0 ? projects[Math.floor(Math.random() * projects.length)] : undefined;
+  const randomProject = useMemo(() => {
+    if (projects.length === 0) {
+      return undefined;
+    }
+
+    return projects[Math.floor(Math.random() * projects.length)];
+  }, [category, projects]);
 
   return (
     <section className="grid gap-6" aria-labelledby="category-title">

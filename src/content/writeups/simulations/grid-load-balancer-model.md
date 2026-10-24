@@ -1,9 +1,8 @@
-# Grid Load Balancer Model
+# Lisajous Table
 
-![Grid Load Balancer Model placeholder image](/placeholders/grid-load-balancer-model.svg)
 
 ## Objective
-Explore request routing across regional clusters while optimizing for latency and failure tolerance.
+Experiment with storing data over the lifecycle of a system
 
 ## Constraints
 - Regional latency budgets

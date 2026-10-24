@@ -5,7 +5,7 @@ import { getProjectImageSrc } from "@/lib/helpers";
 import type { ProjectEntry } from "@/lib/types";
 import { siteConfig } from "@/lib/data/siteData";
 
-export function HeroFeatured({ featured, showSimulationPreview = true }: HeroFeaturedProps) {
+export function HeroFeatured({ featured, showSimulationPreview = false }: HeroFeaturedProps) {
   return (
     <section className="rounded-[1.2rem] border border-(--line) bg-[linear-gradient(145deg,rgba(255,127,0,0.08),transparent_42%),var(--surface)] p-8 shadow-[0_24px_42px_rgba(12,21,43,0.08)] max-[680px]:p-[1.4rem]" aria-labelledby="hero-title">
       <p className="m-0 text-[0.82rem] font-bold uppercase tracking-[0.08em] text-(--accent)">Featured Work</p>

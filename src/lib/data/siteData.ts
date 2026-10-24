@@ -9,7 +9,7 @@ export const personalProjects: ProjectEntry[] = [
     imagePath: "/src/lib/images/personal/led-columns.svg",
     tags: ["LED", "Lighting", "Installation"],
     featured: true,
-    contentPath: "/src/content/writeups/personal/led-columns.md",
+    contentPath: "/src/content/writeups/personal/ledColumns/led-columns.md",
   },
   {
     slug: "staff-bag",
@@ -18,7 +18,7 @@ export const personalProjects: ProjectEntry[] = [
     category: "personal-projects",
     imagePath: "/src/lib/images/personal/staff-bag.svg",
     tags: ["Design", "Fabrication", "Gear"],
-    contentPath: "/src/content/writeups/personal/staff-bag.md",
+    contentPath: "/src/content/writeups/personal/staffBag/staff-bag.md",
   },
   {
     slug: "jinx-flare",
@@ -27,7 +27,7 @@ export const personalProjects: ProjectEntry[] = [
     category: "personal-projects",
     imagePath: "/src/lib/images/personal/jinx-flare.svg",
     tags: ["Visuals", "Sequencing", "Performance"],
-    contentPath: "/src/content/writeups/personal/jinx-flare.md",
+    contentPath: "/src/content/writeups/personal/jinxFlare/jinx-flare.md",
   },
   {
     slug: "staffs",
@@ -36,7 +36,7 @@ export const personalProjects: ProjectEntry[] = [
     category: "personal-projects",
     imagePath: "/src/lib/images/personal/staffs.svg",
     tags: ["Prototyping", "Hardware", "Iteration"],
-    contentPath: "/src/content/writeups/personal/staffs.md",
+    contentPath: "/src/content/writeups/personal/staffs/staffs.md",
   },
   {
     slug: "home-automation-system",
@@ -45,7 +45,7 @@ export const personalProjects: ProjectEntry[] = [
     category: "personal-projects",
     imagePath: "/src/lib/images/personal/home-automation-system.svg",
     tags: ["Automation", "IoT", "Systems"],
-    contentPath: "/src/content/writeups/personal/home-automation-system.md",
+    contentPath: "/src/content/writeups/personal/kavanest/home-automation-system.md",
   },
 ];
 
@@ -59,7 +59,7 @@ export const communityProjects: ProjectEntry[] = [
     imagePath: "/src/lib/images/community/ejc-clubs-2024.svg",
     tags: ["Community", "Workshops", "Education"],
     featured: true,
-    contentPath: "/src/content/writeups/community/ejc-clubs-2024.md",
+    contentPath: "/src/content/writeups/community/ejcClubs/ejc-clubs-2024.md",
   },
   {
     slug: "flowception-dome-slackfest-2025",
@@ -69,7 +69,7 @@ export const communityProjects: ProjectEntry[] = [
     date: "2025-08-01",
     imagePath: "/src/lib/images/community/flowception-dome-slackfest-2025.svg",
     tags: ["Installation", "Community", "Creative Tech"],
-    contentPath: "/src/content/writeups/community/flowception-dome-slackfest-2025.md",
+    contentPath: "/src/content/writeups/community/slackfest2025/flowception-dome-slackfest-2025.md",
   },
   {
     slug: "bjc-2026-led-space",
@@ -79,7 +79,7 @@ export const communityProjects: ProjectEntry[] = [
     date: "2026-05-01",
     imagePath: "/src/lib/images/community/bjc-2026-led-space.svg",
     tags: ["LED", "Interactive", "Community"],
-    contentPath: "/src/content/writeups/community/bjc-2026-led-space.md",
+    contentPath: "/src/content/writeups/community/bjc2026/bjc-2026-led-space.md",
   },
 ];
 
