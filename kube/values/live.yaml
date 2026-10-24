@@ -1,26 +1,26 @@
 name: kavanet-io
 
-namespace: kavanet-io
+namespace: kavanest
 env:
-  APP_VERSION: b1353819ba35ea7139299fd6108fcf23bc6b464f
+  APP_VERSION: 7da9a01307063e16c1497daf1b410b1dd2dccf10
 
 deployment:
   - name: kavanet-io
     image: invisibug/kavanet-io
-    # env: # not sure if this is correct, val must be "true" to work so meh
-    #   - name: LOCAL
-    #     value: "false"
+    ports:
+      - port: 80
+    # env:
+    # Handled in Dockerfile.live
+
+ingress:
+  - name: kavanet-io
+    selector: kavanet-io
+    path: /.*
+    port: 80
+    host: kavanet-io.co.uk
 
 service:
   loadBalancer:
     - name: kavanet-io
       selector: kavanet-io
       port: 80
-      containerPort: 3000
-
-ingress:
-  - name: kavanet.io
-    selector: kavanet-io
-    path: /
-    port: 3000
-    host: kavanet.io
