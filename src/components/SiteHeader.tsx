@@ -62,15 +62,8 @@ function OtherSitesDropdown() {
     <details ref={dropdownRef} className="group relative">
       <summary className="flex cursor-pointer list-none items-center gap-1 rounded-full border border-transparent px-3 py-1.5 text-[0.92rem] text-[var(--text-muted)] transition hover:border-[var(--line)] hover:bg-[var(--surface)] hover:text-[var(--text)]">
         Other Sites
-        <svg
-          viewBox="0 0 20 20"
-          className="h-3.5 w-3.5 transition group-open:rotate-180"
-          aria-hidden="true"
-        >
-          <path
-            d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 11.12l3.71-3.9a.75.75 0 1 1 1.08 1.04l-4.25 4.47a.75.75 0 0 1-1.08 0L5.21 8.27a.75.75 0 0 1 .02-1.06Z"
-            className="fill-current"
-          />
+        <svg viewBox="0 0 20 20" className="h-3.5 w-3.5 transition group-open:rotate-180" aria-hidden="true">
+          <path d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 11.12l3.71-3.9a.75.75 0 1 1 1.08 1.04l-4.25 4.47a.75.75 0 0 1-1.08 0L5.21 8.27a.75.75 0 0 1 .02-1.06Z" className="fill-current" />
         </svg>
       </summary>
 
@@ -78,12 +71,7 @@ function OtherSitesDropdown() {
         <ul className="m-0 list-none p-0">
           {siteConfig.otherSites.map((site) => (
             <li key={site.url}>
-              <a
-                href={site.url}
-                target="_blank"
-                rel="noreferrer"
-                className="block rounded-lg px-3 py-2 text-[0.9rem] text-[var(--text-muted)] no-underline transition hover:bg-[var(--surface-soft)] hover:text-[var(--text)]"
-              >
+              <a href={site.url} target="_blank" rel="noreferrer" className="block rounded-lg px-3 py-2 text-[0.9rem] text-[var(--text-muted)] no-underline transition hover:bg-[var(--surface-soft)] hover:text-[var(--text)]">
                 {site.label}
               </a>
             </li>
