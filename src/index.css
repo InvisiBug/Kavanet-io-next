@@ -1,0 +1,83 @@
+@import 'tailwindcss';
+
+:root {
+	font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+	line-height: 1.5;
+	font-weight: 400;
+	color: #14213d;
+	background-color: #f6f8fb;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	min-height: 100vh;
+}
+
+#root {
+	min-height: 100vh;
+}
+
+.starter-shell {
+	min-height: 100vh;
+	display: grid;
+	place-items: center;
+	padding: 1.25rem;
+	background:
+		radial-gradient(circle at top right, #ffbf69 0%, transparent 34%),
+		radial-gradient(circle at bottom left, #2ec4b6 0%, transparent 32%),
+		#f6f8fb;
+}
+
+.starter-card {
+	width: min(42rem, 100%);
+	background: #ffffff;
+	border: 1px solid #e2e8f0;
+	border-radius: 1rem;
+	padding: 2rem;
+	box-shadow: 0 20px 45px rgba(20, 33, 61, 0.12);
+}
+
+.starter-kicker {
+	margin: 0;
+	font-size: 0.8rem;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	font-weight: 700;
+	color: #f77f00;
+}
+
+.starter-card h1 {
+	margin: 0.4rem 0 0.85rem;
+	font-size: clamp(1.8rem, 4vw, 2.4rem);
+}
+
+.starter-card p {
+	margin: 0;
+	color: #334155;
+}
+
+.starter-button {
+	margin-top: 1.5rem;
+	border: 0;
+	border-radius: 0.75rem;
+	padding: 0.7rem 1rem;
+	font-size: 1rem;
+	font-weight: 700;
+	cursor: pointer;
+	color: #ffffff;
+	background: linear-gradient(135deg, #f77f00, #fcbf49);
+	transition: transform 140ms ease, filter 140ms ease;
+}
+
+.starter-button:hover {
+	transform: translateY(-1px);
+	filter: brightness(1.03);
+}
+
+.starter-button:active {
+	transform: translateY(0);
+}
