@@ -19,27 +19,27 @@ export function AboutPage() {
   return (
     <section className="grid gap-4" aria-labelledby="about-title">
       <h1 id="about-title">About / CV</h1>
-      <p className="mt-0 text-[var(--text-muted)]">{siteConfig.aboutSummary}</p>
+      <p className="mt-0 text-(--text-muted)">{siteConfig.aboutSummary}</p>
 
-      <div className="grid gap-4 [grid-template-columns:2fr_1fr] max-[920px]:grid-cols-1">
-        <section className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-5">
+      <div className="grid gap-4 grid-cols-[2fr_1fr] max-[920px]:grid-cols-1">
+        <section className="rounded-2xl border border-(--line) bg-(--surface) p-5">
           <h2>Experience</h2>
           <ul className="mt-4 pl-4">
             {experience.map((item) => (
-              <li key={item.title} className="[&:not(:first-child)]:mt-4">
-                <p className="m-0 text-[0.9rem] font-bold text-[var(--accent)]">{item.period}</p>
+              <li key={item.title} className="not-first:mt-4">
+                <p className="m-0 text-[0.9rem] font-bold text-(--accent)">{item.period}</p>
                 <h3 className="mt-1 mb-0">{item.title}</h3>
-                <p className="text-[var(--text-muted)]">{item.details}</p>
+                <p className="text-(--text-muted)">{item.details}</p>
               </li>
             ))}
           </ul>
         </section>
 
-        <section className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-5">
+        <section className="rounded-2xl border border-(--line) bg-(--surface) p-5">
           <h2>Core Skills</h2>
           <ul className="mt-4 pl-4">
             {skills.map((skill) => (
-              <li key={skill} className="text-[var(--text-muted)]">
+              <li key={skill} className="text-(--text-muted)">
                 {skill}
               </li>
             ))}

@@ -18,10 +18,10 @@ export function HomePage() {
           const category = categoryMeta[categoryKey];
 
           return (
-            <article key={categoryKey} className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-5">
+            <article key={categoryKey} className="rounded-2xl border border-(--line) bg-(--surface) p-5">
               <h2 className="m-0">{category.title}</h2>
-              <p className="mt-3 mb-0 text-[var(--text-muted)]">{category.description}</p>
-              <Link to={`/${categoryKey}`} className="mt-3 inline-block font-bold text-[var(--text)] no-underline transition hover:text-[var(--accent)]">
+              <p className="mt-3 mb-0 text-(--text-muted)">{category.description}</p>
+              <Link to={`/${categoryKey}`} className="mt-3 inline-block font-bold text-(--text) no-underline transition hover:text-(--accent)">
                 Explore {category.title}
               </Link>
             </article>
