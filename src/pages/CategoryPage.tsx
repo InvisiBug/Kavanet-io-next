@@ -1,5 +1,6 @@
 import { ProjectCard } from "@/lib/components/ProjectCard";
-import { categoryMeta, getProjectsByCategory } from "@/lib/data/siteData";
+import { categoryMeta } from "@/lib/data/siteData";
+import { getProjectsByCategory } from "@/lib/helpers";
 import type { CategoryKey } from "@/lib/types";
 
 interface CategoryPageProps {

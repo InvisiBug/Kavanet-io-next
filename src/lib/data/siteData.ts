@@ -1,12 +1,12 @@
 import type { CategoryKey, ProjectEntry } from "@/lib/types";
 
-const markdownModules = import.meta.glob("/src/content/**/*.md", {
+export const markdownModules = import.meta.glob("/src/content/**/*.md", {
   query: "?raw",
   import: "default",
   eager: true,
 }) as Record<string, string>;
 
-const imageModules = import.meta.glob("/src/lib/images/**/*.{png,jpg,jpeg,webp,avif,gif,svg}", {
+export const imageModules = import.meta.glob("/src/lib/images/**/*.{png,jpg,jpeg,webp,avif,gif,svg}", {
   import: "default",
   eager: true,
 }) as Record<string, string>;
@@ -26,7 +26,7 @@ export const categoryMeta: Record<CategoryKey, { title: string; description: str
   },
 };
 
-export const projects: ProjectEntry[] = [
+export const personalProjects: ProjectEntry[] = [
   {
     slug: "generative-art-lab",
     title: "Generative Art Lab",
@@ -83,6 +83,9 @@ export const projects: ProjectEntry[] = [
     tags: ["TypeScript", "PWA", "Data Modeling"],
     contentPath: "/src/content/writeups/personal/local-recipe-engine.md",
   },
+];
+
+export const communityProjects: ProjectEntry[] = [
   {
     slug: "ejc-clubs-2024",
     title: "EJC Clubs 2024",
@@ -114,6 +117,9 @@ export const projects: ProjectEntry[] = [
     tags: ["LED", "Interactive", "Community"],
     contentPath: "/src/content/writeups/community/bjc-2026-led-space.md",
   },
+];
+
+export const simulationProjects: ProjectEntry[] = [
   {
     slug: "distributed-cache-simulator",
     title: "Distributed Cache Simulator",
@@ -137,35 +143,7 @@ export const projects: ProjectEntry[] = [
   },
 ];
 
-export function getProjectsByCategory(category: CategoryKey): ProjectEntry[] {
-  const filtered = projects.filter((project) => project.category === category);
-
-  if (category !== "community-projects") {
-    return filtered;
-  }
-
-  return [...filtered].sort((left, right) => {
-    const leftTime = left.date ? new Date(left.date).getTime() : 0;
-    const rightTime = right.date ? new Date(right.date).getTime() : 0;
-    return rightTime - leftTime;
-  });
-}
-
-export function getFeaturedProjects(limit = 3): ProjectEntry[] {
-  return projects.filter((project) => project.featured).slice(0, limit);
-}
-
-export function getProject(category: string, slug: string): ProjectEntry | undefined {
-  return projects.find((project) => project.category === category && project.slug === slug);
-}
-
-export function getMarkdownContent(path: string): string | null {
-  return markdownModules[path] ?? null;
-}
-
-export function getProjectImageSrc(path: string): string | null {
-  return imageModules[path] ?? null;
-}
+export const projects: ProjectEntry[] = [...personalProjects, ...communityProjects, ...simulationProjects];
 
 export const siteConfig = {
   name: "Your Name",

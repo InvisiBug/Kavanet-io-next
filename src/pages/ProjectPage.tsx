@@ -1,6 +1,6 @@
 import { MarkdownContent } from "@/lib/components/MarkdownContent";
 import { P5Canvas } from "@/lib/components/P5Canvas";
-import { getMarkdownContent, getProject } from "@/lib/data/siteData";
+import { getMarkdownContent, getProject } from "@/lib/helpers";
 import { simulationSketches } from "@/content/simulations";
 import { Link, useParams } from "react-router-dom";
 

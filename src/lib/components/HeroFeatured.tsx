@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { getProjectImageSrc } from "@/lib/data/siteData";
+import { getProjectImageSrc } from "@/lib/helpers";
 import type { ProjectEntry } from "@/lib/types";
 import { siteConfig } from "@/lib/data/siteData";
 
