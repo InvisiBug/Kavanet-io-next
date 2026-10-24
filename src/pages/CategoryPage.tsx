@@ -1,5 +1,5 @@
 import { ProjectCard } from "@/lib/components/ProjectCard";
-import { categoryMeta } from "@/lib/data/siteData";
+import { categoryMeta } from "@/lib/helpers";
 import { getProjectsByCategory } from "@/lib/helpers";
 import type { CategoryKey } from "@/lib/types";
 

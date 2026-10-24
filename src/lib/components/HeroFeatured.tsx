@@ -3,10 +3,6 @@ import { getProjectImageSrc } from "@/lib/helpers";
 import type { ProjectEntry } from "@/lib/types";
 import { siteConfig } from "@/lib/data/siteData";
 
-interface HeroFeaturedProps {
-  featured: ProjectEntry[];
-}
-
 export function HeroFeatured({ featured }: HeroFeaturedProps) {
   return (
     <section className="rounded-[1.2rem] border border-(--line) bg-[linear-gradient(145deg,rgba(255,127,0,0.08),transparent_42%),var(--surface)] p-8 shadow-[0_24px_42px_rgba(12,21,43,0.08)] max-[680px]:p-[1.4rem]" aria-labelledby="hero-title">
@@ -31,4 +27,8 @@ export function HeroFeatured({ featured }: HeroFeaturedProps) {
       </div>
     </section>
   );
+}
+
+interface HeroFeaturedProps {
+  featured: ProjectEntry[];
 }

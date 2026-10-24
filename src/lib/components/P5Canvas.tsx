@@ -1,13 +1,6 @@
 import { useLayoutEffect, useRef } from "react";
 import p5 from "p5";
 
-export type SketchFactory = (p: p5) => void;
-
-interface P5CanvasProps {
-  sketch: SketchFactory;
-  className?: string;
-}
-
 let activeP5Instance: p5 | null = null;
 let activeP5Host: HTMLDivElement | null = null;
 
@@ -61,4 +54,11 @@ export function P5Canvas({ sketch, className }: P5CanvasProps) {
       <div ref={canvasRootRef} className="w-full [&>canvas]:block [&>canvas]:w-full [&>canvas]:h-auto [&>canvas]:rounded-xl [&>canvas]:border [&>canvas]:border-[rgba(216,222,235,0.9)]" />
     </div>
   );
+}
+
+export type SketchFactory = (p: p5) => void;
+
+interface P5CanvasProps {
+  sketch: SketchFactory;
+  className?: string;
 }

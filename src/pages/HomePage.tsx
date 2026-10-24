@@ -1,6 +1,6 @@
 import { HeroFeatured } from "@/lib/components/HeroFeatured";
 import { HomeBannerRotator } from "@/lib/components/HomeBannerRotator";
-import { categoryMeta } from "@/lib/data/siteData";
+import { categoryMeta } from "@/lib/helpers";
 import { getFeaturedProjects } from "@/lib/helpers";
 import { Link } from "react-router-dom";
 

@@ -1,13 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { projects } from "@/lib/data/siteData";
-import { getProjectImageSrc } from "@/lib/helpers";
-import type { ProjectEntry } from "@/lib/types";
-
-function getRandomProjects(limit: number): ProjectEntry[] {
-  const shuffled = [...projects].sort(() => Math.random() - 0.5);
-  return shuffled.slice(0, Math.max(1, limit));
-}
+import { getProjectImageSrc, getRandomProjects } from "@/lib/helpers";
 
 const AUTO_ROTATE_MS = 5000;
 

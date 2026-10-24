@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">Staff Bag Placeholder</title>
+  <desc id="desc">Placeholder artwork for Staff Bag.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1f2937" />
+      <stop offset="100%" stop-color="#0f766e" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg)" />
+  <rect x="270" y="180" width="660" height="290" rx="38" fill="#99f6e4" opacity="0.2" stroke="#ccfbf1" stroke-width="8" />
+  <rect x="330" y="230" width="540" height="190" rx="24" fill="#0f172a" opacity="0.45" />
+  <path d="M420 180c0-55 40-95 95-95h170c55 0 95 40 95 95" fill="none" stroke="#ccfbf1" stroke-width="12" stroke-linecap="round" />
+  <text x="600" y="610" text-anchor="middle" font-family="Arial, sans-serif" font-size="52" fill="#ecfeff" font-weight="700">Staff Bag</text>
+</svg>

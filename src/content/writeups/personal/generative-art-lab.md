@@ -15,5 +15,8 @@ Generative Art Lab is a browser sketchbook for procedural visuals. It focuses on
 - Preset engine based on serializable configuration
 - Lightweight controls for parameter tweaks
 
+## Gallery
+![Generative Art still 1](/placeholders/generative-art-lab.svg) ![Generative Art still 2](/placeholders/focus-cli-time-tracker.svg) ![Generative Art still 3](/placeholders/grid-load-balancer-model.svg)
+
 ## What I Learned
 The best improvements came from reducing complexity in the update loop and keeping scene state immutable where possible.

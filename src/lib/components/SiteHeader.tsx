@@ -9,12 +9,6 @@ const pageLinks = [
   { to: "/about", label: "About / CV" },
 ];
 
-interface SocialIconLinkProps {
-  href: string;
-  label: string;
-  children: ReactNode;
-}
-
 function SocialIconLink({ href, label, children }: SocialIconLinkProps) {
   return (
     <a
@@ -23,7 +17,7 @@ function SocialIconLink({ href, label, children }: SocialIconLinkProps) {
       rel="noreferrer"
       aria-label={label}
       title={label}
-      className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[var(--line)] bg-[var(--surface)] text-[var(--text-muted)] transition hover:border-[var(--accent)] hover:text-[var(--text)]"
+      className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-(--line) bg-(--surface) text-(--text-muted) transition hover:border-(--accent) hover:text-(--text)"
     >
       {children}
     </a>
@@ -116,6 +110,12 @@ export function SiteHeader() {
             </svg>
           </SocialIconLink>
 
+          <SocialIconLink href={siteConfig.linkedinUrl} label="LinkedIn">
+            <svg viewBox="0 0 24 24" className="h-4.5 w-4.5 fill-current" aria-hidden="true">
+              <path d="M5.34 8.34A1.67 1.67 0 1 1 5.33 5a1.67 1.67 0 0 1 .01 3.34ZM3.9 9.75h2.9V21H3.9V9.75ZM10.4 9.75h2.78v1.54h.04c.39-.73 1.34-1.5 2.76-1.5 2.95 0 3.5 1.95 3.5 4.48V21h-2.9v-5.96c0-1.42-.03-3.25-1.98-3.25-1.98 0-2.28 1.55-2.28 3.14V21h-2.9V9.75Z" />
+            </svg>
+          </SocialIconLink>
+
           <SocialIconLink href={siteConfig.instagramUrl} label="Instagram">
             <svg viewBox="0 0 24 24" className="h-4.5 w-4.5 fill-current" aria-hidden="true">
               <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm8.5 1.8h-8.5A3.95 3.95 0 0 0 3.8 7.75v8.5a3.95 3.95 0 0 0 3.95 3.95h8.5a3.95 3.95 0 0 0 3.95-3.95v-8.5a3.95 3.95 0 0 0-3.95-3.95Zm-4.25 3.2a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4Zm5.2-2.2a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4Z" />
@@ -131,4 +131,10 @@ export function SiteHeader() {
       </div>
     </header>
   );
+}
+
+interface SocialIconLinkProps {
+  href: string;
+  label: string;
+  children: ReactNode;
 }

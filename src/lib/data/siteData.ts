@@ -1,87 +1,55 @@
 import type { CategoryKey, ProjectEntry } from "@/lib/types";
 
-export const markdownModules = import.meta.glob("/src/content/**/*.md", {
-  query: "?raw",
-  import: "default",
-  eager: true,
-}) as Record<string, string>;
 
-export const imageModules = import.meta.glob("/src/lib/images/**/*.{png,jpg,jpeg,webp,avif,gif,svg}", {
-  import: "default",
-  eager: true,
-}) as Record<string, string>;
 
-export const categoryMeta: Record<CategoryKey, { title: string; description: string }> = {
-  "personal-projects": {
-    title: "Personal Projects",
-    description: "Independent projects where I test ideas, build products, and sharpen my engineering craft.",
-  },
-  "community-projects": {
-    title: "Community Projects",
-    description: "Collaborative work with open-source groups, local communities, and shared initiatives.",
-  },
-  "system-simulations": {
-    title: "System Simulations",
-    description: "Experiments and models that explore behavior of systems under load, failures, and scaling events.",
-  },
-};
+
 
 export const personalProjects: ProjectEntry[] = [
   {
-    slug: "generative-art-lab",
-    title: "Generative Art Lab",
-    summary: "A browser-based sketchbook for procedural visuals and animation loops.",
+    slug: "led-columns",
+    title: "LED Columns",
+    summary: "A set of LED columns built for the BJC 2026 LED space.",
     category: "personal-projects",
-    imagePath: "/src/lib/images/personal/generative-art-lab.svg",
-    tags: ["TypeScript", "Canvas", "Creative Coding"],
+    imagePath: "/src/lib/images/personal/led-columns.svg",
+    tags: ["LED", "Lighting", "Installation"],
     featured: true,
-    repositoryUrl: "https://github.com/your-handle/generative-art-lab",
-    contentPath: "/src/content/writeups/personal/generative-art-lab.md",
+    contentPath: "/src/content/writeups/personal/led-columns.md",
   },
   {
-    slug: "focus-cli-time-tracker",
-    title: "Focus CLI Time Tracker",
-    summary: "A local-first command line tracker for focused work sessions and progress reports.",
+    slug: "staff-bag",
+    title: "Staff Bag",
+    summary: "A durable carry system prototype for safely storing and transporting flow staffs and accessories.",
     category: "personal-projects",
-    imagePath: "/src/lib/images/personal/focus-cli-time-tracker.svg",
-    tags: ["Node.js", "CLI", "Productivity"],
-    contentPath: "/src/content/writeups/personal/focus-cli-time-tracker.md",
+    imagePath: "/src/lib/images/personal/staff-bag.svg",
+    tags: ["Design", "Fabrication", "Gear"],
+    contentPath: "/src/content/writeups/personal/staff-bag.md",
   },
   {
-    slug: "homelab-observability-stack",
-    title: "Homelab Observability Stack",
-    summary: "A self-hosted monitoring stack for tracing uptime, logs, and service health in my lab.",
+    slug: "jinx-flare",
+    title: "Jinx Flare",
+    summary: "A visual sequencing concept blending synchronized lighting cues and performance timing.",
     category: "personal-projects",
-    imagePath: "/src/lib/images/personal/homelab-observability-stack.svg",
-    tags: ["Docker", "Grafana", "Observability"],
-    contentPath: "/src/content/writeups/personal/homelab-observability-stack.md",
+    imagePath: "/src/lib/images/personal/jinx-flare.svg",
+    tags: ["Visuals", "Sequencing", "Performance"],
+    contentPath: "/src/content/writeups/personal/jinx-flare.md",
   },
   {
-    slug: "weekly-writing-publisher",
-    title: "Weekly Writing Publisher",
-    summary: "A small publishing pipeline that turns markdown drafts into a searchable static archive.",
+    slug: "staffs",
+    title: "Staffs",
+    summary: "A family of custom staff builds exploring balance, grip styles, and interchangeable components.",
     category: "personal-projects",
-    imagePath: "/src/lib/images/personal/weekly-writing-publisher.svg",
-    tags: ["Markdown", "Static Site", "Automation"],
-    contentPath: "/src/content/writeups/personal/weekly-writing-publisher.md",
+    imagePath: "/src/lib/images/personal/staffs.svg",
+    tags: ["Prototyping", "Hardware", "Iteration"],
+    contentPath: "/src/content/writeups/personal/staffs.md",
   },
   {
-    slug: "soundscape-sequencer",
-    title: "Soundscape Sequencer",
-    summary: "An interactive browser sequencer for layering ambient loops and generative rhythms.",
+    slug: "home-automation-system",
+    title: "Home Automation System",
+    summary: "An evolving home setup for lighting, sensors, and routines with reliability and remote control in mind.",
     category: "personal-projects",
-    imagePath: "/src/lib/images/personal/soundscape-sequencer.svg",
-    tags: ["Web Audio", "Creative Coding", "React"],
-    contentPath: "/src/content/writeups/personal/soundscape-sequencer.md",
-  },
-  {
-    slug: "local-recipe-engine",
-    title: "Local Recipe Engine",
-    summary: "A personal recipe app with ingredient scaling, shopping lists, and seasonal suggestions.",
-    category: "personal-projects",
-    imagePath: "/src/lib/images/personal/local-recipe-engine.svg",
-    tags: ["TypeScript", "PWA", "Data Modeling"],
-    contentPath: "/src/content/writeups/personal/local-recipe-engine.md",
+    imagePath: "/src/lib/images/personal/home-automation-system.svg",
+    tags: ["Automation", "IoT", "Systems"],
+    contentPath: "/src/content/writeups/personal/home-automation-system.md",
   },
 ];
 
@@ -146,23 +114,20 @@ export const simulationProjects: ProjectEntry[] = [
 export const projects: ProjectEntry[] = [...personalProjects, ...communityProjects, ...simulationProjects];
 
 export const siteConfig = {
-  name: "Your Name",
+  name: "Kavanet.io",
   role: "Builder of projects, systems, and simulations",
-  githubUrl: "https://github.com/your-handle",
-  instagramUrl: "https://instagram.com/your-handle",
-  etsyUrl: "https://www.etsy.com/shop/your-shop",
+  githubUrl: "https://github.com/invisibug",
+  instagramUrl: "https://instagram.com/em.brrrr",
+  etsyUrl: "https://www.etsy.com/shop/EmBrrrr",
+  linkedinUrl: "https://www.linkedin.com/in/matthewjkavanagh/",
   otherSites: [
     {
-      label: "Project Alpha",
-      url: "https://example.com/project-alpha",
+      label: "Winter Flow Space",
+      url: "https://winterflowspace.com",
     },
     {
-      label: "Studio Site",
-      url: "https://example.com/studio",
-    },
-    {
-      label: "Old Portfolio",
-      url: "https://example.com/old-portfolio",
+      label: "Twiddlesticks",
+      url: "https://twiddlesticks.co.uk",
     },
   ],
   headline: "A living portfolio of what I build and learn",
