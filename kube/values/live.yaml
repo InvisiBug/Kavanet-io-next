@@ -1,6 +1,6 @@
 name: kavanet-io
 
-namespace: kavanest
+namespace: kavanet-io
 env:
   APP_VERSION: 32706c810c4b8ed1beea855d47e275149e86d015
 
