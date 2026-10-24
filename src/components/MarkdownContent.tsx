@@ -6,25 +6,21 @@ interface MarkdownContentProps {
 }
 
 const markdownComponents: Components = {
-  img: ({ node: _node, ...props }) => (
-    <img
-      {...props}
-      style={{
-        display: "block",
-        width: "100%",
-        maxWidth: "640px",
-        margin: "0.8rem auto 1rem",
-        border: "1px solid var(--line)",
-        borderRadius: "0.8rem",
-        background: "#f8f9fd",
-      }}
-    />
-  ),
+  h1: ({ node: _node, ...props }) => <h1 className="mt-4 mb-2 text-3xl font-bold first:mt-0" {...props} />,
+  h2: ({ node: _node, ...props }) => <h2 className="mt-4 mb-2 text-2xl font-semibold first:mt-0" {...props} />,
+  h3: ({ node: _node, ...props }) => <h3 className="mt-4 mb-2 text-xl font-semibold first:mt-0" {...props} />,
+  p: ({ node: _node, ...props }) => <p className="mt-3 mb-0 text-[var(--text-muted)] first:mt-0" {...props} />,
+  ul: ({ node: _node, ...props }) => <ul className="mt-3 mb-0 list-disc pl-5" {...props} />,
+  ol: ({ node: _node, ...props }) => <ol className="mt-3 mb-0 list-decimal pl-5" {...props} />,
+  li: ({ node: _node, ...props }) => <li className="text-[var(--text-muted)]" {...props} />,
+  pre: ({ node: _node, ...props }) => <pre className="mt-3 mb-0 overflow-x-auto rounded-xl border border-[var(--line)] bg-[#f8f9fd] p-3" {...props} />,
+  code: ({ node: _node, className, ...props }) => <code className={className ? `${className} rounded-md bg-[#eef1f8] px-1.5 py-0.5` : "rounded-md bg-[#eef1f8] px-1.5 py-0.5"} {...props} />,
+  img: ({ node: _node, ...props }) => <img {...props} className="mx-auto mt-3 mb-4 block w-full max-w-[640px] rounded-xl border border-[var(--line)] bg-[#f8f9fd]" />,
 };
 
 export function MarkdownContent({ markdown }: MarkdownContentProps) {
   return (
-    <article className="markdown-body">
+    <article className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-5">
       <ReactMarkdown components={markdownComponents} remarkPlugins={[remarkGfm]}>
         {markdown}
       </ReactMarkdown>

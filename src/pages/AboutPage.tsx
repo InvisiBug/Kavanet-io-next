@@ -17,29 +17,31 @@ const skills = ["TypeScript and React", "System design and modeling", "Automatio
 
 export function AboutPage() {
   return (
-    <section className="about-page" aria-labelledby="about-title">
+    <section className="grid gap-4" aria-labelledby="about-title">
       <h1 id="about-title">About / CV</h1>
-      <p className="about-summary">{siteConfig.aboutSummary}</p>
+      <p className="mt-0 text-[var(--text-muted)]">{siteConfig.aboutSummary}</p>
 
-      <div className="about-grid">
-        <section className="about-panel">
+      <div className="grid gap-4 [grid-template-columns:2fr_1fr] max-[920px]:grid-cols-1">
+        <section className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-5">
           <h2>Experience</h2>
-          <ul className="timeline">
+          <ul className="mt-4 pl-4">
             {experience.map((item) => (
-              <li key={item.title}>
-                <p className="timeline-period">{item.period}</p>
-                <h3>{item.title}</h3>
-                <p>{item.details}</p>
+              <li key={item.title} className="[&:not(:first-child)]:mt-4">
+                <p className="m-0 text-[0.9rem] font-bold text-[var(--accent)]">{item.period}</p>
+                <h3 className="mt-1 mb-0">{item.title}</h3>
+                <p className="text-[var(--text-muted)]">{item.details}</p>
               </li>
             ))}
           </ul>
         </section>
 
-        <section className="about-panel">
+        <section className="rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-5">
           <h2>Core Skills</h2>
-          <ul className="skills-list">
+          <ul className="mt-4 pl-4">
             {skills.map((skill) => (
-              <li key={skill}>{skill}</li>
+              <li key={skill} className="text-[var(--text-muted)]">
+                {skill}
+              </li>
             ))}
           </ul>
         </section>

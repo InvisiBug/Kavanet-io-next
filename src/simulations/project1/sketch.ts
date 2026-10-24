@@ -17,7 +17,7 @@ function getCanvasContainer(instance: p5): HTMLElement | null {
 }
 
 export const project1Sketch: SketchFactory = (p: p5) => {
-  let nodeCount = 60;
+  const nodeCount = 60;
 
   p.setup = () => {
     const { width, height } = getCanvasSize(getCanvasContainer(p));
