@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="700" viewBox="0 0 1600 700" role="img" aria-labelledby="title desc">
+  <title id="title">Banner one</title>
+  <desc id="desc">Abstract project banner placeholder.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#0ea5e9"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="700" fill="url(#bg)"/>
+  <circle cx="1280" cy="140" r="220" fill="#22d3ee" fill-opacity="0.25"/>
+  <circle cx="240" cy="540" r="190" fill="#f59e0b" fill-opacity="0.22"/>
+  <text x="110" y="595" font-size="70" fill="#f8fafc" font-family="Arial, sans-serif" font-weight="700">Projects and Simulations</text>
+</svg>
