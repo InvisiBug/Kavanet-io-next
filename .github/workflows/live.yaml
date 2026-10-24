@@ -9,7 +9,6 @@ env:
   DOCKER_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
   DOCKER_KEY: ${{ secrets.DOCKERHUB_KEY }}
   IMAGE_NAME: kavanet-io
-  DOCKER_DEFAULT_PLATFORM: linux/amd64
 
 jobs:
   build-and-push:
