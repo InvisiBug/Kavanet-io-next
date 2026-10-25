@@ -1,10 +1,10 @@
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { siteConfig } from "@/lib/data";
+import { useContext } from "@/lib/context";
+import { getToggledTheme } from "@/lib/helpers";
+import type { Theme } from "@/lib/types";
 import { SocialIconLink, OtherSitesDropdown } from "./components/";
-
-const THEME_STORAGE_KEY = "kavanet-theme";
-type ThemeMode = "light" | "dark";
 
 const pageLinks = [
   { to: "/personal-projects", label: "Personal Projects" },
@@ -39,29 +39,12 @@ function ThemeToggleButton({ theme, onToggle }: ThemeToggleButtonProps) {
 
 export function SiteHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [theme, setTheme] = useState<ThemeMode>("light");
+  const { theme, setTheme } = useContext();
   const location = useLocation();
 
   useEffect(() => {
     setIsMenuOpen(false);
   }, [location.pathname]);
-
-  useEffect(() => {
-    const savedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
-
-    if (savedTheme === "light" || savedTheme === "dark") {
-      setTheme(savedTheme);
-      return;
-    }
-
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    setTheme(prefersDark ? "dark" : "light");
-  }, []);
-
-  useEffect(() => {
-    document.documentElement.dataset.theme = theme;
-    window.localStorage.setItem(THEME_STORAGE_KEY, theme);
-  }, [theme]);
 
   return (
     <header className="sticky top-0 z-40 border-b border-(--header-line) bg-(--header-bg) backdrop-blur-[10px]">
@@ -104,7 +87,7 @@ export function SiteHeader() {
           </nav>
 
           <div className="flex gap-2 max-[920px]:hidden" aria-label="Social links">
-            <ThemeToggleButton theme={theme} onToggle={() => setTheme((current) => (current === "light" ? "dark" : "light"))} />
+            <ThemeToggleButton theme={theme} onToggle={() => setTheme((current) => getToggledTheme(current))} />
 
             <SocialIconLink href={siteConfig.githubUrl} label="GitHub">
               <svg viewBox="0 0 24 24" className="h-4.5 w-4.5 fill-current" aria-hidden="true">
@@ -134,7 +117,7 @@ export function SiteHeader() {
 
         <div id="site-header-mobile-menu" className={["hidden max-[920px]:mt-3 max-[920px]:rounded-2xl max-[920px]:border max-[920px]:border-(--line) max-[920px]:bg-(--surface) max-[920px]:p-3", isMenuOpen ? "max-[920px]:block" : ""].join(" ")}>
           <div className="flex flex-wrap justify-center gap-2" aria-label="Social links mobile">
-            <ThemeToggleButton theme={theme} onToggle={() => setTheme((current) => (current === "light" ? "dark" : "light"))} />
+            <ThemeToggleButton theme={theme} onToggle={() => setTheme((current) => getToggledTheme(current))} />
 
             <SocialIconLink href={siteConfig.githubUrl} label="GitHub">
               <svg viewBox="0 0 24 24" className="h-4.5 w-4.5 fill-current" aria-hidden="true">
@@ -186,6 +169,6 @@ export function SiteHeader() {
 }
 
 interface ThemeToggleButtonProps {
-  theme: ThemeMode;
+  theme: Theme;
   onToggle: () => void;
 }

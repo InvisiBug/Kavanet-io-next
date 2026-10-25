@@ -1,0 +1,50 @@
+import type { ProjectEntry } from "@/lib/types";
+
+export const personalProjects: ProjectEntry[] = [
+  {
+    slug: "led-columns",
+    title: "LED Columns",
+    summary: "A set of LED columns built for the BJC 2026 LED space.",
+    category: "personal-projects",
+    imagePath: "/src/lib/images/personal/led-columns.svg",
+    tags: ["LED", "Lighting", "Installation"],
+    featured: true,
+    contentPath: "/src/content/writeups/personal/ledColumns/led-columns.md",
+  },
+  {
+    slug: "staff-bag",
+    title: "Staff Bag",
+    summary: "A durable carry system prototype for safely storing and transporting flow staffs and accessories.",
+    category: "personal-projects",
+    imagePath: "/src/lib/images/personal/staff-bag.svg",
+    tags: ["Design", "Fabrication", "Gear"],
+    contentPath: "/src/content/writeups/personal/staffBag/staff-bag.md",
+  },
+  {
+    slug: "jinx-flare",
+    title: "Jinx Flare",
+    summary: "A visual sequencing concept blending synchronized lighting cues and performance timing.",
+    category: "personal-projects",
+    imagePath: "/src/lib/images/personal/jinx-flare.svg",
+    tags: ["Visuals", "Sequencing", "Performance"],
+    contentPath: "/src/content/writeups/personal/jinxFlare/jinx-flare.md",
+  },
+  {
+    slug: "staffs",
+    title: "Staffs",
+    summary: "A family of custom staff builds exploring balance, grip styles, and interchangeable components.",
+    category: "personal-projects",
+    imagePath: "/src/lib/images/personal/staffs.svg",
+    tags: ["Prototyping", "Hardware", "Iteration"],
+    contentPath: "/src/content/writeups/personal/staffs/staffs.md",
+  },
+  {
+    slug: "home-automation-system",
+    title: "Home Automation System",
+    summary: "An evolving home setup for lighting, sensors, and routines with reliability and remote control in mind.",
+    category: "personal-projects",
+    imagePath: "/src/lib/images/personal/home-automation-system.svg",
+    tags: ["Automation", "IoT", "Systems"],
+    contentPath: "/src/content/writeups/personal/kavanest/home-automation-system.md",
+  },
+];

@@ -1,7 +1,9 @@
 import type { MouseEvent } from "react";
-import type { CategoryKey, ProjectEntry } from "@/lib/types";
+import type { CategoryKey, ProjectEntry, Theme } from "@/lib/types";
 import { communityProjects, personalProjects, projects, simulationProjects } from "@/lib/data";
 import type { LightboxImage } from "@/lib/types";
+
+const THEME_STORAGE_KEY = "kavanet-theme";
 
 export const getProjectsByCategory = (category: CategoryKey): ProjectEntry[] => {
   const filtered = category === "personal-projects" ? personalProjects : category === "community-projects" ? communityProjects : simulationProjects;
@@ -94,6 +96,23 @@ export const extractLightboxImageFromClick = (event: MouseEvent<HTMLDivElement>)
     src,
     alt: imageElement.alt?.trim() || "Expanded image preview",
   };
+};
+
+export const getToggledTheme = (theme: Theme): Theme => (theme === "light" ? "dark" : "light");
+
+export const getInitialTheme = (): Theme => {
+  const savedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+
+  if (savedTheme === "light" || savedTheme === "dark") {
+    return savedTheme;
+  }
+
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+};
+
+export const persistTheme = (theme: Theme) => {
+  document.documentElement.dataset.theme = theme;
+  localStorage.setItem(THEME_STORAGE_KEY, theme);
 };
 
 const markdownModules = import.meta.glob("/src/content/**/*.md", {

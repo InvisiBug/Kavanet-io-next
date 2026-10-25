@@ -43,6 +43,7 @@ const AboutPage = () => {
 
         <section className="rounded-2xl border border-(--line) bg-(--surface) p-5">
           <h2>Core Skills</h2>
+
           <ul className="mt-4 pl-4">
             {skills.map((skill) => (
               <li key={skill} className="text-(--text-muted)">
@@ -51,10 +52,12 @@ const AboutPage = () => {
             ))}
           </ul>
 
-          <div className="mt-4 grid gap-5">
+          <div className="mt-5 grid gap-5">
+            <h2>Badges</h2>
+
             {skillBadgeSections.map((section) => (
               <section key={section.title}>
-                <h3 className="m-0 mb-2 text-sm  text-(--text)">{section.title}</h3>
+                <h3 className="m-0 mb-2 text-lg  text-(--text)">{section.title}</h3>
 
                 <div className="grid grid-cols-5 gap-2 sm:grid-cols-5">
                   {section.badges.map((badge) => (
