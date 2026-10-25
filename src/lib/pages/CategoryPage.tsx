@@ -7,7 +7,9 @@ import type { CategoryKey } from "@/lib/types";
 const CategoryPage = ({ category }: CategoryPageProps) => {
   const projects = getProjectsByCategory(category);
   console.log("🚀 ~ CategoryPage ~ projects:", projects);
+
   const metadata = categoryMeta[category];
+
   const randomProject = useMemo(() => {
     if (projects.length === 0) {
       return undefined;

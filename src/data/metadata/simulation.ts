@@ -35,7 +35,7 @@ export const simulationProjects: ProjectEntry[] = [
     summary: "This was my attempt at making a live lockscreen wallpaper I had years ago",
     category: "simulations",
     simulationKey: "zombies",
-    imagePath: "/src/lib/images/simulations/sd.png",
+    imagePath: "/src/lib/images/simulations/zombie.jpg",
     writeUpPath: "/src/content/writeups/simulations/zombie-sim.md",
     // writeUpPath: "/src/content/writeups/personal/ledColumns/led-columns.md",
     // tags: ["Reliability", "Routing", "Modeling"],
