@@ -5,7 +5,7 @@ export { default as LightboxHost } from "./LightboxHost";
 export { MarkdownContent } from "./MarkdownContent";
 export { default as PageShell } from "./layout/PageShell";
 export { ProjectCard } from "./ProjectCard";
-export { SiteHeader } from "./Header/SiteHeader";
+export { default as SiteHeader } from "./Header/SiteHeader";
 
 // Simulations
 export { simLoader } from "@/content/simulations";

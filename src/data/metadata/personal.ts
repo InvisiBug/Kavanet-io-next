@@ -8,7 +8,7 @@ export const personalProjects: ProjectEntry[] = [
     category: "personal",
     tags: ["LED", "Lighting", "Installation"],
     imagePath: "/src/lib/images/personal/twiddle1.jpg",
-    writeUpPath: "/src/content/writeups/personal/ledColumns/led-columns.md",
+    writeUpPath: "/src/content/writeups/personal/twiddles/twiddles.md",
     featured: true,
   },
   {

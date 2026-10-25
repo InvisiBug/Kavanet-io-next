@@ -1,6 +1,6 @@
 import type { PropsWithChildren } from "react";
 import { useLocation } from "react-router-dom";
-import { SiteHeader } from "@/lib/components/Header/SiteHeader";
+import { SiteHeader } from "@/lib/components";
 
 const PageShell = ({ children }: PropsWithChildren) => {
   const location = useLocation();

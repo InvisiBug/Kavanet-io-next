@@ -17,6 +17,7 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "types": ["vite/client"],
+    "noImplicitAny": false,
 
     /* Linting */
     "strict": true,
@@ -24,6 +25,7 @@
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
+    "allowSyntheticDefaultImports": true,
     "noUncheckedSideEffectImports": true,
     "paths": {
       "@/*": [
@@ -31,6 +33,6 @@
       ]
     },
   },
-  "include": ["src"],
+  "include": ["src", "src/content/simulations/.ts"],
 
 }
