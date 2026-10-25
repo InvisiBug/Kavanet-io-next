@@ -3,8 +3,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { PageShell } from "@/lib/components";
 import { ContextProvider, useContext } from "@/lib/context";
 import { extractLightboxImageFromClick } from "@/lib/helpers";
-import { AboutPage, CategoryPage, ProjectPage, NotFoundPage } from "@/pages";
-import HomePage from "@/pages/HomePage";
+import { AboutPage, CategoryPage, ProjectPage, NotFoundPage } from "@/lib/pages";
+import HomePage from "@/lib/pages/HomePage";
 import AppConfig from "./appConfig";
 
 function App() {
