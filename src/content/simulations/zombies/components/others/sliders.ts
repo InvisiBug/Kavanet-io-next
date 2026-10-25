@@ -27,35 +27,47 @@ export default class Zombie {
   }
 
   create = () => {
+    const canvas = (this.p5 as unknown as { canvas: HTMLCanvasElement }).canvas;
+    const canvasParent = canvas.parentElement;
+
+    if (!canvasParent) {
+      return;
+    }
+
+    canvasParent.style.position = "relative";
+
+    const controls = this.p5.createDiv();
+    controls.parent(canvasParent);
+    controls.style("position", "absolute");
+    controls.style("top", "10px");
+    controls.style("left", "20%");
+    controls.style("right", "10px");
+    controls.style("z-index", "10");
+    controls.style("display", "flex");
+    controls.style("align-items", "flex-start");
+    controls.style("justify-content", "space-between");
+    controls.style("gap", "12px");
+
+    const labels = ["Zombie speed", "Human speed", "Hunter speed"];
+
     for (let i = 0; i < 3; i++) {
-      const xPos = 10;
-      const startingYPos = 100;
-      const text: p5.Element = this.p5.createP();
+      const row = this.p5.createDiv();
+      row.parent(controls);
+      row.style("min-width", "0");
+      row.style("flex", "1 1 0");
 
-      //* Speed
-      if (i === 0) {
-        this.sliderGroup[i] = this.p5.createSlider(0, 2, this.speed + 0.2, 0.1);
-        text.html("Zombie zpeed");
-      } else if (i === 1) {
-        this.sliderGroup[i] = this.p5.createSlider(0, 2, this.speed + 0.1, 0.1);
-        text.html("Human speed");
-      } else if (i === 2) {
-        this.sliderGroup[i] = this.p5.createSlider(0, 2, this.speed - 0.1, 0.1);
-        text.html("Hunter speed");
-      } else {
-        this.sliderGroup[i] = this.p5.createSlider(0, 100, 10);
-        text.html("test");
-      }
-
-      const h = this.p5.map(i, 0, 6, 5, 200);
-
-      // if (i === 1) {
-      text.position(xPos + 100, startingYPos + h - 15);
+      const text: p5.Element = this.p5.createP(labels[i]);
+      text.parent(row);
+      text.style("margin", "0 0 4px");
       text.style("color", "white");
+      text.style("white-space", "nowrap");
+      text.style("font-size", "12px");
 
-      this.sliderGroup[i].position(xPos, startingYPos + h);
-      this.sliderGroup[i].style("width", "80px");
-      // }
+      const defaultValue = i === 0 ? this.speed + 0.2 : i === 1 ? this.speed + 0.1 : this.speed - 0.1;
+      this.sliderGroup[i] = this.p5.createSlider(0, 2, defaultValue, 0.1);
+      this.sliderGroup[i].parent(row);
+      this.sliderGroup[i].style("width", "100%");
+      this.sliderGroup[i].style("max-width", "180px");
     }
   };
 
