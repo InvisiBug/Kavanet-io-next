@@ -3,7 +3,7 @@ import { MarkdownContent, P5Canvas } from "@/lib/components";
 import { simulationSketches } from "@/content/simulations";
 import { getMarkdownContent, getProject } from "@/lib/helpers";
 
-export function ProjectPage() {
+const ProjectPage = () => {
   const { category, projectSlug } = useParams();
 
   if (!category || !projectSlug) {
@@ -48,4 +48,6 @@ export function ProjectPage() {
       ) : null}
     </section>
   );
-}
+};
+
+export default ProjectPage;

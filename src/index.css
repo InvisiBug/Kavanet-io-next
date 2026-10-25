@@ -8,11 +8,31 @@
   --text-muted: #4f5d75;
   --line: #d8deeb;
   --accent: #f77f00;
+  --header-bg: rgba(255, 255, 255, 0.82);
+  --header-line: rgba(216, 222, 235, 0.8);
+  --page-bg: radial-gradient(circle at 88% 2%, #ffe9c7 0%, transparent 34%),
+    radial-gradient(circle at 8% 100%, #dff9f6 0%, transparent 30%), var(--bg);
 
   font-family: 'Plus Jakarta Sans', 'Avenir Next', ui-sans-serif, system-ui,
     sans-serif;
   line-height: 1.5;
   font-weight: 400;
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --bg: #0f1526;
+  --surface: #172038;
+  --surface-soft: #202c49;
+  --text: #e9eefc;
+  --text-muted: #a8b4d4;
+  --line: #2d3a5c;
+  --accent: #ff9d2f;
+  --header-bg: rgba(23, 32, 56, 0.82);
+  --header-line: rgba(45, 58, 92, 0.9);
+  --page-bg: radial-gradient(circle at 88% 2%, rgba(255, 157, 47, 0.18) 0%, transparent 34%),
+    radial-gradient(circle at 8% 100%, rgba(73, 128, 255, 0.2) 0%, transparent 30%), var(--bg);
+  color-scheme: dark;
 }
 
 * {

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { HeroFeatured, HomeBannerRotator } from "@/lib/components";
-import { categoryMeta } from "@/lib/data/siteData";
+import { categoryMeta } from "@/lib/data";
 import { getFeaturedProjects } from "@/lib/helpers";
 
 const categoryOrder = ["personal-projects", "community-projects", "system-simulations"] as const;

@@ -1,14 +1,10 @@
 import { useMemo } from "react";
 import { HeroFeatured, ProjectCard } from "@/lib/components";
-import { categoryMeta } from "@/lib/data/siteData";
+import { categoryMeta } from "@/lib/data";
 import { getProjectsByCategory } from "@/lib/helpers";
 import type { CategoryKey } from "@/lib/types";
 
-interface CategoryPageProps {
-  category: CategoryKey;
-}
-
-export function CategoryPage({ category }: CategoryPageProps) {
+const CategoryPage = ({ category }: CategoryPageProps) => {
   const projects = getProjectsByCategory(category);
   const metadata = categoryMeta[category];
   const randomProject = useMemo(() => {
@@ -35,4 +31,10 @@ export function CategoryPage({ category }: CategoryPageProps) {
       </div>
     </section>
   );
+};
+
+export default CategoryPage;
+
+interface CategoryPageProps {
+  category: CategoryKey;
 }
