@@ -1,5 +1,5 @@
-import { Config } from "../..";
-import p5, { Vector, Element } from "p5";
+import { type Config } from "../../";
+import p5 from "p5";
 
 export default class Zombie {
   p5;
@@ -11,7 +11,7 @@ export default class Zombie {
   velocity;
   pos;
 
-  sliderGroup: Element[] = [];
+  sliderGroup: p5.Element[] = [];
 
   constructor(config: Config) {
     this.p5 = config.p5;
@@ -20,14 +20,14 @@ export default class Zombie {
     this.speed = config.speed;
 
     this.acceleration = this.p5.createVector(0, 0);
-    this.velocity = Vector.random2D();
+    this.velocity = p5.Vector.random2D();
     this.pos = this.p5.createVector(this.p5.random(this.p5.width), this.p5.random(this.p5.height));
 
     this.velocity.setMag(config.speed);
   }
 
   create = () => {
-    for (var i = 0; i < 3; i++) {
+    for (let i = 0; i < 3; i++) {
       const xPos = 10;
       const startingYPos = 100;
       const text: p5.Element = this.p5.createP();

@@ -1,5 +1,5 @@
-import { Config } from "../..";
-import p5, { Vector } from "p5";
+import { type Config } from "../../";
+import p5 from "p5";
 import Human from "./human";
 import Safezone from "../zones/safezone";
 import { constrain } from "../helpers";
@@ -35,7 +35,7 @@ export default class Zombie {
     this.speed = config.speed;
     this.wanderStrength = 0.1;
     this.acceleration = this.p5.createVector(0, 0);
-    this.velocity = Vector.random2D();
+    this.velocity = p5.Vector.random2D();
     this.velocity.setMag(config.speed);
 
     if (x && y) {
@@ -105,7 +105,7 @@ export default class Zombie {
   handleMovement = () => {
     // Nudge direction randomly
     if (this.p5.random() < 0.4) {
-      this.acceleration = Vector.random2D().setMag(0.2);
+      this.acceleration = p5.Vector.random2D().setMag(0.2);
     }
     this.velocity.add(this.acceleration);
     this.velocity.limit(this.speed);
@@ -119,7 +119,7 @@ export default class Zombie {
     safezones.forEach((safezone: Safezone) => {
       const dist = this.pos.dist(safezone.pos);
       if (dist < 100) {
-        this.acceleration = Vector.sub(this.pos, safezone.pos);
+        this.acceleration = p5.Vector.sub(this.pos, safezone.pos);
         // this.acceleration.setMag(1);
       }
     });
@@ -146,7 +146,7 @@ export default class Zombie {
     });
 
     if (humanToChase instanceof Human) {
-      this.acceleration = Vector.sub(humanToChase.pos, this.pos);
+      this.acceleration = p5.Vector.sub(humanToChase.pos, this.pos);
 
       if (this.pos.dist(humanToChase.pos) < 5) {
         this.food += 1;

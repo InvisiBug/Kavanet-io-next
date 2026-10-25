@@ -1,5 +1,5 @@
-import { Config } from "../..";
-import { Vector } from "p5";
+import { type Config } from "../../";
+import p5 from "p5";
 import Zombie from "./zombie";
 import Safezone from "../zones/safezone";
 import Human from "./human";
@@ -35,7 +35,7 @@ export default class Hunter {
     this.img = config.hunterImg;
 
     this.acceleration = this.p5.createVector(0, 0);
-    this.velocity = Vector.random2D();
+    this.velocity = p5.Vector.random2D();
     this.velocity.setMag(config.speed);
 
     if (x && y) {
@@ -94,7 +94,7 @@ export default class Hunter {
     });
 
     if (zombieToChase instanceof Zombie) {
-      this.acceleration = Vector.sub(zombieToChase.pos, this.pos);
+      this.acceleration = p5.Vector.sub(zombieToChase.pos, this.pos);
       if (this.pos.dist(zombieToChase.pos) < 5) {
         zombies.splice(zombies.indexOf(zombieToChase), 1);
         this.killcount++;
@@ -113,7 +113,7 @@ export default class Hunter {
   handleMovement = () => {
     // Nudge direction randomly
     if (this.p5.random() < 0.2) {
-      this.acceleration = Vector.random2D().setMag(0.1);
+      this.acceleration = p5.Vector.random2D().setMag(0.1);
     }
     this.velocity.add(this.acceleration);
     this.velocity.limit(this.speed);

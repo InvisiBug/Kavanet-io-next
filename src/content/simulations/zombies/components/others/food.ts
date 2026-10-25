@@ -1,5 +1,4 @@
-import { Config } from "../..";
-import p5, { Vector, Element } from "p5";
+import { type Config } from "../../";
 import Human from "../characters/human";
 import Zombie from "../characters/zombie";
 
@@ -36,10 +35,7 @@ export default class Food {
     } else {
       const borderWidth = 10;
 
-      this.pos = this.p5.createVector(
-        this.p5.random(borderWidth, this.p5.width - borderWidth * 2),
-        this.p5.random(borderWidth, this.p5.height - borderWidth)
-      );
+      this.pos = this.p5.createVector(this.p5.random(borderWidth, this.p5.width - borderWidth * 2), this.p5.random(borderWidth, this.p5.height - borderWidth));
     }
   }
 

@@ -1,5 +1,5 @@
-import { Config } from "../..";
-import p5, { Vector, Element } from "p5";
+import { type Config } from "../../";
+import p5 from "p5";
 import Human from "../characters/human";
 
 export default class Safezone {
@@ -40,10 +40,7 @@ export default class Safezone {
     } else {
       const borderWidth = 10;
 
-      this.pos = this.p5.createVector(
-        this.p5.random(borderWidth, this.p5.width - borderWidth * 2),
-        this.p5.random(borderWidth, this.p5.height - borderWidth)
-      );
+      this.pos = this.p5.createVector(this.p5.random(borderWidth, this.p5.width - borderWidth * 2), this.p5.random(borderWidth, this.p5.height - borderWidth));
     }
   }
 
@@ -67,7 +64,7 @@ export default class Safezone {
       }
 
       if (human.hasFood && human.pos.dist(this.pos) < 100) {
-        human.acceleration = Vector.sub(this.pos, human.pos);
+        human.acceleration = p5.Vector.sub(this.pos, human.pos);
       }
 
       // this.p5.push()
@@ -84,17 +81,17 @@ export default class Safezone {
 
       for (let angle = startingAngle; angle < 180 + startingAngle; angle += (180 + startingAngle) / humansToSpawn) {
         // console.log(angle);
-        const spawnLocation = Vector.fromAngle(this.p5.radians(angle));
+        const spawnLocation = p5.Vector.fromAngle(this.p5.radians(angle));
         spawnLocation.setMag(this.size / 2 + 5);
 
-        const direction = Vector.fromAngle(this.p5.radians(this.p5.random(10)));
+        const direction = p5.Vector.fromAngle(this.p5.radians(this.p5.random(10)));
 
         humans.push(
           new Human({
             config: this.config,
             velocity: direction,
-            pos: Vector.add(spawnLocation, this.pos),
-          })
+            pos: p5.Vector.add(spawnLocation, this.pos),
+          }),
         );
 
         // humans.push(new Human(this.config, this.pos.x, this.pos.y + spawnLocation.y, this.p5.createVector(-1, -1)));

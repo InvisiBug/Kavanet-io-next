@@ -5,7 +5,7 @@ import { sketch as lisajous } from "@/content/simulations/lisajous/";
 import { sketch as dots } from "@/content/simulations/dots";
 import { sketch as rayCasting } from "@/content/simulations/rayCasting";
 import { sketch as circlePacking } from "@/content/simulations/circlePacking";
-// import { sketch as zombies } from "@/content/simulations/zombies/sketch";
+import { sketch as zombies } from "@/content/simulations/zombies";
 
 //* Dont forget to update the SimulationKey type when adding new simulations
 export const simLoader: Record<SimulationKey, SketchFactory> = {
@@ -14,5 +14,5 @@ export const simLoader: Record<SimulationKey, SketchFactory> = {
   dots,
   rayCasting,
   circlePacking,
-  // zombies,
+  zombies,
 };

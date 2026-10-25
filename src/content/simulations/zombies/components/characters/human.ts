@@ -1,5 +1,5 @@
-import { Vector } from "p5";
-import { Config } from "../..";
+import p5 from "p5";
+import { type Config } from "../../";
 import { constrain } from "../helpers";
 import Safezone from "../zones/safezone";
 import TestMap from "../others/trailMap";
@@ -38,7 +38,7 @@ export default class Human {
   showCalculationMethods = false;
 
   // config: Config, pos?: Vector, velocity?: Vector
-  constructor({ config, pos, velocity }: { config: Config; pos?: Vector; velocity?: Vector }) {
+  constructor({ config, pos, velocity }: { config: Config; pos?: p5.Vector; velocity?: p5.Vector }) {
     this.p5 = config.p5;
     this.config = config;
 
@@ -50,24 +50,37 @@ export default class Human {
 
     this.speed = config.speed;
     this.acceleration = this.p5.createVector(0, 0);
-    velocity ? (this.velocity = velocity) : (this.velocity = Vector.random2D());
+
+    if (velocity) {
+      this.velocity = velocity;
+    } else {
+      this.velocity = p5.Vector.random2D();
+    }
     this.velocity.setMag(config.speed);
 
-    pos ? (this.pos = pos) : (this.pos = this.p5.createVector(this.p5.random(this.p5.width), this.p5.random(this.p5.height)));
+    if (pos) {
+      this.pos = pos;
+    } else {
+      this.pos = this.p5.createVector(this.p5.random(this.p5.width), this.p5.random(this.p5.height));
+    }
   }
 
-  update = ({ zombies, humans, safezones, food: allFood, toFoodMap, toHomeMap, speed }: UpdateArgs) => {
+  update = ({ zombies: _zombies, humans: _humans, safezones: _safezones, food: allFood, toFoodMap, toHomeMap, speed }: UpdateArgs) => {
     if (speed) {
       this.velocity.setMag(speed);
       this.speed = speed;
     }
 
-    // zombies ? this.avoid(zombies) : null;
+    // this.avoid(_zombies);
     this.baseMovement();
-    allFood ? this.handleFood(allFood) : null;
-    // toFoodMap ? this.followFootSteps(toFoodMap) : null;
 
-    toFoodMap && toHomeMap ? this.handleMaps(toFoodMap, toHomeMap) : null;
+    if (allFood) {
+      this.handleFood(allFood);
+    }
+
+    if (toFoodMap && toHomeMap) {
+      this.handleMaps(toFoodMap, toHomeMap);
+    }
   };
 
   handleMaps = (toFoodMap: TestMap, toHomeMap: TestMap) => {
@@ -106,8 +119,8 @@ export default class Human {
 
     //* Crete an array of points for our search areas
     const searchAreaPos = searchAngles.map((searchAngle) => {
-      const searchArea = Vector.fromAngle(this.velocity.heading() + this.p5.radians(searchAngle)).setMag(this.trailSearchDistance);
-      return Vector.add(this.pos, searchArea);
+      const searchArea = p5.Vector.fromAngle(this.velocity.heading() + this.p5.radians(searchAngle)).setMag(this.trailSearchDistance);
+      return p5.Vector.add(this.pos, searchArea);
     });
 
     //* Get the concentration in our search areas
@@ -124,7 +137,7 @@ export default class Human {
     if (pointsDetected(concentrations)) {
       const location = concentrations.indexOf(Math.max(...concentrations));
 
-      this.acceleration.add(Vector.fromAngle(this.velocity.heading() + this.p5.radians(searchAngles[location])).setMag(this.followStrength));
+      this.acceleration.add(p5.Vector.fromAngle(this.velocity.heading() + this.p5.radians(searchAngles[location])).setMag(this.followStrength));
     }
 
     //* Show the search areas
@@ -169,7 +182,7 @@ export default class Human {
   checkForFood = (allFood: Food[]) => {
     allFood?.forEach((food) => {
       const foodDistance = this.pos.dist(food.pos);
-      const toFoodVect = Vector.sub(food.pos, this.pos);
+      const toFoodVect = p5.Vector.sub(food.pos, this.pos);
       const foodAngle = this.velocity.angleBetween(toFoodVect);
 
       if (foodDistance < this.foodDetectionDistance) {
@@ -196,7 +209,7 @@ export default class Human {
   baseMovement = () => {
     // Nudge direction randomly
     if (this.p5.random() < 0.2) {
-      this.acceleration = Vector.random2D().setMag(0.2);
+      this.acceleration = p5.Vector.random2D().setMag(0.2);
     }
 
     this.velocity.add(this.acceleration);
@@ -244,7 +257,7 @@ export default class Human {
 
     if (closestZombie instanceof Zombie) {
       if (closestZombie.pos.dist(this.pos) < this.avoidanceDistance) {
-        this.acceleration = Vector.sub(this.pos, closestZombie.pos);
+        this.acceleration = p5.Vector.sub(this.pos, closestZombie.pos);
       }
 
       return closestZombie;

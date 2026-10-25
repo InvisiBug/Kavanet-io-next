@@ -1,9 +1,10 @@
 // C++ Ant sim => https://www.youtube.com/watch?v=81GQNPJip2Y
 // Pheromone Sim => https://openprocessing.org/sketch/15109/
 
-import p5, { Element, Vector } from "p5";
+import p5 from "p5";
 import colours from "nice-color-palettes";
-import { showFPS } from "src/content/plots/helpers";
+import { showFPS } from "../helpers";
+import { getCanvasSize, getCanvasContainer } from "../helpers";
 // Characters
 import Zombie from "./components/characters/zombie";
 import Human from "./components/characters/human";
@@ -13,7 +14,6 @@ import Sliders from "./components/others/sliders";
 import TrailMap from "./components/others/trailMap";
 import Food from "./components/others/food";
 // Zones
-import Darkzone from "./components/zones/darkzone";
 import Safezone from "./components/zones/safezone";
 import Supermarket from "./components/zones/supermarket";
 // Images
@@ -24,47 +24,47 @@ import hunterImg from "./components/sprites/hunter.gif";
 export const sketch = (p5: p5) => {
   const numColours = 5; // Max 5
 
-  const config: Config = {
-    p5: p5,
-    colours: p5.shuffle(colours[Math.floor(p5.random(0, colours.length))]).slice(0, numColours),
-    //
-    showFood: true,
-    //
-    zombies: 1,
-    humans: 0,
-    hunters: 10,
-    //
-    safezones: 1,
-    darkzones: 0,
-    supermarkets: 5,
-    //
-    imageSize: 15,
-    zombieImg: p5.loadImage(zombieImg.src),
-    humanImg: p5.loadImage(humanImg.src),
-    hunterImg: p5.loadImage(hunterImg.src),
-    //
-    speed: 1,
-    avoidanceDistance: 50,
-    foodDeclineRate: 20, // Higher is slower
-  };
+  let config: Config;
 
   const zombies: Zombie[] = [];
   const humans: Human[] = [];
   const hunters: Hunter[] = [];
   const safezones: Safezone[] = [];
   const supermarkets: Supermarket[] = [];
-  const darkzones: Darkzone[] = [];
-  const sliders = new Sliders(config);
-  let food: Food[] = [];
+  const food: Food[] = [];
+  let sliders: Sliders;
+  let toFoodMap: TrailMap;
+  let toHomeMap: TrailMap;
 
-  const toFoodMap = new TrailMap(config, p5.color("#73f974"));
-  const toHomeMap = new TrailMap(config, p5.color("#ff2f7f"));
-
-  p5.setup = () => {
-    p5.createCanvas(p5.windowWidth, p5.windowHeight);
+  p5.setup = async () => {
+    // p5.createCanvas(p5.windowWidth, p5.windowHeight);
+    const { width: canvasWidth, height: canvasHeight } = getCanvasSize(getCanvasContainer(p5));
+    p5.createCanvas(canvasWidth, canvasHeight);
     p5.background(50);
 
+    config = {
+      p5,
+      colours: p5.shuffle(colours[Math.floor(p5.random(0, colours.length))]).slice(0, numColours),
+      showFood: true,
+      zombies: 1,
+      humans: 0,
+      hunters: 10,
+      safezones: 1,
+      darkzones: 0,
+      supermarkets: 5,
+      imageSize: 15,
+      zombieImg: await p5.loadImage(zombieImg),
+      humanImg: await p5.loadImage(humanImg),
+      hunterImg: await p5.loadImage(hunterImg),
+      speed: 1,
+      avoidanceDistance: 50,
+      foodDeclineRate: 20,
+    };
+
+    sliders = new Sliders(config);
     sliders.create();
+    toFoodMap = new TrailMap(config, p5.color("#73f974"));
+    toHomeMap = new TrailMap(config, p5.color("#ff2f7f"));
 
     for (let i = 0; i < config.zombies; i++) {
       zombies.push(new Zombie(config));

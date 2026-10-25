@@ -1,5 +1,5 @@
-import { Config } from "../..";
-import p5, { Vector, Element } from "p5";
+import { type Config } from "../../";
+import p5 from "p5";
 import Human from "../characters/human";
 
 export default class Supermarket {
@@ -36,10 +36,7 @@ export default class Supermarket {
     } else {
       const borderWidth = 10;
 
-      this.pos = this.p5.createVector(
-        this.p5.random(borderWidth, this.p5.width - borderWidth * 2),
-        this.p5.random(borderWidth, this.p5.height - borderWidth)
-      );
+      this.pos = this.p5.createVector(this.p5.random(borderWidth, this.p5.width - borderWidth * 2), this.p5.random(borderWidth, this.p5.height - borderWidth));
     }
   }
 
@@ -52,7 +49,7 @@ export default class Supermarket {
     this.checkForSurvivor(humans);
 
     for (let i = supermarkets.length - 1; i >= 0; i--) {
-      supermarkets[i].food > 0;
+      // supermarkets[i].food > 0;
       if (supermarkets[i].food < 0) {
         supermarkets.splice(i, 1);
       }
@@ -68,7 +65,7 @@ export default class Supermarket {
       }
 
       if (!human.hasFood && human.pos.dist(this.pos) < 100) {
-        human.acceleration = Vector.sub(this.pos, human.pos);
+        human.acceleration = p5.Vector.sub(this.pos, human.pos);
       }
     });
   };

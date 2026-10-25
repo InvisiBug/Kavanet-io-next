@@ -1,5 +1,5 @@
-import { Config } from "../..";
-import p5, { Color, Vector } from "p5";
+import { type Config } from "../../";
+import p5 from "p5";
 
 export default class TrailMap {
   p5;
@@ -13,7 +13,7 @@ export default class TrailMap {
   fadeRate = 0.05;
   dotSize = 2;
 
-  constructor(config: Config, colour: Color) {
+  constructor(config: Config, colour: p5.Color) {
     this.p5 = config.p5;
     this.config = config;
 
@@ -39,19 +39,17 @@ export default class TrailMap {
     });
   };
 
-  addPoint = (pos: Vector) => {
+  addPoint = (pos: p5.Vector) => {
     this.points.push(new Point(this.p5, this.dotSize, pos.x, pos.y, 255, this.colour));
   };
 
   createTestPoints = (num: number) => {
     for (let i = 0; i < num; i++) {
-      this.points.push(
-        new Point(this.p5, this.dotSize, this.p5.random(this.p5.width), this.p5.random(this.p5.height), this.p5.random(255), this.colour)
-      );
+      this.points.push(new Point(this.p5, this.dotSize, this.p5.random(this.p5.width), this.p5.random(this.p5.height), this.p5.random(255), this.colour));
     }
   };
 
-  getConcentrationAtLocation = (pos: Vector, size: number) => {
+  getConcentrationAtLocation = (pos: p5.Vector, size: number) => {
     let totalConcentration = 0;
 
     this.points.forEach((point) => {
@@ -72,7 +70,7 @@ class Point {
   colour;
   dotSize;
 
-  constructor(p5: p5, dotSize: number, x: number, y: number, val: number = 255, colour: Color) {
+  constructor(p5: p5, dotSize: number, x: number, y: number, val: number = 255, colour: p5.Color) {
     this.p5 = p5;
     this.dotSize = dotSize;
 

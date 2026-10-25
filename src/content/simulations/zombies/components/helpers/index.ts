@@ -1,6 +1,6 @@
-import p5, { Vector } from "p5";
+import p5 from "p5";
 
-export const drawDirection = (p5: p5, pos: Vector, velocity: Vector, size: number) => {
+export const drawDirection = (p5: p5, pos: p5.Vector, velocity: p5.Vector, size: number) => {
   p5.push();
   p5.strokeWeight(2);
   p5.stroke(1);
@@ -12,7 +12,7 @@ export const drawDirection = (p5: p5, pos: Vector, velocity: Vector, size: numbe
   p5.pop();
 };
 
-export const constrain = (p5: p5, pos: Vector, velocity: Vector, acceleration: Vector) => {
+export const constrain = (p5: p5, pos: p5.Vector, velocity: p5.Vector, acceleration: p5.Vector) => {
   acceleration.set(0, 0); // fixes the no boundry issue
   if (pos.x <= 0) {
     velocity.mult(p5.createVector(-1, 1));
