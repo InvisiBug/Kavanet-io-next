@@ -2,24 +2,14 @@ import { Children, cloneElement, isValidElement, type ReactElement } from "react
 import ReactMarkdown, { type Components } from "react-markdown";
 import remarkGfm from "remark-gfm";
 
-const standaloneImageClass = "mx-auto mt-3 mb-4 block w-full max-w-160 rounded-xl border border-(--line) bg-[#f8f9fd]";
-const gridImageClass = "block h-full w-full rounded-xl border border-(--line) bg-[#f8f9fd] object-cover";
-
-function isImageElement(child: unknown): child is ReactElement<{ className?: string; src?: string }> {
-  if (!isValidElement(child)) {
-    return false;
-  }
-
-  if (child.type === "img") {
-    return true;
-  }
-
-  if (typeof child.props !== "object" || child.props === null) {
-    return false;
-  }
-
-  const elementProps = child.props as Record<string, unknown>;
-  return typeof elementProps.src === "string";
+export function MarkdownContent({ markdown }: MarkdownContentProps) {
+  return (
+    <article className="rounded-2xl border border-(--line) bg-(--surface) p-5">
+      <ReactMarkdown components={markdownComponents} remarkPlugins={[remarkGfm]}>
+        {markdown}
+      </ReactMarkdown>
+    </article>
+  );
 }
 
 const markdownComponents: Components = {
@@ -47,7 +37,7 @@ const markdownComponents: Components = {
           {images.map((image, index) =>
             cloneElement(image, {
               key: image.key ?? `markdown-grid-image-${index}`,
-              className: gridImageClass,
+              className: "block h-full w-full rounded-xl border border-(--line) bg-[#f8f9fd] object-cover",
             }),
           )}
         </div>
@@ -65,17 +55,24 @@ const markdownComponents: Components = {
   li: ({ node: _node, ...props }) => <li className="text-(--text-muted)" {...props} />,
   pre: ({ node: _node, ...props }) => <pre className="mt-3 mb-0 overflow-x-auto rounded-xl border border-(--line) bg-[#f8f9fd] p-3" {...props} />,
   code: ({ node: _node, className, ...props }) => <code className={className ? `${className} rounded-md bg-[#eef1f8] px-1.5 py-0.5` : "rounded-md bg-[#eef1f8] px-1.5 py-0.5"} {...props} />,
-  img: ({ node: _node, className, ...props }) => <img {...props} className={className ?? standaloneImageClass} />,
+  img: ({ node: _node, className, ...props }) => <img {...props} className={className ?? "mx-auto mt-3 mb-4 block w-full max-w-160 rounded-xl border border-(--line) bg-[#f8f9fd]"} />,
 };
 
-export function MarkdownContent({ markdown }: MarkdownContentProps) {
-  return (
-    <article className="rounded-2xl border border-(--line) bg-(--surface) p-5">
-      <ReactMarkdown components={markdownComponents} remarkPlugins={[remarkGfm]}>
-        {markdown}
-      </ReactMarkdown>
-    </article>
-  );
+function isImageElement(child: unknown): child is ReactElement<{ className?: string; src?: string }> {
+  if (!isValidElement(child)) {
+    return false;
+  }
+
+  if (child.type === "img") {
+    return true;
+  }
+
+  if (typeof child.props !== "object" || child.props === null) {
+    return false;
+  }
+
+  const elementProps = child.props as Record<string, unknown>;
+  return typeof elementProps.src === "string";
 }
 
 interface MarkdownContentProps {

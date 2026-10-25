@@ -1,13 +1,15 @@
-import { HeroFeatured } from "@/lib/components/HeroFeatured";
-import { HomeBannerRotator } from "@/lib/components/HomeBannerRotator";
-import { categoryMeta } from "@/lib/helpers";
-import { getFeaturedProjects } from "@/lib/helpers";
 import { Link } from "react-router-dom";
+import { HeroFeatured, HomeBannerRotator } from "@/lib/components";
+import { categoryMeta, siteConfig } from "@/data";
+import { getFeaturedProjects, getRandomProjects } from "@/lib/helpers";
 
-const categoryOrder = ["personal-projects", "community-projects", "system-simulations"] as const;
+const categoryOrder = ["personal", "community", "simulations"] as const;
 
-export function HomePage() {
-  const featured = getFeaturedProjects();
+const HomePage = () => {
+  const random = siteConfig.options.homeScreenFeaturedRandom;
+  const featured = random ? getRandomProjects(3) : getFeaturedProjects();
+
+  console.log("🚀 ~ HomePage ~ featured:", featured);
 
   return (
     <div className="grid gap-6">
@@ -31,4 +33,6 @@ export function HomePage() {
       </section>
     </div>
   );
-}
+};
+
+export default HomePage;

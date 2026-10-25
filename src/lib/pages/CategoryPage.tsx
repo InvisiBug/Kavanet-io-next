@@ -1,16 +1,12 @@
 import { useMemo } from "react";
-import { HeroFeatured } from "@/lib/components/HeroFeatured";
-import { ProjectCard } from "@/lib/components/ProjectCard";
-import { categoryMeta } from "@/lib/helpers";
+import { HeroFeatured, ProjectCard } from "@/lib/components";
+import { categoryMeta } from "@/data";
 import { getProjectsByCategory } from "@/lib/helpers";
 import type { CategoryKey } from "@/lib/types";
 
-interface CategoryPageProps {
-  category: CategoryKey;
-}
-
-export function CategoryPage({ category }: CategoryPageProps) {
+const CategoryPage = ({ category }: CategoryPageProps) => {
   const projects = getProjectsByCategory(category);
+  console.log("🚀 ~ CategoryPage ~ projects:", projects);
   const metadata = categoryMeta[category];
   const randomProject = useMemo(() => {
     if (projects.length === 0) {
@@ -24,10 +20,10 @@ export function CategoryPage({ category }: CategoryPageProps) {
     <section className="grid gap-6" aria-labelledby="category-title">
       <header className="grid gap-2 rounded-2xl border border-(--line) bg-(--surface) p-5">
         <h1 id="category-title">{metadata.title}</h1>
-        <p className="text-(--text-muted)">{metadata.description}</p>
+        <p className="whitespace-pre-line text-(--text-muted)">{metadata.description}</p>
       </header>
 
-      {randomProject ? <HeroFeatured featured={[randomProject]} showSimulationPreview={category === "system-simulations"} /> : null}
+      {randomProject ? <HeroFeatured featured={[randomProject]} showSimulationPreview={category === "simulations"} /> : null}
 
       <div className="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] items-stretch gap-4">
         {projects.map((project) => (
@@ -36,4 +32,10 @@ export function CategoryPage({ category }: CategoryPageProps) {
       </div>
     </section>
   );
+};
+
+export default CategoryPage;
+
+interface CategoryPageProps {
+  category: CategoryKey;
 }

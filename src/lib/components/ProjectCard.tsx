@@ -7,7 +7,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
   return (
     <Link to={`/${project.category}/${project.slug}`} className="grid gap-4 rounded-2xl border border-(--line) bg-(--surface) p-5 no-underline transition hover:border-(--accent)" aria-label={`Open project ${project.title}`}>
-      {imageSrc ? <img src={imageSrc} alt={`${project.title} placeholder`} className="aspect-video w-full rounded-xl border border-(--line) object-cover" loading="lazy" /> : null}
+      {imageSrc ? <img src={imageSrc} alt={`${project.title} placeholder`} data-no-lightbox="true" className="aspect-video w-full rounded-xl border border-(--line) object-cover" loading="lazy" /> : null}
 
       <div>
         <h3 className="m-0 text-(--text)">{project.title}</h3>

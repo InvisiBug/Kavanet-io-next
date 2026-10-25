@@ -1,12 +1,12 @@
-import { MarkdownContent } from "@/lib/components/MarkdownContent";
-import { P5Canvas } from "@/lib/components/P5Canvas";
-import { getMarkdownContent, getProject } from "@/lib/helpers";
-import { simulationSketches } from "@/content/simulations";
 import { Link, useParams } from "react-router-dom";
+import { MarkdownContent, P5Canvas, simLoader } from "@/lib/components";
 
-export function ProjectPage() {
+import { getMarkdownContent, getProject } from "@/lib/helpers";
+
+const ProjectPage = () => {
   const { category, projectSlug } = useParams();
 
+  //! Project missing Error
   if (!category || !projectSlug) {
     return (
       <section className="grid gap-2 rounded-2xl border border-(--line) bg-(--surface) p-5">
@@ -18,6 +18,7 @@ export function ProjectPage() {
 
   const project = getProject(category, projectSlug);
 
+  // Project not found
   if (!project) {
     return (
       <section className="grid gap-2 rounded-2xl border border-(--line) bg-(--surface) p-5">
@@ -27,8 +28,8 @@ export function ProjectPage() {
     );
   }
 
-  const markdown = getMarkdownContent(project.contentPath);
-  const simulationSketch = project.simulationKey ? simulationSketches[project.simulationKey] : null;
+  const markdown = project?.writeUpPath && getMarkdownContent(project?.writeUpPath);
+  const simulationSketch = project.simulationKey ? simLoader[project.simulationKey] : null;
 
   return (
     <section className="grid gap-6" aria-labelledby="project-title">
@@ -40,13 +41,16 @@ export function ProjectPage() {
         <p className="text-(--text-muted)">{project.summary}</p>
       </div>
 
-      {markdown ? <MarkdownContent markdown={markdown} /> : <p>Markdown content is missing for this project.</p>}
+      {markdown ? <MarkdownContent markdown={markdown} /> : null}
 
-      {project.category === "system-simulations" && simulationSketch ? (
+      {/* P5 canvas */}
+      {project.category === "simulations" && simulationSketch ? (
         <section className="rounded-2xl border border-(--line) bg-(--surface) p-4" aria-label="Interactive p5 simulation">
           <P5Canvas sketch={simulationSketch} className="w-full" />
         </section>
       ) : null}
     </section>
   );
-}
+};
+
+export default ProjectPage;

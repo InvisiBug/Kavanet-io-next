@@ -2226,6 +2226,11 @@ natural-compare@^1.4.0:
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==
 
+nice-color-palettes@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/nice-color-palettes/-/nice-color-palettes-4.0.0.tgz#212f15a2b85b7ac6126b19a8328ea953ef7b672d"
+  integrity sha512-lP/4LoL0Q9L9JX1UMb80BYbRCqZPnLqzuBCPI7mpqIw1HQjt/jk/U8SJF28EmudAZkJ5zG65x2HYla9wvmdxbw==
+
 node-releases@^2.0.57:
   version "2.0.59"
   resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-2.0.59.tgz#172a7e253e3cca1ae00e8015a82b54e7fcc68fd3"

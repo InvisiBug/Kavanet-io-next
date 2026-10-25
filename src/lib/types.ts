@@ -1,7 +1,8 @@
-import { siteConfig } from "@/lib/data/siteData";
+export type Theme = "light" | "dark";
 
-export type CategoryKey = "personal-projects" | "community-projects" | "system-simulations";
-export type SimulationKey = "project1" | "project2";
+export type CategoryKey = "personal" | "community" | "simulations";
+
+export type SimulationKey = "project1" | "lisajous" | "dots";
 
 export interface ProjectEntry {
   slug: string;
@@ -15,7 +16,10 @@ export interface ProjectEntry {
   featured?: boolean;
   repositoryUrl?: string;
   demoUrl?: string;
-  contentPath: string;
+  writeUpPath?: string;
 }
 
-export type SiteConfig = typeof siteConfig;
+export interface LightboxImage {
+  src: string;
+  alt: string;
+}
