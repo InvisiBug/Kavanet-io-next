@@ -16,7 +16,7 @@ export const sketch = (p5: p5) => {
   };
 
   p5.draw = () => {
-    p5.background(50);
+    p5.background(12, 22, 44);
 
     // Limits the total number of expanding circles
     let expandingCircles = 0;

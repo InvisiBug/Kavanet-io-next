@@ -86,11 +86,13 @@ export const showFPS = (p5: p5) => {
 
 export const getCanvasSize = (container: HTMLElement | null) => {
   const fallbackWidth = 900;
+  const fallbackHeight = Math.round(fallbackWidth * 0.52);
   const width = container?.clientWidth ?? fallbackWidth;
+  const height = container?.clientHeight || fallbackHeight;
 
   return {
     width,
-    height: Math.round(width * 0.52),
+    height,
   };
 };
 

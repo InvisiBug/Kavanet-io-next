@@ -16,6 +16,21 @@ const markdownComponents: Components = {
   h1: ({ node: _node, ...props }) => <h1 className="mt-4 mb-2 text-3xl font-bold first:mt-0" {...props} />,
   h2: ({ node: _node, ...props }) => <h2 className="mt-4 mb-2 text-2xl font-semibold first:mt-0" {...props} />,
   h3: ({ node: _node, ...props }) => <h3 className="mt-4 mb-2 text-xl font-semibold first:mt-0" {...props} />,
+  a: ({ node: _node, href = "", children, ...props }) => {
+    const isExternal = /^https?:\/\//.test(href);
+
+    return (
+      <a
+        href={href}
+        className="font-semibold text-(--accent) underline decoration-(--accent)/40 underline-offset-3 transition hover:text-(--text) hover:decoration-(--text)"
+        target={isExternal ? "_blank" : undefined}
+        rel={isExternal ? "noreferrer" : undefined}
+        {...props}
+      >
+        {children}
+      </a>
+    );
+  },
   p: ({ node: _node, children, ...props }) => {
     const paragraphChildren = Children.toArray(children);
     const images = paragraphChildren.filter(isImageElement);

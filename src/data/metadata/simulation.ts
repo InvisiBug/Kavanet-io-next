@@ -36,6 +36,8 @@ export const simulationProjects: ProjectEntry[] = [
     category: "simulations",
     simulationKey: "zombies",
     imagePath: "/src/lib/images/simulations/sd.png",
+    writeUpPath: "/src/content/writeups/simulations/zombie-sim.md",
+    // writeUpPath: "/src/content/writeups/personal/ledColumns/led-columns.md",
     // tags: ["Reliability", "Routing", "Modeling"],
   },
   {
