@@ -83,3 +83,18 @@ export const showFPS = (p5: p5) => {
   p5.text(`${p5.frameRate().toFixed(0)}FPS`, 10, 30);
   p5.pop();
 };
+
+export const getCanvasSize = (container: HTMLElement | null) => {
+  const fallbackWidth = 900;
+  const width = container?.clientWidth ?? fallbackWidth;
+
+  return {
+    width,
+    height: Math.round(width * 0.52),
+  };
+};
+
+export const getCanvasContainer = (instance: p5): HTMLElement | null => {
+  const maybeCanvas = (instance as unknown as { canvas?: HTMLCanvasElement }).canvas;
+  return maybeCanvas?.parentElement ?? null;
+};

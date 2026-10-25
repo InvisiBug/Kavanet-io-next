@@ -1,6 +1,7 @@
 // https://youtu.be/--6eyLO78CY
 import p5 from "p5";
 import Curve from "./curve";
+import { getCanvasSize, getCanvasContainer } from "../helpers/index.ts";
 
 export const sketch = (p5: p5) => {
   let angle = 0;
@@ -115,21 +116,6 @@ export const sketch = (p5: p5) => {
 
   p5.mouseDragged = () => {};
 };
-
-function getCanvasSize(container: HTMLElement | null) {
-  const fallbackWidth = 900;
-  const width = container?.clientWidth ?? fallbackWidth;
-
-  return {
-    width,
-    height: Math.round(width * 0.52),
-  };
-}
-
-function getCanvasContainer(instance: p5): HTMLElement | null {
-  const maybeCanvas = (instance as unknown as { canvas?: HTMLCanvasElement }).canvas;
-  return maybeCanvas?.parentElement ?? null;
-}
 
 export interface SimSettings {
   p5: p5;
