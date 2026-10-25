@@ -16,7 +16,7 @@ export const simulationProjects: ProjectEntry[] = [
     title: "Lisajous Table",
     summary: "This thing is pretty cool and speaks for itself",
     category: "simulations",
-    simulationKey: "project2",
+    simulationKey: "lisajous",
     imagePath: "/src/lib/images/simulations/lisajous.png",
     tags: ["Reliability", "Routing", "Modeling"],
   },
