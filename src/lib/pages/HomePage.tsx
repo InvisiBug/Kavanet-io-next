@@ -1,12 +1,15 @@
 import { Link } from "react-router-dom";
 import { HeroFeatured, HomeBannerRotator } from "@/lib/components";
-import { categoryMeta } from "@/data";
-import { getFeaturedProjects } from "@/lib/helpers";
+import { categoryMeta, siteConfig } from "@/data";
+import { getFeaturedProjects, getRandomProjects } from "@/lib/helpers";
 
 const categoryOrder = ["personal", "community", "simulations"] as const;
 
 const HomePage = () => {
-  const featured = getFeaturedProjects();
+  const random = siteConfig.options.homeScreenFeaturedHeroRandom;
+  const featured = random ? getRandomProjects(3) : getFeaturedProjects();
+
+  console.log("🚀 ~ HomePage ~ featured:", featured);
 
   return (
     <div className="grid gap-6">

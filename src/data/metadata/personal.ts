@@ -18,6 +18,7 @@ export const personalProjects: ProjectEntry[] = [
     category: "personal",
     imagePath: "/src/lib/images/personal/staff-bag.svg",
     tags: ["Design", "Fabrication", "Gear"],
+    featured: true,
     contentPath: "/src/content/writeups/personal/staffBag/staff-bag.md",
   },
   {

@@ -1,5 +1,7 @@
 export const skills = ["TypeScript and React", "System design and modeling", "Automation and developer tooling", "Technical writing and communication"];
 
+export const workExperienceSummary = "I design and build practical software, with a focus on dependable systems and clear user experiences.";
+
 export const skillBadgeSections = [
   {
     title: "Stuff I work with in my day to day",

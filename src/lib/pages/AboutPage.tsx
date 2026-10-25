@@ -1,10 +1,11 @@
-import { siteConfig, experience, skills, skillBadgeSections } from "@/data";
+import { experience, skills, skillBadgeSections } from "@/data";
+import { workExperienceSummary } from "@/data";
 
 const AboutPage = () => {
   return (
     <section className="grid gap-4" aria-labelledby="about-title">
       <h1 id="about-title">About / CV</h1>
-      <p className="mt-0 text-(--text-muted)">{siteConfig.aboutSummary}</p>
+      <p className="mt-0 text-(--text-muted)">{workExperienceSummary}</p>
 
       <div className="grid gap-4 grid-cols-[2fr_1fr] max-[920px]:grid-cols-1">
         <section className="rounded-2xl border border-(--line) bg-(--surface) p-5">
