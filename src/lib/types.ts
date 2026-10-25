@@ -1,4 +1,4 @@
-import { siteConfig } from "@/lib/data";
+import { siteConfig } from "@/data";
 
 export type Theme = "light" | "dark";
 

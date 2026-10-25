@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { siteConfig } from "@/lib/data";
+import { siteConfig } from "@/data";
 
 const OtherSitesDropdown = () => {
   const dropdownRef = useRef<HTMLDetailsElement | null>(null);

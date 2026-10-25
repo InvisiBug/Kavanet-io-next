@@ -1,4 +1,4 @@
-import { siteConfig, experience, skills, skillBadgeSections } from "@/lib/data";
+import { siteConfig, experience, skills, skillBadgeSections } from "@/data";
 
 const AboutPage = () => {
   return (

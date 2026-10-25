@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { HeroFeatured, ProjectCard } from "@/lib/components";
-import { categoryMeta } from "@/lib/data";
+import { categoryMeta } from "@/data";
 import { getProjectsByCategory } from "@/lib/helpers";
 import type { CategoryKey } from "@/lib/types";
 

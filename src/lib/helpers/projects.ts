@@ -1,5 +1,5 @@
 import type { CategoryKey, ProjectEntry } from "@/lib/types";
-import { communityProjects, personalProjects, projects, simulationProjects, siteConfig } from "@/lib/data";
+import { communityProjects, personalProjects, projects, simulationProjects, siteConfig } from "@/data";
 
 export const getProjectsByCategory = (category: CategoryKey): ProjectEntry[] => {
   const filtered = category === "personal" ? personalProjects : category === "community" ? communityProjects : simulationProjects;

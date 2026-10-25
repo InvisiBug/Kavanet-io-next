@@ -3,7 +3,7 @@ import { simLoader } from "@/lib/components";
 import { P5Canvas } from "@/lib/components/P5Canvas";
 import { getProjectImageSrc } from "@/lib/helpers";
 import type { ProjectEntry } from "@/lib/types";
-import { siteConfig } from "@/lib/data";
+import { siteConfig } from "@/data";
 
 const HeroFeatured = ({ featured, showSimulationPreview = false }: HeroFeaturedProps) => {
   return (
