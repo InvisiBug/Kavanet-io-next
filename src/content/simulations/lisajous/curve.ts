@@ -1,6 +1,5 @@
 import type p5 from "p5";
-
-import { type SimSettings } from "./sketch";
+import { type SimSettings } from "./";
 
 export default class Curve {
   p5: p5;

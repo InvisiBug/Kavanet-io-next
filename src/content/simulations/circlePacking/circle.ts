@@ -1,4 +1,4 @@
-import { type Config } from "./sketch";
+import { type Config } from ".";
 
 export default class Circle {
   p5;

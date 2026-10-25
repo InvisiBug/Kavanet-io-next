@@ -12,7 +12,7 @@ export interface ProjectEntry {
   simulationKey?: SimulationKey;
   date?: string;
   imagePath: string;
-  tags: string[];
+  tags?: string[];
   featured?: boolean;
   repositoryUrl?: string;
   demoUrl?: string;

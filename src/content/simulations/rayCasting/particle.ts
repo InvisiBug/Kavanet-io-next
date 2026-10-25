@@ -1,5 +1,5 @@
 import p5 from "p5";
-import { type Config } from "./index";
+import { type Config } from "./";
 import Ray from "./ray";
 import Boundry from "./boundry";
 

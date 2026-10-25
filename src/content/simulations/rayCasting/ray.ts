@@ -1,4 +1,4 @@
-import { type Config } from ".";
+import { type Config } from "./";
 import Boundry from "./boundry";
 import p5 from "p5";
 

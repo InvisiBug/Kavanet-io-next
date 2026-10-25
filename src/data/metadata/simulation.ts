@@ -7,7 +7,7 @@ export const simulationProjects: ProjectEntry[] = [
     summary: "Simulation environment for cache hit rates, key skew, and replication tradeoffs.",
     category: "simulations",
     simulationKey: "project1",
-    tags: ["Simple", "Simulation", "Performance"],
+    // tags: ["Simple", "Simulation", "Performance"],
     imagePath: "/src/lib/images/simulations/sinWave.jpg",
     featured: true,
   },
@@ -18,7 +18,7 @@ export const simulationProjects: ProjectEntry[] = [
     category: "simulations",
     simulationKey: "lisajous",
     imagePath: "/src/lib/images/simulations/lisajous.png",
-    tags: ["Reliability", "Routing", "Modeling"],
+    // tags: ["Reliability", "Routing", "Modeling"],
   },
   {
     slug: "dots",
@@ -26,8 +26,8 @@ export const simulationProjects: ProjectEntry[] = [
     summary: "Flying dots field",
     category: "simulations",
     simulationKey: "dots",
-    imagePath: "/src/lib/images/simulations/dots.png",
-    tags: ["Reliability", "Routing", "Modeling"],
+    imagePath: "/src/lib/images/simulations/dots.jpg",
+    // tags: ["Reliability", "Routing", "Modeling"],
   },
   {
     slug: "zombies",
@@ -35,8 +35,8 @@ export const simulationProjects: ProjectEntry[] = [
     summary: "This was my attempt at making a live lockscreen wallpaper I had years ago",
     category: "simulations",
     simulationKey: "dots",
-    imagePath: "/src/lib/images/simulations/dots.png",
-    tags: ["Reliability", "Routing", "Modeling"],
+    imagePath: "/src/lib/images/simulations/sd.png",
+    // tags: ["Reliability", "Routing", "Modeling"],
   },
   {
     slug: "ray-casting",
@@ -45,7 +45,7 @@ export const simulationProjects: ProjectEntry[] = [
     category: "simulations",
     simulationKey: "rayCasting",
     imagePath: "/src/lib/images/simulations/rayCasting.jpg",
-    tags: ["Reliability", "Routing", "Modeling"],
+    // tags: ["Reliability", "Routing", "Modeling"],
   },
   {
     slug: "circle-packing",
@@ -54,6 +54,6 @@ export const simulationProjects: ProjectEntry[] = [
     category: "simulations",
     simulationKey: "circlePacking",
     imagePath: "/src/lib/images/simulations/circlePacking.jpg",
-    tags: ["Reliability", "Routing", "Modeling"],
+    // tags: ["Reliability", "Routing", "Modeling"],
   },
 ];

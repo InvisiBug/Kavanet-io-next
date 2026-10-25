@@ -1,4 +1,4 @@
-import { type Config } from ".";
+import { type Config } from "./";
 
 export default class Boundry {
   p5;

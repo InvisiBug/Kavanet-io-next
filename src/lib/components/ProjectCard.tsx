@@ -15,11 +15,12 @@ export function ProjectCard({ project }: ProjectCardProps) {
       </div>
 
       <ul className="m-0 flex list-none flex-wrap gap-2 p-0" aria-label="Project tags">
-        {project.tags.map((tag) => (
-          <li key={tag} className="rounded-full border border-(--line) bg-(--surface-soft) px-2.5 py-1 text-[0.8rem]">
-            {tag}
-          </li>
-        ))}
+        {project.tags &&
+          project.tags.map((tag) => (
+            <li key={tag} className="rounded-full border border-(--line) bg-(--surface-soft) px-2.5 py-1 text-[0.8rem]">
+              {tag}
+            </li>
+          ))}
       </ul>
     </Link>
   );
