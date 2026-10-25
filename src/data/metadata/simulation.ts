@@ -29,4 +29,13 @@ export const simulationProjects: ProjectEntry[] = [
     imagePath: "/src/lib/images/simulations/dots.png",
     tags: ["Reliability", "Routing", "Modeling"],
   },
+  {
+    slug: "zombies",
+    title: "Zombie Simulation",
+    summary: "This was my attempt at making a live lockscreen wallpaper I had years ago",
+    category: "simulations",
+    simulationKey: "dots",
+    imagePath: "/src/lib/images/simulations/dots.png",
+    tags: ["Reliability", "Routing", "Modeling"],
+  },
 ];
