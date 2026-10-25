@@ -3,7 +3,7 @@ import { HeroFeatured, HomeBannerRotator } from "@/lib/components";
 import { categoryMeta } from "@/lib/data";
 import { getFeaturedProjects } from "@/lib/helpers";
 
-const categoryOrder = ["personal-projects", "community-projects", "system-simulations"] as const;
+const categoryOrder = ["personal", "community", "simulations"] as const;
 
 const HomePage = () => {
   const featured = getFeaturedProjects();

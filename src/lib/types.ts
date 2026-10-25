@@ -1,8 +1,10 @@
 import { siteConfig } from "@/lib/data";
 
-export type CategoryKey = "personal-projects" | "community-projects" | "system-simulations";
-export type SimulationKey = "project1" | "project2";
 export type Theme = "light" | "dark";
+
+export type CategoryKey = "personal" | "community" | "simulations";
+
+export type SimulationKey = "project1" | "project2" | "dots";
 
 export interface ProjectEntry {
   slug: string;

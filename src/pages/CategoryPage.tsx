@@ -6,6 +6,7 @@ import type { CategoryKey } from "@/lib/types";
 
 const CategoryPage = ({ category }: CategoryPageProps) => {
   const projects = getProjectsByCategory(category);
+  console.log("🚀 ~ CategoryPage ~ projects:", projects);
   const metadata = categoryMeta[category];
   const randomProject = useMemo(() => {
     if (projects.length === 0) {
@@ -22,7 +23,7 @@ const CategoryPage = ({ category }: CategoryPageProps) => {
         <p className="whitespace-pre-line text-(--text-muted)">{metadata.description}</p>
       </header>
 
-      {randomProject ? <HeroFeatured featured={[randomProject]} showSimulationPreview={category === "system-simulations"} /> : null}
+      {randomProject ? <HeroFeatured featured={[randomProject]} showSimulationPreview={category === "simulations"} /> : null}
 
       <div className="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] items-stretch gap-4">
         {projects.map((project) => (

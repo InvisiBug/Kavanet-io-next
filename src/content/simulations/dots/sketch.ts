@@ -16,7 +16,7 @@ function getCanvasContainer(instance: p5): HTMLElement | null {
   return maybeCanvas?.parentElement ?? null;
 }
 
-export const project1Sketch: SketchFactory = (p: p5) => {
+export const sketch: SketchFactory = (p: p5) => {
   const nodeCount = 60;
 
   p.setup = () => {

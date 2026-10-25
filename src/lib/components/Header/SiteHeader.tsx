@@ -7,9 +7,9 @@ import type { Theme } from "@/lib/types";
 import { SocialIconLink, OtherSitesDropdown } from "./components/";
 
 const pageLinks = [
-  { to: "/personal-projects", label: "Personal Projects" },
-  { to: "/community-projects", label: "Community Projects" },
-  { to: "/system-simulations", label: "System Simulations" },
+  { to: "/personal", label: "Personal Projects" },
+  { to: "/community", label: "Community Projects" },
+  { to: "/simulations", label: "System Simulations" },
   { to: "/about", label: "About / CV" },
 ];
 

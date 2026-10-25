@@ -1,11 +1,12 @@
 import { Link, useParams } from "react-router-dom";
-import { MarkdownContent, P5Canvas } from "@/lib/components";
-import { simulationSketches } from "@/content/simulations";
+import { MarkdownContent, P5Canvas, simLoader } from "@/lib/components";
+
 import { getMarkdownContent, getProject } from "@/lib/helpers";
 
 const ProjectPage = () => {
   const { category, projectSlug } = useParams();
 
+  //! Project missing Error
   if (!category || !projectSlug) {
     return (
       <section className="grid gap-2 rounded-2xl border border-(--line) bg-(--surface) p-5">
@@ -17,6 +18,7 @@ const ProjectPage = () => {
 
   const project = getProject(category, projectSlug);
 
+  // Project not found
   if (!project) {
     return (
       <section className="grid gap-2 rounded-2xl border border-(--line) bg-(--surface) p-5">
@@ -27,7 +29,7 @@ const ProjectPage = () => {
   }
 
   const markdown = getMarkdownContent(project.contentPath);
-  const simulationSketch = project.simulationKey ? simulationSketches[project.simulationKey] : null;
+  const simulationSketch = project.simulationKey ? simLoader[project.simulationKey] : null;
 
   return (
     <section className="grid gap-6" aria-labelledby="project-title">
@@ -41,7 +43,8 @@ const ProjectPage = () => {
 
       {markdown ? <MarkdownContent markdown={markdown} /> : <p>Markdown content is missing for this project.</p>}
 
-      {project.category === "system-simulations" && simulationSketch ? (
+      {/* P5 canvas */}
+      {project.category === "simulations" && simulationSketch ? (
         <section className="rounded-2xl border border-(--line) bg-(--surface) p-4" aria-label="Interactive p5 simulation">
           <P5Canvas sketch={simulationSketch} className="w-full" />
         </section>

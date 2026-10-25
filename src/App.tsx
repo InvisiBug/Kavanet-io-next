@@ -57,9 +57,9 @@ function AppContent() {
 
               <Route path="/about" element={<AboutPage />} />
 
-              <Route path="/personal-projects" element={<CategoryPage category="personal-projects" />} />
-              <Route path="/community-projects" element={<CategoryPage category="community-projects" />} />
-              <Route path="/system-simulations" element={<CategoryPage category="system-simulations" />} />
+              <Route path="/personal" element={<CategoryPage category="personal" />} />
+              <Route path="/community" element={<CategoryPage category="community" />} />
+              <Route path="/simulations" element={<CategoryPage category="simulations" />} />
 
               <Route path="/:category/:projectSlug" element={<ProjectPage />} />
 

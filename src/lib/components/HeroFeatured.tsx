@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { simulationSketches } from "@/content/simulations";
+import { simLoader } from "@/lib/components";
 import { P5Canvas } from "@/lib/components/P5Canvas";
 import { getProjectImageSrc } from "@/lib/helpers";
 import type { ProjectEntry } from "@/lib/types";
@@ -17,7 +17,7 @@ const HeroFeatured = ({ featured, showSimulationPreview = false }: HeroFeaturedP
       <div className="mt-6 grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-4">
         {featured.map((project) => {
           const imageSrc = getProjectImageSrc(project.imagePath);
-          const simulationSketch = showSimulationPreview && project.category === "system-simulations" && project.simulationKey ? simulationSketches[project.simulationKey] : null;
+          const simulationSketch = showSimulationPreview && project.category === "simulations" && project.simulationKey ? simLoader[project.simulationKey] : null;
 
           return (
             <Link key={project.slug} className="block rounded-[0.9rem] border border-(--line) bg-(--surface-soft) p-4 no-underline text-inherit" to={`/${project.category}/${project.slug}`}>
