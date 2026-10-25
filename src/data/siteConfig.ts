@@ -20,6 +20,6 @@ export const siteConfig = {
 
   options: {
     featuredProjectsLimit: 4,
-    homeScreenFeaturedHeroRandom: true,
+    homeScreenFeaturedRandom: false,
   },
 };

@@ -54,6 +54,6 @@ export const project1Sketch: SketchFactory = (p: p5) => {
 
     p.fill(248, 250, 252);
     p.textSize(16);
-    p.text("Project 1: Cache Flow Simulation", 20, 30);
+    // p.text("Project 1: Cache Flow Simulation", 20, 30);
   };
 };

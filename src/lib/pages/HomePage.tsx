@@ -6,7 +6,7 @@ import { getFeaturedProjects, getRandomProjects } from "@/lib/helpers";
 const categoryOrder = ["personal", "community", "simulations"] as const;
 
 const HomePage = () => {
-  const random = siteConfig.options.homeScreenFeaturedHeroRandom;
+  const random = siteConfig.options.homeScreenFeaturedRandom;
   const featured = random ? getRandomProjects(3) : getFeaturedProjects();
 
   console.log("🚀 ~ HomePage ~ featured:", featured);

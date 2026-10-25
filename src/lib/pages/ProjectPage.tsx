@@ -28,7 +28,7 @@ const ProjectPage = () => {
     );
   }
 
-  const markdown = getMarkdownContent(project.contentPath);
+  const markdown = project?.writeUpPath && getMarkdownContent(project?.writeUpPath);
   const simulationSketch = project.simulationKey ? simLoader[project.simulationKey] : null;
 
   return (
@@ -41,7 +41,7 @@ const ProjectPage = () => {
         <p className="text-(--text-muted)">{project.summary}</p>
       </div>
 
-      {markdown ? <MarkdownContent markdown={markdown} /> : <p>Markdown content is missing for this project.</p>}
+      {markdown ? <MarkdownContent markdown={markdown} /> : null}
 
       {/* P5 canvas */}
       {project.category === "simulations" && simulationSketch ? (

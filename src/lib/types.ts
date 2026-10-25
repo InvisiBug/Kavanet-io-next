@@ -18,7 +18,7 @@ export interface ProjectEntry {
   featured?: boolean;
   repositoryUrl?: string;
   demoUrl?: string;
-  contentPath: string;
+  writeUpPath?: string;
 }
 
 export interface LightboxImage {
