@@ -1,12 +1,11 @@
-import { HeroFeatured } from "@/lib/components/HeroFeatured";
-import { HomeBannerRotator } from "@/lib/components/HomeBannerRotator";
+import { Link } from "react-router-dom";
+import { HeroFeatured, HomeBannerRotator } from "@/lib/components";
 import { categoryMeta } from "@/lib/data/siteData";
 import { getFeaturedProjects } from "@/lib/helpers";
-import { Link } from "react-router-dom";
 
 const categoryOrder = ["personal-projects", "community-projects", "system-simulations"] as const;
 
-export function HomePage() {
+const HomePage = () => {
   const featured = getFeaturedProjects();
 
   return (
@@ -31,4 +30,6 @@ export function HomePage() {
       </section>
     </div>
   );
-}
+};
+
+export default HomePage;

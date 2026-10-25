@@ -1,8 +1,7 @@
-import { MarkdownContent } from "@/lib/components/MarkdownContent";
-import { P5Canvas } from "@/lib/components/P5Canvas";
-import { getMarkdownContent, getProject } from "@/lib/helpers";
-import { simulationSketches } from "@/content/simulations";
 import { Link, useParams } from "react-router-dom";
+import { MarkdownContent, P5Canvas } from "@/lib/components";
+import { simulationSketches } from "@/content/simulations";
+import { getMarkdownContent, getProject } from "@/lib/helpers";
 
 export function ProjectPage() {
   const { category, projectSlug } = useParams();

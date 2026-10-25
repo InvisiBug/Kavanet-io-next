@@ -122,6 +122,8 @@ export const simulationProjects: ProjectEntry[] = [
   },
 ];
 
+const slugify = (text: string) => text.toLowerCase().replace(/\s+/g, "-");
+
 export const projects: ProjectEntry[] = [...personalProjects, ...communityProjects, ...simulationProjects];
 
 export const siteConfig = {

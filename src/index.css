@@ -30,3 +30,7 @@ body {
   min-height: 100vh;
 }
 
+.lightbox-enabled img:not([data-no-lightbox="true"]):hover {
+  cursor: pointer;
+}
+

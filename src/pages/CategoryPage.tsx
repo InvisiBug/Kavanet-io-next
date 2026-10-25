@@ -1,6 +1,5 @@
 import { useMemo } from "react";
-import { HeroFeatured } from "@/lib/components/HeroFeatured";
-import { ProjectCard } from "@/lib/components/ProjectCard";
+import { HeroFeatured, ProjectCard } from "@/lib/components";
 import { categoryMeta } from "@/lib/data/siteData";
 import { getProjectsByCategory } from "@/lib/helpers";
 import type { CategoryKey } from "@/lib/types";
@@ -24,7 +23,7 @@ export function CategoryPage({ category }: CategoryPageProps) {
     <section className="grid gap-6" aria-labelledby="category-title">
       <header className="grid gap-2 rounded-2xl border border-(--line) bg-(--surface) p-5">
         <h1 id="category-title">{metadata.title}</h1>
-        <p className="text-(--text-muted)">{metadata.description}</p>
+        <p className="whitespace-pre-line text-(--text-muted)">{metadata.description}</p>
       </header>
 
       {randomProject ? <HeroFeatured featured={[randomProject]} showSimulationPreview={category === "system-simulations"} /> : null}
