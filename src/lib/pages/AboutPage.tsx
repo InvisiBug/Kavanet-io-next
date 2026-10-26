@@ -1,4 +1,4 @@
-import { experience, skills, skillBadgeSections, workExperienceImageSrc, workExperienceSummary } from "@/data";
+import { experience, skillBadgeSections, workExperienceImageSrc, workExperienceSummary } from "@/data";
 import { AboutMe } from "@/lib/components";
 
 const AboutPage = () => {
@@ -15,7 +15,7 @@ const AboutPage = () => {
           <ul className="mt-4 grid gap-4 list-none p-0">
             {experience.map((job) => (
               <li key={job.company} className="rounded-xl border border-(--line) bg-(--surface-soft) p-4">
-                <div className="flex items-start gap-4">
+                <div className="flex items-center gap-4">
                   {job.imageSrc ? <img src={job.imageSrc} alt={`${job.company} logo`} className="h-14 w-14 rounded-md border border-(--line) bg-white object-contain p-1" loading="lazy" /> : null}
                   <h3 className="m-0 leading-tight ">{job.company}</h3>
                 </div>

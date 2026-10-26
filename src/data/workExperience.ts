@@ -1,5 +1,3 @@
-export const skills = ["TypeScript and React", "System design and modelling", "Automation and developer tooling", "Technical writing and communication"];
-
 export const workExperienceSummary =
   "I design and build many different things including websites, 3D models and larger community events. \n I am also a contact / fire staff spinner along with other circus props. \n I have been a passionate photographer for many years and take photos at various events.";
 export const workExperienceImageSrc = "src/lib/images/me.jpg";
