@@ -1,5 +1,5 @@
 import p5 from "p5";
-import { generateColours } from "src/lib/helpers";
+import { generateColours } from "../helpers";
 import Square from "./square";
 
 export const sketch = (p5: p5) => {

@@ -2,16 +2,6 @@ import type { ProjectEntry } from "@/lib/types";
 
 export const simulationProjects: ProjectEntry[] = [
   {
-    slug: "sin-wave",
-    title: "Sin Wave Sim",
-    summary: "Simulation environment for cache hit rates, key skew, and replication tradeoffs.",
-    category: "simulations",
-    simulationKey: "project1",
-    // tags: ["Simple", "Simulation", "Performance"],
-    imagePath: "/src/lib/images/simulations/sinWave.jpg",
-    featured: true,
-  },
-  {
     slug: "lisajous",
     title: "Lisajous Table",
     summary: "This thing is pretty cool and speaks for itself",
@@ -74,6 +64,26 @@ export const simulationProjects: ProjectEntry[] = [
     simulationKey: "triangleMural",
     imagePath: "/src/lib/images/simulations/triangleMural.jpg",
     writeUpPath: "/src/content/writeups/simulations/triangle-mural.md",
+    // tags: ["Genetic Algorithm", "Simulation", "AI"],
+  },
+  {
+    slug: "landscape",
+    title: "3D Landscape Simulation",
+    summary: "A simulation of a 3D landscape using ray tracing.",
+    category: "simulations",
+    simulationKey: "landscape",
+    imagePath: "/src/lib/images/simulations/land.jpg",
+    writeUpPath: "/src/content/writeups/simulations/landscape.md",
+    // tags: ["Genetic Algorithm", "Simulation", "AI"],
+  },
+  {
+    slug: "rotating-squares",
+    title: "Rotating Squares",
+    summary: "A simulation of squares rotating around a central point.",
+    category: "simulations",
+    simulationKey: "rotatingSquares",
+    imagePath: "/src/lib/images/simulations/rotatingSquares.jpg",
+    writeUpPath: "/src/content/writeups/simulations/rotatingSquares.md",
     // tags: ["Genetic Algorithm", "Simulation", "AI"],
   },
   {

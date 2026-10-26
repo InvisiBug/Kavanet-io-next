@@ -9,10 +9,14 @@ const CategoryPage = ({ category }: CategoryPageProps) => {
   const metadata = categoryMeta[category];
   let randomProject: ProjectEntry[] = [];
 
+  let text: string;
+
   if (category !== "simulations") {
     randomProject = getRandomProjectsFromProjects(projects, 2);
+    text = "Other Projects";
   } else {
     randomProject = getRandomProjectsFromProjects(projects, 1);
+    text = "Other Simulations";
   }
 
   return (
@@ -24,6 +28,7 @@ const CategoryPage = ({ category }: CategoryPageProps) => {
 
       {randomProject ? <HeroFeatured featured={randomProject} showSimulationPreview={category === "simulations"} /> : null}
 
+      <h1 id="category-title">{text}</h1>
       <div className="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] items-stretch gap-4">
         {projects.map((project) => (
           <ProjectCard key={project.slug} project={project} />

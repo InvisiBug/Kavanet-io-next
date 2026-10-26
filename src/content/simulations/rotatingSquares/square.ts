@@ -1,19 +1,20 @@
-import { Config } from ".";
+import p5 from "p5";
+import { type Config } from "./";
 
 export default class Square {
-  p5;
-  colour;
+  p5: p5;
+  colour: p5.Color;
 
-  startingDistance;
-  distance;
-  rotation;
+  startingDistance: number;
+  distance: number;
+  rotation: number;
 
-  thickness;
-  _length;
+  thickness: number;
+  _length: number;
 
-  startingNoisePos;
-  noisePos;
-  noise;
+  startingNoisePos: number;
+  noisePos: number;
+  noise: number;
 
   constructor(config: Config) {
     this.p5 = config.p5;

@@ -37,9 +37,24 @@ export const sketch = (p5: p5) => {
   let yOffset = 0;
 
   let freeMove = false;
+  const pressedKeys = new Set<string>();
 
   p5.setup = () => {
-    p5.createCanvas(p5.windowWidth, p5.windowHeight, p5.WEBGL);
+    const canvas = p5.createCanvas(p5.windowWidth, p5.windowHeight, p5.WEBGL);
+    canvas.elt.setAttribute("tabindex", "0");
+
+    canvas.elt.addEventListener("keydown", (event) => {
+      pressedKeys.add(event.code);
+      if (["KeyW", "KeyA", "KeyS", "KeyD"].includes(event.code)) {
+        event.preventDefault();
+      }
+    });
+
+    canvas.elt.addEventListener("keyup", (event) => {
+      pressedKeys.delete(event.code);
+    });
+
+    canvas.elt.focus({ preventScroll: true });
   };
 
   p5.draw = () => {
@@ -68,16 +83,16 @@ export const sketch = (p5: p5) => {
 
     const movementVal = 1;
 
-    if (p5.keyIsDown(87)) {
+    if (pressedKeys.has("KeyW")) {
       freeMove = true;
       yOffset -= movementVal;
-    } else if (p5.keyIsDown(83)) {
+    } else if (pressedKeys.has("KeyS")) {
       freeMove = true;
       yOffset += movementVal;
-    } else if (p5.keyIsDown(68)) {
+    } else if (pressedKeys.has("KeyD")) {
       freeMove = true;
       xOffset += movementVal;
-    } else if (p5.keyIsDown(65)) {
+    } else if (pressedKeys.has("KeyA")) {
       freeMove = true;
       xOffset -= movementVal;
     }
