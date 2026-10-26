@@ -1,11 +1,12 @@
-import { experience, skills, skillBadgeSections } from "@/data";
-import { workExperienceSummary } from "@/data";
+import { experience, skills, skillBadgeSections, workExperienceImageSrc, workExperienceSummary } from "@/data";
+import { AboutMe } from "@/lib/components";
 
 const AboutPage = () => {
   return (
     <section className="grid gap-4" aria-labelledby="about-title">
       <h1 id="about-title">About / CV</h1>
-      <p className="mt-0 text-(--text-muted)">{workExperienceSummary}</p>
+
+      <AboutMe imageSrc={workExperienceImageSrc || undefined} blurb={workExperienceSummary} />
 
       <div className="grid gap-4 grid-cols-[2fr_1fr] max-[920px]:grid-cols-1">
         <section className="rounded-2xl border border-(--line) bg-(--surface) p-5">
@@ -43,26 +44,14 @@ const AboutPage = () => {
         </section>
 
         <section className="rounded-2xl border border-(--line) bg-(--surface) p-5">
-          <h2>Core Skills</h2>
-
-          <ul className="mt-4 pl-4">
-            {skills.map((skill) => (
-              <li key={skill} className="text-(--text-muted)">
-                {skill}
-              </li>
-            ))}
-          </ul>
-
           <div className="mt-5 grid gap-5">
-            <h2>Badges</h2>
-
             {skillBadgeSections.map((section) => (
               <section key={section.title}>
                 <h3 className="m-0 mb-2 text-lg  text-(--text)">{section.title}</h3>
 
-                <div className="grid grid-cols-5 gap-2 sm:grid-cols-5">
+                <div className="flex flex-wrap">
                   {section.badges.map((badge) => (
-                    <img key={`${section.title}-${badge.label}`} src={badge.src} className="min-h-5" alt={`${badge.label} badge`} loading="lazy" />
+                    <img key={`${section.title}-${badge.label}`} src={badge.src} className="min-h-5 mr-1 mb-1" alt={`${badge.label} badge`} loading="lazy" />
                   ))}
                 </div>
               </section>
