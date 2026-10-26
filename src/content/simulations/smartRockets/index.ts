@@ -7,7 +7,7 @@ import Target from "./target";
 import moonImg from "./pics/moon.gif";
 import rocketImg from "./pics/rocket.gif";
 import obstacleImg from "./pics/obstacle3.png";
-import { getCanvasContainer, getCanvasSize } from "../helpers";
+import { getCanvasContainer, getCanvasSize, mouseInCanvas } from "../helpers";
 
 export const sketch = (p5: p5) => {
   let salvo: Salvo;
@@ -48,11 +48,8 @@ export const sketch = (p5: p5) => {
     const mouseX = p5.mouseX;
     const mouseY = p5.mouseY;
 
-    if (mouseX > 0 && mouseX < p5.width) {
-      console.log("Within x bounds");
-      if (mouseY > 0 && mouseY < p5.height) {
-        target.move(mouseX, mouseY);
-      }
+    if (mouseInCanvas(mouseX, mouseY, p5.width, p5.height)) {
+      target.move(mouseX, mouseY);
     }
   };
 
@@ -60,11 +57,8 @@ export const sketch = (p5: p5) => {
     const mouseX = p5.mouseX;
     const mouseY = p5.mouseY;
 
-    if (mouseX > 0 && mouseX < p5.width) {
-      console.log("Within x bounds");
-      if (mouseY > 0 && mouseY < p5.height) {
-        target.move(mouseX, mouseY);
-      }
+    if (mouseInCanvas(mouseX, mouseY, p5.width, p5.height)) {
+      target.move(mouseX, mouseY);
     }
   };
 

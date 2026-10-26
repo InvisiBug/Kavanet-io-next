@@ -19,6 +19,12 @@ export const getProjectsByCategory = (category: CategoryKey): ProjectEntry[] => 
   });
 };
 
+export const getFeaturedProjectsByCategory = (category: CategoryKey, limit = siteConfig.options.featuredProjectsLimit): ProjectEntry[] => {
+  const categoryProjects = getProjectsByCategory(category);
+  const shuffled = [...categoryProjects].sort(() => Math.random() - 0.5);
+  return shuffled.filter((project) => project.featured).slice(0, limit);
+};
+
 export const getFeaturedProjects = (limit = siteConfig.options.featuredProjectsLimit): ProjectEntry[] => {
   return allProjects.filter((project) => project.featured).slice(0, limit);
 };
@@ -26,6 +32,12 @@ export const getFeaturedProjects = (limit = siteConfig.options.featuredProjectsL
 export const getRandomFeatured = (limit: number): ProjectEntry[] => {
   const featured = allProjects.filter((project) => project.featured);
   const shuffled = [...featured].sort(() => Math.random() - 0.5);
+  return shuffled.slice(0, Math.max(1, limit));
+};
+
+export const getRandomProjectsByCategory = (category: CategoryKey, limit: number): ProjectEntry[] => {
+  const projects = getProjectsByCategory(category);
+  const shuffled = [...projects].sort(() => Math.random() - 0.5);
   return shuffled.slice(0, Math.max(1, limit));
 };
 

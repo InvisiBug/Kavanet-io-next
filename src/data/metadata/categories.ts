@@ -9,10 +9,10 @@ export const categoryMeta: Record<CategoryKey, CategoryMeta> = {
   community: {
     title: "Community Projects",
     subTitle: "Projects for my wider community like The Dome and LED Space",
-    description: "These are my big projects that I've made for the community ranging from Fire Jams, to the LED Space at BJC",
+    description: "These are my big projects that I've made for the community including Fire Jams, and the LED Space at BJC",
   },
   simulations: {
-    title: "Simulatios",
+    title: "Simulations",
     subTitle: "My simulations of natural systems through code",
     description: 'A few years ago I came across "The Coding Train" on youTube and loved the logic behind simulations. \n This page showcases my experiments and models',
   },

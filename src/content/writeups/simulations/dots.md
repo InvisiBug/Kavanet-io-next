@@ -1,0 +1,1 @@
+This ones super simple. Theres a bunch of dots that move around the screen and bounce off the edges. Each dot calculates the distance to every other dot and draws a line between them if the distance is small enough

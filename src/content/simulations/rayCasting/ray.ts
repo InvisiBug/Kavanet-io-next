@@ -3,9 +3,9 @@ import Boundry from "./boundry";
 import p5 from "p5";
 
 export default class Ray {
-  p5;
-  pos;
-  dir;
+  p5: p5;
+  pos: p5.Vector;
+  dir: p5.Vector;
   length = 10;
 
   constructor(config: Config, pos: p5.Vector, angle: number) {

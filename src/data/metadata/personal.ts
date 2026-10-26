@@ -49,6 +49,7 @@ export const personalProjects: ProjectEntry[] = [
     imagePath: "/src/lib/images/personal/staffs.svg",
     tags: ["Prototyping", "Hardware", "Iteration"],
     writeUpPath: "/src/content/writeups/personal/staffs/staffs.md",
+    featured: false,
   },
   {
     slug: "home-automation-system",
@@ -58,5 +59,6 @@ export const personalProjects: ProjectEntry[] = [
     imagePath: "/src/lib/images/personal/kavanest.jpg",
     tags: ["Automation", "IoT", "Systems"],
     writeUpPath: "/src/content/writeups/personal/kavanest/home-automation-system.md",
+    featured: false,
   },
 ];

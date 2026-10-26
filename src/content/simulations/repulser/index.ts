@@ -18,17 +18,18 @@ export const sketch = (p5: p5) => {
 
   const walkers: Walker[] = [];
   let points: Points;
+  const { width: canvasWidth, height: canvasHeight } = getCanvasSize(getCanvasContainer(p5));
 
   p5.setup = async () => {
     config = {
       p5,
-      speed: 10,
+      speed: 4,
       colours: p5.shuffle(colours[Math.floor(p5.random(0, colours.length))]).slice(0, numColours),
       //
-      walkers: 10,
+      walkers: 5,
       //
-      xpoints: 75,
-      ypoints: 50,
+      xpoints: canvasWidth / 15,
+      ypoints: canvasHeight / 15,
       margin: 10,
       pointSize: 10,
       returnStrength: 0.05,
@@ -38,11 +39,9 @@ export const sketch = (p5: p5) => {
     };
 
     if (config["3D"]) {
-      const { width: canvasWidth, height: canvasHeight } = getCanvasSize(getCanvasContainer(p5));
       p5.createCanvas(canvasWidth, canvasHeight, p5.WEBGL);
       p5.directionalLight(200, 200, 200, -1, 0.75, -1);
     } else {
-      const { width: canvasWidth, height: canvasHeight } = getCanvasSize(getCanvasContainer(p5));
       p5.createCanvas(canvasWidth, canvasHeight);
     }
 

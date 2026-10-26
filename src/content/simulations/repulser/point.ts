@@ -60,12 +60,12 @@ export default class Point {
 
     walkers.forEach((walker) => {
       const flee = this.flee(walker.pos);
-      flee.mult(1.5); // apply weighting to flee force
+      flee.mult(1); // apply weighting to flee force
       this.applyForce(flee);
     });
 
     const arrive = this.arrive(this.target);
-    arrive.mult(1.5);
+    arrive.mult(1);
 
     this.applyForce(arrive);
   };

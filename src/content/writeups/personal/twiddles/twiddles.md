@@ -1,13 +1,11 @@
-# Twiddles
 
-![Twiddles cover image](./cover2.jpg)
+![Twiddles cover image](./pic2.jpg)
+Twiddles are the main thing I make and sell
 
-## Overview
-Staffs is a placeholder project entry for custom staff builds and iterative hardware refinement.
+They started off as something I made for myself but people started asking about them pretty quickly
 
-## Current Status
-- Placeholder content for portfolio structure
-- Build variants and measurements not yet documented
+I mostly sell them in person at events and festivals but I'm now trying to branch out into selling them onlone so I've made an [etsy store](https://www.etsy.com/shop/EmBrrrr)
 
-## Next Steps
-Add variants, balancing tests, and build notes.
+<img src="cover2.jpg" alt="drawing" style="width:500px;"/>
+
+

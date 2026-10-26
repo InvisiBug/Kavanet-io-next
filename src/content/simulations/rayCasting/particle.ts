@@ -4,15 +4,15 @@ import Ray from "./ray";
 import Boundry from "./boundry";
 
 export default class Particle {
-  p5;
-  pos;
-  config;
-  totalRays;
+  p5: p5;
+  pos: p5.Vector;
+  config: Config;
+  totalRays: number;
 
-  xoffset;
-  yoffset;
+  xoffset: number;
+  yoffset: number;
 
-  movement;
+  movement: number;
 
   rays: Array<Ray> = [];
 

@@ -1,4 +1,5 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useEffect } from "react";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { LightboxHost, PageShell } from "@/lib/components";
 import { ContextProvider } from "@/lib/context";
 import { AboutPage, CategoryPage, ProjectPage, NotFoundPage } from "@/lib/pages";
@@ -18,6 +19,7 @@ function AppContent() {
     <AppConfig>
       <LightboxHost>
         <BrowserRouter>
+          <ScrollToTop />
           <PageShell>
             <Routes>
               <Route path="/" element={<HomePage />} />
@@ -38,5 +40,15 @@ function AppContent() {
     </AppConfig>
   );
 }
+
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, [pathname]);
+
+  return null;
+};
 
 export default App;
