@@ -39,7 +39,7 @@ const AboutPage = () => {
           </ul>
         </section>
 
-        <section className="rounded-2xl border border-(--line) bg-(--surface) p-5">
+        <section className="h-fit self-start rounded-2xl border border-(--line) bg-(--surface) p-5">
           <div className="mt-5 grid gap-5">
             {skillBadgeSections.map((section) => (
               <section key={section.title}>
