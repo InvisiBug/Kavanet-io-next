@@ -1,22 +1,33 @@
 import { HeroFeatured, ProjectCard } from "@/lib/components";
-import { categoryMeta } from "@/data";
-import { getProjectsByCategory, getRandomProjectsFromProjects } from "@/lib/helpers";
+import { categoryMeta, siteConfig } from "@/data";
+import { getFeaturedProjects, getProjectsByCategory, getRandomProjects, getRandomProjectsFromProjects, getFeaturedProjectsByCategory, getRandomProjectsByCategory } from "@/lib/helpers";
 import type { CategoryKey, ProjectEntry } from "@/lib/types";
 
 const CategoryPage = ({ category }: CategoryPageProps) => {
   const projects = getProjectsByCategory(category);
+  console.log("🚀 ~ CategoryPage ~ category:", category);
+  const showOnlyFeatured = siteConfig.options.categoryPageShowOnlyFeatured;
+  console.log("🚀 ~ CategoryPage ~ showOnlyFeatured:", showOnlyFeatured);
+
+  // const featured = random ? getRandomProjectsByCategory(category, siteConfig.options.featuredProjectsLimit) : getFeaturedProjectsByCategory(category, 1);
+  // const featured = getFeaturedProjectsByCategory(category);
 
   const metadata = categoryMeta[category];
-  let randomProject: ProjectEntry[] = [];
+  let project: ProjectEntry[] = [];
 
   let text: string;
 
-  if (category !== "simulations") {
-    randomProject = getRandomProjectsFromProjects(projects, 2);
-    text = "Other Projects";
-  } else {
-    randomProject = getRandomProjectsFromProjects(projects, 1);
+  if (category == "simulations") {
+    if (showOnlyFeatured) {
+      project = getFeaturedProjectsByCategory(category, 1);
+    } else {
+      project = getRandomProjectsByCategory(category, 1);
+    }
+
     text = "Other Simulations";
+  } else {
+    project = getRandomProjectsByCategory(category, 2);
+    text = "Other Projects";
   }
 
   return (
@@ -26,7 +37,7 @@ const CategoryPage = ({ category }: CategoryPageProps) => {
         <p className="whitespace-pre-line text-(--text-muted)">{metadata.description}</p>
       </header>
 
-      {randomProject ? <HeroFeatured featured={randomProject} showSimulationPreview={category === "simulations"} /> : null}
+      {project ? <HeroFeatured featured={project} showSimulationPreview={category === "simulations"} /> : null}
 
       <h1 id="category-title">{text}</h1>
       <div className="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] items-stretch gap-4">

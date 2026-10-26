@@ -5,8 +5,10 @@ export const getMarkdownContent = (path: string): string | null => {
     return null;
   }
 
-  return resolveRelativeMarkdownImages(markdown, path);
+  return resolveRelativeMarkdownImages(ignoreMarkdownComments(markdown), path);
 };
+
+const ignoreMarkdownComments = (markdown: string): string => markdown.replace(/<!--[\s\S]*?-->/g, "");
 
 const markdownModules = import.meta.glob("/src/content/**/*.md", {
   query: "?raw",
@@ -19,25 +21,30 @@ const markdownImageModules = import.meta.glob("/src/content/**/*.{png,jpg,jpeg,w
   eager: true,
 }) as Record<string, string>;
 
+const markdownVideoModules = import.meta.glob("/src/content/**/*.{mp4,webm,mov}", {
+  import: "default",
+  eager: true,
+}) as Record<string, string>;
+
 const resolveRelativeMarkdownImages = (markdown: string, markdownPath: string): string => {
   const markdownDirectory = markdownPath.slice(0, markdownPath.lastIndexOf("/") + 1);
 
-  return markdown.replace(/!\[[^\]]*\]\(([^)]+)\)/g, (match, rawImagePath: string) => {
+  const resolveMediaPath = (match: string, rawImagePath: string) => {
     const imagePath = rawImagePath.trim().replace(/^<|>$/g, "");
+    const normalizedImagePath = imagePath.startsWith("./") || imagePath.startsWith("../") ? imagePath : `./${imagePath}`;
+    const resolvedPath = normalizeContentPath(`${markdownDirectory}${normalizedImagePath}`);
+    const resolvedMediaSource = markdownImageModules[resolvedPath] ?? markdownVideoModules[resolvedPath];
 
-    if (!imagePath.startsWith("./") && !imagePath.startsWith("../")) {
+    if (!resolvedMediaSource) {
       return match;
     }
 
-    const resolvedPath = normalizeContentPath(`${markdownDirectory}${imagePath}`);
-    const resolvedImageSource = markdownImageModules[resolvedPath];
+    return match.replace(rawImagePath, resolvedMediaSource);
+  };
 
-    if (!resolvedImageSource) {
-      return match;
-    }
+  const markdownResolved = markdown.replace(/!\[[^\]]*\]\(([^)]+)\)/g, (match, rawImagePath: string) => resolveMediaPath(match, rawImagePath));
 
-    return match.replace(rawImagePath, resolvedImageSource);
-  });
+  return markdownResolved.replace(/(<img\b[^>]*\bsrc=["'])([^"']+)(["'][^>]*>)/gi, (match, before: string, rawImagePath: string, after: string) => `${before}${resolveMediaPath(rawImagePath, rawImagePath).replace(/^\"|\"$/g, "")}${after}`);
 };
 
 const normalizeContentPath = (path: string): string => {

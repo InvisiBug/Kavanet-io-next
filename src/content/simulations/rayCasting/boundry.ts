@@ -1,11 +1,12 @@
+import p5 from "p5";
 import { type Config } from "./";
 
 export default class Boundry {
-  p5;
-  colour;
+  p5: p5;
+  colour: p5.Color;
 
-  startpoint;
-  endpoint;
+  startpoint: p5.Vector;
+  endpoint: p5.Vector;
 
   constructor(config: Config, availableColours: any, x1: number, x2: number, y1: number, y2: number) {
     this.p5 = config.p5;

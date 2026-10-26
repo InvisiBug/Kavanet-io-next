@@ -1,5 +1,8 @@
-export const workExperienceSummary =
-  "I design and build many different things including websites, 3D models and larger community events. \n I am also a contact / fire staff spinner along with other circus props. \n I have been a passionate photographer for many years and take photos at various events.";
+export const workExperienceSummary = `I design and build many different things including websites, 3D models and larger community events
+   I am also a contact / fire staff spinner along with other circus props.
+   I have been a passionate photographer for many years and take photos at various events.\n
+   Im also active in the circus scene, with my main props being contact staff and poi but I can also juggle. I have a geodome that I take to festivals and events to create a chill space for people to hang out in. I have also been involved in the creation of an LED space that appears every year at the UKs biggest juggling convention (BJC).`;
+
 export const workExperienceImageSrc = "src/lib/images/me.jpg";
 
 export const skillBadgeSections = [
@@ -86,8 +89,15 @@ export const experience = [
         period: "2020 - 2025",
         title: "Software Engineer",
         location: "Leeds",
-        details:
-          "Created a React interface for tenants to control their smart energy system.\n Created a backend application and API written using express to provide a link between the React app and real world SCADA system.\n Provided technical support to the end user.\n Assembled and managed ubiquity networking gear.\n Purchased and programmed industrial logic controllers",
+        details: `* On call for 4 years
+          * Senior engineer for 3 years
+          * Provisioned virtual machines to host third party software
+          * Created a GraphQL api to serve aggregated data to the frontend
+          * Was the teams SME for in house hosting services
+          * Was responsible for the monitoring and reporting of our microservices
+          * Was part of the rebuild team moving our tech to the new stack
+          * Rebuilt php apps in react
+`,
       },
     ],
   },
@@ -99,8 +109,11 @@ export const experience = [
         period: "2019 - 2020",
         title: "Senior Project Engineer",
         location: "Nottingham",
-        details:
-          "Created a React interface for tenants to control their smart energy system.\n Created a backend application and API written using express to provide a link between the React app and real world SCADA system.\n Provided technical support to the end user.\n Assembled and managed ubiquity networking gear.\n Purchased and programmed industrial logic controllers",
+        details: `* Created a React interface for tenants to control their smart energy system.
+          * Created a backend application and API written using express to provide a link between the React app and real world SCADA system.
+          * Provided technical support to the end user.
+          * Assembled and managed ubiquity networking gear.
+          * Purchased and programmed industrial logic controllers`,
       },
     ],
   },
@@ -112,14 +125,17 @@ export const experience = [
         title: "Graduate",
         period: "2015 - 2017",
         location: "Staythorpe",
-        details: "Building product prototypes, simulation tools, and infrastructure experiments with a focus on reliable delivery.",
+        details: `* Optimised a water treatment process to reduce product hold time between stages as well as plant component total starts and operating times.\n
+        * Staggered 12 hour shift in the control room`,
       },
       {
         period: "2015 - 2017",
         title: "Placement Student",
         location: "Staythorpe Power Station",
-        details:
-          "Repaired and optimised a building wide HVAC system saving electricity and maintenance costs. \n Optimised a water treatment process to reduce product hold time between stages as well as plant component total starts and operating times. \nNegotiated with vendors to ensure the most cost effective solutions while coordinating contractors to carry out the implementation \n Achieved project management certification \n2 years experience with the boiler water purification process utilizing reverse osmosis and mixed bed ion exchange technology.",
+        details: `* Repaired and optimised a building wide HVAC system saving electricity and maintenance costs.\n
+           * Negotiated with vendors to ensure the most cost effective solutions while coordinating contractors to carry out the implementation.\n
+           * Achieved project management certification\n
+           * 2 years experience with the boiler water purification process utilizing reverse osmosis and mixed bed ion exchange technology.`,
       },
     ],
   },
@@ -131,7 +147,14 @@ export const experience = [
         period: "2008 - 2012",
         title: "Technical Apprentice",
         location: "Didcot A power station",
-        details: "Vocational learning across engineering and operations, from on-site manufacturing practice to classroom-based technical study.",
+        details: `Vocational learning across engineering and operations, from on-site manufacturing practice to classroom-based technical study.\n
+          * BTECH HNC (Level 5) Operations and Maintenance Engineering\n
+          * BTECH (Level 3) Emgineering Technology Maintenance\n
+          * BTECH (Level 3) Operations and Maintenance Engineering\n
+          * City & Guilds (Level 3) - Electrical Installations \n
+          * City & Guilds (Level 3) - Inspection & Testing of Electrical Equipment \n
+          * NVQ (Level 2) - Performing Engineering Operations \n
+          * City & Guilds (Level 2) - Inspection, Testing & Initial Verification`,
       },
     ],
   },

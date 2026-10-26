@@ -1,5 +1,5 @@
 import p5 from "p5";
-import { generateColours } from "../helpers";
+import { generateColours, getCanvasContainer, getCanvasSize } from "../helpers";
 import Square from "./square";
 
 export const sketch = (p5: p5) => {
@@ -8,12 +8,14 @@ export const sketch = (p5: p5) => {
     colours: generateColours(p5, 5),
   };
 
+  const { width: canvasWidth, height: canvasHeight } = getCanvasSize(getCanvasContainer(p5));
+
   const squares: Square[] = [];
 
   const numSquares = 50;
 
   p5.setup = () => {
-    p5.createCanvas(p5.windowWidth, p5.windowHeight);
+    p5.createCanvas(canvasWidth, canvasHeight);
 
     [...Array(numSquares)].forEach(() => {
       squares.push(new Square(config));

@@ -1,5 +1,5 @@
 import p5 from "p5";
-import { getCanvasContainer, getCanvasSize } from "../helpers";
+import { getCanvasContainer, getCanvasSize, mouseInCanvas } from "../helpers";
 
 export const sketch = (p5: p5) => {
   const config = {
@@ -81,7 +81,14 @@ export const sketch = (p5: p5) => {
     p5.triangle(p1right.x, p1right.y, p2right.x, p2right.y, p3right.x, p3right.y);
   };
 
-  p5.mouseClicked = () => {};
+  p5.mouseClicked = () => {
+    const mouseX = p5.mouseX;
+    const mouseY = p5.mouseY;
+
+    if (mouseInCanvas(mouseX, mouseY, p5.width, p5.height)) {
+      p5.redraw();
+    }
+  };
 
   p5.mouseDragged = () => {};
 

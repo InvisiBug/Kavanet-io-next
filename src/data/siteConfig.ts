@@ -20,5 +20,6 @@ export const siteConfig = {
   options: {
     featuredProjectsLimit: 4,
     homeScreenFeaturedRandom: true,
+    categoryPageShowOnlyFeatured: true,
   },
 };

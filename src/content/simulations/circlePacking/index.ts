@@ -8,10 +8,11 @@ export const sketch = (p5: p5) => {
     colours: generateColours(p5, 5),
   };
 
+  const { width: canvasWidth, height: canvasHeight } = getCanvasSize(getCanvasContainer(p5));
+
   const circles: Circle[] = [];
 
   p5.setup = () => {
-    const { width: canvasWidth, height: canvasHeight } = getCanvasSize(getCanvasContainer(p5));
     p5.createCanvas(canvasWidth, canvasHeight);
   };
 

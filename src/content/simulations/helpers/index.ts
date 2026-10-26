@@ -100,3 +100,12 @@ export const getCanvasContainer = (instance: p5): HTMLElement | null => {
   const maybeCanvas = (instance as unknown as { canvas?: HTMLCanvasElement }).canvas;
   return maybeCanvas?.parentElement ?? null;
 };
+
+export const mouseInCanvas = (mouseX: number, mouseY: number, width: number, height: number) => {
+  if (mouseX > 0 && mouseX < width) {
+    if (mouseY > 0 && mouseY < height) {
+      return true;
+    }
+  }
+  return false;
+};

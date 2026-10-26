@@ -2,11 +2,13 @@
 // Code => https://editor.p5js.org/BarneyCodes/sketches/DVkfceuPZ
 
 import p5 from "p5";
+import { getCanvasContainer, getCanvasSize } from "../helpers";
 
 export const sketch = (p5: p5) => {
   const config = {
     p5,
   };
+  const { width: canvasWidth, height: canvasHeight } = getCanvasSize(getCanvasContainer(p5));
 
   const environment = {
     sea: {
@@ -40,7 +42,7 @@ export const sketch = (p5: p5) => {
   const pressedKeys = new Set<string>();
 
   p5.setup = () => {
-    const canvas = p5.createCanvas(p5.windowWidth, p5.windowHeight, p5.WEBGL);
+    const canvas = p5.createCanvas(canvasWidth, canvasHeight, p5.WEBGL);
     canvas.elt.setAttribute("tabindex", "0");
 
     canvas.elt.addEventListener("keydown", (event) => {

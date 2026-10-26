@@ -1,4 +1,5 @@
 import ReactMarkdown, { type Components } from "react-markdown";
+import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
 import { MarkdownCode, MarkdownHeading, MarkdownImage, MarkdownLink, MarkdownList, MarkdownListItem, MarkdownParagraph, MarkdownPre } from "./components";
 
@@ -19,7 +20,7 @@ const markdownComponents: Components = {
 export function MarkdownContent({ markdown }: MarkdownContentProps) {
   return (
     <article className="rounded-2xl border border-(--line) bg-(--surface) p-5">
-      <ReactMarkdown components={markdownComponents} remarkPlugins={[remarkGfm]}>
+      <ReactMarkdown components={markdownComponents} remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
         {markdown}
       </ReactMarkdown>
     </article>

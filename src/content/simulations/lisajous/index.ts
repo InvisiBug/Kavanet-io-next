@@ -4,8 +4,10 @@ import Curve from "./curve";
 import { getCanvasSize, getCanvasContainer } from "../helpers/index.ts";
 
 export const sketch = (p5: p5) => {
+  const { width: canvasWidth, height: canvasHeight } = getCanvasSize(getCanvasContainer(p5));
+
   let angle = 0;
-  const cellSize = 80;
+  const cellSize = canvasWidth / 12;
   let cols: number;
   let rows: number;
   const curves: Curve[][] = [];
@@ -15,7 +17,6 @@ export const sketch = (p5: p5) => {
   };
 
   p5.setup = () => {
-    const { width: canvasWidth, height: canvasHeight } = getCanvasSize(getCanvasContainer(p5));
     p5.createCanvas(canvasWidth, canvasHeight);
     // p5.noStroke();
 

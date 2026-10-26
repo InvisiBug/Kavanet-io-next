@@ -42,7 +42,7 @@ export default class Walker {
     this.velocity.add(this.acceleration);
     // this.velocity.limit(this.speed);
     if (this.p5.random() < 0.4) {
-      this.acceleration = p5.Vector.random2D().setMag(0.2);
+      this.acceleration = p5.Vector.random2D().setMag(0.1);
     }
     this.velocity.add(this.acceleration);
     this.velocity.limit(this.speed);
