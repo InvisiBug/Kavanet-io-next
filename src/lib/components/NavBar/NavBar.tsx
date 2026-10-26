@@ -51,14 +51,14 @@ const SiteHeader = () => {
   return (
     <header className="sticky top-0 z-40 border-b border-(--header-line) bg-(--header-bg) backdrop-blur-[10px]">
       <div className="mx-auto w-[min(1120px,calc(100%-2rem))] py-3">
-        <div className="grid min-h-11 grid-cols-[auto_1fr_auto] items-center gap-3 max-[920px]:grid-cols-[auto_auto]">
+        <div className="grid min-h-11 grid-cols-[auto_1fr_auto] items-center gap-3 max-[1100px]:grid-cols-[auto_auto]">
           <NavLink to="/" className="text-[1.1rem] font-extrabold text-(--text) no-underline">
             {siteConfig.name}
           </NavLink>
 
           <button
             type="button"
-            className="hidden h-10 w-10 items-center justify-center justify-self-end rounded-full border border-(--line) bg-(--surface) text-(--text) transition hover:border-(--accent) max-[920px]:inline-flex"
+            className="hidden h-10 w-10 items-center justify-center justify-self-end rounded-full border border-(--line) bg-(--surface) text-(--text) transition hover:border-(--accent) max-[1100px]:inline-flex"
             aria-label="Toggle navigation menu"
             aria-expanded={isMenuOpen}
             aria-controls="site-header-mobile-menu"
@@ -69,7 +69,7 @@ const SiteHeader = () => {
             </svg>
           </button>
 
-          <nav className="flex flex-wrap justify-center gap-2 max-[920px]:hidden" aria-label="Primary navigation">
+          <nav className="flex flex-wrap justify-center gap-2 max-[1100px]:hidden" aria-label="Primary navigation">
             {pageLinks.map((link) => (
               <NavLink
                 key={link.to}
@@ -89,7 +89,7 @@ const SiteHeader = () => {
           </nav>
 
           {/* Regular Menu */}
-          <div className="flex gap-2 max-[920px]:hidden" aria-label="Social links">
+          <div className="flex gap-2 max-[1100px]:hidden" aria-label="Social links">
             <ThemeToggleButton theme={theme} onToggle={() => setTheme((current) => getToggledTheme(current))} />
 
             {socialLinks.map((social) => (
@@ -103,7 +103,10 @@ const SiteHeader = () => {
         </div>
 
         {/* Hamburger Menu */}
-        <div id="site-header-mobile-menu" className={["hidden max-[920px]:mt-3 max-[920px]:rounded-2xl max-[920px]:border max-[920px]:border-(--line) max-[920px]:bg-(--surface) max-[920px]:p-3", isMenuOpen ? "max-[920px]:block" : ""].join(" ")}>
+        <div
+          id="site-header-mobile-menu"
+          className={["hidden max-[1100px]:mt-3 max-[1100px]:rounded-2xl max-[1100px]:border max-[1100px]:border-(--line) max-[1100px]:bg-(--surface) max-[1100px]:p-3", isMenuOpen ? "max-[1100px]:block" : ""].join(" ")}
+        >
           <div className="flex flex-wrap justify-center gap-2" aria-label="Social links mobile">
             <ThemeToggleButton theme={theme} onToggle={() => setTheme((current) => getToggledTheme(current))} />
 
