@@ -146,15 +146,25 @@ export const sketch = (p5: p5) => {
     // if (p5.mouseIsPressed && p5.frameCount % 5 === 0) {
     // testMap.addPoint(p5.mouseX, p5.mouseY);
     if (p5.mouseIsPressed) {
-      toHomeMap.show();
-      toFoodMap.show();
-      // toFoodMap.followScent(p5.mouseX, p5.mouseY);
-      // food.push(new Food(config, p5.mouseX, p5.mouseY));
-      // toFoodMap.addPoint(p5.createVector(p5.mouseX, p5.mouseY));
-      // const vect = toFoodMap.getWeakest(p5.mouseX, p5.mouseY, true);
-      // console.log(vect.x, vect.y);
-      // mouseTest();
+      console.log("pressed");
+      const mouseX = p5.mouseX;
+      const mouseY = p5.mouseY;
+
+      if (mouseX > 0 && mouseX < p5.width) {
+        console.log("Within x bounds");
+        if (mouseY > 0 && mouseY < p5.height) {
+          toHomeMap.show();
+          toFoodMap.show();
+        }
+        // toFoodMap.followScent(p5.mouseX, p5.mouseY);
+        // food.push(new Food(config, p5.mouseX, p5.mouseY));
+        // toFoodMap.addPoint(p5.createVector(p5.mouseX, p5.mouseY));
+        // const vect = toFoodMap.getWeakest(p5.mouseX, p5.mouseY, true);
+        // console.log(vect.x, vect.y);
+        // mouseTest();
+      }
     }
+
     // trailMap.setVal(p5.mouseX, p5.mouseY, 5);
     // }
 

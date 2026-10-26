@@ -58,4 +58,13 @@ export const simulationProjects: ProjectEntry[] = [
     imagePath: "/src/lib/images/simulations/circlePacking.jpg",
     // tags: ["Reliability", "Routing", "Modeling"],
   },
+  {
+    slug: "smart-rockets",
+    title: "Smart Rockets Simulation",
+    summary: "Simulation of rockets navigating towards a target using genetic algorithms.",
+    category: "simulations",
+    simulationKey: "smartRockets",
+    imagePath: "/src/lib/images/simulations/rockets.jpg",
+    // tags: ["Genetic Algorithm", "Simulation", "AI"],
+  },
 ];
