@@ -45,7 +45,7 @@ const ProjectPage = () => {
 
       {/* P5 canvas */}
       {project.category === "simulations" && simulationSketch ? (
-        <section className="rounded-2xl border border-(--line) bg-(--surface) p-4 h-125 lg:h-250" aria-label="Interactive p5 simulation">
+        <section className="rounded-2xl border border-(--line) bg-(--surface) p-4 h-125 lg:h-200" aria-label="Interactive p5 simulation">
           <P5Canvas sketch={simulationSketch} className="w-full" />
         </section>
       ) : null}

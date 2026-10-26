@@ -67,6 +67,16 @@ export const simulationProjects: ProjectEntry[] = [
     // tags: ["Genetic Algorithm", "Simulation", "AI"],
   },
   {
+    slug: "triangle-mural",
+    title: "Triangle Mural",
+    summary: "A recreation of a mural I saw online.",
+    category: "simulations",
+    simulationKey: "triangleMural",
+    imagePath: "/src/lib/images/simulations/triangleMural.jpg",
+    writeUpPath: "/src/content/writeups/simulations/triangle-mural.md",
+    // tags: ["Genetic Algorithm", "Simulation", "AI"],
+  },
+  {
     slug: "repulser",
     title: "Repulser Simulation",
     summary: "Simulation of points repelling each other.",

@@ -4,8 +4,6 @@ import { AboutMe } from "@/lib/components";
 const AboutPage = () => {
   return (
     <section className="grid gap-4" aria-labelledby="about-title">
-      <h1 id="about-title">About / CV</h1>
-
       <AboutMe imageSrc={workExperienceImageSrc || undefined} blurb={workExperienceSummary} />
 
       <div className="grid gap-4 grid-cols-[2fr_1fr] max-[920px]:grid-cols-1">

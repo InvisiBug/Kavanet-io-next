@@ -2,7 +2,7 @@ export type Theme = "light" | "dark";
 
 export type CategoryKey = "personal" | "community" | "simulations";
 
-export type SimulationKey = "project1" | "lisajous" | "dots" | "rayCasting" | "circlePacking" | "zombies" | "smartRockets" | "repulser";
+export type SimulationKey = "project1" | "lisajous" | "dots" | "rayCasting" | "circlePacking" | "zombies" | "smartRockets" | "repulser" | "triangleMural";
 
 export interface ProjectEntry {
   slug: string;
