@@ -1,7 +1,6 @@
 import { simLoader, FeaturedCard } from "@/lib/components";
 import { getProjectImageSrc } from "@/lib/helpers";
 import type { ProjectEntry } from "@/lib/types";
-import { siteConfig } from "@/data";
 
 const HeroFeatured = ({ featured, showSimulationPreview = false }: HeroFeaturedProps) => {
   return (
@@ -12,7 +11,7 @@ const HeroFeatured = ({ featured, showSimulationPreview = false }: HeroFeaturedP
       {/* </h1> */}
       {/* <p className="m-0 text-(--text-muted)">{siteConfig.subheadline}</p> */}
 
-      <div className="mt-6 grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-4">
+      <div className="mt-6 grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] items-start gap-4">
         {featured.map((project) => {
           const imageSrc = getProjectImageSrc(project.imagePath);
           const simulationSketch = showSimulationPreview && project.category === "simulations" && project.simulationKey ? simLoader[project.simulationKey] : null;

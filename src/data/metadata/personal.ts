@@ -7,7 +7,7 @@ export const personalProjects: ProjectEntry[] = [
     summary: "A super fun fidget toy that help keep the brain quiet.",
     category: "personal",
     tags: ["LED", "Lighting", "Installation"],
-    imagePath: "/src/lib/images/personal/twiddle1.jpg",
+    imagePath: "/src/lib/images/personal/twiddles.jpg",
     writeUpPath: "/src/content/writeups/personal/twiddles/twiddles.md",
     featured: true,
   },

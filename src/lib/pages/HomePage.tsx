@@ -8,7 +8,7 @@ const categoryOrder = ["personal", "community", "simulations"] as const;
 
 const HomePage = () => {
   const random = siteConfig.options.homeScreenFeaturedRandom;
-  const featured = random ? getRandomProjects(3) : getFeaturedProjects();
+  const featured = random ? getRandomProjects(siteConfig.options.featuredProjectsLimit) : getFeaturedProjects();
 
   const randomProjectsByCategory = useMemo(() => {
     return Object.fromEntries(
