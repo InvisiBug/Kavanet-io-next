@@ -1,9 +1,11 @@
+import workExperienceImage from "@/lib/images/me.jpg";
+
 export const workExperienceSummary = `I design and build many different things including websites, 3D models and larger community events
    I am also a contact / fire staff spinner along with other circus props.
    I have been a passionate photographer for many years and take photos at various events.\n
    Im also active in the circus scene, with my main props being contact staff and poi but I can also juggle. I have a geodome that I take to festivals and events to create a chill space for people to hang out in. I have also been involved in the creation of an LED space that appears every year at the UKs biggest juggling convention (BJC).`;
 
-export const workExperienceImageSrc = "src/lib/images/me.jpg";
+export const workExperienceImageSrc = workExperienceImage;
 
 export const skillBadgeSections = [
   {
