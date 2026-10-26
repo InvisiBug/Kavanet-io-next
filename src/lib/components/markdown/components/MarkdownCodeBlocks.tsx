@@ -2,11 +2,11 @@ import type { ComponentPropsWithoutRef } from "react";
 
 export const MarkdownList = ({ ordered, ...props }: ComponentPropsWithoutRef<"ul"> & { ordered?: boolean }) => {
   const List = ordered ? "ol" : "ul";
-  return <List className={ordered ? "mt-3 mb-0 list-decimal pl-5" : "mt-3 mb-0 list-disc pl-5"} {...props} />;
+  return <List className={ordered ? "mt-3 mb-3 list-decimal pl-5" : "mt-3 mb-3 list-disc pl-5"} {...props} />;
 };
 
 export const MarkdownListItem = (props: ComponentPropsWithoutRef<"li">) => {
-  return <li className="text-(--text-muted)" {...props} />;
+  return <li className="mb-2 text-(--text-muted) last:mb-0" {...props} />;
 };
 
 export const MarkdownPre = (props: ComponentPropsWithoutRef<"pre">) => {

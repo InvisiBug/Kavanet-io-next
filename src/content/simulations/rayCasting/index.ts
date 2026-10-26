@@ -40,7 +40,6 @@ export const sketch = (p5: p5) => {
     boundries.push(new Boundry(config, availableColours, -1, -1, -1, p5.height + 1));
 
     for (let i = 0; i < numBoundries; i++) {
-      const divisor = 2;
       boundries.push(new Boundry(config, availableColours, p5.random(p5.width), p5.random(p5.width), p5.random(p5.height), p5.random(p5.height)));
     }
 

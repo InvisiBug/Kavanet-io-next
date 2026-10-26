@@ -37,7 +37,6 @@ export const simulationProjects: ProjectEntry[] = [
     simulationKey: "zombies",
     imagePath: "/src/lib/images/simulations/zombie.jpg",
     writeUpPath: "/src/content/writeups/simulations/zombie-sim.md",
-    // writeUpPath: "/src/content/writeups/personal/ledColumns/led-columns.md",
     // tags: ["Reliability", "Routing", "Modeling"],
   },
   {
@@ -66,5 +65,15 @@ export const simulationProjects: ProjectEntry[] = [
     simulationKey: "smartRockets",
     imagePath: "/src/lib/images/simulations/rockets.jpg",
     // tags: ["Genetic Algorithm", "Simulation", "AI"],
+  },
+  {
+    slug: "repulser",
+    title: "Repulser Simulation",
+    summary: "Simulation of points repelling each other.",
+    category: "simulations",
+    simulationKey: "repulser",
+    imagePath: "/src/lib/images/simulations/repulser.jpg",
+    writeUpPath: "/src/content/writeups/simulations/repulser.md",
+    // tags: ["Physics", "Simulation", "AI"],
   },
 ];

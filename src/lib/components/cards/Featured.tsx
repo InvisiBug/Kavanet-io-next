@@ -3,7 +3,7 @@ import { P5Canvas } from "@/lib/components";
 
 const FeaturedCard = ({ project, simulationSketch, imageSrc }: FeaturedCardProps) => {
   return (
-    <Link key={project.slug} className="flex flex-col rounded-[0.9rem] border border-(--line) bg-(--surface-soft) p-4 no-underline text-inherit" to={`/${project.category}/${project.slug}`}>
+    <Link key={project.slug} className="flex flex-col  rounded-[0.9rem] border border-(--line) bg-(--surface-soft) p-4 no-underline text-inherit" to={`/${project.category}/${project.slug}`}>
       <h3 className="m-0 text-base">{project.title}</h3>
       <p className="mt-2 mb-2 text-[0.92rem] text-(--text-muted)">{project.summary}</p>
 

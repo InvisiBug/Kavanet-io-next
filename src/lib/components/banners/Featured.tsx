@@ -11,7 +11,9 @@ const HeroFeatured = ({ featured, showSimulationPreview = false }: HeroFeaturedP
       {/* </h1> */}
       {/* <p className="m-0 text-(--text-muted)">{siteConfig.subheadline}</p> */}
 
+      {/* // TODO: Not happy with the grid, needs to be one item on sims and many on others */}
       <div className="mt-6 grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] items-start gap-4">
+        {/* <div className="mt-6 flex flex-wrap gap-4"> */}
         {featured.map((project) => {
           const imageSrc = getProjectImageSrc(project.imagePath);
           const simulationSketch = showSimulationPreview && project.category === "simulations" && project.simulationKey ? simLoader[project.simulationKey] : null;

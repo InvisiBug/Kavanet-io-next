@@ -53,9 +53,9 @@ export const personalProjects: ProjectEntry[] = [
   {
     slug: "home-automation-system",
     title: "Home Automation System",
-    summary: "An evolving home setup for lighting, sensors, and routines with reliability and remote control in mind.",
+    summary: "My purpose built home automation system which controls the heating and lights in my house",
     category: "personal",
-    imagePath: "/src/lib/images/personal/home-automation-system.svg",
+    imagePath: "/src/lib/images/personal/kavanest.jpg",
     tags: ["Automation", "IoT", "Systems"],
     writeUpPath: "/src/content/writeups/personal/kavanest/home-automation-system.md",
   },
