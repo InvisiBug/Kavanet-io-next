@@ -1,6 +1,4 @@
-import { Link } from "react-router-dom";
-import { simLoader } from "@/lib/components";
-import { P5Canvas } from "@/lib/components/P5Canvas";
+import { simLoader, FeaturedCard } from "@/lib/components";
 import { getProjectImageSrc } from "@/lib/helpers";
 import type { ProjectEntry } from "@/lib/types";
 import { siteConfig } from "@/data";
@@ -19,20 +17,7 @@ const HeroFeatured = ({ featured, showSimulationPreview = false }: HeroFeaturedP
           const imageSrc = getProjectImageSrc(project.imagePath);
           const simulationSketch = showSimulationPreview && project.category === "simulations" && project.simulationKey ? simLoader[project.simulationKey] : null;
 
-          return (
-            <Link key={project.slug} className="block rounded-[0.9rem] border border-(--line) bg-(--surface-soft) p-4 no-underline text-inherit" to={`/${project.category}/${project.slug}`}>
-              <h3 className="m-0 text-base">{project.title}</h3>
-              <p className="mt-2 mb-10 text-[0.92rem] text-(--text-muted) ">{project.summary}</p>
-
-              {simulationSketch ? (
-                <div className="mb-3 overflow-hidden rounded-lg border border-(--line) h-50 lg:h-128 ">
-                  <P5Canvas sketch={simulationSketch} className=" w-full" />
-                </div>
-              ) : imageSrc ? (
-                <img src={imageSrc} alt={`${project.title} placeholder`} data-no-lightbox="true" className="mb-3   w-full rounded-lg border border-(--line) object-cover" loading="lazy" />
-              ) : null}
-            </Link>
-          );
+          return <FeaturedCard key={project.slug} project={project} simulationSketch={simulationSketch} imageSrc={imageSrc} />;
         })}
       </div>
     </section>

@@ -1,7 +1,8 @@
+import { useMemo } from "react";
 import { Link } from "react-router-dom";
-import { HeroFeatured, HomeBannerRotator } from "@/lib/components";
+import { HeroFeatured, HomeBannerRotator, ProjectCard } from "@/lib/components";
 import { categoryMeta, siteConfig } from "@/data";
-import { getFeaturedProjects, getRandomProjects } from "@/lib/helpers";
+import { getFeaturedProjects, getProjectsByCategory, getRandomProjects } from "@/lib/helpers";
 
 const categoryOrder = ["personal", "community", "simulations"] as const;
 
@@ -9,7 +10,15 @@ const HomePage = () => {
   const random = siteConfig.options.homeScreenFeaturedRandom;
   const featured = random ? getRandomProjects(3) : getFeaturedProjects();
 
-  console.log("🚀 ~ HomePage ~ featured:", featured);
+  const randomProjectsByCategory = useMemo(() => {
+    return Object.fromEntries(
+      categoryOrder.map((category) => {
+        const categoryProjects = getProjectsByCategory(category);
+        const randomProject = categoryProjects[Math.floor(Math.random() * categoryProjects.length)];
+        return [category, randomProject];
+      }),
+    );
+  }, []);
 
   return (
     <div className="grid gap-6">
@@ -27,6 +36,12 @@ const HomePage = () => {
               <Link to={`/${categoryKey}`} className="mt-3 inline-block font-bold text-(--text) no-underline transition hover:text-(--accent)">
                 Explore {category.title}
               </Link>
+
+              {randomProjectsByCategory[categoryKey] ? (
+                <div className="mt-4">
+                  <ProjectCard project={randomProjectsByCategory[categoryKey]} />
+                </div>
+              ) : null}
             </article>
           );
         })}

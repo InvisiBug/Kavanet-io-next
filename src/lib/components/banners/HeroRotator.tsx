@@ -4,7 +4,7 @@ import { getProjectImageSrc, getRandomProjects } from "@/lib/helpers";
 
 const AUTO_ROTATE_MS = 5000;
 
-export function HomeBannerRotator() {
+const HomeBannerRotator = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const highlightedProjects = useMemo(() => getRandomProjects(3), []);
@@ -63,4 +63,6 @@ export function HomeBannerRotator() {
       ) : null}
     </section>
   );
-}
+};
+
+export default HomeBannerRotator;

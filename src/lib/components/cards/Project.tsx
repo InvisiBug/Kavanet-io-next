@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { getProjectImageSrc } from "@/lib/helpers";
 import type { ProjectEntry } from "@/lib/types";
 
-export function ProjectCard({ project }: ProjectCardProps) {
+const ProjectCard = ({ project }: ProjectCardProps) => {
   const imageSrc = getProjectImageSrc(project.imagePath);
 
   return (
@@ -24,7 +24,9 @@ export function ProjectCard({ project }: ProjectCardProps) {
       </ul>
     </Link>
   );
-}
+};
+
+export default ProjectCard;
 
 interface ProjectCardProps {
   project: ProjectEntry;

@@ -1,22 +1,19 @@
-import { useMemo } from "react";
 import { HeroFeatured, ProjectCard } from "@/lib/components";
 import { categoryMeta } from "@/data";
-import { getProjectsByCategory } from "@/lib/helpers";
-import type { CategoryKey } from "@/lib/types";
+import { getProjectsByCategory, getRandomProjectsFromProjects } from "@/lib/helpers";
+import type { CategoryKey, ProjectEntry } from "@/lib/types";
 
 const CategoryPage = ({ category }: CategoryPageProps) => {
   const projects = getProjectsByCategory(category);
-  console.log("🚀 ~ CategoryPage ~ projects:", projects);
 
   const metadata = categoryMeta[category];
+  let randomProject: ProjectEntry[] = [];
 
-  const randomProject = useMemo(() => {
-    if (projects.length === 0) {
-      return undefined;
-    }
-
-    return projects[Math.floor(Math.random() * projects.length)];
-  }, [projects]);
+  if (category !== "simulations") {
+    randomProject = getRandomProjectsFromProjects(projects, 2);
+  } else {
+    randomProject = getRandomProjectsFromProjects(projects, 1);
+  }
 
   return (
     <section className="grid gap-6" aria-labelledby="category-title">
@@ -25,7 +22,7 @@ const CategoryPage = ({ category }: CategoryPageProps) => {
         <p className="whitespace-pre-line text-(--text-muted)">{metadata.description}</p>
       </header>
 
-      {randomProject ? <HeroFeatured featured={[randomProject]} showSimulationPreview={category === "simulations"} /> : null}
+      {randomProject ? <HeroFeatured featured={randomProject} showSimulationPreview={category === "simulations"} /> : null}
 
       <div className="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] items-stretch gap-4">
         {projects.map((project) => (

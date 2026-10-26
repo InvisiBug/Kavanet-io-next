@@ -1,4 +1,4 @@
-export const skills = ["TypeScript and React", "System design and modeling", "Automation and developer tooling", "Technical writing and communication"];
+export const skills = ["TypeScript and React", "System design and modelling", "Automation and developer tooling", "Technical writing and communication"];
 
 export const workExperienceSummary = "I design and build practical software, with a focus on dependable systems and clear user experiences.";
 
@@ -71,7 +71,7 @@ export const experience = [
     ],
   },
   {
-    company: "RWE npower",
+    company: "RWE Npower",
     imageSrc: "https://media.licdn.com/dms/image/v2/C560BAQF4HIUkMxALEQ/company-logo_400_400/company-logo_400_400/0/1630672845524/npower__logo?e=1794441600&v=beta&t=TW4Mvok1ecAW20Vr0y6aSldo3s5L3ghYzBlV0oUNQXc",
     entries: [
       {

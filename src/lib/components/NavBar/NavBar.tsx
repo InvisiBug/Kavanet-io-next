@@ -4,7 +4,7 @@ import { siteConfig } from "@/data";
 import { useContext } from "@/lib/context";
 import { getToggledTheme } from "@/lib/helpers";
 
-import { SocialIconLink, OtherSitesDropdown, ThemeToggleButton } from "./components/";
+import { SocialIconLink, OtherSitesDropdown, ThemeToggleButton } from "./components";
 
 const pageLinks = [
   { to: "/personal", label: "Personal Projects" },

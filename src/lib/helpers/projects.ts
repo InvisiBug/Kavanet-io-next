@@ -38,6 +38,11 @@ export const getRandomProjects = (limit: number): ProjectEntry[] => {
   return shuffled.slice(0, Math.max(1, limit));
 };
 
+export const getRandomProjectsFromProjects = (projects: ProjectEntry[], limit: number): ProjectEntry[] => {
+  const shuffled = [...projects].sort(() => Math.random() - 0.5);
+  return shuffled.slice(0, Math.max(1, limit));
+};
+
 export const getRandomProject = (excludeSlug?: string): ProjectEntry | undefined => {
   const pool = excludeSlug ? allProjects.filter((project) => project.slug !== excludeSlug) : allProjects;
 
