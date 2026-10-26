@@ -41,7 +41,6 @@ export default class Point {
     this.maxSpeed = 10;
     this.maxForce = 2;
 
-    this.img = config.sharkImg;
     this.imageSize = 10;
   }
 

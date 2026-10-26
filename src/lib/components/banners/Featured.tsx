@@ -4,7 +4,10 @@ import type { ProjectEntry } from "@/lib/types";
 
 const HeroFeatured = ({ featured, showSimulationPreview = false }: HeroFeaturedProps) => {
   return (
-    <section className="rounded-[1.2rem] border border-(--line) bg-[linear-gradient(145deg,rgba(255,127,0,0.08),transparent_42%),var(--surface)] p-8 shadow-[0_24px_42px_rgba(12,21,43,0.08)] max-[680px]:p-[1.4rem]" aria-labelledby="hero-title">
+    <section
+      className="rounded-[1.2rem] bg-(--surface) border border-(--line) bg-[linear-gradient(145deg,rgba(255,127,0,0.08),transparent_42%),var(--surface)] p-8 shadow-[0_24px_42px_rgba(12,21,43,0.08)] max-[680px]:p-[1.4rem]"
+      aria-labelledby="hero-title"
+    >
       <p className="m-0 text-[0.82rem] font-bold uppercase tracking-[0.08em] text-(--accent)">Featured Work</p>
       {/* <h1 id="hero-title" className="mt-2 mb-3 max-w-[18ch] text-[clamp(2rem,4vw,3rem)] leading-tight"> */}
       {/* {siteConfig.headline} */}

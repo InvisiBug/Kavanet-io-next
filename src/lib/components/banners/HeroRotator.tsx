@@ -35,7 +35,7 @@ const HomeBannerRotator = () => {
     <section className="overflow-hidden rounded-[1.2rem] border border-(--line) bg-(--surface) shadow-[0_18px_36px_rgba(12,21,43,0.08)]" aria-label="Rotating project highlights">
       <div className="relative grid min-h-60 content-center gap-3 px-6 py-8 text-white">
         {activeImageSrc ? <img src={activeImageSrc} alt={`${activeProject.title} placeholder`} className="absolute inset-0 h-full w-full object-cover" /> : null}
-        <div className="absolute inset-0 bg-[linear-gradient(140deg,rgba(20,33,61,0.92),rgba(27,82,129,0.9))]" />
+        <div className="absolute inset-0 bg-[linear-gradient(140deg,rgba(20,33,61,0.92),rgba(27,82,129,0.0))]" />
 
         <div className="relative z-10 grid gap-3">
           <p className="m-0 text-xs font-semibold uppercase tracking-[0.08em] text-sky-200">Project Spotlight</p>
