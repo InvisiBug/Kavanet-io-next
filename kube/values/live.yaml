@@ -15,7 +15,7 @@ deployment:
 ingress:
   - name: kavanet-io
     selector: kavanet-io
-    path: /.*
+    path: /
     port: 80
     host: kavanet.io
 
