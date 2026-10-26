@@ -68,8 +68,8 @@ export function P5Canvas({ sketch, className }: P5CanvasProps) {
   }, [sketch]);
 
   return (
-    <div className={className}>
-      <div ref={canvasRootRef} className="w-full [&>canvas]:block [&>canvas]:w-full [&>canvas]:h-auto [&>canvas]:rounded-xl [&>canvas]:border [&>canvas]:border-[rgba(216,222,235,0.9)]" />
+    <div className={["relative h-full min-h-0 w-full overflow-hidden rounded-xl", className].join(" ")}>
+      <div ref={canvasRootRef} className="absolute inset-0 [&>canvas]:block [&>canvas]:h-full! [&>canvas]:w-full! [&>canvas]:rounded-xl [&>canvas]:border [&>canvas]:border-[rgba(216,222,235,0.9)]" />
     </div>
   );
 }

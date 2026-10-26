@@ -1,16 +1,25 @@
 import type { CategoryKey } from "@/lib/types";
 
-export const categoryMeta: Record<CategoryKey, { title: string; description: string }> = {
+export const categoryMeta: Record<CategoryKey, CategoryMeta> = {
   personal: {
     title: "Personal Projects",
-    description: "Independent projects where I test ideas, build products, and sharpen my engineering craft.",
+    subTitle: "Projects and things I've built myself",
+    description: "These are my small scale personal projects",
   },
   community: {
     title: "Community Projects",
-    description: "Collaborative work with open-source groups, local communities, and shared initiatives.",
+    subTitle: "Projects for my wider community like The Dome and LED Space",
+    description: "These are my big projects that I've made for the community ranging from Fire Jams, to the LED Space at BJC",
   },
   simulations: {
-    title: "Simulation of natural system through code",
+    title: "Simulatios",
+    subTitle: "My simulations of natural systems through code",
     description: 'A few years ago I came across "The Coding Train" on youTube and loved the logic behind simulations. \n This page showcases my experiments and models',
   },
+};
+
+type CategoryMeta = {
+  title: string;
+  subTitle: string;
+  description?: string;
 };

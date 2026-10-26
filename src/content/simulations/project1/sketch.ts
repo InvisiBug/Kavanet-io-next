@@ -1,22 +1,7 @@
 import type p5 from "p5";
-import type { SketchFactory } from "@/lib/components/P5Canvas";
+import { getCanvasSize, getCanvasContainer } from "../helpers";
 
-function getCanvasSize(container: HTMLElement | null) {
-  const fallbackWidth = 900;
-  const width = container?.clientWidth ?? fallbackWidth;
-
-  return {
-    width,
-    height: Math.round(width * 0.52),
-  };
-}
-
-function getCanvasContainer(instance: p5): HTMLElement | null {
-  const maybeCanvas = (instance as unknown as { canvas?: HTMLCanvasElement }).canvas;
-  return maybeCanvas?.parentElement ?? null;
-}
-
-export const project1Sketch: SketchFactory = (p: p5) => {
+export const project1Sketch = (p: p5) => {
   const nodeCount = 60;
 
   p.setup = () => {
