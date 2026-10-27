@@ -43,7 +43,7 @@ const AboutPage = () => {
           <div className="mt-5 grid gap-5">
             {skillBadgeSections.map((section) => (
               <section key={section.title}>
-                <h3 className="m-0 mb-2 text-lg  text-(--text)">{section.title}</h3>
+                <h3 className="m-0 mb-2 text-lg text-(--text)">{section.title}</h3>
 
                 <div className="flex flex-wrap">
                   {section.badges.map((badge) => (

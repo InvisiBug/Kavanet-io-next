@@ -29,6 +29,8 @@ Using the Kinect as an input to a bunch of Touch Designer
 ### LED Towers & Arches
 The towers and arches ran off an ESP32 micro controller running WLED, which can take receive Art-Net instructions over WiFi
 
+I have a detailed writeup of the LED towers [here](http://localhost:5173/personal/led-columns)
+
 ### Background Lights
 The background lights were simply controlled by DMX which works by chaining all the lights together with one data cable
 
@@ -41,6 +43,7 @@ In the end I decided to track an image of someone juggling different coloured ba
 
 
 ![video](./towersAndArches.mp4)
+
 
 <!-- ![towers](./tower.jpg) -->
 
