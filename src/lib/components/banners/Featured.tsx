@@ -21,7 +21,7 @@ const HeroFeatured = ({ featured, showSimulationPreview = false }: HeroFeaturedP
           const imageSrc = getProjectImageSrc(project.imagePath);
           const simulationSketch = showSimulationPreview && project.category === "simulations" && project.simulationKey ? simLoader[project.simulationKey] : null;
 
-          return <FeaturedCard key={project.slug} project={project} simulationSketch={simulationSketch} imageSrc={imageSrc} />;
+          return <FeaturedCard key={project.slug} project={project} simulationSketch={simulationSketch} />;
         })}
       </div>
     </section>

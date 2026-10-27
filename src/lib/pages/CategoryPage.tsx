@@ -1,4 +1,4 @@
-import { HeroFeatured, ProjectCard } from "@/lib/components";
+import { FeaturedCard, HeroFeatured } from "@/lib/components";
 import { categoryMeta, siteConfig } from "@/data";
 import { getFeaturedProjects, getProjectsByCategory, getRandomProjects, getRandomProjectsFromProjects, getFeaturedProjectsByCategory, getRandomProjectsByCategory } from "@/lib/helpers";
 import type { CategoryKey, ProjectEntry } from "@/lib/types";
@@ -40,9 +40,10 @@ const CategoryPage = ({ category }: CategoryPageProps) => {
       {project ? <HeroFeatured featured={project} showSimulationPreview={category === "simulations"} /> : null}
 
       <h1 id="category-title">{text}</h1>
-      <div className="grid grid-cols-[repeat(auto-fit,minmax(260px,1fr))] items-stretch gap-4">
+
+      <div className="grid  grid-cols-[repeat(auto-fit,minmax(200px,1fr))] items-start gap-4">
         {projects.map((project) => (
-          <ProjectCard key={project.slug} project={project} />
+          <FeaturedCard key={project.slug} project={project} />
         ))}
       </div>
     </section>

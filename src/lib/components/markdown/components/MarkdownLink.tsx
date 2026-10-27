@@ -5,6 +5,21 @@ const GITHUB_HOSTS = new Set(["github.com", "www.github.com"]);
 export const MarkdownLink = ({ href = "", children, ...props }: ComponentPropsWithoutRef<"a">) => {
   const isExternal = /^https?:\/\//.test(href);
   let githubRepository: string | null = null;
+  const instagramEmbedUrl = getInstagramEmbedUrl(href);
+
+  if (instagramEmbedUrl) {
+    return (
+      <iframe
+        src={instagramEmbedUrl}
+        title="Instagram post"
+        className="mx-auto my-4 block h-120 lg:h-185 w-full max-w-full rounded-lg border border-(--line) bg-(--surface) sm:max-w-135"
+        loading="lazy"
+        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+        allowFullScreen
+        referrerPolicy="strict-origin-when-cross-origin"
+      />
+    );
+  }
 
   try {
     const url = new URL(href);
@@ -51,4 +66,19 @@ export const MarkdownLink = ({ href = "", children, ...props }: ComponentPropsWi
       {children}
     </a>
   );
+};
+
+const getInstagramEmbedUrl = (href: string): string | null => {
+  try {
+    const url = new URL(href);
+    const pathMatch = url.pathname.match(/^\/(p|reel|tv)\/([A-Za-z0-9_-]+)\/?$/);
+
+    if (!["instagram.com", "www.instagram.com"].includes(url.hostname.toLowerCase()) || !pathMatch) {
+      return null;
+    }
+
+    return `https://www.instagram.com/${pathMatch[1]}/${pathMatch[2]}/embed/`;
+  } catch {
+    return null;
+  }
 };

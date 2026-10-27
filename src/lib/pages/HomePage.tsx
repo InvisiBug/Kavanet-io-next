@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { Link } from "react-router-dom";
-import { HeroFeatured, HomeBannerRotator, ProjectCard } from "@/lib/components";
+import { HeroFeatured, HomeBannerRotator, FeaturedCard, ProjectCard } from "@/lib/components";
 import { categoryMeta, siteConfig } from "@/data";
 import { getFeaturedProjects, getProjectsByCategory, getRandomProjects } from "@/lib/helpers";
 
@@ -25,23 +25,19 @@ const HomePage = () => {
       <HomeBannerRotator />
       <HeroFeatured featured={featured} />
 
-      <section className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-4" aria-label="Project categories">
+      <section className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] items-start gap-4" aria-label="Project categories">
         {categoryOrder.map((categoryKey) => {
           const category = categoryMeta[categoryKey];
 
           return (
-            <article key={categoryKey} className="rounded-2xl border border-(--line) bg-(--surface) p-5">
-              <h2 className="m-0">{category.title}</h2>
-              <p className="mt-3 mb-0 text-(--text-muted)">{category.description}</p>
-              <Link to={`/${categoryKey}`} className="mt-3 inline-block font-bold text-(--text) no-underline transition hover:text-(--accent)">
-                Explore {category.title}
+            <article key={categoryKey} className="rounded-2xl inline-block border border-(--line) bg-(--surface) p-5">
+              <Link to={`/${categoryKey}`} key={categoryKey} className="mt-3 inline-block font-bold text-(--text) no-underline transition hover:text-(--accent) ">
+                <h2 className="m-0">{category.title}</h2>
+                <p className="mt-3 mb-0 text-(--text-muted)">{category.description}</p>
+                <h2 className="mt-5 mb-5 text-(--text)">Explore {category.title}</h2>
               </Link>
 
-              {randomProjectsByCategory[categoryKey] ? (
-                <div className="mt-4">
-                  <ProjectCard project={randomProjectsByCategory[categoryKey]} />
-                </div>
-              ) : null}
+              {randomProjectsByCategory[categoryKey] ? <FeaturedCard project={randomProjectsByCategory[categoryKey]} /> : null}
             </article>
           );
         })}
