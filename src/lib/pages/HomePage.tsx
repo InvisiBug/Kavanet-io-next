@@ -1,14 +1,14 @@
 import { useMemo } from "react";
 import { Link } from "react-router-dom";
-import { HeroFeatured, HomeBannerRotator, RegularCard } from "@/lib/components";
-import { categoryMeta, siteConfig } from "@/data";
+import { HeroFeatured, HomeBannerRotator, RegularCard, FullPictureCard, AboutMeCard } from "@/lib/components";
+import { categoryMeta, siteConfig, workExperienceImageSrc, workExperienceSummary } from "@/data";
 import { getFeaturedProjects, getProjectsByCategory, getRandomProjects } from "@/lib/helpers";
 
 const categoryOrder = ["personal", "community", "simulations"] as const;
 
 const HomePage = () => {
   const random = siteConfig.options.homeScreenFeaturedRandom;
-  const featured = random ? getRandomProjects(siteConfig.options.featuredProjectsLimit) : getFeaturedProjects();
+  const featured = random ? getRandomProjects(3) : getFeaturedProjects(3);
 
   const randomProjectsByCategory = useMemo(() => {
     return Object.fromEntries(
@@ -23,7 +23,15 @@ const HomePage = () => {
   return (
     <div className="grid gap-6">
       <HomeBannerRotator />
-      <HeroFeatured featured={featured} />
+      <AboutMeCard imageSrc={workExperienceImageSrc} blurb={workExperienceSummary} />
+
+      <HeroFeatured masonary={true}>
+        {featured.map((project) => (
+          <div key={project.slug} className="mb-4">
+            <FullPictureCard project={project} />
+          </div>
+        ))}
+      </HeroFeatured>
 
       <section className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] items-start gap-4" aria-label="Project categories">
         {categoryOrder.map((categoryKey) => {
@@ -37,7 +45,7 @@ const HomePage = () => {
                 <h2 className="mt-5 mb-5 text-(--text)">Explore {category.title}</h2>
               </Link>
 
-              {randomProjectsByCategory[categoryKey] ? <RegularCard project={randomProjectsByCategory[categoryKey]} /> : null}
+              {randomProjectsByCategory[categoryKey] ? <FullPictureCard project={randomProjectsByCategory[categoryKey]} /> : null}
             </article>
           );
         })}
