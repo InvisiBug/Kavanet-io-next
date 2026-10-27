@@ -1,16 +1,12 @@
-import { RegularCard, HeroFeatured } from "@/lib/components";
+import { RegularCard, HeroFeatured, FullPictureCard } from "@/lib/components";
 import { categoryMeta, siteConfig } from "@/data";
-import { getFeaturedProjects, getProjectsByCategory, getRandomProjects, getRandomProjectsFromProjects, getFeaturedProjectsByCategory, getRandomProjectsByCategory } from "@/lib/helpers";
+import { getFeaturedProjects, getProjectsByCategory, getFeaturedProjectsByCategory, getRandomProjectsByCategory } from "@/lib/helpers";
 import type { CategoryKey, ProjectEntry } from "@/lib/types";
 
 const CategoryPage = ({ category }: CategoryPageProps) => {
   const projects = getProjectsByCategory(category);
-  console.log("🚀 ~ CategoryPage ~ category:", category);
-  const showOnlyFeatured = siteConfig.options.categoryPageShowOnlyFeatured;
-  console.log("🚀 ~ CategoryPage ~ showOnlyFeatured:", showOnlyFeatured);
 
-  // const featured = random ? getRandomProjectsByCategory(category, siteConfig.options.featuredProjectsLimit) : getFeaturedProjectsByCategory(category, 1);
-  // const featured = getFeaturedProjectsByCategory(category);
+  const showOnlyFeatured = siteConfig.options.categoryPageShowOnlyFeatured;
 
   const metadata = categoryMeta[category];
   let project: ProjectEntry[] = [];

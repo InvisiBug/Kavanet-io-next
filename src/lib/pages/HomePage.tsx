@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { Link } from "react-router-dom";
-import { HeroFeatured, HomeBannerRotator, RegularCard } from "@/lib/components";
+import { HeroFeatured, HomeBannerRotator, RegularCard, FullPictureCard } from "@/lib/components";
 import { categoryMeta, siteConfig } from "@/data";
 import { getFeaturedProjects, getProjectsByCategory, getRandomProjects } from "@/lib/helpers";
 
@@ -37,7 +37,7 @@ const HomePage = () => {
                 <h2 className="mt-5 mb-5 text-(--text)">Explore {category.title}</h2>
               </Link>
 
-              {randomProjectsByCategory[categoryKey] ? <RegularCard project={randomProjectsByCategory[categoryKey]} /> : null}
+              {randomProjectsByCategory[categoryKey] ? <FullPictureCard project={randomProjectsByCategory[categoryKey]} /> : null}
             </article>
           );
         })}

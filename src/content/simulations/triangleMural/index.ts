@@ -6,11 +6,12 @@ export const sketch = (p5: p5) => {
     p5,
   };
 
+  const { width: canvasWidth, height: canvasHeight } = getCanvasSize(getCanvasContainer(p5));
   const numRows = 20;
-  const squareSize = p5.windowHeight / numRows;
-  const numCols = Math.floor(p5.windowWidth / squareSize);
+  const squareSize = canvasHeight / numRows;
+  const numCols = Math.floor(canvasWidth / squareSize);
 
-  const xstart = p5.windowWidth / 2 - (squareSize * numCols) / 2;
+  const xstart = canvasWidth / 2 - (squareSize * numCols) / 2;
   const ystart = 0;
 
   // const colours = ["#302F2D", "#464543", "#274666", "#24829F", "#86A95B"];
@@ -19,15 +20,14 @@ export const sketch = (p5: p5) => {
   const vertex: number[][] = [];
 
   p5.setup = () => {
-    const { width: canvasWidth, height: canvasHeight } = getCanvasSize(getCanvasContainer(p5));
     p5.createCanvas(canvasWidth, canvasHeight);
 
-    // p5.createCanvas(p5.windowWidth, p5.windowHeight);
+    // p5.createCanvas(p5.windowWidth, canvasHeight);
     p5.noLoop();
   };
 
   p5.draw = () => {
-    drawBackground(6);
+    drawBackground(18);
 
     for (let x = 0; x < numCols; x++) {
       for (let y = 0; y < numRows; y++) {
@@ -58,25 +58,25 @@ export const sketch = (p5: p5) => {
     const top = (position + 20) * squareSize;
 
     // p5.fill(backgroundColours[0]);
-    // p5.triangle(0, 0, top, 0, 0, p5.windowHeight);
+    // p5.triangle(0, 0, top, 0, 0, canvasHeight);
 
     p5.fill(backgroundColours[0]);
 
     const p1left = p5.createVector(bottom + xstart, 0); // Top left point
-    const p2left = p5.createVector(bottom + xstart, p5.windowHeight); // Bottom left point
+    const p2left = p5.createVector(bottom + xstart, canvasHeight); // Bottom left point
     const p3left = p5.createVector(top + xstart, 0); // Top right point
 
-    p5.rect(bottom + xstart - 1000, p1left.y, 1000, p5.windowHeight);
+    p5.rect(bottom + xstart - 1000, p1left.y, 1000, canvasHeight);
 
     p5.triangle(p1left.x, p1left.y, p2left.x, p2left.y, p3left.x, p3left.y);
 
     p5.fill(backgroundColours[1]);
 
     const p1right = p5.createVector(top + xstart, 0); // Top right point
-    const p2right = p5.createVector(bottom + xstart, p5.windowHeight); // Bottom left point
-    const p3right = p5.createVector(top + xstart, p5.windowHeight); // Bottom right point
+    const p2right = p5.createVector(bottom + xstart, canvasHeight); // Bottom left point
+    const p3right = p5.createVector(top + xstart, canvasHeight); // Bottom right point
 
-    p5.rect(p1right.x - 1, p1right.y, 1000, p5.windowHeight);
+    p5.rect(p1right.x - 1, p1right.y, 1000, canvasHeight);
 
     p5.triangle(p1right.x, p1right.y, p2right.x, p2right.y, p3right.x, p3right.y);
   };
@@ -105,7 +105,7 @@ export const sketch = (p5: p5) => {
     // * Check if triangle is in the top left "No Go Zone"
     const p1Left = p5.createVector(-10, -10); // Top left point
     const p2Left = p5.createVector(p5.windowWidth / 2, 0); // Top right point
-    const p3Left = p5.createVector(0, p5.windowHeight); // Bottom left point
+    const p3Left = p5.createVector(0, canvasHeight); // Bottom left point
     const p = p5.createVector(x, y);
 
     const alphaLeft = ((p2Left.y - p3Left.y) * (p.x - p3Left.x) + (p3Left.x - p2Left.x) * (p.y - p3Left.y)) / ((p2Left.y - p3Left.y) * (p1Left.x - p3Left.x) + (p3Left.x - p2Left.x) * (p1Left.y - p3Left.y));
@@ -114,8 +114,8 @@ export const sketch = (p5: p5) => {
 
     // * Check if triangle is in the bottom right "No Go Zone"
     const p1right = p5.createVector(p5.windowWidth, 0); // Top right point
-    const p2right = p5.createVector(p5.windowWidth / 3, p5.windowHeight); // Bottom left point
-    const p3right = p5.createVector(p5.windowWidth, p5.windowHeight); // Bottom right point
+    const p2right = p5.createVector(p5.windowWidth / 3, canvasHeight); // Bottom left point
+    const p3right = p5.createVector(p5.windowWidth, canvasHeight); // Bottom right point
     const pr = p5.createVector(x, y);
 
     const alpharight = ((p2right.y - p3right.y) * (pr.x - p3right.x) + (p3right.x - p2right.x) * (pr.y - p3right.y)) / ((p2right.y - p3right.y) * (p1right.x - p3right.x) + (p3right.x - p2right.x) * (p1right.y - p3right.y));
@@ -130,9 +130,9 @@ export const sketch = (p5: p5) => {
     }
 
     // const xweight = p5.map(x, 0, numCols - 1, 0, 0.9);
-    const yweight = p5.map(y, 0, p5.windowHeight, 0, 0.9);
+    const yweight = p5.map(y, 0, canvasHeight, 0, 0.9);
 
-    const xweight = p5.map(x, 0, p5.windowWidth, 0, 0.9);
+    const xweight = p5.map(x, 0, canvasWidth, 0, 0.9);
     // if (p5.random() >= xweight && p5.random() >= yweight) {
     if (p5.random() < 0.5) {
       // if (p5.random() >= xweight) {

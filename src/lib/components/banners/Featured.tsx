@@ -1,5 +1,4 @@
-import { simLoader, RegularCard } from "@/lib/components";
-import { getProjectImageSrc } from "@/lib/helpers";
+import { simLoader, RegularCard, FullPictureCard } from "@/lib/components";
 import type { ProjectEntry } from "@/lib/types";
 
 const HeroFeatured = ({ featured, showSimulationPreview = false }: HeroFeaturedProps) => {
@@ -18,10 +17,9 @@ const HeroFeatured = ({ featured, showSimulationPreview = false }: HeroFeaturedP
       <div className="mt-6 grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] items-start gap-4">
         {/* <div className="mt-6 flex flex-wrap gap-4"> */}
         {featured.map((project) => {
-          const imageSrc = getProjectImageSrc(project.imagePath);
           const simulationSketch = showSimulationPreview && project.category === "simulations" && project.simulationKey ? simLoader[project.simulationKey] : null;
 
-          return <RegularCard key={project.slug} project={project} simulationSketch={simulationSketch} />;
+          return <FullPictureCard key={project.slug} project={project} simulationSketch={simulationSketch} />;
         })}
       </div>
     </section>

@@ -13,4 +13,5 @@ export { P5Canvas } from "./P5Canvas";
 
 // export { default as ProjectCard } from "./cards/Project";
 export { default as RegularCard } from "./cards/Regular";
+export { default as FullPictureCard } from "./cards/FullPicture";
 export { default as AboutMeCard } from "./cards/AboutMe";

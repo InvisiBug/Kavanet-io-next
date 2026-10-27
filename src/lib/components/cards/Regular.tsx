@@ -3,7 +3,7 @@ import { P5Canvas } from "@/lib/components";
 import { type ProjectEntry } from "@/lib/types";
 import { getProjectImageSrc } from "@/lib/helpers";
 
-const FeaturedCard = ({ project, simulationSketch }: FeaturedCardProps) => {
+const RegularCard = ({ project, simulationSketch }: RegularCardProps) => {
   const imageSrc = getProjectImageSrc(project.imagePath);
 
   return (
@@ -12,9 +12,7 @@ const FeaturedCard = ({ project, simulationSketch }: FeaturedCardProps) => {
       <p className="mt-2 mb-2 text-[0.92rem] text-(--text-muted)">{project.summary}</p>
 
       {simulationSketch ? (
-        <div className="mt-auto mb-0 h-50 overflow-hidden rounded-lg border border-(--line) lg:h-128">
-          <P5Canvas sketch={simulationSketch} className="block h-full w-full" />
-        </div>
+        <P5Canvas sketch={simulationSketch} className="block w-full mt-auto mb-0 h-50 overflow-hidden rounded-lg border border-(--line) lg:h-128" />
       ) : imageSrc ? (
         <div className="mt-auto mb-0 overflow-hidden rounded-lg border border-(--line)">
           <img src={imageSrc} alt={`${project.title} placeholder`} data-no-lightbox="true" className="block h-auto max-w-full" loading="lazy" />
@@ -57,9 +55,9 @@ const FeaturedCard = ({ project, simulationSketch }: FeaturedCardProps) => {
   // );
 };
 
-export default FeaturedCard;
+export default RegularCard;
 
-interface FeaturedCardProps {
+interface RegularCardProps {
   project: ProjectEntry;
   simulationSketch?: any;
 }
