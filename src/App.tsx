@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { LightboxHost, PageShell } from "@/lib/components";
 import { ContextProvider } from "@/lib/context";
-import { AboutPage, CategoryPage, ProjectPage, NotFoundPage } from "@/lib/pages";
+import { AboutPage, CategoryPage, ProjectPage, NotFoundPage, Community, Personal, Simulations } from "@/lib/pages";
 import HomePage from "@/lib/pages/HomePage";
 import AppConfig from "./appConfig";
 

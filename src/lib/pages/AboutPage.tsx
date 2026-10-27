@@ -4,7 +4,7 @@ import { AboutMeCard } from "@/lib/components";
 const AboutPage = () => {
   return (
     <section className="grid gap-4" aria-labelledby="about-title">
-      <AboutMeCard imageSrc={workExperienceImageSrc || undefined} blurb={workExperienceSummary} />
+      <AboutMeCard imageSrc={workExperienceImageSrc} blurb={workExperienceSummary} />
 
       <div className="grid gap-4 grid-cols-[2fr_1fr] max-[920px]:grid-cols-1">
         <section className="rounded-2xl border border-(--line) bg-(--surface) p-5">

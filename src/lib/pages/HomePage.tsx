@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { Link } from "react-router-dom";
-import { HeroFeatured, HomeBannerRotator, RegularCard, FullPictureCard } from "@/lib/components";
-import { categoryMeta, siteConfig } from "@/data";
+import { HeroFeatured, HomeBannerRotator, RegularCard, FullPictureCard, AboutMeCard } from "@/lib/components";
+import { categoryMeta, siteConfig, workExperienceImageSrc, workExperienceSummary } from "@/data";
 import { getFeaturedProjects, getProjectsByCategory, getRandomProjects } from "@/lib/helpers";
 
 const categoryOrder = ["personal", "community", "simulations"] as const;
@@ -23,6 +23,9 @@ const HomePage = () => {
   return (
     <div className="grid gap-6">
       <HomeBannerRotator />
+
+      <AboutMeCard imageSrc={workExperienceImageSrc} blurb={workExperienceSummary} />
+
       <HeroFeatured featured={featured} />
 
       <section className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] items-start gap-4" aria-label="Project categories">

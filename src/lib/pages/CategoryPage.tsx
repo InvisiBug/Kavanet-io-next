@@ -1,4 +1,5 @@
-import { RegularCard, HeroFeatured, FullPictureCard } from "@/lib/components";
+import type { ReactNode } from "react";
+import { RegularCard, HeroFeatured, FullPictureCard, SimulationCard } from "@/lib/components";
 import { categoryMeta, siteConfig } from "@/data";
 import { getFeaturedProjects, getProjectsByCategory, getFeaturedProjectsByCategory, getRandomProjectsByCategory } from "@/lib/helpers";
 import type { CategoryKey, ProjectEntry } from "@/lib/types";
@@ -11,20 +12,56 @@ const CategoryPage = ({ category }: CategoryPageProps) => {
   const metadata = categoryMeta[category];
   let project: ProjectEntry[] = [];
 
-  let text: string;
+  let text: string = "";
+  let numProjects: number;
 
-  if (category == "simulations") {
-    if (showOnlyFeatured) {
-      project = getFeaturedProjectsByCategory(category, 1);
+  switch (category) {
+    case "simulations":
+      numProjects = 1;
+      text = "Other Simulations";
+      break;
+
+    case "personal":
+      numProjects = 3;
+      text = "Other Projects";
+      break;
+
+    case "community":
+      numProjects = 3;
+      text = "Other Community Projects";
+      break;
+
+    default:
+      numProjects = 1;
+      break;
+  }
+
+  if (showOnlyFeatured) {
+    project = getFeaturedProjectsByCategory(category, numProjects);
+  } else {
+    project = getRandomProjectsByCategory(category, numProjects);
+  }
+
+  const renderHero = (project: ProjectEntry[], category: CategoryKey) => {
+    let masonary = false;
+    let cardType: ReactNode;
+
+    if (category === "simulations") {
+      masonary = false;
+
+      cardType = project.map((project) => {
+        return <SimulationCard key={project.slug} project={project} />;
+      });
     } else {
-      project = getRandomProjectsByCategory(category, 1);
+      masonary = true;
+
+      cardType = project.map((project) => {
+        return <FullPictureCard key={project.slug} project={project} />;
+      });
     }
 
-    text = "Other Simulations";
-  } else {
-    project = getRandomProjectsByCategory(category, 2);
-    text = "Other Projects";
-  }
+    return <HeroFeatured masonary={masonary}>{cardType}</HeroFeatured>;
+  };
 
   return (
     <section className="grid gap-6" aria-labelledby="category-title">
@@ -33,13 +70,15 @@ const CategoryPage = ({ category }: CategoryPageProps) => {
         <p className="whitespace-pre-line text-(--text-muted)">{metadata.description}</p>
       </header>
 
-      {project ? <HeroFeatured featured={project} showSimulationPreview={category === "simulations"} /> : null}
+      {project && renderHero(project, category)}
 
       <h1 id="category-title">{text}</h1>
 
-      <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))]  gap-4">
+      <div className="columns-1 gap-4 sm:columns-2 lg:columns-4">
         {projects.map((project) => (
-          <RegularCard key={project.slug} project={project} />
+          <div key={project.slug} className="mb-4">
+            <FullPictureCard project={project} />
+          </div>
         ))}
       </div>
     </section>
