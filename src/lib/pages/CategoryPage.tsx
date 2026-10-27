@@ -41,7 +41,7 @@ const CategoryPage = ({ category }: CategoryPageProps) => {
 
       <h1 id="category-title">{text}</h1>
 
-      <div className="grid  grid-cols-[repeat(auto-fit,minmax(200px,1fr))] items-start gap-4">
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))]  gap-4">
         {projects.map((project) => (
           <RegularCard key={project.slug} project={project} />
         ))}

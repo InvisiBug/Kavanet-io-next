@@ -36,7 +36,7 @@ export const personalProjects: ProjectEntry[] = [
     title: "Jinx Flare",
     summary: "My attempt at the smoke flare Jinx has in the tv show Arcane",
     category: "personal",
-    imagePath: "/src/lib/images/personal/jinxFlare.png",
+    imagePath: "/src/content/writeups/personal/jinxFlare/large.jpg",
     tags: ["3D Printing", "Air Brush"],
     writeUpPath: "/src/content/writeups/personal/jinxFlare/jinx-flare.md",
     featured: true,
@@ -54,7 +54,7 @@ export const personalProjects: ProjectEntry[] = [
   {
     slug: "home-automation-system",
     title: "Home Automation System",
-    summary: "My purpose built home automation system which controls the heating and lights in my house",
+    summary: "My purpose built home automation system which controls my heating and lights",
     category: "personal",
     imagePath: "/src/lib/images/personal/kavanest.jpg",
     tags: ["Automation", "IoT", "Systems"],

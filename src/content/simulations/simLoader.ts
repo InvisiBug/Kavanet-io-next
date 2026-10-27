@@ -11,6 +11,7 @@ import { sketch as triangleMural } from "@/content/simulations/triangleMural";
 import { sketch as landscape } from "@/content/simulations/3dLandscape";
 import { sketch as rotatingSquares } from "@/content/simulations/rotatingSquares";
 import { sketch as repulser } from "@/content/simulations/repulser";
+import { sketch as castles } from "@/content/simulations/castles";
 
 //* Dont forget to update the SimulationKey type when adding new items
 export const simLoader: Record<SimulationKey, SketchFactory> = {
@@ -24,4 +25,5 @@ export const simLoader: Record<SimulationKey, SketchFactory> = {
   repulser,
   triangleMural,
   rotatingSquares,
+  castles,
 };

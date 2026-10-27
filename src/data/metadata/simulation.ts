@@ -101,4 +101,14 @@ export const simulationProjects: ProjectEntry[] = [
     writeUpPath: "/src/content/writeups/simulations/repulser.md",
     // tags: ["Physics", "Simulation", "AI"],
   },
+  {
+    slug: "castles",
+    title: "Castles",
+    summary: "A generated image of castles and their surroundings.",
+    category: "simulations",
+    simulationKey: "castles",
+    imagePath: "/src/lib/images/simulations/castles.jpg",
+    writeUpPath: "/src/content/writeups/simulations/castles.md",
+    // tags: ["Physics", "Simulation", "AI"],
+  },
 ];
