@@ -1,9 +1,10 @@
 import workExperienceImage from "@/lib/images/me.jpg";
 
-export const workExperienceSummary = `I design and build many different things including websites, 3D models and larger community events
-   I am also a contact / fire staff spinner along with other circus props.
-   I have been a passionate photographer for many years and take photos at various events.\n
-   Im also active in the circus scene, with my main props being contact staff and poi but I can also juggle. I have a geodome that I take to festivals and events to create a chill space for people to hang out in. I have also been involved in the creation of an LED space that appears every year at the UKs biggest juggling convention (BJC).`;
+export const workExperienceSummary = `I'm an experienced web developer with a my main focus being frontend development with hands-on experience in backend development, hosting, and infrastructure.
+    In my free time I design and build many different things including websites, 3D models, electronic projects and larger community events
+    I have been a passionate photographer for many years and take photos at various events.
+
+    Im also active in the circus scene, with my main props being contact staff and poi but I can also juggle. I have a geodome that I take to festivals and events to create a chill space for people to hang out. I have also been involved in the creation of an LED space that appears every year at the UKs biggest juggling convention (BJC).`;
 
 export const workExperienceImageSrc = workExperienceImage;
 
@@ -92,14 +93,12 @@ export const experience = [
         title: "Software Engineer",
         location: "Leeds",
         details: `* On call for 4 years
-          * Senior engineer for 3 years
           * Provisioned virtual machines to host third party software
           * Created a GraphQL api to serve aggregated data to the frontend
           * Was the teams SME for in house hosting services
           * Was responsible for the monitoring and reporting of our microservices
-          * Was part of the rebuild team moving our tech to the new stack
-          * Rebuilt php apps in react
-`,
+          * Was part of the rebuild team moving our tech to a new stack
+          * Rebuilt php apps in react`,
       },
     ],
   },
@@ -112,10 +111,11 @@ export const experience = [
         title: "Senior Project Engineer",
         location: "Nottingham",
         details: `* Created a React interface for tenants to control their smart energy system.
-          * Created a backend application and API written using express to provide a link between the React app and real world SCADA system.
+          * Created a backend application and express API to provide a link between the React app and real world SCADA system.
           * Provided technical support to the end user.
           * Assembled and managed ubiquity networking gear.
-          * Purchased and programmed industrial logic controllers`,
+          * Purchased and programmed industrial logic controllers
+          * Physical assembly and instillation of smart energy systems in domestic properties.`,
       },
     ],
   },
@@ -126,8 +126,9 @@ export const experience = [
       {
         title: "Graduate",
         period: "2015 - 2017",
-        location: "Staythorpe",
-        details: `* Optimised a water treatment process to reduce product hold time between stages as well as plant component total starts and operating times.\n
+        location: "Staythorpe Power Station",
+        details: `* Optimised industrial processes and provided running maintenance
+        * Attended in-house and external training courses to develop my knowledge of the power generation industry
         * Staggered 12 hour shift in the control room`,
       },
       {
@@ -142,17 +143,29 @@ export const experience = [
     ],
   },
   {
+    company: "The University of Sheffield",
+    imageSrc: "https://media.licdn.com/dms/image/v2/D4E0BAQEORSKOZDnu4A/company-logo_100_100/company-logo_100_100/0/1667299950450/university_of_sheffield_logo?e=1794441600&v=beta&t=EJnzX2eMt0rpEEm1GGU5gWB2lzvyx3T95sF2GrEqC3c",
+    entries: [
+      {
+        title: "Student",
+        period: "2012 - 2015",
+        location: "Sheffield",
+        details: `Bachelor's Degree, Control and Systems Engineering`,
+      },
+    ],
+  },
+  {
     company: "RWE Npower",
-    imageSrc: "https://media.licdn.com/dms/image/v2/C560BAQF4HIUkMxALEQ/company-logo_400_400/company-logo_400_400/0/1630672845524/npower__logo?e=1794441600&v=beta&t=TW4Mvok1ecAW20Vr0y6aSldo3s5L3ghYzBlV0oUNQXc",
+    imageSrc: "https://images.ctfassets.net/fxmb2pqc184n/5f1WNsExHMyclbmrAU1h3Y/d9759a20a20e5f6712dc682f96afe2a6/np-primary-white-logo-RGB-400px.png",
     entries: [
       {
         period: "2008 - 2012",
         title: "Technical Apprentice",
         location: "Didcot A power station",
         details: `Vocational learning across engineering and operations, from on-site manufacturing practice to classroom-based technical study.\n
-          * BTECH HNC (Level 5) Operations and Maintenance Engineering\n
-          * BTECH (Level 3) Emgineering Technology Maintenance\n
-          * BTECH (Level 3) Operations and Maintenance Engineering\n
+          * BTEC HNC (Level 5) Operations and Maintenance Engineering\n
+          * BTEC (Level 3) Engineering Technology Maintenance\n
+          * BTEC (Level 3) Operations and Maintenance Engineering\n
           * City & Guilds (Level 3) - Electrical Installations \n
           * City & Guilds (Level 3) - Inspection & Testing of Electrical Equipment \n
           * NVQ (Level 2) - Performing Engineering Operations \n

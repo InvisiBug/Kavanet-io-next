@@ -1,10 +1,10 @@
 import { experience, skillBadgeSections, workExperienceImageSrc, workExperienceSummary } from "@/data";
-import { AboutMe } from "@/lib/components";
+import { AboutMeCard } from "@/lib/components";
 
 const AboutPage = () => {
   return (
     <section className="grid gap-4" aria-labelledby="about-title">
-      <AboutMe imageSrc={workExperienceImageSrc || undefined} blurb={workExperienceSummary} />
+      <AboutMeCard imageSrc={workExperienceImageSrc || undefined} blurb={workExperienceSummary} />
 
       <div className="grid gap-4 grid-cols-[2fr_1fr] max-[920px]:grid-cols-1">
         <section className="rounded-2xl border border-(--line) bg-(--surface) p-5">
@@ -14,7 +14,7 @@ const AboutPage = () => {
             {experience.map((job) => (
               <li key={job.company} className="rounded-xl border border-(--line) bg-(--surface-soft) p-4">
                 <div className="flex items-center gap-4">
-                  {job.imageSrc ? <img src={job.imageSrc} alt={`${job.company} logo`} className="h-14 w-14 rounded-md border border-(--line) bg-white object-contain p-1" loading="lazy" /> : null}
+                  {job.imageSrc ? <img src={job.imageSrc} alt={`${job.company} logo`} className="h-14 w-14 rounded-md  border-(--line)  object-contain " loading="lazy" /> : null}
                   <h3 className="m-0 leading-tight ">{job.company}</h3>
                 </div>
 

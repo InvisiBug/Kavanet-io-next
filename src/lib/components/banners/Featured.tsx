@@ -1,4 +1,4 @@
-import { simLoader, FeaturedCard } from "@/lib/components";
+import { simLoader, RegularCard } from "@/lib/components";
 import { getProjectImageSrc } from "@/lib/helpers";
 import type { ProjectEntry } from "@/lib/types";
 
@@ -21,7 +21,7 @@ const HeroFeatured = ({ featured, showSimulationPreview = false }: HeroFeaturedP
           const imageSrc = getProjectImageSrc(project.imagePath);
           const simulationSketch = showSimulationPreview && project.category === "simulations" && project.simulationKey ? simLoader[project.simulationKey] : null;
 
-          return <FeaturedCard key={project.slug} project={project} simulationSketch={simulationSketch} />;
+          return <RegularCard key={project.slug} project={project} simulationSketch={simulationSketch} />;
         })}
       </div>
     </section>

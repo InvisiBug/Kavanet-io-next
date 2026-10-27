@@ -1,4 +1,4 @@
-import { FeaturedCard, HeroFeatured } from "@/lib/components";
+import { RegularCard, HeroFeatured } from "@/lib/components";
 import { categoryMeta, siteConfig } from "@/data";
 import { getFeaturedProjects, getProjectsByCategory, getRandomProjects, getRandomProjectsFromProjects, getFeaturedProjectsByCategory, getRandomProjectsByCategory } from "@/lib/helpers";
 import type { CategoryKey, ProjectEntry } from "@/lib/types";
@@ -41,9 +41,9 @@ const CategoryPage = ({ category }: CategoryPageProps) => {
 
       <h1 id="category-title">{text}</h1>
 
-      <div className="grid  grid-cols-[repeat(auto-fit,minmax(200px,1fr))] items-start gap-4">
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))]  gap-4">
         {projects.map((project) => (
-          <FeaturedCard key={project.slug} project={project} />
+          <RegularCard key={project.slug} project={project} />
         ))}
       </div>
     </section>

@@ -75,7 +75,7 @@ export const getProjectImageSrc = (path: string): string | null => {
   return imageModules[path];
 };
 
-const imageModules = import.meta.glob("/src/lib/images/**/*.{png,jpg,jpeg,webp,avif,gif,svg}", {
+const imageModules = import.meta.glob(["/src/lib/images/**/*.{png,jpg,jpeg,webp,avif,gif,svg}", "/src/content/writeups/**/*.{png,jpg,jpeg,webp,avif,gif,svg}"], {
   import: "default",
   eager: true,
 }) as Record<string, string>;
