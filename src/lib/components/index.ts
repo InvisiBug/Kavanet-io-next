@@ -11,6 +11,6 @@ export { default as SiteHeader } from "./NavBar/NavBar";
 export { simLoader } from "@/content/simulations";
 export { P5Canvas } from "./P5Canvas";
 
-export { default as ProjectCard } from "./cards/Project";
-export { default as FeaturedCard } from "./cards/Featured";
-export { default as AboutMe } from "./cards/AboutMe";
+// export { default as ProjectCard } from "./cards/Project";
+export { default as RegularCard } from "./cards/Regular";
+export { default as AboutMeCard } from "./cards/AboutMe";

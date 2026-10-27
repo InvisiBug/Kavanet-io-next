@@ -142,8 +142,20 @@ export const experience = [
     ],
   },
   {
+    company: "The University of Sheffield",
+    imageSrc: "https://media.licdn.com/dms/image/v2/D4E0BAQEORSKOZDnu4A/company-logo_100_100/company-logo_100_100/0/1667299950450/university_of_sheffield_logo?e=1794441600&v=beta&t=EJnzX2eMt0rpEEm1GGU5gWB2lzvyx3T95sF2GrEqC3c",
+    entries: [
+      {
+        title: "Student",
+        period: "2012 - 2015",
+        location: "Sheffield",
+        details: `Bachelor's Degree, Control and Systems Engineering`,
+      },
+    ],
+  },
+  {
     company: "RWE Npower",
-    imageSrc: "https://media.licdn.com/dms/image/v2/C560BAQF4HIUkMxALEQ/company-logo_400_400/company-logo_400_400/0/1630672845524/npower__logo?e=1794441600&v=beta&t=TW4Mvok1ecAW20Vr0y6aSldo3s5L3ghYzBlV0oUNQXc",
+    imageSrc: "https://images.ctfassets.net/fxmb2pqc184n/5f1WNsExHMyclbmrAU1h3Y/d9759a20a20e5f6712dc682f96afe2a6/np-primary-white-logo-RGB-400px.png",
     entries: [
       {
         period: "2008 - 2012",
