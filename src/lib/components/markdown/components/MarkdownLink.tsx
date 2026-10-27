@@ -12,8 +12,7 @@ export const MarkdownLink = ({ href = "", children, ...props }: ComponentPropsWi
       <iframe
         src={instagramEmbedUrl}
         title="Instagram post"
-        className="mx-auto block w-full  max-w-135 rounded-lg border border-(--line) bg-(--surface)"
-        style={{ height: "680px" }}
+        className="mx-auto my-4 block h-120 lg:h-185 w-full max-w-full rounded-lg border border-(--line) bg-(--surface) sm:max-w-135"
         loading="lazy"
         allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
         allowFullScreen

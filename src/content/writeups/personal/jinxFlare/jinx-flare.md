@@ -4,9 +4,10 @@ There's a really emotional scene where one of the main characters sets off a blu
 
 
 My version is fully 3D printed apart from a metallic plate in the cap to help dissipate any heat generated (a lessen I learned from V1). The smoke grenade is held in place by a TPU sleeve that is itself held in place with magnets.
-<img src="full.jpg" alt="drawing" style="width:500px;"/>
+![full](./full.jpg)
 
 All the parts screw together because it'd be practically impossible to print the full thing in one go.
-<img src="cutAway.jpg" alt="drawing" style="width:500px;"/>
+![cutAway](./cutAway.jpg)
 
+Below is my instagram post about this project
 [Insta Link](https://www.instagram.com/p/DdW8ijICEsH/?img_index=1)
