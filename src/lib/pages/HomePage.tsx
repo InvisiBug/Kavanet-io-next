@@ -8,7 +8,7 @@ const categoryOrder = ["personal", "community", "simulations"] as const;
 
 const HomePage = () => {
   const random = siteConfig.options.homeScreenFeaturedRandom;
-  const featured = random ? getRandomProjects(siteConfig.options.featuredProjectsLimit) : getFeaturedProjects();
+  const featured = random ? getRandomProjects(3) : getFeaturedProjects(3);
 
   const randomProjectsByCategory = useMemo(() => {
     return Object.fromEntries(
@@ -23,10 +23,15 @@ const HomePage = () => {
   return (
     <div className="grid gap-6">
       <HomeBannerRotator />
-
       <AboutMeCard imageSrc={workExperienceImageSrc} blurb={workExperienceSummary} />
 
-      <HeroFeatured featured={featured} />
+      <HeroFeatured masonary={true}>
+        {featured.map((project) => (
+          <div key={project.slug} className="mb-4">
+            <FullPictureCard project={project} />
+          </div>
+        ))}
+      </HeroFeatured>
 
       <section className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] items-start gap-4" aria-label="Project categories">
         {categoryOrder.map((categoryKey) => {

@@ -1,67 +1,42 @@
 import type { ReactNode } from "react";
-import { RegularCard, HeroFeatured, FullPictureCard, SimulationCard } from "@/lib/components";
+import { HeroFeatured, FullPictureCard, SimulationCard } from "@/lib/components";
 import { categoryMeta, siteConfig } from "@/data";
-import { getFeaturedProjects, getProjectsByCategory, getFeaturedProjectsByCategory, getRandomProjectsByCategory } from "@/lib/helpers";
+import { getProjectsByCategory, getFeaturedProjectsByCategory, getRandomProjectsByCategory } from "@/lib/helpers";
 import type { CategoryKey, ProjectEntry } from "@/lib/types";
 
 const CategoryPage = ({ category }: CategoryPageProps) => {
   const projects = getProjectsByCategory(category);
-
-  const showOnlyFeatured = siteConfig.options.categoryPageShowOnlyFeatured;
-
   const metadata = categoryMeta[category];
-  let project: ProjectEntry[] = [];
 
-  let text: string = "";
-  let numProjects: number;
+  const categorySettings = {} as CategorySettings;
 
   switch (category) {
     case "simulations":
-      numProjects = 1;
-      text = "Other Simulations";
+      categorySettings.numProjects = 1;
+      categorySettings.text = "Other Simulations";
       break;
 
     case "personal":
-      numProjects = 3;
-      text = "Other Projects";
+      categorySettings.numProjects = 3;
+      categorySettings.text = "Other Projects";
       break;
 
     case "community":
-      numProjects = 3;
-      text = "Other Community Projects";
+      categorySettings.numProjects = 3;
+      categorySettings.text = "Other Community Projects";
       break;
 
     default:
-      numProjects = 1;
+      categorySettings.numProjects = 1;
       break;
   }
 
-  if (showOnlyFeatured) {
-    project = getFeaturedProjectsByCategory(category, numProjects);
+  let project: ProjectEntry[] = [];
+  if (siteConfig.options.categoryPageShowOnlyFeatured) {
+    project = getFeaturedProjectsByCategory(category, categorySettings.numProjects);
   } else {
-    project = getRandomProjectsByCategory(category, numProjects);
+    project = getRandomProjectsByCategory(category, categorySettings.numProjects);
   }
-
-  const renderHero = (project: ProjectEntry[], category: CategoryKey) => {
-    let masonary = false;
-    let cardType: ReactNode;
-
-    if (category === "simulations") {
-      masonary = false;
-
-      cardType = project.map((project) => {
-        return <SimulationCard key={project.slug} project={project} />;
-      });
-    } else {
-      masonary = true;
-
-      cardType = project.map((project) => {
-        return <FullPictureCard key={project.slug} project={project} />;
-      });
-    }
-
-    return <HeroFeatured masonary={masonary}>{cardType}</HeroFeatured>;
-  };
 
   return (
     <section className="grid gap-6" aria-labelledby="category-title">
@@ -72,7 +47,7 @@ const CategoryPage = ({ category }: CategoryPageProps) => {
 
       {project && renderHero(project, category)}
 
-      <h1 id="category-title">{text}</h1>
+      <h1 id="category-title">{categorySettings.text}</h1>
 
       <div className="columns-1 gap-4 sm:columns-2 lg:columns-4">
         {projects.map((project) => (
@@ -90,3 +65,29 @@ export default CategoryPage;
 interface CategoryPageProps {
   category: CategoryKey;
 }
+
+type CategorySettings = {
+  numProjects: number;
+  text: string;
+};
+
+const renderHero = (project: ProjectEntry[], category: CategoryKey) => {
+  let masonary = false;
+  let cardType: ReactNode;
+
+  if (category === "simulations") {
+    masonary = false;
+
+    cardType = project.map((project) => {
+      return <SimulationCard key={project.slug} project={project} />;
+    });
+  } else {
+    masonary = true;
+
+    cardType = project.map((project) => {
+      return <FullPictureCard key={project.slug} project={project} />;
+    });
+  }
+
+  return <HeroFeatured masonary={masonary}>{cardType}</HeroFeatured>;
+};
