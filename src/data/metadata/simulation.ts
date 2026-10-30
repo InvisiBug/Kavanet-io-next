@@ -59,6 +59,7 @@ export const simulationProjects: ProjectEntry[] = [
     category: "simulations",
     simulationKey: "smartRockets",
     imagePath: "/src/lib/images/simulations/rockets.jpg",
+    writeUpPath: "/src/content/writeups/simulations/rockets.md",
     // tags: ["Genetic Algorithm", "Simulation", "AI"],
   },
   {

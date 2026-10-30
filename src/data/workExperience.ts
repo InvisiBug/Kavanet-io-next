@@ -1,10 +1,13 @@
 import workExperienceImage from "@/lib/images/me.jpg";
 
-export const workExperienceSummary = `I'm an experienced web developer with a my main focus being frontend development with hands-on experience in backend development, hosting, and infrastructure.
-    In my free time I design and build many different things including websites, 3D models, electronic projects and larger community events
+export const workExperienceSummary = `I'm an experienced Web Developer with my main focus being frontend development with hands-on experience in backend development, hosting, and infrastructure.
+
+    In my free time I design and build many different things including websites, 3D models, electronic projects and larger community events.
     I have been a passionate photographer for many years and take photos at various events.
 
-    Im also active in the circus scene, with my main props being contact staff and poi but I can also juggle. I have a geodome that I take to festivals and events to create a chill space for people to hang out. I have also been involved in the creation of an LED space that appears every year at the UKs biggest juggling convention (BJC).`;
+    I'm also active in the flowarts scene, with my main props being Fire Contact Staff and Poi but I can also juggle. I have a geodome that I take to festivals and events to create a chill space for people to hang out. I have also been involved in the creation of an LED space that appears every year at the UKs biggest juggling convention (BJC).
+
+    I spent some time travelling in south east Asia and lived in Hongkong for about a year and a half.`;
 
 export const workExperienceImageSrc = workExperienceImage;
 
@@ -92,13 +95,15 @@ export const experience = [
         period: "2020 - 2025",
         title: "Software Engineer",
         location: "Leeds",
-        details: `* On call for 4 years
+        details: `
+          * Senior engineer for 3 years
+          * On call for 4 years
           * Provisioned virtual machines to host third party software
-          * Created a GraphQL api to serve aggregated data to the frontend
-          * Was the teams SME for in house hosting services
+          * Created a GraphQL api to serve aggregated data to the front-end
+          * Was the teams SME for in-house hosting services
           * Was responsible for the monitoring and reporting of our microservices
           * Was part of the rebuild team moving our tech to a new stack
-          * Rebuilt php apps in react`,
+          * Rebuilt PHP apps in react`,
       },
     ],
   },
@@ -119,6 +124,9 @@ export const experience = [
       },
     ],
   },
+];
+
+export const education = [
   {
     company: "RWE AG",
     imageSrc: "https://media.licdn.com/dms/image/v2/C4D0BAQHcUAokOSCKEg/company-logo_100_100/company-logo_100_100/0/1630568485840/rwe__logo?e=1794441600&v=beta&t=ykAL48aywo2YU-2GACHx9CComLIRyfWSSFoRpGLYtgo",
@@ -135,9 +143,9 @@ export const experience = [
         period: "2015 - 2017",
         title: "Placement Student",
         location: "Staythorpe Power Station",
-        details: `* Repaired and optimised a building wide HVAC system saving electricity and maintenance costs.\n
-           * Negotiated with vendors to ensure the most cost effective solutions while coordinating contractors to carry out the implementation.\n
-           * Achieved project management certification\n
+        details: `* Repaired and optimised a building wide HVAC system saving electricity and maintenance costs.
+           * Negotiated with vendors to ensure the most cost effective solutions while coordinating contractors to carry out the implementation.
+           * Achieved project management certification
            * 2 years experience with the boiler water purification process utilizing reverse osmosis and mixed bed ion exchange technology.`,
       },
     ],
@@ -162,13 +170,13 @@ export const experience = [
         period: "2008 - 2012",
         title: "Technical Apprentice",
         location: "Didcot A power station",
-        details: `Vocational learning across engineering and operations, from on-site manufacturing practice to classroom-based technical study.\n
-          * BTEC HNC (Level 5) Operations and Maintenance Engineering\n
-          * BTEC (Level 3) Engineering Technology Maintenance\n
-          * BTEC (Level 3) Operations and Maintenance Engineering\n
-          * City & Guilds (Level 3) - Electrical Installations \n
-          * City & Guilds (Level 3) - Inspection & Testing of Electrical Equipment \n
-          * NVQ (Level 2) - Performing Engineering Operations \n
+        details: `Vocational learning across engineering and operations, from on-site manufacturing practice to classroom-based technical study.
+          * BTEC HNC (Level 5) Operations and Maintenance Engineering
+          * BTEC (Level 3) Engineering Technology Maintenance
+          * BTEC (Level 3) Operations and Maintenance Engineering
+          * City & Guilds (Level 3) - Electrical Installations
+          * City & Guilds (Level 3) - Inspection & Testing of Electrical Equipment
+          * NVQ (Level 2) - Performing Engineering Operations
           * City & Guilds (Level 2) - Inspection, Testing & Initial Verification`,
       },
     ],

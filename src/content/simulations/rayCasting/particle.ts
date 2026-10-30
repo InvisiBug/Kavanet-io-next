@@ -1,7 +1,7 @@
 import p5 from "p5";
 import { type Config } from "./";
 import Ray from "./ray";
-import Boundry from "./boundry";
+import Boundary from "./boundary";
 
 export default class Particle {
   p5: p5;
@@ -43,13 +43,13 @@ export default class Particle {
     // });
   };
 
-  look = (boundries: Array<Boundry>) => {
+  look = (boundaries: Array<Boundary>) => {
     this.rays.forEach((ray) => {
       let closest: any = null;
       let record = Infinity;
 
-      boundries.forEach((boundry) => {
-        const point = ray.cast(boundry);
+      boundaries.forEach((boundary) => {
+        const point = ray.cast(boundary);
 
         if (point instanceof p5.Vector) {
           const d = p5.Vector.dist(this.pos, point);

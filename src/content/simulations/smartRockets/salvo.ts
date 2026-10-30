@@ -1,3 +1,4 @@
+import p5 from "p5";
 import Rocket from "./rocket";
 import { type SimSettings } from "./";
 import Target from "./target";
@@ -5,18 +6,18 @@ import DNA from "./dna";
 import Obstacle from "./obstacle";
 
 export default class Salvo {
-  p5;
+  p5: p5;
 
-  lifespan;
+  lifespan: number;
   rocketArr: Array<Rocket> = [];
   matingPool: Array<Rocket> = [];
   obstacleArr: Array<Obstacle> = [];
-  target;
+  target: Target;
   simSettings: SimSettings;
 
   maxFitness: number;
 
-  count;
+  count: number;
 
   constructor(simSettings: SimSettings, target: Target) {
     this.p5 = simSettings.p5;
@@ -53,6 +54,10 @@ export default class Salvo {
   createNextGeneration = () => {
     this.evaluate();
     this.breed();
+  };
+
+  checkForLife = () => {
+    return this.rocketArr.some((rocket) => !rocket.crashed && !rocket.completed);
   };
 
   //* Generate mating pool

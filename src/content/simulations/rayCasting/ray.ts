@@ -1,5 +1,5 @@
 import { type Config } from "./";
-import Boundry from "./boundry";
+import Boundary from "./boundary";
 import p5 from "p5";
 
 export default class Ray {
@@ -34,11 +34,11 @@ export default class Ray {
 
   // * Line-line intersection
   // https://www.wikiwand.com/en/Line%E2%80%93line_intersection
-  cast = (boundry: Boundry): p5.Vector | boolean | null => {
-    const x1 = boundry.startpoint.x;
-    const y1 = boundry.startpoint.y;
-    const x2 = boundry.endpoint.x;
-    const y2 = boundry.endpoint.y;
+  cast = (boundary: Boundary): p5.Vector | boolean | null => {
+    const x1 = boundary.startpoint.x;
+    const y1 = boundary.startpoint.y;
+    const x2 = boundary.endpoint.x;
+    const y2 = boundary.endpoint.y;
 
     const x3 = this.pos.x;
     const y3 = this.pos.y;

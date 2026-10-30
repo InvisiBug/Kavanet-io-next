@@ -13,14 +13,22 @@ export default class DNA {
     this.p5 = simSettings.p5;
     this.speed = simSettings.speed;
 
+    const direction = p5.Vector.random2D();
+    direction.setMag(this.speed);
+
     //* Generate random genes if none are provided
     if (newGenes) {
       this.genes = newGenes;
     } else {
       for (let i = 0; i < this.simSettings.lifespan; i++) {
-        const vector = p5.Vector.random2D();
-        vector.setMag(this.speed);
-        this.genes.push(vector);
+        // const vector = p5.Vector.random2D();
+        // vector.setMag(this.speed);
+        // this.genes.push(vector);
+
+        if (i > 0) {
+          direction.rotate(this.p5.random(-0.12, 0.12));
+        }
+        this.genes.push(direction.copy());
       }
     }
   }

@@ -2,10 +2,10 @@ import { type SimSettings } from "./index";
 import p5 from "p5";
 
 export default class Obstacle {
-  simSettings;
-  p5;
-  pos;
-  size;
+  simSettings: SimSettings;
+  p5: p5;
+  pos: p5.Vector;
+  size: number;
 
   constructor(simSettings: SimSettings) {
     this.simSettings = simSettings;
