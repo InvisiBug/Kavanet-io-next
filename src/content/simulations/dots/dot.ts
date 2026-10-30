@@ -2,12 +2,12 @@ import { type Config } from "./";
 import p5 from "p5";
 
 export default class Dot {
-  p5;
-  pos;
-  size;
-  velocity;
-  connectionDistance;
-  colour;
+  p5: p5;
+  pos: p5.Vector;
+  size: number;
+  velocity: p5.Vector;
+  connectionDistance: number;
+  colour: string;
 
   constructor(config: Config) {
     this.p5 = config.p5;
@@ -26,8 +26,8 @@ export default class Dot {
     this.p5.ellipse(this.pos.x, this.pos.y, this.size, this.size);
   };
 
-  update = () => {
-    this.pos.add(this.velocity);
+  update = (velcoity: p5.Vector = this.velocity) => {
+    this.pos.add(velcoity);
     this.constrain();
   };
 

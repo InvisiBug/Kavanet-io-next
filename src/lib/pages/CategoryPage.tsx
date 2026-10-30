@@ -47,14 +47,18 @@ const CategoryPage = ({ category }: CategoryPageProps) => {
 
       {project && renderHero(project, category)}
 
-      <h1 id="category-title">{categorySettings.text}</h1>
+      <div className={"p-6 lg:p-0"}>
+        <h1 className={"mb-5"} id="category-title">
+          {categorySettings.text}
+        </h1>
 
-      <div className="columns-1 gap-4 sm:columns-2 lg:columns-4">
-        {projects.map((project) => (
-          <div key={project.slug} className="mb-4">
-            <FullPictureCard project={project} />
-          </div>
-        ))}
+        <div className="columns-1 gap-4 sm:columns-2 lg:columns-4">
+          {projects.map((project) => (
+            <div key={project.slug} className="mb-4">
+              <FullPictureCard project={project} />
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

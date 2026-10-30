@@ -1,30 +1,37 @@
 import p5 from "p5";
 import Dot from "./dot";
 import { generateColours, getCanvasSize, getCanvasContainer } from "../helpers";
+import MasterDot from "./masterDot";
 // import { drawGradientBackground } from "../../helpers";
 
 export const sketch = (p5: p5) => {
+  const { width, height } = getCanvasSize(getCanvasContainer(p5));
   const numColours = 5; // Max 5
   const config: Config = {
     p5: p5,
     speed: 0.2,
     colours: generateColours(p5, 5),
     connectionDistance: 150,
-    numDots: 150,
+    numDots: width / 10,
+    numMasterDots: 10,
   };
 
   const sliderGroup: p5.Element[] = [];
 
   const dots: Dot[] = [];
+  const masterDots: MasterDot[] = [];
   const backgroundColours = [p5.random(config.colours), p5.random(config.colours)];
 
   p5.setup = () => {
-    const { width, height } = getCanvasSize(getCanvasContainer(p5));
     p5.createCanvas(width, height);
     console.log("hello from dots");
 
     for (let i = 0; i < config.numDots; i++) {
       dots.push(new Dot(config));
+    }
+
+    for (let i = 0; i < config.numMasterDots; i++) {
+      masterDots.push(new MasterDot(config));
     }
 
     // for (var i = 0; i < 6; i++) {
@@ -55,6 +62,14 @@ export const sketch = (p5: p5) => {
       dot.connect(dots);
       dot.show();
       dot.update();
+      masterDots.forEach((masterDot) => {
+        masterDot.applyVectors(dot);
+      });
+    });
+
+    masterDots.forEach((masterDot) => {
+      masterDot.update();
+      masterDot.show();
     });
   };
 };
@@ -65,4 +80,5 @@ export interface Config {
   colours: string[];
   connectionDistance: number;
   numDots: number;
+  numMasterDots: number;
 }

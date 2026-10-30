@@ -6,7 +6,7 @@ const HeroFeatured = ({ children, masonary = false }: HeroFeaturedProps) => {
     >
       <p className="m-0 mb-5 text-[0.82rem] font-bold uppercase tracking-[0.08em] text-(--accent)">Featured Work</p>
 
-      {masonary ? <div className={"columns-1 gap-4 sm:columns-2 lg:columns-3"}>{children}</div> : <div className={`columns-1 gap-4 lg:columns-4"}`}>{children}</div>}
+      {masonary ? <div className={"columns-1 gap-4 sm:columns-2 lg:columns-3"}>{children}</div> : <div className={`columns-1 gap-4 lg:columns-4" }`}>{children}</div>}
     </section>
   );
 };

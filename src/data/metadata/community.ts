@@ -34,4 +34,15 @@ export const communityProjects: ProjectEntry[] = [
     writeUpPath: "/src/content/writeups/community/bjc2026/bjc-2026-led-space.md",
     featured: false,
   },
+  {
+    slug: "community-fire-jams",
+    title: "Fire Jams",
+    summary: "For a while I hosted fire jams for my community",
+    category: "community",
+    date: "2024-05-01",
+    tags: ["Fire"],
+    imagePath: "/src/lib/images/community/fireJams.jpg",
+    writeUpPath: "/src/content/writeups/community/fireJams/fire-jams.md",
+    featured: false,
+  },
 ];

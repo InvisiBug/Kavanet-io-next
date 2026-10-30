@@ -4,7 +4,7 @@ export const simulationProjects: ProjectEntry[] = [
   {
     slug: "lisajous",
     title: "Lisajous Table",
-    summary: "This thing is pretty cool and speaks for itself",
+    summary: "This thing is pretty cool and speaks for itself.",
     category: "simulations",
     simulationKey: "lisajous",
     imagePath: "/src/lib/images/simulations/lisajous.png",
@@ -14,7 +14,7 @@ export const simulationProjects: ProjectEntry[] = [
   {
     slug: "dots",
     title: "Dots Simulation",
-    summary: "Moving dots that will make connections with others that are nearby",
+    summary: "Moving dots that will make connections with others that are nearby, with some disruptors thrown in.",
     category: "simulations",
     simulationKey: "dots",
     imagePath: "/src/lib/images/simulations/dots.jpg",
@@ -24,7 +24,7 @@ export const simulationProjects: ProjectEntry[] = [
   {
     slug: "zombies",
     title: "Zombie Simulation",
-    summary: "This was my attempt at making a live lockscreen wallpaper I had years ago",
+    summary: "This was my attempt at making a live lockscreen wallpaper I had years ago.",
     category: "simulations",
     simulationKey: "zombies",
     imagePath: "/src/lib/images/simulations/zombie.jpg",
@@ -34,7 +34,7 @@ export const simulationProjects: ProjectEntry[] = [
   {
     slug: "ray-casting",
     title: "Ray Casting Simulation",
-    summary: "This is a simple demo of ray casting using vectors",
+    summary: "This is a simple demo of ray casting using vectors.",
     category: "simulations",
     simulationKey: "rayCasting",
     imagePath: "/src/lib/images/simulations/rayCasting.jpg",
@@ -45,7 +45,7 @@ export const simulationProjects: ProjectEntry[] = [
   {
     slug: "circle-packing",
     title: "Circle Packing Simulation",
-    summary: "This is a simple demo of circle packing using vectors",
+    summary: "This is a simple demo of circle packing using vectors.",
     category: "simulations",
     simulationKey: "circlePacking",
     imagePath: "/src/lib/images/simulations/circlePacking.jpg",
