@@ -59,6 +59,7 @@ export default class Supermarket {
   checkForSurvivor = (humans: Human[]) => {
     humans.forEach((human) => {
       // if (human.pos.dist(this.pos) < this.size / 2 + human.size / 2) {
+      // Human is within range, give them food
       if (human.pos.dist(this.pos) < this.size / 2) {
         this.food -= 1;
         human.food += 1;

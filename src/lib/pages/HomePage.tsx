@@ -25,13 +25,13 @@ const HomePage = () => {
       <HomeBannerRotator />
       <AboutMeCard imageSrc={workExperienceImageSrc} blurb={workExperienceSummary} />
 
-      <HeroFeatured masonary={true}>
+      {/* <HeroFeatured masonary={true}>
         {featured.map((project) => (
           <div key={project.slug} className="mb-4">
             <FullPictureCard project={project} />
           </div>
         ))}
-      </HeroFeatured>
+      </HeroFeatured> */}
 
       <section className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] items-start gap-4" aria-label="Project categories">
         {categoryOrder.map((categoryKey) => {
