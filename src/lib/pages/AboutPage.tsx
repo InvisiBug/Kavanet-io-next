@@ -1,4 +1,4 @@
-import { experience, skillBadgeSections, workExperienceImageSrc, workExperienceSummary } from "@/data";
+import { experience, skillBadgeSections, workExperienceImageSrc, workExperienceSummary, education } from "@/data";
 import { AboutMeCard } from "@/lib/components";
 
 const AboutPage = () => {
@@ -8,7 +8,7 @@ const AboutPage = () => {
 
       <div className="grid gap-4 grid-cols-[2fr_1fr] max-[920px]:grid-cols-1">
         <section className="rounded-2xl border border-(--line) bg-(--surface) p-5">
-          <h2>Experience</h2>
+          <h1 className={"text-2xl font-semibold"}>Experience & Employment History</h1>
 
           <ul className="mt-4 grid gap-4 list-none p-0">
             {experience.map((job) => (
@@ -43,7 +43,7 @@ const AboutPage = () => {
           <div className="mt-5 grid gap-5">
             {skillBadgeSections.map((section) => (
               <section key={section.title}>
-                <h3 className="m-0 mb-2 text-lg text-(--text)">{section.title}</h3>
+                <h3 className="m-0 mb-2 text-lg text-(--text) font-bold">{section.title}</h3>
 
                 <div className="flex flex-wrap">
                   {section.badges.map((badge) => (
@@ -54,6 +54,40 @@ const AboutPage = () => {
             ))}
           </div>
           {/* <img src={skillBadges[0]} alt={`${skills[0]} logo`} loading="lazy" /> */}
+        </section>
+      </div>
+
+      <div className="grid gap-4 grid-cols-[2fr_1fr] max-[920px]:grid-cols-1">
+        <section className="rounded-2xl border border-(--line) bg-(--surface) p-5">
+          <h1 className={"text-2xl font-semibold"}>Education & Training</h1>
+
+          <ul className="mt-4 grid gap-4 list-none p-0">
+            {education.map((job) => (
+              <li key={job.company} className="rounded-xl border border-(--line) bg-(--surface-soft) p-4">
+                <div className="flex items-center gap-4">
+                  {job.imageSrc ? <img src={job.imageSrc} alt={`${job.company} logo`} className="h-14 w-14 rounded-md  border-(--line)  object-contain " loading="lazy" /> : null}
+                  <h3 className="m-0 leading-tight ">{job.company}</h3>
+                </div>
+
+                <ul className="mt-3 grid gap-3 list-none p-0">
+                  {job.entries.map((entry) => (
+                    <li key={`${entry.title}-${job.company}-${entry.period}`} className="rounded-lg border border-(--line) bg-(--surface) p-3">
+                      <p className="m-0 text-[1.05rem] text-(--text)">{entry.title}</p>
+
+                      <div className="flex items-start ml-4">
+                        <div className="min-w-0">
+                          <p className="m-0 text-(--text)">{entry.period}</p>
+                          <p className="mt-0 mb-2 text-(--text)">{entry.location}</p>
+
+                          <ExperienceDetails details={entry.details} />
+                        </div>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ul>
         </section>
       </div>
     </section>
