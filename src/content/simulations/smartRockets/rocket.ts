@@ -5,18 +5,18 @@ import { type SimSettings } from ".";
 import Obstacle from "./obstacle";
 
 export default class Rocket {
-  p5;
-  pos;
-  vel;
-  acc;
-  img;
-  dna;
-  location;
-  target;
-  fitness;
-  completed;
-  simSettings;
-  crashed;
+  p5: p5;
+  pos: p5.Vector;
+  vel: p5.Vector;
+  acc: p5.Vector;
+  img: p5.Image;
+  dna: DNA;
+  location: number;
+  target: Target;
+  fitness: number;
+  completed: boolean;
+  simSettings: SimSettings;
+  crashed: boolean;
   obstacleArr: Array<Obstacle> = [];
 
   constructor(simSettings: SimSettings, target: Target, obstacleArr: Array<Obstacle>, dna: DNA | null = null) {
@@ -53,8 +53,8 @@ export default class Rocket {
     this.location++;
     if (!this.completed && !this.crashed) {
       //* Check distance to target and complete if target reached
-      const distanceToTarget = this.p5.dist(this.pos.x, this.pos.y, this.target.x, this.target.y);
-      if (distanceToTarget < 10) {
+      const distanceToTarget = this.p5.dist(this.pos.x, this.pos.y, this.target.pos.x, this.target.pos.y);
+      if (distanceToTarget < 30) {
         this.completed = true;
       }
 
@@ -74,6 +74,7 @@ export default class Rocket {
 
       this.applyForce(this.dna.genes[this.location]);
       this.vel.add(this.acc);
+      this.vel.setMag(5);
       this.pos.add(this.vel);
       this.acc.mult(0);
     }
@@ -98,9 +99,9 @@ export default class Rocket {
   };
 
   //* Calculate how well this rocket did
-  // Fitness is 1 / distange to target
+  // Fitness is 1 / distance to target
   calcFitness = () => {
-    const distanceToTarget = this.p5.dist(this.pos.x, this.pos.y, this.target.x, this.target.y);
+    const distanceToTarget = this.p5.dist(this.pos.x, this.pos.y, this.target.pos.x, this.target.pos.y);
 
     this.fitness = this.p5.map(distanceToTarget, 0, this.p5.width, this.p5.width, 0);
     if (this.completed) {

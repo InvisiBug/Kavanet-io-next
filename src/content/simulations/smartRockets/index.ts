@@ -39,7 +39,7 @@ export const sketch = (p5: p5) => {
     salvo.run();
     target.run();
 
-    if (salvo.count === simSettings.lifespan) {
+    if (salvo.count === simSettings.lifespan || !salvo.checkForLife()) {
       salvo.createNextGeneration();
     }
   };
@@ -68,8 +68,10 @@ export const sketch = (p5: p5) => {
 
     for (let y = 0; y < p5.height; y++) {
       const n = p5.map(y, 0, p5.height, 0, 1);
-      const newc = p5.lerpColor(c1, c2, n);
-      p5.stroke(newc);
+
+      const colour = p5.lerpColor(c1, c2, n);
+      p5.stroke(colour);
+
       p5.line(0, y, p5.width, y);
     }
   };

@@ -5,7 +5,7 @@
 // Mutiple particles
 
 import p5 from "p5";
-import Boundry from "./boundry";
+import Boundary from "./boundary";
 import Ray from "./ray";
 import Particle from "./particle";
 import colours from "nice-color-palettes";
@@ -18,13 +18,13 @@ export const sketch = (p5: p5) => {
 
   const numColours = 4; // Max 5
 
-  const boundries: Array<Boundry> = [];
+  const boundaries: Array<Boundary> = [];
   const particles: Array<Particle> = [];
 
   const xoff = 0;
   const yoff = 1000;
 
-  const numBoundries = 10;
+  const numBoundaries = 10;
 
   const movement = 0.002;
   const availableColours = p5.shuffle(colours[Math.floor(p5.random(0, colours.length))]).slice(0, numColours);
@@ -34,13 +34,13 @@ export const sketch = (p5: p5) => {
     p5.createCanvas(canvasWidth, canvasHeight);
 
     // p5.createCanvas(p5.windowWidth, p5.windowHeight);
-    boundries.push(new Boundry(config, availableColours, -1, p5.width + 1, -1, -1));
-    boundries.push(new Boundry(config, availableColours, p5.width + 1, p5.width + 1, -1, p5.height + 1));
-    boundries.push(new Boundry(config, availableColours, -1, p5.width + 1, p5.height + 1, p5.height + 1));
-    boundries.push(new Boundry(config, availableColours, -1, -1, -1, p5.height + 1));
+    boundaries.push(new Boundary(config, availableColours, -1, p5.width + 1, -1, -1));
+    boundaries.push(new Boundary(config, availableColours, p5.width + 1, p5.width + 1, -1, p5.height + 1));
+    boundaries.push(new Boundary(config, availableColours, -1, p5.width + 1, p5.height + 1, p5.height + 1));
+    boundaries.push(new Boundary(config, availableColours, -1, -1, -1, p5.height + 1));
 
-    for (let i = 0; i < numBoundries; i++) {
-      boundries.push(new Boundry(config, availableColours, p5.random(p5.width), p5.random(p5.width), p5.random(p5.height), p5.random(p5.height)));
+    for (let i = 0; i < numBoundaries; i++) {
+      boundaries.push(new Boundary(config, availableColours, p5.random(p5.width), p5.random(p5.width), p5.random(p5.height), p5.random(p5.height)));
     }
 
     particles.push(new Particle(config));
@@ -54,14 +54,14 @@ export const sketch = (p5: p5) => {
     p5.background(30);
     console.log(p5.frameRate());
 
-    boundries.forEach((boundry) => {
-      boundry.show();
+    boundaries.forEach((boundary) => {
+      boundary.show();
     });
 
     particles.forEach((particle) => {
       particle.show();
       // particle.update(p5.mouseX, p5.mouseY);
-      particle.look(boundries);
+      particle.look(boundaries);
       // particle.update(p5.noise(xoff) * p5.width, p5.noise(yoff) * p5.height);
       particle.update();
       // particle.update(particle.pos.x + p5.noise(xoff) * p5.width, particle.pos.y + p5.noise(yoff) * p5.height);

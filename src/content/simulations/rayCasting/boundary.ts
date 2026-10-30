@@ -1,7 +1,7 @@
 import p5 from "p5";
 import { type Config } from "./";
 
-export default class Boundry {
+export default class Boundary {
   p5: p5;
   colour: p5.Color;
 

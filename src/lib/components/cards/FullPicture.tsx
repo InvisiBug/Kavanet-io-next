@@ -7,7 +7,6 @@ import Meta from "./Meta";
 const FullPictureCard = ({ project }: FeaturedCardProps) => {
   const imageSrc = getProjectImageSrc(project.imagePath);
 
-  console.log("here");
   return (
     <Link key={project.slug} className="flex h-full max-w-full flex-col rounded-[0.9rem] overflow-hidden border border-(--line) bg-(--surface-soft) no-underline text-inherit" to={`/${project.category}/${project.slug}`}>
       {imageSrc && <img src={imageSrc} alt={`${project.title} placeholder`} data-no-lightbox="true" className="block  w-full object-cover" loading="lazy" />}
