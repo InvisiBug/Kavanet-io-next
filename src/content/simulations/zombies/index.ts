@@ -153,9 +153,12 @@ export const sketch = (p5: p5) => {
       if (mouseX > 0 && mouseX < p5.width) {
         console.log("Within x bounds");
         if (mouseY > 0 && mouseY < p5.height) {
-          toHomeMap.show();
-          toFoodMap.show();
+          if (p5.frameCount % 1 === 0) {
+            toHomeMap.show();
+            toFoodMap.show();
+          }
         }
+
         // toFoodMap.followScent(p5.mouseX, p5.mouseY);
         // food.push(new Food(config, p5.mouseX, p5.mouseY));
         // toFoodMap.addPoint(p5.createVector(p5.mouseX, p5.mouseY));
