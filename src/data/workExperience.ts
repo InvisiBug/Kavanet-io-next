@@ -143,10 +143,10 @@ export const education = [
         period: "2015 - 2017",
         title: "Placement Student",
         location: "Staythorpe Power Station",
-        details: `* Repaired and optimised a building wide HVAC system saving electricity and maintenance costs.
-           * Negotiated with vendors to ensure the most cost effective solutions while coordinating contractors to carry out the implementation.
-           * Achieved project management certification
-           * 2 years experience with the boiler water purification process utilizing reverse osmosis and mixed bed ion exchange technology.`,
+        details: `* Catalogued and backed up all transmitters on site in case of emergency and constructed a database to store all information.
+                *	Implemented performance upgrades during outage.
+                *	Developed advanced control systems with remote monitoring.
+                *	Created and tested installation procedures for new gas flow meters.`,
       },
     ],
   },
