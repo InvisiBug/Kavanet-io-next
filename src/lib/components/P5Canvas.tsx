@@ -4,18 +4,6 @@ import p5 from "p5";
 let activeP5Instance: p5 | null = null;
 let activeP5Host: HTMLDivElement | null = null;
 
-function keepOnlyLatestCanvas(host: HTMLDivElement) {
-  const canvases = Array.from(host.querySelectorAll("canvas"));
-
-  if (canvases.length <= 1) {
-    return;
-  }
-
-  for (let index = 0; index < canvases.length - 1; index += 1) {
-    canvases[index].remove();
-  }
-}
-
 export function P5Canvas({ sketch, className }: P5CanvasProps) {
   const canvasRootRef = useRef<HTMLDivElement | null>(null);
   const instanceRef = useRef<p5 | null>(null);
@@ -73,6 +61,18 @@ export function P5Canvas({ sketch, className }: P5CanvasProps) {
     </div>
   );
 }
+
+const keepOnlyLatestCanvas = (host: HTMLDivElement) => {
+  const canvases = Array.from(host.querySelectorAll("canvas"));
+
+  if (canvases.length <= 1) {
+    return;
+  }
+
+  for (let index = 0; index < canvases.length - 1; index += 1) {
+    canvases[index].remove();
+  }
+};
 
 export type SketchFactory = (p: p5) => void;
 

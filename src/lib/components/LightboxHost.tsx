@@ -53,7 +53,7 @@ const LightboxHost = ({ children }: PropsWithChildren) => {
         >
           <button
             type="button"
-            className="absolute right-4 top-4 rounded-full border border-slate-500 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-slate-100 transition hover:border-white hover:text-white"
+            className="absolute cursor-pointer right-4 top-4 rounded-full border border-slate-500 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-slate-100 transition hover:border-white hover:text-white"
             onClick={() => setLightboxImage(null)}
           >
             Close

@@ -15,7 +15,6 @@ export { simLoader } from "@/content/simulations";
 export { P5Canvas } from "./P5Canvas";
 
 //? Project Cards
-export { default as RegularCard } from "./cards/Regular";
 export { default as FullPictureCard } from "./cards/FullPicture";
 export { default as AboutMeCard } from "./cards/AboutMe";
 export { default as SimulationCard } from "./cards/Simulation";
