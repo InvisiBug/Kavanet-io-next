@@ -68,7 +68,11 @@ const renderHero = (project: ProjectEntry[], category: CategoryKey) => {
     masonary = true;
 
     cardType = project.map((project) => {
-      return <FullPictureCard key={project.slug} project={project} />;
+      return (
+        <div className="mb-4" key={project.slug}>
+          <FullPictureCard key={project.slug} project={project} />
+        </div>
+      );
     });
   }
 
