@@ -1,6 +1,28 @@
 import type { MouseEvent } from "react";
 import type { LightboxImage } from "@/lib/types";
 
+const getLightboxImageElements = (): HTMLImageElement[] => Array.from(document.querySelectorAll("img")).filter((imageElement) => imageElement.dataset.noLightbox !== "true" && !imageElement.closest('[data-lightbox-modal="true"]'));
+
+export const getLightboxImageAtIndex = (index: number): LightboxImage | null => {
+  const imageElement = getLightboxImageElements()[index];
+
+  if (!imageElement) {
+    return null;
+  }
+
+  const src = imageElement.currentSrc || imageElement.src;
+
+  if (!src) {
+    return null;
+  }
+
+  return {
+    src,
+    alt: imageElement.alt?.trim() || "Expanded image preview",
+    index,
+  };
+};
+
 export const extractLightboxImageFromClick = (event: MouseEvent<HTMLDivElement>): LightboxImage | null => {
   const pathname = window.location.pathname;
   const isLightboxEnabledRoute = pathname !== "/";
@@ -29,9 +51,9 @@ export const extractLightboxImageFromClick = (event: MouseEvent<HTMLDivElement>)
     return null;
   }
 
-  const src = imageElement.currentSrc || imageElement.src;
+  const index = getLightboxImageElements().indexOf(imageElement);
 
-  if (!src) {
+  if (index < 0) {
     return null;
   }
 
@@ -42,8 +64,5 @@ export const extractLightboxImageFromClick = (event: MouseEvent<HTMLDivElement>)
     event.stopPropagation();
   }
 
-  return {
-    src,
-    alt: imageElement.alt?.trim() || "Expanded image preview",
-  };
+  return getLightboxImageAtIndex(index);
 };

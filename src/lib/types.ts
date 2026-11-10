@@ -23,4 +23,5 @@ export interface ProjectEntry {
 export interface LightboxImage {
   src: string;
   alt: string;
+  index: number;
 }

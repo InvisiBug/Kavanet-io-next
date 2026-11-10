@@ -1,9 +1,35 @@
-import { useEffect, type PropsWithChildren } from "react";
-import { extractLightboxImageFromClick } from "@/lib/helpers";
-import { useContext } from "@/lib/context";
+import { useEffect, useState, type PropsWithChildren } from "react";
+import { useLocation, useSearchParams } from "react-router-dom";
+import { extractLightboxImageFromClick, getLightboxImageAtIndex } from "@/lib/helpers";
+import type { LightboxImage } from "@/lib/types";
 
 const LightboxHost = ({ children }: PropsWithChildren) => {
-  const { lightboxImage, setLightboxImage } = useContext();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const location = useLocation();
+  const lightboxIndex = searchParams.get("lightbox");
+  const [lightboxImage, setLightboxImage] = useState<LightboxImage | null>(null);
+
+  const closeLightbox = () => {
+    const nextSearchParams = new URLSearchParams(searchParams);
+    nextSearchParams.delete("lightbox");
+    setSearchParams(nextSearchParams, { replace: true });
+  };
+
+  useEffect(() => {
+    if (lightboxIndex === null) {
+      setLightboxImage(null);
+      return;
+    }
+
+    const index = Number(lightboxIndex) - 1;
+
+    if (!Number.isInteger(index) || index < 0) {
+      setLightboxImage(null);
+      return;
+    }
+
+    setLightboxImage(getLightboxImageAtIndex(index));
+  }, [lightboxIndex, location.pathname]);
 
   useEffect(() => {
     if (!lightboxImage) {
@@ -12,7 +38,9 @@ const LightboxHost = ({ children }: PropsWithChildren) => {
 
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        setLightboxImage(null);
+        const nextSearchParams = new URLSearchParams(searchParams);
+        nextSearchParams.delete("lightbox");
+        setSearchParams(nextSearchParams, { replace: true });
       }
     };
 
@@ -24,7 +52,7 @@ const LightboxHost = ({ children }: PropsWithChildren) => {
       document.body.style.overflow = originalOverflow;
       window.removeEventListener("keydown", onKeyDown);
     };
-  }, [lightboxImage, setLightboxImage]);
+  }, [lightboxImage, searchParams, setSearchParams]);
 
   return (
     <div
@@ -32,13 +60,15 @@ const LightboxHost = ({ children }: PropsWithChildren) => {
         const lightboxCandidate = extractLightboxImageFromClick(event);
 
         if (lightboxCandidate) {
-          setLightboxImage(lightboxCandidate);
+          const nextSearchParams = new URLSearchParams(searchParams);
+          nextSearchParams.set("lightbox", String(lightboxCandidate.index + 1));
+          setSearchParams(nextSearchParams);
         }
       }}
     >
       {children}
 
-      {lightboxImage && window.location.pathname !== "/" ? (
+      {lightboxImage ? (
         <div
           data-lightbox-modal="true"
           className="fixed inset-0 z-100 flex items-center justify-center bg-[rgba(11,17,30,0.9)] p-4"
@@ -47,14 +77,14 @@ const LightboxHost = ({ children }: PropsWithChildren) => {
           aria-label="Image preview"
           onClick={(event) => {
             if (event.target === event.currentTarget) {
-              setLightboxImage(null);
+              closeLightbox();
             }
           }}
         >
           <button
             type="button"
             className="absolute cursor-pointer right-4 top-4 rounded-full border border-slate-500 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-slate-100 transition hover:border-white hover:text-white"
-            onClick={() => setLightboxImage(null)}
+            onClick={closeLightbox}
           >
             Close
           </button>

@@ -9,8 +9,8 @@ function App() {
   return (
     <ContextProvider>
       <AppConfig>
-        <LightboxHost>
-          <BrowserRouter>
+        <BrowserRouter>
+          <LightboxHost>
             <ScrollToTop />
 
             <PageShell>
@@ -28,8 +28,8 @@ function App() {
                 <Route path="*" element={<NotFoundPage />} />
               </Routes>
             </PageShell>
-          </BrowserRouter>
-        </LightboxHost>
+          </LightboxHost>
+        </BrowserRouter>
       </AppConfig>
     </ContextProvider>
   );
