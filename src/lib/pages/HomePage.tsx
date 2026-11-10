@@ -12,7 +12,7 @@ const HomePage = () => {
       <HomeBannerRotator />
       <AboutMeCard imageSrc={workExperienceImageSrc} blurb={workExperienceSummary} />
 
-      <section className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] items-start gap-4" aria-label="Project categories">
+      <section className="grid grid-cols-1 md:grid-cols-[repeat(auto-fit,minmax(220px,1fr))] items-start gap-4" aria-label="Project categories">
         {categories.map((category) => {
           const project = getRandomProjectsByCategory(category, 1);
           const categoryMetaData = categoryMeta[category];
