@@ -17,7 +17,7 @@ export const personalProjects: ProjectEntry[] = [
     summary: "A set of LED columns using WLED I built for the BJC 2026 LED space.",
     category: "personal",
     tags: ["3D Printing", "LEDs", "TouchDesigner"],
-    imagePath: "/src/lib/images/personal/ledColumns.jpg",
+    imagePath: "/src/lib/images/personal/columns.jpg",
     writeUpPath: "/src/content/writeups/personal/ledColumns/led-columns.md",
     featured: true,
   },

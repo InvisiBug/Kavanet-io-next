@@ -52,7 +52,6 @@ export const sketch = (p5: p5) => {
 
   p5.draw = () => {
     p5.background(30);
-    console.log(p5.frameRate());
 
     boundaries.forEach((boundary) => {
       boundary.show();

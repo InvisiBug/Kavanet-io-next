@@ -4,7 +4,13 @@
 ## ESP32
 
 # LED Columns
-<img src="assembly.jpg" alt="drawing" style="width:200px;"/>
+<img src="columns.jpg" alt="drawing"/>
+
+These are some columns I made for the BJC LED Space 2026.
+
+Each column has an ESP32 running W-LED that controls a strip of LEDs running down the middle which is made from EVA foam with some light weight mesh to act as a diffuser. There are 2kg dumbbell weights in the base to help the lights stay upright incase they are knocked.
+
+I designed the battery holder to make it super easy to connect everything, the battery slides into a slot and connects automatically. Ive had to deal with messy connectors for too long so I wanted to make things as easy as possible this time
 
 ## 3D Printed Parts
 ### Foam

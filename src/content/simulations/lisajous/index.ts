@@ -106,7 +106,7 @@ export const sketch = (p5: p5) => {
       }
     }
     angle += 0.01;
-    console.log(angle > p5.PI * 2);
+
     if (angle > p5.PI * 2) {
       p5.noLoop();
       // p5.saveCanvas("test", "png");
