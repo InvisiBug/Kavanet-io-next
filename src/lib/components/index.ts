@@ -4,6 +4,8 @@ export { default as HomeBannerRotator } from "./banners/HeroRotator";
 export { default as LightboxHost } from "./LightboxHost";
 export { MarkdownContent } from "./markdown";
 export { default as PageShell } from "./layout/PageShell";
+export { default as ErrorPage } from "./errorPages";
+export { default as ExperienceDetails } from "./experianceDetails";
 
 export { default as SiteHeader } from "./NavBar/NavBar";
 export { default as ScrollToTop } from "./ScrollToTop";

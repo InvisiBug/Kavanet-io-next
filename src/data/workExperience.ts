@@ -95,15 +95,14 @@ export const experience = [
         period: "2020 - 2025",
         title: "Software Engineer",
         location: "Leeds",
-        details: `
-          * Senior engineer for 3 years
-          * On call for 4 years
-          * Provisioned virtual machines to host third party software
-          * Created a GraphQL api to serve aggregated data to the front-end
-          * Was the teams SME for in-house hosting services
-          * Was responsible for the monitoring and reporting of our microservices
-          * Was part of the rebuild team moving our tech to a new stack
-          * Rebuilt PHP apps in react`,
+        details: `* Senior engineer for 3 years
+                  * On call for 4 years
+                  * Provisioned virtual machines to host third party software
+                  * Created a GraphQL api to serve aggregated data to the front-end
+                  * Was the teams SME for in-house hosting services
+                  * Was responsible for the monitoring and reporting of our microservices
+                  * Was part of the rebuild team moving our tech to a new stack
+                  * Rebuilt PHP apps in react`,
       },
     ],
   },
@@ -116,11 +115,11 @@ export const experience = [
         title: "Senior Project Engineer",
         location: "Nottingham",
         details: `* Created a React interface for tenants to control their smart energy system.
-          * Created a backend application and express API to provide a link between the React app and real world SCADA system.
-          * Provided technical support to the end user.
-          * Assembled and managed ubiquity networking gear.
-          * Purchased and programmed industrial logic controllers
-          * Physical assembly and instillation of smart energy systems in domestic properties.`,
+                  * Created a backend application and express API to provide a link between the React app and real world SCADA system.
+                  * Provided technical support to the end user.
+                  * Assembled and managed ubiquity networking gear.
+                  * Purchased and programmed industrial logic controllers
+                  * Physical assembly and instillation of smart energy systems in domestic properties.`,
       },
     ],
   },
@@ -136,17 +135,17 @@ export const education = [
         period: "2015 - 2017",
         location: "Staythorpe Power Station",
         details: `* Optimised industrial processes and provided running maintenance
-        * Attended in-house and external training courses to develop my knowledge of the power generation industry
-        * Staggered 12 hour shift in the control room`,
+                  * Attended in-house and external training courses to develop my knowledge of the power generation industry
+                  * Staggered 12 hour shift in the control room`,
       },
       {
         period: "2015 - 2017",
         title: "Placement Student",
         location: "Staythorpe Power Station",
         details: `* Catalogued and backed up all transmitters on site in case of emergency and constructed a database to store all information.
-                *	Implemented performance upgrades during outage.
-                *	Developed advanced control systems with remote monitoring.
-                *	Created and tested installation procedures for new gas flow meters.`,
+                  *	Implemented performance upgrades during outage.
+                  *	Developed advanced control systems with remote monitoring.
+                  *	Created and tested installation procedures for new gas flow meters.`,
       },
     ],
   },
@@ -171,13 +170,13 @@ export const education = [
         title: "Technical Apprentice",
         location: "Didcot A power station",
         details: `Vocational learning across engineering and operations, from on-site manufacturing practice to classroom-based technical study.
-          * BTEC HNC (Level 5) Operations and Maintenance Engineering
-          * BTEC (Level 3) Engineering Technology Maintenance
-          * BTEC (Level 3) Operations and Maintenance Engineering
-          * City & Guilds (Level 3) - Electrical Installations
-          * City & Guilds (Level 3) - Inspection & Testing of Electrical Equipment
-          * NVQ (Level 2) - Performing Engineering Operations
-          * City & Guilds (Level 2) - Inspection, Testing & Initial Verification`,
+                  * BTEC HNC (Level 5) Operations and Maintenance Engineering
+                  * BTEC (Level 3) Engineering Technology Maintenance
+                  * BTEC (Level 3) Operations and Maintenance Engineering
+                  * City & Guilds (Level 3) - Electrical Installations
+                  * City & Guilds (Level 3) - Inspection & Testing of Electrical Equipment
+                  * NVQ (Level 2) - Performing Engineering Operations
+                  * City & Guilds (Level 2) - Inspection, Testing & Initial Verification`,
       },
     ],
   },

@@ -1,31 +1,14 @@
 import { Link, useParams } from "react-router-dom";
-import { MarkdownContent, P5Canvas, simLoader } from "@/lib/components";
+import { MarkdownContent, P5Canvas, simLoader, ErrorPage } from "@/lib/components";
 
 import { getMarkdownContent, getProject } from "@/lib/helpers";
 
 const ProjectPage = () => {
   const { category, projectSlug } = useParams();
-
-  //! Project missing Error
-  if (!category || !projectSlug) {
-    return (
-      <section className="grid gap-2 rounded-2xl border border-(--line) bg-(--surface) p-5">
-        <h1>Project not found</h1>
-        <p>This route is missing project details.</p>
-      </section>
-    );
-  }
-
   const project = getProject(category, projectSlug);
 
-  // Project not found
-  if (!project) {
-    return (
-      <section className="grid gap-2 rounded-2xl border border-(--line) bg-(--surface) p-5">
-        <h1>Project not found</h1>
-        <p>We could not find this project.</p>
-      </section>
-    );
+  if (!category || !projectSlug || !project) {
+    return <ErrorPage />;
   }
 
   const markdown = project?.writeUpPath && getMarkdownContent(project?.writeUpPath);
@@ -45,7 +28,6 @@ const ProjectPage = () => {
       </div>
 
       {/* set height to 125 when taking a pic, normally 200 */}
-      {/* P5 canvas */}
       {project.category === "simulations" && simulationSketch ? (
         <section className="rounded-2xl border border-(--line) bg-(--surface)  h-125 lg:h-200" aria-label="Interactive p5 simulation">
           <P5Canvas sketch={simulationSketch} className="w-full" />

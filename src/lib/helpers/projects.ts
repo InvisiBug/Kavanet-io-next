@@ -1,10 +1,41 @@
 import type { CategoryKey, ProjectEntry } from "@/lib/types";
 import { communityProjects, personalProjects, simulationProjects, siteConfig } from "@/data";
 
-export const allProjects: ProjectEntry[] = [...personalProjects, ...communityProjects, ...simulationProjects];
+export const allProjects: ProjectEntry[] = [...personalProjects, ...communityProjects, ...simulationProjects].filter((project) => project.display !== false);
+
+//* Used to set the text on the projects page depending on the category
+export const getCategorySettings = (category: string) => {
+  const categorySettings = {
+    numProjects: 1,
+    text: "Other Projects",
+  };
+
+  switch (category) {
+    case "simulations":
+      categorySettings.numProjects = 1;
+      categorySettings.text = "Other Simulations";
+      break;
+
+    case "personal":
+      categorySettings.numProjects = 3;
+      categorySettings.text = "Other Personal Projects";
+      break;
+
+    case "community":
+      categorySettings.numProjects = 3;
+      categorySettings.text = "Other Community Projects";
+      break;
+
+    default:
+      categorySettings.numProjects = 1;
+      break;
+  }
+
+  return categorySettings;
+};
 
 export const getProjectsByCategory = (category: CategoryKey): ProjectEntry[] => {
-  const filtered = category === "personal" ? personalProjects : category === "community" ? communityProjects : simulationProjects;
+  const filtered = (category === "personal" ? personalProjects : category === "community" ? communityProjects : simulationProjects).filter((project) => project.display !== false);
 
   //* Dont think its needed
   // if (category !== "community") {
@@ -41,7 +72,8 @@ export const getRandomProjectsByCategory = (category: CategoryKey, limit: number
   return shuffled.slice(0, Math.max(1, limit));
 };
 
-export const getProject = (category: string, slug: string): ProjectEntry | undefined => {
+export const getProject = (category?: string, slug?: string): ProjectEntry | undefined => {
+  if (!category || !slug) return undefined;
   return allProjects.find((project) => project.category === category && project.slug === slug);
 };
 
@@ -51,7 +83,7 @@ export const getRandomProjects = (limit: number): ProjectEntry[] => {
 };
 
 export const getRandomProjectsFromProjects = (projects: ProjectEntry[], limit: number): ProjectEntry[] => {
-  const shuffled = [...projects].sort(() => Math.random() - 0.5);
+  const shuffled = projects.filter((project) => project.display !== false).sort(() => Math.random() - 0.5);
   return shuffled.slice(0, Math.max(1, limit));
 };
 

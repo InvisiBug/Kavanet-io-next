@@ -2,6 +2,17 @@ import type { ProjectEntry } from "@/lib/types";
 
 export const personalProjects: ProjectEntry[] = [
   {
+    slug: "this-site",
+    title: "This Site",
+    summary: "My personal project website built with React, TypeScript, and TailwindCSS.",
+    category: "personal",
+    tags: ["Web Development", "React", "TypeScript"],
+    imagePath: "/src/lib/images/personal/this-site.jpg",
+    writeUpPath: "/src/content/writeups/personal/this-site/this-site.md",
+    featured: true,
+    display: false,
+  },
+  {
     slug: "twiddles",
     title: "Twiddlesticks",
     summary: "A super fun fidget toy that help keep the brain quiet.",

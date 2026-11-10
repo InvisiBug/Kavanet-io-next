@@ -1,38 +1,17 @@
 import type { ReactNode } from "react";
 import { HeroFeatured, FullPictureCard, SimulationCard } from "@/lib/components";
 import { categoryMeta, siteConfig } from "@/data";
-import { getProjectsByCategory, getFeaturedProjectsByCategory, getRandomProjectsByCategory } from "@/lib/helpers";
+import { getProjectsByCategory, getFeaturedProjectsByCategory, getRandomProjectsByCategory, getCategorySettings } from "@/lib/helpers";
 import type { CategoryKey, ProjectEntry } from "@/lib/types";
 
 const CategoryPage = ({ category }: CategoryPageProps) => {
   const projects = getProjectsByCategory(category);
   const metadata = categoryMeta[category];
-
-  const categorySettings = {} as CategorySettings;
-
-  switch (category) {
-    case "simulations":
-      categorySettings.numProjects = 1;
-      categorySettings.text = "Other Simulations";
-      break;
-
-    case "personal":
-      categorySettings.numProjects = 3;
-      categorySettings.text = "Other Projects";
-      break;
-
-    case "community":
-      categorySettings.numProjects = 3;
-      categorySettings.text = "Other Community Projects";
-      break;
-
-    default:
-      categorySettings.numProjects = 1;
-      break;
-  }
+  const categorySettings = getCategorySettings(category);
+  const { categoryPageShowOnlyFeatured } = siteConfig.options;
 
   let project: ProjectEntry[] = [];
-  if (siteConfig.options.categoryPageShowOnlyFeatured) {
+  if (categoryPageShowOnlyFeatured) {
     project = getFeaturedProjectsByCategory(category, categorySettings.numProjects);
   } else {
     project = getRandomProjectsByCategory(category, categorySettings.numProjects);
