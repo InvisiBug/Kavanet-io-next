@@ -25,7 +25,7 @@ const OtherSitesDropdown = () => {
     };
   }, []);
 
-  if (siteConfig.otherSites.length === 0) {
+  if (siteConfig.navBar.otherSites.length === 0) {
     return null;
   }
 
@@ -40,7 +40,7 @@ const OtherSitesDropdown = () => {
 
       <div className="absolute left-0 z-50 mt-2 min-w-48 rounded-xl border border-(--line) bg-(--surface) p-2 shadow-[0_12px_30px_rgba(12,21,43,0.14)]">
         <ul className="m-0 list-none p-0">
-          {siteConfig.otherSites.map((site) => (
+          {siteConfig.navBar.otherSites.map((site) => (
             <li key={site.url}>
               <a href={site.url} target="_blank" rel="noreferrer" className="block rounded-lg px-3 py-2 text-[0.9rem] text-(--text-muted) no-underline transition hover:bg-(--surface-soft) hover:text-(--text)">
                 {site.label}
