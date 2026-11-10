@@ -44,7 +44,7 @@ const resolveRelativeMarkdownImages = (markdown: string, markdownPath: string): 
 
   const markdownResolved = markdown.replace(/!\[[^\]]*\]\(([^)]+)\)/g, (match, rawImagePath: string) => resolveMediaPath(match, rawImagePath));
 
-  return markdownResolved.replace(/(<img\b[^>]*\bsrc=["'])([^"']+)(["'][^>]*>)/gi, (match, before: string, rawImagePath: string, after: string) => `${before}${resolveMediaPath(rawImagePath, rawImagePath).replace(/^\"|\"$/g, "")}${after}`);
+  return markdownResolved.replace(/(<img\b[^>]*\bsrc=["'])([^"']+)(["'][^>]*>)/gi, (match, before: string, rawImagePath: string, after: string) => `${before}${resolveMediaPath(rawImagePath, rawImagePath).replace(/^"|"$/g, "")}${after}`);
 };
 
 const normalizeContentPath = (path: string): string => {

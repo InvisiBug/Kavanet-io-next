@@ -1,51 +1,31 @@
-import { useMemo } from "react";
 import { Link } from "react-router-dom";
-import { HeroFeatured, HomeBannerRotator, RegularCard, FullPictureCard, AboutMeCard } from "@/lib/components";
-import { categoryMeta, siteConfig, workExperienceImageSrc, workExperienceSummary } from "@/data";
-import { getFeaturedProjects, getProjectsByCategory, getRandomProjects } from "@/lib/helpers";
+import { HomeBannerRotator, FullPictureCard, AboutMeCard, ErrorPage } from "@/lib/components";
+import { categoryMeta, workExperienceImageSrc, workExperienceSummary } from "@/data";
+import { getRandomProjectsByCategory } from "@/lib/helpers";
+import type { CategoryKey } from "@/lib/types";
 
-const categoryOrder = ["personal", "community", "simulations"] as const;
+const categories = Object.keys(categoryMeta) as CategoryKey[];
 
 const HomePage = () => {
-  const random = siteConfig.options.homeScreenFeaturedRandom;
-  const featured = random ? getRandomProjects(3) : getFeaturedProjects(3);
-
-  const randomProjectsByCategory = useMemo(() => {
-    return Object.fromEntries(
-      categoryOrder.map((category) => {
-        const categoryProjects = getProjectsByCategory(category);
-        const randomProject = categoryProjects[Math.floor(Math.random() * categoryProjects.length)];
-        return [category, randomProject];
-      }),
-    );
-  }, []);
-
   return (
     <div className="grid gap-6">
       <HomeBannerRotator />
       <AboutMeCard imageSrc={workExperienceImageSrc} blurb={workExperienceSummary} />
 
-      {/* <HeroFeatured masonary={true}>
-        {featured.map((project) => (
-          <div key={project.slug} className="mb-4">
-            <FullPictureCard project={project} />
-          </div>
-        ))}
-      </HeroFeatured> */}
-
       <section className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] items-start gap-4" aria-label="Project categories">
-        {categoryOrder.map((categoryKey) => {
-          const category = categoryMeta[categoryKey];
+        {categories.map((category) => {
+          const project = getRandomProjectsByCategory(category, 1);
+          const categoryMetaData = categoryMeta[category];
 
           return (
-            <article key={categoryKey} className="rounded-2xl inline-block border border-(--line) bg-(--surface) p-5">
-              <Link to={`/${categoryKey}`} key={categoryKey} className="mt-3 inline-block font-bold text-(--text) no-underline transition hover:text-(--accent) ">
-                <h2 className="m-0">{category.title}</h2>
-                <p className="mt-3 mb-0 text-(--text-muted)">{category.description}</p>
-                <h2 className="mt-5 mb-5 text-(--text)">Explore {category.title}</h2>
+            <article key={category} className="rounded-2xl inline-block border border-(--line) bg-(--surface) p-5">
+              <Link to={`/${category}`} key={category} className="mt-3 inline-block font-bold text-(--text) no-underline transition hover:text-(--accent) ">
+                <h2 className="m-0">{categoryMetaData.title}</h2>
+                <p className="mt-3 mb-0 text-(--text-muted)">{categoryMetaData.description}</p>
+                <h2 className="mt-5 mb-5 text-(--text)">Explore {categoryMetaData.title}</h2>
               </Link>
 
-              {randomProjectsByCategory[categoryKey] ? <FullPictureCard project={randomProjectsByCategory[categoryKey]} /> : null}
+              {project ? <FullPictureCard project={project[0]} /> : <ErrorPage />}
             </article>
           );
         })}
