@@ -1,12 +1,12 @@
 import { useEffect, useState, type PropsWithChildren } from "react";
 import { useLocation, useSearchParams } from "react-router-dom";
-import { extractLightboxImageFromClick, getLightboxImageAtIndex } from "@/lib/helpers";
+import { extractLightboxImageFromClick, getLightboxImageById } from "@/lib/helpers";
 import type { LightboxImage } from "@/lib/types";
 
 const LightboxHost = ({ children }: PropsWithChildren) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
-  const lightboxIndex = searchParams.get("lightbox");
+  const lightboxId = searchParams.get("lightbox");
   const [lightboxImage, setLightboxImage] = useState<LightboxImage | null>(null);
 
   const closeLightbox = () => {
@@ -16,20 +16,13 @@ const LightboxHost = ({ children }: PropsWithChildren) => {
   };
 
   useEffect(() => {
-    if (lightboxIndex === null) {
+    if (lightboxId === null) {
       setLightboxImage(null);
       return;
     }
 
-    const index = Number(lightboxIndex) - 1;
-
-    if (!Number.isInteger(index) || index < 0) {
-      setLightboxImage(null);
-      return;
-    }
-
-    setLightboxImage(getLightboxImageAtIndex(index));
-  }, [lightboxIndex, location.pathname]);
+    setLightboxImage(getLightboxImageById(lightboxId));
+  }, [lightboxId, location.pathname]);
 
   useEffect(() => {
     if (!lightboxImage) {
@@ -61,7 +54,7 @@ const LightboxHost = ({ children }: PropsWithChildren) => {
 
         if (lightboxCandidate) {
           const nextSearchParams = new URLSearchParams(searchParams);
-          nextSearchParams.set("lightbox", String(lightboxCandidate.index + 1));
+          nextSearchParams.set("lightbox", lightboxCandidate.id);
           setSearchParams(nextSearchParams);
         }
       }}
