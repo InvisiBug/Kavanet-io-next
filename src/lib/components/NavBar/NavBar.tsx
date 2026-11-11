@@ -23,18 +23,26 @@ const SiteHeader = () => {
             {siteConfig.name}
           </NavLink>
 
-          <button
-            type="button"
-            className="hidden h-10 w-10 items-center justify-center justify-self-end rounded-full border border-(--line) bg-(--surface) text-(--text) transition hover:border-(--accent) max-[1100px]:inline-flex"
-            aria-label="Toggle navigation menu"
-            aria-expanded={isMenuOpen}
-            aria-controls="site-header-mobile-menu"
-            onClick={() => setIsMenuOpen((open) => !open)}
-          >
-            <svg viewBox="0 0 24 24" className="h-5 w-5 fill-none stroke-current stroke-2" aria-hidden="true">
-              {isMenuOpen ? <path d="M6 6l12 12M18 6 6 18" strokeLinecap="round" /> : <path d="M4 7h16M4 12h16M4 17h16" strokeLinecap="round" />}
-            </svg>
-          </button>
+          <div className="hidden max-[1100px]:flex items-center justify-self-end gap-2">
+            <div className="flex gap-2" aria-label="Social links header">
+              {siteConfig.navBar.socialLinks.map((social) => (
+                <SocialIconLink key={social.name} href={social.url} label={social.label} name={social.name} />
+              ))}
+            </div>
+
+            <button
+              type="button"
+              className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-(--line) bg-(--surface) text-(--text) transition hover:border-(--accent)"
+              aria-label="Toggle navigation menu"
+              aria-expanded={isMenuOpen}
+              aria-controls="site-header-mobile-menu"
+              onClick={() => setIsMenuOpen((open) => !open)}
+            >
+              <svg viewBox="0 0 24 24" className="h-5 w-5 fill-none stroke-current stroke-2" aria-hidden="true">
+                {isMenuOpen ? <path d="M6 6l12 12M18 6 6 18" strokeLinecap="round" /> : <path d="M4 7h16M4 12h16M4 17h16" strokeLinecap="round" />}
+              </svg>
+            </button>
+          </div>
 
           {/* Page Links */}
           <nav className="flex flex-wrap justify-center gap-2 max-[1100px]:hidden" aria-label="Primary navigation">
@@ -72,24 +80,20 @@ const SiteHeader = () => {
           id="site-header-mobile-menu"
           className={["hidden max-[1100px]:mt-3 max-[1100px]:rounded-2xl max-[1100px]:border max-[1100px]:border-(--line) max-[1100px]:bg-(--surface) max-[1100px]:p-3", isMenuOpen ? "max-[1100px]:block" : ""].join(" ")}
         >
-          {/* Theme & Socials */}
-          <div className="flex flex-wrap justify-center gap-2" aria-label="Social links mobile">
-            <ThemeToggleButton theme={theme} onToggle={() => setTheme((current) => getToggledTheme(current))} />
-
-            {siteConfig.navBar.socialLinks.map((social) => (
-              <SocialIconLink key={social.name} href={social.url} label={social.label} name={social.name} />
-            ))}
-          </div>
-
           {/* Page Links */}
-          <nav className="mt-3 flex flex-col gap-2" aria-label="Primary navigation mobile">
+          <nav className="flex flex-col gap-2" aria-label="Primary navigation mobile">
+            <div className="mb-1 flex items-center justify-between border-b border-(--line) pb-3">
+              <span className="text-[0.92rem] text-(--text-muted)">Theme</span>
+              <ThemeToggleButton theme={theme} onToggle={() => setTheme((current) => getToggledTheme(current))} />
+            </div>
+
             {siteConfig.navBar.pageLinks.map((link) => (
               <NavLink
                 key={link.to}
                 to={link.to}
                 className={({ isActive }) =>
                   [
-                    "rounded-full border px-3 py-2 text-[0.95rem] no-underline transition",
+                    "rounded-full border px-3 py-2 text-center text-[0.95rem] no-underline transition",
                     isActive ? "border-(--line) bg-(--surface-soft) text-(--text)" : "border-transparent text-(--text-muted) hover:border-(--line) hover:bg-(--surface-soft) hover:text-(--text)",
                   ].join(" ")
                 }
