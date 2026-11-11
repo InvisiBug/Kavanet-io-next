@@ -3,14 +3,14 @@ import { AboutPage, CategoryPage, ProjectPage, NotFoundPage } from "@/lib/pages"
 import { LightboxHost, PageShell, ScrollToTop } from "@/lib/components";
 import { ContextProvider } from "@/lib/context";
 import HomePage from "@/lib/pages/HomePage";
-import AppConfig from "./appConfig";
+import AppConfig from "./lib/components/appConfig";
 
 function App() {
   return (
     <ContextProvider>
       <AppConfig>
-        <LightboxHost>
-          <BrowserRouter>
+        <BrowserRouter>
+          <LightboxHost>
             <ScrollToTop />
 
             <PageShell>
@@ -28,8 +28,8 @@ function App() {
                 <Route path="*" element={<NotFoundPage />} />
               </Routes>
             </PageShell>
-          </BrowserRouter>
-        </LightboxHost>
+          </LightboxHost>
+        </BrowserRouter>
       </AppConfig>
     </ContextProvider>
   );

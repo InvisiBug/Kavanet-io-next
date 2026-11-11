@@ -1,5 +1,5 @@
 import { createContext, useContext as useReactContext, type Dispatch, type SetStateAction } from "react";
-import type { LightboxImage, Theme } from "@/lib/types";
+import type { Theme } from "@/lib/types";
 
 export const ThemeContext = createContext<ThemeContextValue | null>(null);
 
@@ -16,6 +16,4 @@ export const useContext = () => {
 interface ThemeContextValue {
   theme: Theme;
   setTheme: Dispatch<SetStateAction<Theme>>;
-  lightboxImage: LightboxImage | null;
-  setLightboxImage: Dispatch<SetStateAction<LightboxImage | null>>;
 }
