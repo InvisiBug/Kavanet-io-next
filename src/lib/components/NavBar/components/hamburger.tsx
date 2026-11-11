@@ -1,3 +1,4 @@
+import { useEffect, type RefObject } from "react";
 import { NavLink } from "react-router-dom";
 import { siteConfig } from "@/data";
 import { useContext } from "@/lib/context";
@@ -5,10 +6,56 @@ import { getToggledTheme } from "@/lib/helpers";
 import { Dropdown, ThemeToggleButton } from "./";
 import QRCode from "./qr-code.png";
 
-const Hamburger = ({ isMenuOpen }) => {
+type HamburgerProps = {
+  isMenuOpen: boolean;
+  setIsMenuOpen: (open: boolean) => void;
+  menuRef: RefObject<HTMLDivElement | null>;
+  menuButtonRef: RefObject<HTMLButtonElement | null>;
+  mobileMenuRef: RefObject<HTMLDivElement | null>;
+};
+
+const Hamburger = ({ isMenuOpen, setIsMenuOpen, menuRef, menuButtonRef, mobileMenuRef }: HamburgerProps) => {
   const { theme, setTheme } = useContext();
+
+  useEffect(() => {
+    if (!isMenuOpen) {
+      return;
+    }
+
+    const handlePointerDown = (event: PointerEvent) => {
+      const target = event.target;
+
+      if (!(target instanceof Node)) {
+        return;
+      }
+
+      if (menuButtonRef.current?.contains(target) || mobileMenuRef.current?.contains(target)) {
+        return;
+      }
+
+      setIsMenuOpen(false);
+    };
+
+    document.addEventListener("pointerdown", handlePointerDown);
+
+    return () => {
+      document.removeEventListener("pointerdown", handlePointerDown);
+    };
+  }, [isMenuOpen, menuButtonRef, mobileMenuRef, setIsMenuOpen]);
+
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location.pathname, setIsMenuOpen]); // Location.pathname is used to close the menu when navigating to a new page
+
   return (
-    <div id="site-header-mobile-menu" className={["hidden max-[1100px]:mt-3 max-[1100px]:rounded-2xl max-[1100px]:border max-[1100px]:border-(--line) max-[1100px]:bg-(--surface) max-[1100px]:p-3", isMenuOpen ? "max-[1100px]:block" : ""].join(" ")}>
+    <div
+      ref={menuRef}
+      id="site-header-mobile-menu"
+      className={[
+        "absolute left-0 right-0 top-full z-50 hidden max-[1100px]:overflow-visible max-[1100px]:rounded-b-2xl max-[1100px]:border max-[1100px]:border-(--line) max-[1100px]:bg-(--surface) max-[1100px]:p-3 max-[1100px]:shadow-[0_12px_30px_rgba(12,21,43,0.14)]",
+        isMenuOpen ? "max-[1100px]:block" : "",
+      ].join(" ")}
+    >
       {/* Page Links */}
       <nav className="flex flex-col gap-2" aria-label="Primary navigation mobile">
         <div className="mb-1 flex items-center justify-between border-b border-(--line) pb-3">

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { SocialIconLink, Dropdown, ThemeToggleButton } from "./components";
 import { siteConfig } from "@/data";
@@ -8,16 +8,13 @@ import Hamburger from "./components/hamburger";
 
 const SiteHeader = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement | null>(null);
+  const mobileMenuRef = useRef<HTMLDivElement | null>(null);
   const { theme, setTheme } = useContext();
-  const location = useLocation();
-
-  useEffect(() => {
-    setIsMenuOpen(false);
-  }, [location.pathname]);
 
   return (
     <header className="sticky top-0 z-40 border-b border-(--header-line) bg-(--header-bg) backdrop-blur-[10px]">
-      <div className="mx-auto w-[min(1120px,calc(100%-2rem))] py-3">
+      <div className="relative mx-auto w-[min(1120px,calc(100%-2rem))] py-3">
         {/* Regular Menu */}
         <div className="grid min-h-11 grid-cols-[auto_1fr_auto] items-center gap-3 max-[1100px]:grid-cols-[auto_auto]">
           <NavLink to="/" className="text-[1.1rem] font-extrabold text-(--text) no-underline">
@@ -32,6 +29,7 @@ const SiteHeader = () => {
             </div>
 
             <button
+              ref={menuButtonRef}
               type="button"
               className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-(--line) bg-(--surface) text-(--text) transition hover:border-(--accent)"
               aria-label="Toggle navigation menu"
@@ -89,7 +87,7 @@ const SiteHeader = () => {
         </div>
 
         {/* Hamburger Menu */}
-        <Hamburger isMenuOpen={isMenuOpen} />
+        <Hamburger isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} menuRef={mobileMenuRef} menuButtonRef={menuButtonRef} mobileMenuRef={mobileMenuRef} />
       </div>
     </header>
   );
