@@ -15,7 +15,7 @@ export const personalProjects: ProjectEntry[] = [
   {
     slug: "twiddles",
     title: "Twiddlesticks",
-    summary: "A super fun fidget toy that help keep the brain quiet.",
+    summary: "A fidget toy that help keep the hands busy and the brain quiet.",
     category: "personal",
     tags: ["3D Printing", "LEDs"],
     imagePath: "/src/lib/images/personal/spiral.jpg",

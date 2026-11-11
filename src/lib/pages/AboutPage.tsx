@@ -6,8 +6,9 @@ const AboutPage = () => {
     <section className="grid gap-4" aria-labelledby="about-title">
       <AboutMeCard imageSrc={workExperienceImageSrc} blurb={workExperienceSummary} />
 
-      <div className="flex flex-col  md:flex-row gap-4 ">
+      <div className="flex flex-col  md:flex-row gap-4">
         <div className="order-last flex min-w-0 flex-[6_1_0%] flex-col md:order-0">
+          {/* Employment History */}
           <section className="rounded-2xl border border-(--line) bg-(--surface) p-5">
             <h1 className={"text-2xl font-semibold"}>Employment History</h1>
 
@@ -40,6 +41,7 @@ const AboutPage = () => {
             </ul>
           </section>
 
+          {/* Education & Training */}
           <section className="mt-5 rounded-2xl border border-(--line) bg-(--surface) p-5">
             <h1 className={"text-2xl font-semibold"}>Education & Training</h1>
 
@@ -73,22 +75,19 @@ const AboutPage = () => {
           </section>
         </div>
 
-        <div className="order-first min-w-0 flex-[3_1_0%] md:order-0">
-          <section className="h-fit self-start rounded-2xl border border-(--line) bg-(--surface) p-5">
-            <div className="mt-5 grid gap-5">
-              {skillBadgeSections.map((section) => (
-                <section key={section.title}>
-                  <h3 className="m-0 mb-2 text-center text-lg text-(--text) font-bold">{section.title}</h3>
+        {/* Badges */}
+        <div className="h-fit self-start rounded-2xl border border-(--line) bg-(--surface) p-5  grid gap-5 order-first min-w-0 flex-[3_1_0%] md:order-0">
+          {skillBadgeSections.map((section) => (
+            <div key={section.title}>
+              <h3 className="m-0 mb-2 text-center text-lg text-(--text) font-bold">{section.title}</h3>
 
-                  <div className="flex flex-wrap justify-evenly gap-1">
-                    {section.badges.map((badge) => (
-                      <img key={`${section.title}-${badge.label}`} src={badge.src} className="min-h-5 " alt={`${badge.label} badge`} loading="lazy" />
-                    ))}
-                  </div>
-                </section>
-              ))}
+              <div className="flex flex-wrap justify-evenly gap-1">
+                {section.badges.map((badge) => (
+                  <img key={`${section.title}-${badge.label}`} src={badge.src} className="min-h-5 " alt={`${badge.label} badge`} loading="lazy" />
+                ))}
+              </div>
             </div>
-          </section>
+          ))}
         </div>
       </div>
     </section>

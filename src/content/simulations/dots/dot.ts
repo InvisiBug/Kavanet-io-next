@@ -2,6 +2,7 @@ import { type Config } from "./";
 import p5 from "p5";
 
 export default class Dot {
+  config: Config;
   p5: p5;
   pos: p5.Vector;
   size: number;
@@ -10,6 +11,7 @@ export default class Dot {
   colour: string;
 
   constructor(config: Config) {
+    this.config = config;
     this.p5 = config.p5;
     this.connectionDistance = config.connectionDistance;
     this.colour = this.p5.random(config.colours);

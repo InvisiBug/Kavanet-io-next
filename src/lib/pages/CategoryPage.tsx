@@ -49,11 +49,6 @@ interface CategoryPageProps {
   category: CategoryKey;
 }
 
-type CategorySettings = {
-  numProjects: number;
-  text: string;
-};
-
 const renderHero = (project: ProjectEntry[], category: CategoryKey) => {
   let masonary = false;
   let cardType: ReactNode;
