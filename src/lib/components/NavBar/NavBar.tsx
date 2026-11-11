@@ -62,17 +62,15 @@ const SiteHeader = () => {
 
             {/* Other Sites */}
             <Dropdown title="Other Sites">
-              <div className="absolute left-1/2 z-50 mt-2 min-w-48 -translate-x-1/2 rounded-xl border border-(--line) bg-(--surface) p-2 shadow-[0_12px_30px_rgba(12,21,43,0.14)]">
-                <ul className="m-0 list-none p-0">
-                  {siteConfig.navBar.otherSites.map((site) => (
-                    <li key={site.url}>
-                      <a href={site.url} target="_blank" rel="noreferrer" className="block rounded-lg px-3 py-2 text-center text-[0.9rem] text-(--text-muted) no-underline transition hover:bg-(--surface-soft) hover:text-(--text)">
-                        {site.label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <ul className="m-0 list-none p-0">
+                {siteConfig.navBar.otherSites.map((site) => (
+                  <li key={site.url}>
+                    <a href={site.url} target="_blank" rel="noreferrer" className="block rounded-lg px-3 py-2 text-center text-[0.9rem] text-(--text-muted) no-underline transition hover:bg-(--surface-soft) hover:text-(--text)">
+                      {site.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </Dropdown>
 
             {/* Theme & Socials */}

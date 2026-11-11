@@ -6,14 +6,6 @@ import { getToggledTheme } from "@/lib/helpers";
 import { Dropdown, ThemeToggleButton } from "./";
 import QRCode from "./qr-code.png";
 
-type HamburgerProps = {
-  isMenuOpen: boolean;
-  setIsMenuOpen: (open: boolean) => void;
-  menuRef: RefObject<HTMLDivElement | null>;
-  menuButtonRef: RefObject<HTMLButtonElement | null>;
-  mobileMenuRef: RefObject<HTMLDivElement | null>;
-};
-
 const Hamburger = ({ isMenuOpen, setIsMenuOpen, menuRef, menuButtonRef, mobileMenuRef }: HamburgerProps) => {
   const { theme, setTheme } = useContext();
 
@@ -80,23 +72,21 @@ const Hamburger = ({ isMenuOpen, setIsMenuOpen, menuRef, menuButtonRef, mobileMe
 
         {/* Other Sites */}
         <Dropdown title="Other Sites">
-          <div className="absolute left-1/2 z-50 mt-2 min-w-48 -translate-x-1/2 rounded-xl border border-(--line) bg-(--surface) p-2 shadow-[0_12px_30px_rgba(12,21,43,0.14)]">
-            <ul className="m-0 list-none p-0">
-              {siteConfig.navBar.otherSites.map((site) => (
-                <li key={site.url}>
-                  <a href={site.url} target="_blank" rel="noreferrer" className="block rounded-lg px-3 py-2 text-center text-[0.9rem] text-(--text-muted) no-underline transition hover:bg-(--surface-soft) hover:text-(--text)">
-                    {site.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* <div className="absolute left-1/2 z-50 mt-2 min-w-48 -translate-x-1/2 rounded-xl border border-(--line) bg-(--surface) p-2 shadow-[0_12px_30px_rgba(12,21,43,0.14)]"> */}
+          <ul className="m-0 list-none p-0">
+            {siteConfig.navBar.otherSites.map((site) => (
+              <li key={site.url}>
+                <a href={site.url} target="_blank" rel="noreferrer" className="block rounded-lg px-3 py-2 text-center text-[0.9rem] text-(--text-muted) no-underline transition hover:bg-(--surface-soft) hover:text-(--text)">
+                  {site.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+          {/* </div> */}
         </Dropdown>
 
-        <Dropdown title="Qr Code">
-          <div className="absolute left-1/2 z-50 mt-2 min-w-75 -translate-x-1/2 rounded-xl border border-(--line) bg-(--surface) p-2 shadow-[0_12px_30px_rgba(12,21,43,0.14)]">
-            <img src={QRCode} alt="QR code" className="w-full" />
-          </div>
+        <Dropdown title="Qr Code" classOverride="w-90">
+          <img src={QRCode} alt="QR code" className="w-full" />
         </Dropdown>
       </nav>
     </div>
@@ -104,3 +94,11 @@ const Hamburger = ({ isMenuOpen, setIsMenuOpen, menuRef, menuButtonRef, mobileMe
 };
 
 export default Hamburger;
+
+type HamburgerProps = {
+  isMenuOpen: boolean;
+  setIsMenuOpen: (open: boolean) => void;
+  menuRef: RefObject<HTMLDivElement | null>;
+  menuButtonRef: RefObject<HTMLButtonElement | null>;
+  mobileMenuRef: RefObject<HTMLDivElement | null>;
+};
