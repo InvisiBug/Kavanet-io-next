@@ -25,10 +25,11 @@ const contentTypes = {
   ".woff2": "font/woff2",
 };
 
-const escapeHtml = (value) => value.replace(/[&<>"']/g, (character) => {
-  const entities = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" };
-  return entities[character];
-});
+const escapeHtml = (value) =>
+  value.replace(/[&<>"']/g, (character) => {
+    const entities = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" };
+    return entities[character];
+  });
 
 const getRequestOrigin = (request) => {
   const forwardedProtocol = request.headers["x-forwarded-proto"]?.split(",")[0].trim();
@@ -65,9 +66,40 @@ const getPreviewImageUrl = async (token, requestOrigin) => {
   }
 };
 
+const getPageMetadata = (pageUrl) => {
+  const pathname = new URL(pageUrl).pathname;
+  const segments = pathname.split("/").filter(Boolean);
+
+  if (segments.length >= 2) {
+    const [category, slug] = segments;
+    const uppercaseWords = new Set(["led", "wled", "esp32", "bjc"]);
+    const title = slug
+      .split("-")
+      .filter(Boolean)
+      .map((part) => (uppercaseWords.has(part.toLowerCase()) ? part.toUpperCase() : part.charAt(0).toUpperCase() + part.slice(1)))
+      .join(" ");
+
+    const categoryDescriptions = {
+      personal: "Personal project",
+      community: "Community project",
+      simulations: "System simulation",
+    };
+
+    const description = `${title} — ${categoryDescriptions[category] ?? "Project"} on Kavanet.io`;
+
+    return { title, description };
+  }
+
+  return {
+    title: "Kavanet.io",
+    description: "Projects, community builds, and simulations by Kavanet.io.",
+  };
+};
+
 const createOpenGraphTags = (pageUrl, imageUrl) => {
-  const title = imageUrl ? "Image preview | Kavanet.io" : "Kavanet.io";
-  const description = imageUrl ? "A shared image from Kavanet.io" : "Projects, community builds, and simulations by Kavanet.io.";
+  const pageMetadata = getPageMetadata(pageUrl);
+  const title = imageUrl ? "Image preview | Kavanet.io" : pageMetadata.title;
+  const description = imageUrl ? "A shared image from Kavanet.io" : pageMetadata.description;
   const tags = [
     `<meta name="description" content="${escapeHtml(description)}" />`,
     `<meta property="og:site_name" content="Kavanet.io" />`,
