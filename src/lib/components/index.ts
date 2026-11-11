@@ -9,6 +9,7 @@ export { default as ExperienceDetails } from "./experianceDetails";
 
 export { default as SiteHeader } from "./NavBar/NavBar";
 export { default as ScrollToTop } from "./ScrollToTop";
+export * from "./icons";
 
 //? Simulations
 export { simLoader } from "@/content/simulations";

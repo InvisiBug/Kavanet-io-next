@@ -5,6 +5,7 @@ import { siteConfig } from "@/data";
 import { useContext } from "@/lib/context";
 import { getToggledTheme } from "@/lib/helpers";
 import Hamburger from "./components/hamburger";
+import { MenuOpenIcon, MenuClosedIcon } from "@/lib/components";
 
 const SiteHeader = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -38,7 +39,7 @@ const SiteHeader = () => {
               onClick={() => setIsMenuOpen((open) => !open)}
             >
               <svg viewBox="0 0 24 24" className="h-5 w-5 fill-none stroke-current stroke-2" aria-hidden="true">
-                {isMenuOpen ? <path d="M6 6l12 12M18 6 6 18" strokeLinecap="round" /> : <path d="M4 7h16M4 12h16M4 17h16" strokeLinecap="round" />}
+                {isMenuOpen ? <MenuOpenIcon /> : <MenuClosedIcon />}
               </svg>
             </button>
           </div>

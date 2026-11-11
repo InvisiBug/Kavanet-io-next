@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { Github, LinkedIn, Instagram, Etsy } from "./icons";
+import { Github, LinkedIn, Instagram, Etsy } from "../../icons";
 
 const SocialIconLink = ({ href, label, children, name }: SocialIconLinkProps) => {
   return (
