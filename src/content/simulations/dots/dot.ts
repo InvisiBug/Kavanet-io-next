@@ -1,6 +1,32 @@
 import { type Config } from "./";
 import p5 from "p5";
 
+export type DotGrid = Map<number, Map<number, Dot[]>>;
+
+export const buildDotGrid = (dots: Dot[], cellSize: number): DotGrid => {
+  const grid: DotGrid = new Map();
+
+  dots.forEach((dot) => {
+    const cellX = Math.floor(dot.pos.x / cellSize);
+    const cellY = Math.floor(dot.pos.y / cellSize);
+    let row = grid.get(cellX);
+
+    if (!row) {
+      row = new Map();
+      grid.set(cellX, row);
+    }
+
+    const cell = row.get(cellY);
+    if (cell) {
+      cell.push(dot);
+    } else {
+      row.set(cellY, [dot]);
+    }
+  });
+
+  return grid;
+};
+
 export default class Dot {
   config: Config;
   p5: p5;
@@ -33,40 +59,32 @@ export default class Dot {
     this.constrain();
   };
 
-  connect = (dot: Dot[]) => {
-    dot.forEach((dot: Dot) => {
-      if (this.pos !== dot.pos) {
-        const dist = dot.pos.dist(this.pos);
+  connect = (grid: DotGrid) => {
+    const cellX = Math.floor(this.pos.x / this.connectionDistance);
+    const cellY = Math.floor(this.pos.y / this.connectionDistance);
 
-        if (dist < this.connectionDistance) {
+    for (let x = cellX - 1; x <= cellX + 1; x++) {
+      for (let y = cellY - 1; y <= cellY + 1; y++) {
+        grid.get(x)?.get(y)?.forEach((dot) => {
+          if (this.pos === dot.pos) {
+            return;
+          }
+
+          const dist = dot.pos.dist(this.pos);
+          if (dist >= this.connectionDistance) {
+            return;
+          }
+
           this.p5.push();
-          // this.p5.blendMode(this.p5.LIGHTEST);
-
-          // const val = this.p5.random(1);
-          // let colour: p5.Color;
-
-          // if (val < 0.01) {
-          //   colour = this.p5.color(this.colour);
-          // } else {
-          //   colour = this.p5.color(dot.colour);
-          // }
-
           const colour = this.p5.color(this.colour);
-
           this.p5.strokeWeight(1);
-
           colour.setAlpha(this.p5.map(dist, this.connectionDistance, 0, 0, 100));
           this.p5.stroke(colour);
-
-          // this.p5.stroke(255, this.p5.map(dist, this.connectionDistance, 0, 0, 100));
-
-          // this.p5.stroke(255, this.p5.map(dist, this.connectionDistance, 0, 0, 100));
           this.p5.line(this.pos.x, this.pos.y, dot.pos.x, dot.pos.y);
           this.p5.pop();
-        }
-        // this.show();
+        });
       }
-    });
+    }
   };
 
   constrain = () => {
