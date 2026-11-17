@@ -1,5 +1,5 @@
 //? Components
-export { default as HeroFeatured } from "./banners/Featured";
+export { default as HeroFeatured } from "./banners/featured/Container";
 export { default as HeroRotator } from "./banners/heroRotator/HeroRotator";
 export { default as LightboxHost } from "./LightboxHost";
 export { default as MarkdownContent } from "./markdown";
@@ -19,3 +19,5 @@ export { P5Canvas } from "./P5Canvas";
 export { default as FullPictureCard } from "./cards/FullPicture";
 export { default as AboutMeCard } from "./cards/AboutMe";
 export { default as SimulationCard } from "./cards/Simulation";
+
+export { default as FeaturedBanner } from "./banners/featured/FeaturedBanner";

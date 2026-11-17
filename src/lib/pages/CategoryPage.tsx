@@ -1,5 +1,5 @@
 import type { FC, ReactNode } from "react";
-import { HeroFeatured, FullPictureCard, SimulationCard } from "@/lib/components";
+import { HeroFeatured, FullPictureCard, SimulationCard, FeaturedBanner } from "@/lib/components";
 import { categoryMeta, siteConfig } from "@/data";
 import { getProjectsByCategory, getFeaturedProjectsByCategory, getRandomProjectsByCategory, getCategorySettings } from "@/lib/helpers";
 import type { CategoryKey, ProjectEntry } from "@/lib/types";
@@ -24,7 +24,7 @@ const CategoryPage: FC<CategoryPageProps> = ({ category }) => {
         <p className="whitespace-pre-line text-(--text-muted)">{metadata.description}</p>
       </header>
 
-      {project && renderHero(project, category)}
+      {project && <FeaturedBanner projects={project} category={category} />}
 
       <div className={"p-6 lg:p-0"}>
         <h1 className={"mb-5"} id="category-title">
@@ -48,29 +48,3 @@ export default CategoryPage;
 interface CategoryPageProps {
   category: CategoryKey;
 }
-
-// TODO: Not happy with this, maybe move it to the "banners" folder
-const renderHero = (project: ProjectEntry[], category: CategoryKey) => {
-  let masonary = false;
-  let cardType: ReactNode;
-
-  if (category === "simulations") {
-    masonary = false;
-
-    cardType = project.map((project) => {
-      return <SimulationCard key={project.slug} project={project} />;
-    });
-  } else {
-    masonary = true;
-
-    cardType = project.map((project) => {
-      return (
-        <div className="mb-4" key={project.slug}>
-          <FullPictureCard key={project.slug} project={project} />
-        </div>
-      );
-    });
-  }
-
-  return <HeroFeatured masonary={masonary}>{cardType}</HeroFeatured>;
-};
