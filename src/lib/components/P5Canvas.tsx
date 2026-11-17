@@ -1,10 +1,10 @@
-import { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useRef, type FC } from "react";
 import p5 from "p5";
 
 let activeP5Instance: p5 | null = null;
 let activeP5Host: HTMLDivElement | null = null;
 
-export function P5Canvas({ sketch, className }: P5CanvasProps) {
+export const P5Canvas: FC<P5CanvasProps> = ({ sketch, className }) => {
   const canvasRootRef = useRef<HTMLDivElement | null>(null);
   const instanceRef = useRef<p5 | null>(null);
 
@@ -60,7 +60,7 @@ export function P5Canvas({ sketch, className }: P5CanvasProps) {
       <div ref={canvasRootRef} className="absolute inset-0 [&>canvas]:block [&>canvas]:h-full! [&>canvas]:w-full! [&>canvas]:rounded-xl [&>canvas]:border [&>canvas]:border-[rgba(216,222,235,0.9)]" />
     </div>
   );
-}
+};
 
 const keepOnlyLatestCanvas = (host: HTMLDivElement) => {
   const canvases = Array.from(host.querySelectorAll("canvas"));

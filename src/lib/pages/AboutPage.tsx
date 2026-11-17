@@ -1,7 +1,8 @@
+import type { FC } from "react";
 import { experience, skillBadgeSections, workExperienceImageSrc, workExperienceSummary, education } from "@/data";
 import { AboutMeCard, ExperienceDetails } from "@/lib/components";
 
-const AboutPage = () => {
+const AboutPage: FC = () => {
   return (
     <section className="grid gap-4" aria-labelledby="about-title">
       <AboutMeCard imageSrc={workExperienceImageSrc} blurb={workExperienceSummary} />

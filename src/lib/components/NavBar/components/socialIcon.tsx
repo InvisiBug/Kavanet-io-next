@@ -1,7 +1,7 @@
-import type { ReactNode } from "react";
+import type { FC, ReactNode } from "react";
 import { Github, LinkedIn, Instagram, Etsy } from "../../icons";
 
-const SocialIconLink = ({ href, label, children, name }: SocialIconLinkProps) => {
+const SocialIconLink: FC<SocialIconLinkProps> = ({ href, label, name }) => {
   return (
     <a
       href={href}
@@ -19,7 +19,7 @@ const SocialIconLink = ({ href, label, children, name }: SocialIconLinkProps) =>
 };
 export default SocialIconLink;
 
-const SocialIcon = ({ name }: SocialIconProps) => {
+const SocialIcon: FC<SocialIconProps> = ({ name }) => {
   switch (name) {
     case "github":
       return <Github />;
@@ -35,7 +35,6 @@ const SocialIcon = ({ name }: SocialIconProps) => {
 interface SocialIconLinkProps extends SocialIconProps {
   href: string;
   label: string;
-  children?: ReactNode;
 }
 
 interface SocialIconProps {

@@ -2,7 +2,7 @@
 export { default as HeroFeatured } from "./banners/Featured";
 export { default as HeroRotator } from "./banners/heroRotator/HeroRotator";
 export { default as LightboxHost } from "./LightboxHost";
-export { MarkdownContent } from "./markdown";
+export { default as MarkdownContent } from "./markdown";
 export { default as PageShell } from "./layout/PageShell";
 export { default as ErrorPage } from "./errorPages";
 export { default as ExperienceDetails } from "./experianceDetails";

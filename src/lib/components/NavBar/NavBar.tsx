@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type FC } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { SocialIconLink, Dropdown, ThemeToggleButton } from "./components";
 import { siteConfig } from "@/data";
@@ -7,7 +7,7 @@ import { getToggledTheme } from "@/lib/helpers";
 import Hamburger from "./components/hamburger";
 import { MenuOpenIcon, MenuClosedIcon } from "@/lib/components";
 
-const SiteHeader = () => {
+const SiteHeader: FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement | null>(null);
   const mobileMenuRef = useRef<HTMLDivElement | null>(null);

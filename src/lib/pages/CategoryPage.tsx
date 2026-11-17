@@ -1,10 +1,10 @@
-import type { ReactNode } from "react";
+import type { FC, ReactNode } from "react";
 import { HeroFeatured, FullPictureCard, SimulationCard } from "@/lib/components";
 import { categoryMeta, siteConfig } from "@/data";
 import { getProjectsByCategory, getFeaturedProjectsByCategory, getRandomProjectsByCategory, getCategorySettings } from "@/lib/helpers";
 import type { CategoryKey, ProjectEntry } from "@/lib/types";
 
-const CategoryPage = ({ category }: CategoryPageProps) => {
+const CategoryPage: FC<CategoryPageProps> = ({ category }) => {
   const projects = getProjectsByCategory(category);
   const metadata = categoryMeta[category];
   const categorySettings = getCategorySettings(category);
@@ -49,6 +49,7 @@ interface CategoryPageProps {
   category: CategoryKey;
 }
 
+// TODO: Not happy with this, maybe move it to the "banners" folder
 const renderHero = (project: ProjectEntry[], category: CategoryKey) => {
   let masonary = false;
   let cardType: ReactNode;

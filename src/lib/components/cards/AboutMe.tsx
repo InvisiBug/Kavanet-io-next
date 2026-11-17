@@ -1,6 +1,6 @@
-import type { ReactNode } from "react";
+import type { FC, ReactNode } from "react";
 
-const AboutMe = ({ imageSrc, blurb }: AboutMeProps) => {
+const AboutMe: FC<AboutMeProps> = ({ imageSrc, blurb }) => {
   return (
     <section className="grid items-center gap-5 overflow-hidden rounded-2xl border border-(--line) bg-(--surface) p-5 sm:grid-cols-[minmax(0,1fr)_auto]" aria-label="About me">
       <div>

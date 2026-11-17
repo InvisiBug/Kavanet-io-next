@@ -1,4 +1,6 @@
-const HeroFeatured = ({ children, masonary = false }: HeroFeaturedProps) => {
+import type { FC } from "react";
+
+const HeroFeatured: FC<HeroFeaturedProps> = ({ children, masonary = false }) => {
   return (
     <section
       className="rounded-[1.2rem] bg-(--surface) border border-(--line) bg-[linear-gradient(145deg,rgba(255,127,0,0.08),transparent_42%),var(--surface)] p-8 shadow-[0_24px_42px_rgba(12,21,43,0.08)] max-[680px]:p-[1.4rem]"

@@ -4,7 +4,7 @@ import { siteConfig } from "@/data/siteConfig";
 
 const AUTO_ROTATE_MS = 5000;
 
-export const useHeroRotator = () => {
+export const useHeroRotator = (projects) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [dragOffset, setDragOffset] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
@@ -16,7 +16,7 @@ export const useHeroRotator = () => {
   const suppressClickTimeout = useRef<number | null>(null);
   const viewportRef = useRef<HTMLDivElement | null>(null);
 
-  const projects = useMemo(() => getFeaturedProjects(siteConfig.options.heroRotatorNumProjects), []);
+  // const projects = useMemo(() => getFeaturedProjects(siteConfig.options.heroRotatorNumProjects), []);
   const totalBanners = projects.length;
 
   const startNavigation = useCallback(

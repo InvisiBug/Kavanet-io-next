@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { siteConfig } from "@/data";
 
-const OtherSitesDropdown = ({ title, children, classOverride = "" }) => {
+const OtherSitesDropdown: React.FC<Props> = ({ title, children, classOverride = "" }) => {
   const dropdownRef = useRef<HTMLDetailsElement | null>(null);
 
   useEffect(() => {
@@ -43,3 +43,9 @@ const OtherSitesDropdown = ({ title, children, classOverride = "" }) => {
 };
 
 export default OtherSitesDropdown;
+
+interface Props {
+  title: string;
+  children: React.ReactNode;
+  classOverride?: string;
+}

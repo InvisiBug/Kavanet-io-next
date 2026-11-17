@@ -1,9 +1,9 @@
-import { useEffect, useState, type PropsWithChildren } from "react";
+import { useEffect, useState, type FC, type PropsWithChildren } from "react";
 import { useLocation, useSearchParams } from "react-router-dom";
 import { extractLightboxImageFromClick, getLightboxImageById } from "@/lib/helpers";
 import type { LightboxImage } from "@/lib/types";
 
-const LightboxHost = ({ children }: PropsWithChildren) => {
+const LightboxHost: FC<PropsWithChildren> = ({ children }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
   const lightboxId = searchParams.get("lightbox");

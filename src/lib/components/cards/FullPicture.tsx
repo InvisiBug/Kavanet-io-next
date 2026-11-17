@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import { P5Canvas } from "@/lib/components";
 import { type ProjectEntry } from "@/lib/types";
 import { getProjectImageSrc } from "@/lib/helpers";
 import Meta from "./Meta";
+import type { FC } from "react";
 
-const FullPictureCard = ({ project }: FeaturedCardProps) => {
+const FullPictureCard: FC<FeaturedCardProps> = ({ project }) => {
   const imageSrc = getProjectImageSrc(project.imagePath);
 
   return (

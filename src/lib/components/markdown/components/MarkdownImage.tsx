@@ -1,6 +1,6 @@
-import type { ComponentPropsWithoutRef } from "react";
+import type { ComponentPropsWithoutRef, FC } from "react";
 
-export const MarkdownImage = ({ className, src = "", alt = "", ...props }: ComponentPropsWithoutRef<"img">) => {
+export const MarkdownImage: FC<ComponentPropsWithoutRef<"img">> = ({ className, src = "", alt = "", ...props }) => {
   if (/\.(mp4|webm|mov)(?:$|[?#])/i.test(src)) {
     return <video className={className ?? "mx-auto mt-3 mb-4 block w-full max-w-160 rounded-xl border border-(--line) bg-black"} src={src} controls preload="metadata" playsInline aria-label={alt || undefined} />;
   }

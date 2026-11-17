@@ -2,6 +2,7 @@ import ReactMarkdown, { type Components } from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
 import { MarkdownCode, MarkdownHeading, MarkdownImage, MarkdownLink, MarkdownList, MarkdownListItem, MarkdownParagraph, MarkdownPre } from "./components";
+import type { FC } from "react";
 
 const markdownComponents: Components = {
   h1: ({ node: _node, ...props }) => <MarkdownHeading level={1} {...props} />,
@@ -17,7 +18,7 @@ const markdownComponents: Components = {
   img: ({ node: _node, ...props }) => <MarkdownImage {...props} />,
 };
 
-export function MarkdownContent({ markdown }: MarkdownContentProps) {
+const MarkdownContent: FC<MarkdownContentProps> = ({ markdown }) => {
   return (
     <article className="rounded-2xl border border-(--line) bg-(--surface) p-5">
       <ReactMarkdown components={markdownComponents} remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
@@ -25,7 +26,9 @@ export function MarkdownContent({ markdown }: MarkdownContentProps) {
       </ReactMarkdown>
     </article>
   );
-}
+};
+
+export default MarkdownContent;
 
 interface MarkdownContentProps {
   markdown: string;

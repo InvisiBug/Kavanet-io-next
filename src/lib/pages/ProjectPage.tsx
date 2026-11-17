@@ -1,9 +1,9 @@
+import type { FC } from "react";
 import { Link, useParams } from "react-router-dom";
 import { MarkdownContent, P5Canvas, simLoader, ErrorPage } from "@/lib/components";
-
 import { getMarkdownContent, getProject } from "@/lib/helpers";
 
-const ProjectPage = () => {
+const ProjectPage: FC = () => {
   const { category, projectSlug } = useParams();
   const project = getProject(category, projectSlug);
 

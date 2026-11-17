@@ -1,6 +1,6 @@
-import { Children, cloneElement, isValidElement, type ComponentPropsWithoutRef, type ReactElement } from "react";
+import { Children, cloneElement, isValidElement, type ComponentPropsWithoutRef, type FC, type ReactElement } from "react";
 
-export const MarkdownParagraph = ({ children, ...props }: ComponentPropsWithoutRef<"p">) => {
+export const MarkdownParagraph: FC<ComponentPropsWithoutRef<"p">> = ({ children, ...props }) => {
   const paragraphChildren = Children.toArray(children);
   const images = paragraphChildren.filter(isImageElement);
 
