@@ -44,7 +44,7 @@ const SiteHeader: FC = () => {
             </button>
           </div>
 
-          {/* Page Links */}
+          {/* Page Links - Hidden on mobile */}
           <nav className="flex flex-wrap justify-center gap-2 max-[1100px]:hidden" aria-label="Primary navigation">
             {siteConfig.navBar.pageLinks.map((link) => (
               <NavLink
@@ -76,11 +76,10 @@ const SiteHeader: FC = () => {
 
             {/* Theme & Socials */}
             <div className="flex gap-2 max-[1100px]:hidden" aria-label="Social links">
-              <ThemeToggleButton theme={theme} onToggle={() => setTheme((current) => getToggledTheme(current))} />
-
               {siteConfig.navBar.socialLinks.map((social) => (
                 <SocialIconLink key={social.name} href={social.url} label={social.label} name={social.name} />
               ))}
+              <ThemeToggleButton theme={theme} onToggle={() => setTheme((current) => getToggledTheme(current))} />
             </div>
           </nav>
         </div>

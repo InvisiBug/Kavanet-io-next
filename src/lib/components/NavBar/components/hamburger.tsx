@@ -4,7 +4,8 @@ import { siteConfig } from "@/data";
 import { useContext } from "@/lib/context";
 import { getToggledTheme } from "@/lib/helpers";
 import { Dropdown, ThemeToggleButton } from "./";
-import QRCode from "./qr-code.png";
+import QRCode from "@/lib/images/qr-code.png";
+import { AssetImage } from "@/lib/components";
 
 const Hamburger: FC<HamburgerProps> = ({ isMenuOpen, setIsMenuOpen, menuRef, menuButtonRef, mobileMenuRef }) => {
   const { theme, setTheme } = useContext();
@@ -86,7 +87,7 @@ const Hamburger: FC<HamburgerProps> = ({ isMenuOpen, setIsMenuOpen, menuRef, men
         </Dropdown>
 
         <Dropdown title="Qr Code" classOverride="w-90">
-          <img src={QRCode} alt="QR code" className="w-full" />
+          <AssetImage imagePath={QRCode} alt="QR code" className="w-full" />
         </Dropdown>
       </nav>
     </div>

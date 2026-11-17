@@ -1,4 +1,5 @@
 //? Components
+export { default as AssetImage } from "./AssetImage";
 export { default as HeroFeatured } from "./banners/featured/Container";
 export { default as HeroRotator } from "./banners/heroRotator/HeroRotator";
 export { default as LightboxHost } from "./LightboxHost";

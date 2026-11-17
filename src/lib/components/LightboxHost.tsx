@@ -82,6 +82,7 @@ const LightboxHost: FC<PropsWithChildren> = ({ children }) => {
             Close
           </button>
 
+          {/* Must stay as img instead of AssetImg to get lightbox to work */}
           <img
             src={lightboxImage.src}
             alt={lightboxImage.alt}

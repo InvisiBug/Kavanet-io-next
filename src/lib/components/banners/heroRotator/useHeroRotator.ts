@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useRef, useState, type MouseEvent as ReactMouseEvent, type PointerEvent as ReactPointerEvent, type TransitionEvent as ReactTransitionEvent } from "react";
 import type { ProjectEntry } from "@/lib/types";
-
-const AUTO_ROTATE_MS = 5000;
+import { siteConfig } from "@/data";
 
 export const useHeroRotator = (projects: ProjectEntry[]) => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -162,7 +161,7 @@ export const useHeroRotator = (projects: ProjectEntry[]) => {
       }
 
       startNavigation(1);
-    }, AUTO_ROTATE_MS);
+    }, siteConfig.options.rotatorDelay);
 
     return () => {
       window.clearInterval(intervalId);

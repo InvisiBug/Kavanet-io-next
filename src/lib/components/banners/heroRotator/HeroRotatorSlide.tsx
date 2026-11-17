@@ -1,16 +1,15 @@
 import type { FC } from "react";
 import { Link } from "react-router-dom";
-import { getProjectImageSrc } from "@/lib/helpers";
 import type { ProjectEntry } from "@/lib/types";
+import { AssetImage } from "../..";
 
 const HeroRotatorSlide: FC<HeroRotatorSlideProps> = ({ project, isActive, isClone }) => {
-  const imageSrc = getProjectImageSrc(project.imagePath);
   const isAccessible = isActive && !isClone;
 
   return (
     <Link to={`/${project.category}/${project.slug}`} className="relative block w-full shrink-0" aria-hidden={!isAccessible} tabIndex={isAccessible ? 0 : -1}>
       <div className="relative grid h-60 min-h-60 content-center gap-3 px-6 py-8 text-white">
-        {imageSrc ? <img src={imageSrc} alt={`${project.title} placeholder`} className="absolute inset-0 h-full w-full object-cover" /> : null}
+        <AssetImage imagePath={project.imagePath} alt={`${project.title} placeholder`} className="absolute inset-0 h-full w-full object-cover" />
         <div className="absolute inset-0 bg-[linear-gradient(140deg,rgba(20,33,61,0.92),rgba(27,82,129,0.0))]" />
 
         <div className="relative z-10 grid gap-3">

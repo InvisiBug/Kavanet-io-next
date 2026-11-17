@@ -32,5 +32,6 @@ export const siteConfig = {
     homeScreenFeaturedRandom: true,
     categoryPageShowOnlyFeatured: true,
     heroRotatorNumProjects: 5,
+    rotatorDelay: 5 * 1000, // 5 seconds
   },
 };

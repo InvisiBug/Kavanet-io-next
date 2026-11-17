@@ -1,4 +1,4 @@
 export * from "./theme";
-export * from "./projects";
+export * from "./json";
 export * from "./markdown";
 export * from "./lightbox";

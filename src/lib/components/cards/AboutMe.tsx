@@ -1,4 +1,5 @@
 import type { FC, ReactNode } from "react";
+import AssetImage from "../AssetImage";
 
 const AboutMe: FC<AboutMeProps> = ({ imageSrc, blurb }) => {
   return (
@@ -8,7 +9,7 @@ const AboutMe: FC<AboutMeProps> = ({ imageSrc, blurb }) => {
         <div className="mt-3 whitespace-pre-line text-(--text-muted)">{blurb}</div>
       </div>
 
-      {imageSrc ? <img src={imageSrc} alt="About me" className="h-40 w-40 justify-self-center rounded-full object-cover sm:h-48 sm:w-48 sm:justify-self-end" /> : null}
+      <AssetImage imagePath={imageSrc} alt="About me" className="h-40 w-40 justify-self-center rounded-full object-cover sm:h-48 sm:w-48 sm:justify-self-end" />
     </section>
   );
 };
@@ -16,6 +17,6 @@ const AboutMe: FC<AboutMeProps> = ({ imageSrc, blurb }) => {
 export default AboutMe;
 
 interface AboutMeProps {
-  imageSrc?: string;
+  imageSrc: string;
   blurb: ReactNode;
 }

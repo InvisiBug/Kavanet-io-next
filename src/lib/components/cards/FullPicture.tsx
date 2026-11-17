@@ -1,15 +1,13 @@
 import { Link } from "react-router-dom";
 import { type ProjectEntry } from "@/lib/types";
-import { getProjectImageSrc } from "@/lib/helpers";
+import AssetImage from "../AssetImage";
 import Meta from "./Meta";
 import type { FC } from "react";
 
 const FullPictureCard: FC<FeaturedCardProps> = ({ project }) => {
-  const imageSrc = getProjectImageSrc(project.imagePath);
-
   return (
     <Link key={project.slug} className="flex h-full max-w-full flex-col rounded-[0.9rem] overflow-hidden border border-(--line) bg-(--surface-soft) no-underline text-inherit" to={`/${project.category}/${project.slug}`}>
-      {imageSrc && <img src={imageSrc} alt={`${project.title} placeholder`} data-no-lightbox="true" className="block  w-full object-cover" loading="lazy" />}
+      <AssetImage imagePath={project.imagePath} alt={`${project.title} placeholder`} data-no-lightbox="true" className="block w-full object-cover" loading="lazy" />
 
       <Meta project={project} />
 
