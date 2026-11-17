@@ -49,7 +49,7 @@ export const simulationProjects: ProjectEntry[] = [
     category: "simulations",
     simulationKey: "circlePacking",
     imagePath: "/src/lib/images/simulations/circlePacking.jpg",
-    featured: true,
+    featured: false,
     // tags: ["Reliability", "Routing", "Modeling"],
   },
   {

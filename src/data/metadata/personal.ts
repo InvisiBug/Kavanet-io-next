@@ -70,6 +70,6 @@ export const personalProjects: ProjectEntry[] = [
     imagePath: "/src/lib/images/personal/kavanest.jpg",
     tags: ["Automation", "IoT", "Systems"],
     writeUpPath: "/src/content/writeups/personal/kavanest/home-automation-system.md",
-    featured: false,
+    featured: true,
   },
 ];

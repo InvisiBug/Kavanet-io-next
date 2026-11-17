@@ -1,6 +1,6 @@
 //? Components
 export { default as HeroFeatured } from "./banners/Featured";
-export { default as HomeBannerRotator } from "./banners/HeroRotator";
+export { default as HeroRotator } from "./banners/heroRotator/HeroRotator";
 export { default as LightboxHost } from "./LightboxHost";
 export { MarkdownContent } from "./markdown";
 export { default as PageShell } from "./layout/PageShell";

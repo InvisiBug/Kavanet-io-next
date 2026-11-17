@@ -31,5 +31,6 @@ export const siteConfig = {
     featuredProjectsLimit: 4,
     homeScreenFeaturedRandom: true,
     categoryPageShowOnlyFeatured: false,
+    heroRotatorNumProjects: 5,
   },
 };
