@@ -1,8 +1,8 @@
-import type { ComponentPropsWithoutRef } from "react";
+import type { ComponentPropsWithoutRef, FC } from "react";
 
 const GITHUB_HOSTS = new Set(["github.com", "www.github.com"]);
 
-export const MarkdownLink = ({ href = "", children, ...props }: ComponentPropsWithoutRef<"a">) => {
+export const MarkdownLink: FC<ComponentPropsWithoutRef<"a">> = ({ href = "", children, ...props }) => {
   const isExternal = /^https?:\/\//.test(href);
   let githubRepository: string | null = null;
   const instagramEmbedUrl = getInstagramEmbedUrl(href);

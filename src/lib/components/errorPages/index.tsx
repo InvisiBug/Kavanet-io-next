@@ -1,4 +1,6 @@
-const Error = () => {
+import type { FC } from "react";
+
+const Error: FC = () => {
   return (
     <section className="grid gap-2 rounded-2xl border border-(--line) bg-(--surface) p-5">
       <h1>Project not found</h1>

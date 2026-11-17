@@ -1,4 +1,6 @@
-const ExperienceDetails = ({ details }: { details: string }) => {
+import type { FC } from "react";
+
+const ExperienceDetails: FC<Props> = ({ details }) => {
   if (!details.includes("*")) {
     return <p className="m-0 whitespace-pre-line text-(--text-muted)">{details}</p>;
   }
@@ -49,3 +51,7 @@ const ExperienceDetails = ({ details }: { details: string }) => {
 };
 
 export default ExperienceDetails;
+
+type Props = {
+  details: string;
+};

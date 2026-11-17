@@ -1,12 +1,13 @@
-import { useEffect, type RefObject } from "react";
+import { useEffect, type FC, type RefObject } from "react";
 import { NavLink } from "react-router-dom";
 import { siteConfig } from "@/data";
 import { useContext } from "@/lib/context";
 import { getToggledTheme } from "@/lib/helpers";
 import { Dropdown, ThemeToggleButton } from "./";
-import QRCode from "./qr-code.png";
+import QRCode from "@/lib/images/qr-code.png";
+import { AssetImage } from "@/lib/components";
 
-const Hamburger = ({ isMenuOpen, setIsMenuOpen, menuRef, menuButtonRef, mobileMenuRef }: HamburgerProps) => {
+const Hamburger: FC<HamburgerProps> = ({ isMenuOpen, setIsMenuOpen, menuRef, menuButtonRef, mobileMenuRef }) => {
   const { theme, setTheme } = useContext();
 
   useEffect(() => {
@@ -37,7 +38,7 @@ const Hamburger = ({ isMenuOpen, setIsMenuOpen, menuRef, menuButtonRef, mobileMe
 
   useEffect(() => {
     setIsMenuOpen(false);
-  }, [location.pathname, setIsMenuOpen]); // Location.pathname is used to close the menu when navigating to a new page
+  }, [location.pathname, setIsMenuOpen]); //* Location.pathname is used to close the menu when navigating to a new page
 
   return (
     <div
@@ -86,7 +87,7 @@ const Hamburger = ({ isMenuOpen, setIsMenuOpen, menuRef, menuButtonRef, mobileMe
         </Dropdown>
 
         <Dropdown title="Qr Code" classOverride="w-90">
-          <img src={QRCode} alt="QR code" className="w-full" />
+          <AssetImage imagePath={QRCode} alt="QR code" className="w-full" />
         </Dropdown>
       </nav>
     </div>

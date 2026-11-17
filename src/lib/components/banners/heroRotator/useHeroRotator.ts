@@ -1,10 +1,8 @@
-import { useCallback, useEffect, useMemo, useRef, useState, type MouseEvent as ReactMouseEvent, type PointerEvent as ReactPointerEvent, type TransitionEvent as ReactTransitionEvent } from "react";
-import { getFeaturedProjects, getRandomProjects } from "@/lib/helpers";
-import { siteConfig } from "@/data/siteConfig";
+import { useCallback, useEffect, useRef, useState, type MouseEvent as ReactMouseEvent, type PointerEvent as ReactPointerEvent, type TransitionEvent as ReactTransitionEvent } from "react";
+import type { ProjectEntry } from "@/lib/types";
+import { siteConfig } from "@/data";
 
-const AUTO_ROTATE_MS = 5000;
-
-export const useHeroRotator = () => {
+export const useHeroRotator = (projects: ProjectEntry[]) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [dragOffset, setDragOffset] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
@@ -16,7 +14,6 @@ export const useHeroRotator = () => {
   const suppressClickTimeout = useRef<number | null>(null);
   const viewportRef = useRef<HTMLDivElement | null>(null);
 
-  const projects = useMemo(() => getFeaturedProjects(siteConfig.options.heroRotatorNumProjects), []);
   const totalBanners = projects.length;
 
   const startNavigation = useCallback(
@@ -164,7 +161,7 @@ export const useHeroRotator = () => {
       }
 
       startNavigation(1);
-    }, AUTO_ROTATE_MS);
+    }, siteConfig.options.rotatorDelay);
 
     return () => {
       window.clearInterval(intervalId);

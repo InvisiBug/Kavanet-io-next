@@ -1,6 +1,7 @@
+import type { FC } from "react";
 import { LightMode, DarkMode } from "../../icons";
 
-const ThemeToggleButton = ({ theme, onToggle }: ThemeToggleButtonProps) => {
+const ThemeToggleButton: FC<ThemeToggleButtonProps> = ({ theme, onToggle }) => {
   const isDark = theme === "dark";
 
   return (

@@ -1,15 +1,17 @@
 import { Link } from "react-router-dom";
 import { HeroRotator, FullPictureCard, AboutMeCard, ErrorPage } from "@/lib/components";
-import { categoryMeta, workExperienceImageSrc, workExperienceSummary } from "@/data";
-import { getRandomProjectsByCategory } from "@/lib/helpers";
+import { categoryMeta, siteConfig, workExperienceImageSrc, workExperienceSummary } from "@/data";
+import { getFeaturedProjects, getRandomProjectsByCategory } from "@/lib/helpers";
 import type { CategoryKey } from "@/lib/types";
+import { useMemo } from "react";
 
 const categories = Object.keys(categoryMeta) as CategoryKey[];
 
 const HomePage = () => {
+  const projects = useMemo(() => getFeaturedProjects(siteConfig.options.heroRotatorNumProjects), []);
   return (
     <div className="grid gap-6">
-      <HeroRotator />
+      <HeroRotator projects={projects} />
       <AboutMeCard imageSrc={workExperienceImageSrc} blurb={workExperienceSummary} />
 
       <section className="grid grid-cols-1 md:grid-cols-[repeat(auto-fit,minmax(220px,1fr))] items-start gap-4" aria-label="Project categories">

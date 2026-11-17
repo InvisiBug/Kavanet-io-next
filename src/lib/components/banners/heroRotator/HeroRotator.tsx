@@ -1,26 +1,12 @@
+import react, { type FC } from "react";
 import HeroRotatorControls from "@/lib/components/banners/heroRotator/HeroRotatorControls";
 import HeroRotatorSlide from "@/lib/components/banners/heroRotator/HeroRotatorSlide";
 import { useHeroRotator } from "@/lib/components/banners/heroRotator/useHeroRotator";
+import type { ProjectEntry } from "@/lib/types";
 
-const HeroRotator = () => {
-  const {
-    activeIndex,
-    handleClickCapture,
-    handlePointerCancel,
-    handlePointerDown,
-    handlePointerMove,
-    handlePointerUp,
-    handleTransitionEnd,
-    isDragging,
-    isRepositioning,
-    projects,
-    selectProject,
-    slides,
-    trackTransform,
-    viewportRef,
-    goToNext,
-    goToPrevious,
-  } = useHeroRotator();
+const HeroRotator: FC<Props> = ({ projects }) => {
+  const { activeIndex, handleClickCapture, handlePointerCancel, handlePointerDown, handlePointerMove, handlePointerUp, handleTransitionEnd, isDragging, isRepositioning, selectProject, slides, trackTransform, viewportRef, goToNext, goToPrevious } =
+    useHeroRotator(projects);
 
   if (projects.length === 0) {
     return null;
@@ -42,3 +28,7 @@ const HeroRotator = () => {
 };
 
 export default HeroRotator;
+
+type Props = {
+  projects: ProjectEntry[];
+};

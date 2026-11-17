@@ -21,7 +21,7 @@ export const communityProjects: ProjectEntry[] = [
     tags: ["Dome", "Workshops"],
     imagePath: "/src/lib/images/community/slackfest2025.jpg",
     writeUpPath: "/src/content/writeups/community/slackfest2025/flowception-dome-slackfest-2025.md",
-    featured: false,
+    featured: true,
   },
   {
     slug: "bjc-2026-led-space",

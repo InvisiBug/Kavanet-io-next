@@ -1,6 +1,7 @@
 import { type ProjectEntry } from "@/lib/types";
+import type { FC } from "react";
 
-const Meta = ({ project }: { project: ProjectEntry }) => {
+const Meta: FC<Props> = ({ project }) => {
   return (
     <div className="px-4 pb-0 pt-3">
       <h3 className="m-0 text-(--text)">{project.title}</h3>
@@ -10,3 +11,7 @@ const Meta = ({ project }: { project: ProjectEntry }) => {
 };
 
 export default Meta;
+
+type Props = {
+  project: ProjectEntry;
+};

@@ -2,7 +2,7 @@ name: kavanet-io
 
 namespace: kavanet-io
 env:
-  APP_VERSION: 8235bdc1138c26839a80cdcb7a0a00e733c72068
+  APP_VERSION: 0e2f6286535722f9db93fcbb11ffa3fb56af47ab
 
 deployment:
   - name: kavanet-io

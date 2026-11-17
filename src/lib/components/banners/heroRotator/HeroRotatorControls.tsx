@@ -1,14 +1,7 @@
+import type { FC } from "react";
 import type { ProjectEntry } from "@/lib/types";
 
-interface HeroRotatorControlsProps {
-  projects: ProjectEntry[];
-  activeIndex: number;
-  onSelect: (index: number) => void;
-  onPrevious: () => void;
-  onNext: () => void;
-}
-
-const HeroRotatorControls = ({ projects, activeIndex, onSelect, onPrevious, onNext }: HeroRotatorControlsProps) => (
+const HeroRotatorControls: FC<HeroRotatorControlsProps> = ({ projects, activeIndex, onSelect, onPrevious, onNext }) => (
   <div className="hidden items-center justify-center gap-2 px-3 pt-3 pb-4 md:flex" role="group" aria-label="Banner navigation">
     <button
       type="button"
@@ -44,3 +37,11 @@ const HeroRotatorControls = ({ projects, activeIndex, onSelect, onPrevious, onNe
 );
 
 export default HeroRotatorControls;
+
+interface HeroRotatorControlsProps {
+  projects: ProjectEntry[];
+  activeIndex: number;
+  onSelect: (index: number) => void;
+  onPrevious: () => void;
+  onNext: () => void;
+}
