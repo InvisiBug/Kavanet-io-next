@@ -14,7 +14,7 @@ export const simulationProjects: ProjectEntry[] = [
   {
     slug: "dots",
     title: "Dots Simulation",
-    summary: "Moving dots that will make connections with others that are nearby, with some black hole disruptors thrown in.",
+    summary: "Moving dots that will make connections with others that are nearby, with some black hole attractors thrown in.",
     category: "simulations",
     simulationKey: "dots",
     imagePath: "/src/lib/images/simulations/dots.jpg",
@@ -49,7 +49,7 @@ export const simulationProjects: ProjectEntry[] = [
     category: "simulations",
     simulationKey: "circlePacking",
     imagePath: "/src/lib/images/simulations/circlePacking.jpg",
-    featured: true,
+    featured: false,
     // tags: ["Reliability", "Routing", "Modeling"],
   },
   {

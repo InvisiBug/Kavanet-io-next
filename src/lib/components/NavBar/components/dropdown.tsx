@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { siteConfig } from "@/data";
 
-const OtherSitesDropdown = ({ title, children }) => {
+const OtherSitesDropdown = ({ title, children, classOverride = "" }) => {
   const dropdownRef = useRef<HTMLDetailsElement | null>(null);
 
   useEffect(() => {
@@ -37,7 +37,7 @@ const OtherSitesDropdown = ({ title, children }) => {
           <path d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 11.12l3.71-3.9a.75.75 0 1 1 1.08 1.04l-4.25 4.47a.75.75 0 0 1-1.08 0L5.21 8.27a.75.75 0 0 1 .02-1.06Z" className="fill-current" />
         </svg>
       </summary>
-      {children}
+      <div className={`absolute ${classOverride} left-1/2 z-50 mt-2 min-w-48 -translate-x-1/2 rounded-xl border border-(--line) bg-(--surface) p-2 shadow-[0_12px_30px_rgba(12,21,43,0.14)] `}>{children}</div>
     </details>
   );
 };

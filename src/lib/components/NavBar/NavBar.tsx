@@ -5,6 +5,7 @@ import { siteConfig } from "@/data";
 import { useContext } from "@/lib/context";
 import { getToggledTheme } from "@/lib/helpers";
 import Hamburger from "./components/hamburger";
+import { MenuOpenIcon, MenuClosedIcon } from "@/lib/components";
 
 const SiteHeader = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -38,7 +39,7 @@ const SiteHeader = () => {
               onClick={() => setIsMenuOpen((open) => !open)}
             >
               <svg viewBox="0 0 24 24" className="h-5 w-5 fill-none stroke-current stroke-2" aria-hidden="true">
-                {isMenuOpen ? <path d="M6 6l12 12M18 6 6 18" strokeLinecap="round" /> : <path d="M4 7h16M4 12h16M4 17h16" strokeLinecap="round" />}
+                {isMenuOpen ? <MenuOpenIcon /> : <MenuClosedIcon />}
               </svg>
             </button>
           </div>
@@ -62,17 +63,15 @@ const SiteHeader = () => {
 
             {/* Other Sites */}
             <Dropdown title="Other Sites">
-              <div className="absolute left-1/2 z-50 mt-2 min-w-48 -translate-x-1/2 rounded-xl border border-(--line) bg-(--surface) p-2 shadow-[0_12px_30px_rgba(12,21,43,0.14)]">
-                <ul className="m-0 list-none p-0">
-                  {siteConfig.navBar.otherSites.map((site) => (
-                    <li key={site.url}>
-                      <a href={site.url} target="_blank" rel="noreferrer" className="block rounded-lg px-3 py-2 text-center text-[0.9rem] text-(--text-muted) no-underline transition hover:bg-(--surface-soft) hover:text-(--text)">
-                        {site.label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <ul className="m-0 list-none p-0">
+                {siteConfig.navBar.otherSites.map((site) => (
+                  <li key={site.url}>
+                    <a href={site.url} target="_blank" rel="noreferrer" className="block rounded-lg px-3 py-2 text-center text-[0.9rem] text-(--text-muted) no-underline transition hover:bg-(--surface-soft) hover:text-(--text)">
+                      {site.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </Dropdown>
 
             {/* Theme & Socials */}

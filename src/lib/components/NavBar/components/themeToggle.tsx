@@ -1,4 +1,4 @@
-import { LightMode, DarkMode } from "./icons";
+import { LightMode, DarkMode } from "../../icons";
 
 const ThemeToggleButton = ({ theme, onToggle }: ThemeToggleButtonProps) => {
   const isDark = theme === "dark";

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { HomeBannerRotator, FullPictureCard, AboutMeCard, ErrorPage } from "@/lib/components";
+import { HeroRotator, FullPictureCard, AboutMeCard, ErrorPage } from "@/lib/components";
 import { categoryMeta, workExperienceImageSrc, workExperienceSummary } from "@/data";
 import { getRandomProjectsByCategory } from "@/lib/helpers";
 import type { CategoryKey } from "@/lib/types";
@@ -9,7 +9,7 @@ const categories = Object.keys(categoryMeta) as CategoryKey[];
 const HomePage = () => {
   return (
     <div className="grid gap-6">
-      <HomeBannerRotator />
+      <HeroRotator />
       <AboutMeCard imageSrc={workExperienceImageSrc} blurb={workExperienceSummary} />
 
       <section className="grid grid-cols-1 md:grid-cols-[repeat(auto-fit,minmax(220px,1fr))] items-start gap-4" aria-label="Project categories">
