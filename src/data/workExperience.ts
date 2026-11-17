@@ -89,7 +89,7 @@ export const skillBadgeSections = [
 export const experience = [
   {
     company: "Sky Betting & Gaming",
-    imageSrc: "https://media.licdn.com/dms/image/v2/C4E0BAQENnxhTEshiSg/company-logo_400_400/company-logo_400_400/0/1674744112511/sky_betting_and_gaming_logo?e=1794441600&v=beta&t=VZ_mYwvLA0bnI2sPVGYzxh0fsh9XpJLFGaTQZvsKmHg",
+    imageSrc: "/src/lib/images/aboutMe/sky.jpeg",
     entries: [
       {
         period: "2020 - 2025",
@@ -108,7 +108,7 @@ export const experience = [
   },
   {
     company: "Core Control Solutions",
-    imageSrc: "https://media.licdn.com/dms/image/v2/C4E0BAQErkPB4fV2KWw/company-logo_400_400/company-logo_400_400/0/1678467847183/core_control_solutions_ltd_logo?e=1794441600&v=beta&t=Hpoh4yH0Yz6d5D5CcXsHZGoo_8GpHkbT4eurPliETok",
+    imageSrc: "/src/lib/images/aboutMe/core.jpeg",
     entries: [
       {
         period: "2019 - 2020",
@@ -128,7 +128,7 @@ export const experience = [
 export const education = [
   {
     company: "RWE AG",
-    imageSrc: "https://media.licdn.com/dms/image/v2/C4D0BAQHcUAokOSCKEg/company-logo_100_100/company-logo_100_100/0/1630568485840/rwe__logo?e=1794441600&v=beta&t=ykAL48aywo2YU-2GACHx9CComLIRyfWSSFoRpGLYtgo",
+    imageSrc: "/src/lib/images/aboutMe/rwe.jpeg",
     entries: [
       {
         title: "Graduate",
@@ -151,7 +151,7 @@ export const education = [
   },
   {
     company: "The University of Sheffield",
-    imageSrc: "https://media.licdn.com/dms/image/v2/D4E0BAQEORSKOZDnu4A/company-logo_100_100/company-logo_100_100/0/1667299950450/university_of_sheffield_logo?e=1794441600&v=beta&t=EJnzX2eMt0rpEEm1GGU5gWB2lzvyx3T95sF2GrEqC3c",
+    imageSrc: "/src/lib/images/aboutMe/uni.jpeg",
     entries: [
       {
         title: "Student",
@@ -163,7 +163,7 @@ export const education = [
   },
   {
     company: "RWE Npower",
-    imageSrc: "https://images.ctfassets.net/fxmb2pqc184n/5f1WNsExHMyclbmrAU1h3Y/d9759a20a20e5f6712dc682f96afe2a6/np-primary-white-logo-RGB-400px.png",
+    imageSrc: "/src/lib/images/aboutMe/npower.png",
     entries: [
       {
         period: "2008 - 2012",
