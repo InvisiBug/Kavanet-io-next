@@ -36,7 +36,7 @@ export const MarkdownLink = ({ href = "", children, ...props }: ComponentPropsWi
     return (
       <a
         href={href}
-        className="my-3 flex max-w-1/3 items-center gap-3 rounded-lg border border-(--line) bg-(--surface-soft) px-3 py-2.5 text-(--text) no-underline transition hover:border-(--accent)/50 hover:bg-(--surface)"
+        className="my-3 flex max-w-100 md:max-w-1/3 items-center gap-3 rounded-lg border border-(--line) bg-(--surface-soft) px-3 py-2.5 text-(--text) no-underline transition hover:border-(--accent)/50 hover:bg-(--surface)"
         target="_blank"
         rel="noreferrer"
         {...props}
