@@ -1,4 +1,5 @@
 # Overview
+![LED Space Intro](./led-space.mp4)
 BJC 2026 LED Space was created by the Flowception crew and I was the one who sorted the technical aspects of the space.
 
 The plan was to make an LED space that we'd want to spin in, and we definitely achieved that.
@@ -6,7 +7,7 @@ The plan was to make an LED space that we'd want to spin in, and we definitely a
 The space had a series of DMX lights around the outside (to provide the background lighting), some LED columns (too add some fancy LED elements) and the LED "archways" that we didn't use as arches but instead used the to provide light directed into the space instead of just around.
 
 ## Components
-- 5 x 3D printed LED columns
+- 5 x [3D printed LED columns](http://localhost:5173/personal/led-columns)
 - 5 x LED archway
 - An interactive projection that used a kinect as a 3d camera
 - A bunch of other DMX lights
@@ -29,7 +30,7 @@ Using the Kinect as an input to a bunch of Touch Designer
 ### LED Towers & Arches
 The towers and arches ran off an ESP32 micro controller running WLED, which can take receive Art-Net instructions over WiFi
 
-I have a detailed writeup of the LED towers [here](http://localhost:5173/personal/led-columns)
+I have a detailed write up of the LED towers [here](http://localhost:5173/personal/led-columns)
 
 ### Background Lights
 The background lights were simply controlled by DMX which works by chaining all the lights together with one data cable
@@ -55,6 +56,9 @@ Inputs
 
 The computer set up was pretty cool, I had a desktop PC running TouchDesigner with the controllers and the projector connected to it and then had a KV M connected to the same computer and all the wireless gear. I then remote into this KV M from another machine which effectively meant that there was a "backstage computer" that was running everything with a lightweight computer being used to act as the screen needed for any adjustment.
 
-
-## Outcome
-The project established a robust framework for future community events using scalable LED installations.
+## Touch designer
+This project was very complicated and had a bunch of different data input streams, if one aspect of the project would crash then all data streams would also crash and everything would break. The only way around this was to create modules that dealt with the inputs and pass it to a composer module that would deal with running everything. That way, if one data stream were to go down everything else would keep running and only that data stream would need to be rebooted.
+The following are the different modules I made
+* Midi controllers
+* Kinect streams
+*
