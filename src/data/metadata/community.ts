@@ -8,8 +8,8 @@ export const communityProjects: ProjectEntry[] = [
     category: "community",
     date: "2024-06-01",
     tags: ["LED"],
-    imagePath: "/src/lib/images/community/EJC clubs.jpg",
-    writeUpPath: "/src/content/writeups/community/ejcClubs/ejc-clubs-2024.md",
+    imagePath: "@/lib/images/community/EJC clubs.jpg",
+    writeUpPath: "@/content/writeups/community/ejcClubs/ejc-clubs-2024.md",
     featured: false,
   },
   {
@@ -19,8 +19,8 @@ export const communityProjects: ProjectEntry[] = [
     category: "community",
     date: "2025-08-01",
     tags: ["Dome", "Workshops"],
-    imagePath: "/src/lib/images/community/slackfest2025.jpg",
-    writeUpPath: "/src/content/writeups/community/slackfest2025/flowception-dome-slackfest-2025.md",
+    imagePath: "@/lib/images/community/slackfest2025.jpg",
+    writeUpPath: "@/content/writeups/community/slackfest2025/flowception-dome-slackfest-2025.md",
     featured: true,
   },
   {
@@ -30,8 +30,8 @@ export const communityProjects: ProjectEntry[] = [
     category: "community",
     date: "2026-05-01",
     tags: ["LED", "TouchDesigner"],
-    imagePath: "/src/lib/images/community/BJC LED space.jpg",
-    writeUpPath: "/src/content/writeups/community/bjc2026/bjc-2026-led-space.md",
+    imagePath: "@/lib/images/community/BJC LED space.jpg",
+    writeUpPath: "@/content/writeups/community/bjc2026/bjc-2026-led-space.md",
     featured: false,
   },
   {
@@ -41,8 +41,8 @@ export const communityProjects: ProjectEntry[] = [
     category: "community",
     date: "2024-05-01",
     tags: ["Fire"],
-    imagePath: "/src/lib/images/community/fireJams.jpg",
-    writeUpPath: "/src/content/writeups/community/fireJams/fire-jams.md",
+    imagePath: "@/lib/images/community/fireJams.jpg",
+    writeUpPath: "@/content/writeups/community/fireJams/fire-jams.md",
     featured: false,
   },
 ];

@@ -1,11 +1,12 @@
 export const getMarkdownContent = (path: string): string | null => {
-  const markdown = markdownModules[path];
+  const normalizedPath = path.startsWith("@/") ? `/src/${path.slice(2)}` : path; //* 🌀:1
+  const markdown = markdownModules[normalizedPath];
 
   if (!markdown) {
     return null;
   }
 
-  return resolveRelativeMarkdownImages(ignoreMarkdownComments(markdown), path);
+  return resolveRelativeMarkdownImages(ignoreMarkdownComments(markdown), normalizedPath);
 };
 
 const ignoreMarkdownComments = (markdown: string): string => markdown.replace(/<!--[\s\S]*?-->/g, "");

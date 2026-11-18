@@ -86,7 +86,7 @@ const Hamburger: FC<HamburgerProps> = ({ isMenuOpen, setIsMenuOpen, menuRef, men
         </Dropdown>
 
         <Dropdown title="Qr Code" classOverride="w-90">
-          <AssetImage imagePath="/src/lib/images/qr-code.png" alt="QR code" className="w-full" />
+          <AssetImage imagePath={siteConfig.qrCode} alt="QR code" className="w-full" />
         </Dropdown>
       </nav>
     </div>
