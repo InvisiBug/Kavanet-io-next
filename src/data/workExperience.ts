@@ -8,7 +8,6 @@ export const workExperienceSummary = `
 
     I spent some time travelling in south east Asia and lived in Hongkong for about a year and a half.`;
 
-// export const workExperienceImageSrc = workExperienceImage;
 export const workExperienceImageSrc = "@/lib/images/me.jpg";
 
 export const skillBadgeSections = [
