@@ -7,13 +7,16 @@ interface AssetImageProps extends Omit<ComponentPropsWithoutRef<"img">, "src"> {
 }
 
 const AssetImage = ({ imagePath, ...imageProps }: AssetImageProps) => {
-  if (!imagePath || imagePath === null) {
+  const isDirectUrl = imagePath?.startsWith("https://") || imagePath?.startsWith("data:") || imagePath?.includes("/assets/");
+
+  const resolvedSrc = imagePath ? (isDirectUrl ? imagePath : getProjectImageSrc(imagePath)) : null;
+
+  if (!imagePath) {
+    console.warn("AssetImage: No imagePath provided.");
     return null;
   }
 
-  const src = imagePath.startsWith("https://") ? imagePath : getProjectImageSrc(imagePath);
-
-  return src ? <img {...imageProps} src={src} /> : null;
+  return resolvedSrc ? <img {...imageProps} src={resolvedSrc} /> : null;
 };
 
 export default AssetImage;
