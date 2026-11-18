@@ -8,3 +8,5 @@ However, after each generation:
 - Their movement sequences are combined to create new rockets.
 - Small random mutations introduce new movements.
 Over time, the population should learn to navigate towards the target.
+
+Click on the canvas to reposition the moon

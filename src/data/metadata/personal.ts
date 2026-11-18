@@ -32,6 +32,16 @@ export const personalProjects: ProjectEntry[] = [
     writeUpPath: "@/content/writeups/personal/ledColumns/led-columns.md",
     featured: true,
   },
+  {
+    slug: "staff-db",
+    title: "Contact Staff DB",
+    summary: "A database of staff moves I created as a sort of training library",
+    category: "personal",
+    tags: ["3D Printing", "LEDs", "TouchDesigner"],
+    imagePath: "@/lib/images/personal/staffDB.jpg",
+    writeUpPath: "@/content/writeups/personal/staffDB/staff-db.md",
+    featured: true,
+  },
   // {
   //   slug: "staff-bag",
   //   title: "Staff Bag",

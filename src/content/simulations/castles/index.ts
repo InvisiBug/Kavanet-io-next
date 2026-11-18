@@ -139,7 +139,7 @@ export const sketch = (p5: p5) => {
         break;
 
       case "x":
-        console.log(config.colours);
+        // console.log(config.colours);
         break;
     }
   };
@@ -152,7 +152,7 @@ export const sketch = (p5: p5) => {
   };
 
   p5.mouseDragged = () => {
-    console.log(p5.mouseX, p5.mouseY);
+    // console.log(p5.mouseX, p5.mouseY);
   };
 };
 

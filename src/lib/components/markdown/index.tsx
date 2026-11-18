@@ -20,7 +20,8 @@ const markdownComponents: Components = {
 
 const MarkdownContent: FC<MarkdownContentProps> = ({ markdown }) => {
   return (
-    <article className="rounded-2xl border border-(--line) bg-(--surface) p-5">
+    // <article className="rounded-2xl border border-(--line) bg-(--surface) p-5">
+    <article className="rounded-2xl bg-(--surface) p-5">
       <ReactMarkdown components={markdownComponents} remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
         {markdown}
       </ReactMarkdown>
