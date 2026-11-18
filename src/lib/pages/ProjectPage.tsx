@@ -12,6 +12,7 @@ const ProjectPage: FC = () => {
   }
 
   const markdown = project?.writeUpPath && getMarkdownContent(project?.writeUpPath);
+  console.log("🚀 ~ ProjectPage ~ markdown:", markdown);
   const simulationSketch = project.simulationKey ? simLoader[project.simulationKey] : null;
 
   return (

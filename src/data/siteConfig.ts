@@ -3,6 +3,7 @@ export const siteConfig = {
   role: "Builder of projects, systems, and simulations",
   headline: "A living portfolio of what I build and learn",
   subheadline: "Explore personal projects, community builds, and system simulations. Each project page is authored in markdown so it is easy to maintain and expand.",
+  qrCode: "@/lib/images/qr-code.png",
   navBar: {
     socialLinks: [
       { name: "github", label: "GitHub", url: "https://github.com/invisibug" },

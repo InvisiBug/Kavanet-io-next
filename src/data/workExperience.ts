@@ -9,7 +9,8 @@ export const workExperienceSummary = `I'm an experienced Web Developer with my m
 
     I spent some time travelling in south east Asia and lived in Hongkong for about a year and a half.`;
 
-export const workExperienceImageSrc = workExperienceImage;
+// export const workExperienceImageSrc = workExperienceImage;
+export const workExperienceImageSrc = "/src/lib/images/me.jpg";
 
 export const skillBadgeSections = [
   {

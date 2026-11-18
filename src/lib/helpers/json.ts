@@ -98,6 +98,9 @@ export const getRandomProject = (excludeSlug?: string): ProjectEntry | undefined
   return pool[index];
 };
 
+// Vite doesn't allow dynamic imports of assets, so we use import.meta.glob to create a mapping of image paths to their resolved URLs.
+// This allows us to retrieve the correct URL for an image based on its path in the project structure.
+// Images are created in the assets folder on build and this creates a map thats later compared to when the image is loaded
 export const getProjectImageSrc = (path: string): string | null => {
   if (!imageModules[path]) {
     console.log("An image tried to show but failed:", path);

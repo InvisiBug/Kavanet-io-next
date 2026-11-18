@@ -11,10 +11,10 @@ const HomePage = () => {
   const projects = useMemo(() => getFeaturedProjects(siteConfig.options.heroRotatorNumProjects), []);
   return (
     <div className="grid gap-6">
-      <HeroRotator projects={projects} />
+      {/* <HeroRotator projects={projects} /> */}
       <AboutMeCard imageSrc={workExperienceImageSrc} blurb={workExperienceSummary} />
 
-      <section className="grid grid-cols-1 md:grid-cols-[repeat(auto-fit,minmax(220px,1fr))] items-start gap-4" aria-label="Project categories">
+      {/* <section className="grid grid-cols-1 md:grid-cols-[repeat(auto-fit,minmax(220px,1fr))] items-start gap-4" aria-label="Project categories">
         {categories.map((category) => {
           const project = getRandomProjectsByCategory(category, 1);
           const categoryMetaData = categoryMeta[category];
@@ -31,7 +31,7 @@ const HomePage = () => {
             </article>
           );
         })}
-      </section>
+      </section> */}
     </div>
   );
 };
