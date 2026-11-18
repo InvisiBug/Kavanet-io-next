@@ -14,11 +14,12 @@ export const MarkdownParagraph: FC<ComponentPropsWithoutRef<"p">> = ({ children,
 
   if (onlyImages && images.length > 1) {
     return (
-      <div className="mt-4 mb-1 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4 lg:gap-5">
+      // <div className="mt-4 mb-1 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4 lg:gap-5">
+      <div className="mt-4 mb-1 flex flex-wrap items-stretch gap-3 sm:gap-4">
         {images.map((image, index) =>
           cloneElement(image, {
             key: image.key ?? `markdown-grid-image-${index}`,
-            className: "block w-full rounded-xl border border-(--line) bg-[#f8f9fd] object-cover",
+            className: "block min-w-0 flex-1 basis-[calc(50%-0.375rem)] rounded-xl border border-(--line) bg-[#f8f9fd] object-cover sm:basis-[calc(25%-0.75rem)]",
           }),
         )}
       </div>
