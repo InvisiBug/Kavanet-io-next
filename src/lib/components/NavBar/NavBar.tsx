@@ -4,7 +4,7 @@ import { SocialIconLink, Dropdown, ThemeToggleButton } from "./components";
 import { siteConfig } from "@/data";
 import { useContext } from "@/lib/context";
 import { getToggledTheme } from "@/lib/helpers";
-import Hamburger from "./components/hamburger";
+import Hamburger from "./components/Hamburger";
 import { MenuOpenIcon, MenuClosedIcon } from "@/lib/components";
 
 const SiteHeader: FC = () => {

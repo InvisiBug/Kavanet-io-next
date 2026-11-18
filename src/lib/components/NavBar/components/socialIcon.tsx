@@ -1,5 +1,5 @@
 import type { FC, ReactNode } from "react";
-import { Github, LinkedIn, Instagram, Etsy } from "../../icons";
+import { Github, LinkedIn, Instagram, Etsy } from "../../Icons";
 
 const SocialIconLink: FC<SocialIconLinkProps> = ({ href, label, name }) => {
   return (

@@ -44,5 +44,6 @@ export const communityProjects: ProjectEntry[] = [
     imagePath: "@/lib/images/community/fireJams.jpg",
     writeUpPath: "@/content/writeups/community/fireJams/fire-jams.md",
     featured: false,
+    display: false,
   },
 ];
