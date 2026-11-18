@@ -1,6 +1,7 @@
 # Twiddlesticks
 This is my personal website I'm using as a form of CV / project showcase
 
+
 ## Tech used
 ![React](https://img.shields.io/badge/React-20232a?&logo=react&logoColor=61DAFB)
 ![React Router](https://img.shields.io/badge/Reactrouter-CA4245?&logo=react&logoColor=white)
@@ -11,3 +12,5 @@ This is my personal website I'm using as a form of CV / project showcase
 ![Argo](https://img.shields.io/badge/Argo-EF7B4D?logo=argo&logoColor=white)
 ![Helm](https://img.shields.io/badge/Helm-0F1689?logo=helm)
 ![Github Actions](https://img.shields.io/badge/GithubActions-20232a?&logo=githubactions&logoColor=2088FF)
+
+![Site](/src/lib/images/site.jpg)
