@@ -4,13 +4,13 @@ export const communityProjects: ProjectEntry[] = [
   {
     slug: "ejc-clubs-2024",
     title: "EJC Clubs 2024",
-    summary: "Giant LED clubs that were part of a set backdrop",
+    summary: "Giant LED clubs that were part of the stage at the EJC Gire Gala 2024",
     category: "community",
     date: "2024-06-01",
-    tags: ["LED"],
+    tags: ["LED", "Circus"],
     imagePath: "@/lib/images/community/EJC clubs.jpg",
     writeUpPath: "@/content/writeups/community/ejcClubs/ejc-clubs-2024.md",
-    featured: false,
+    featured: true,
   },
   {
     slug: "flowception-dome-slackfest-2025",

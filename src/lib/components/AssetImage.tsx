@@ -8,11 +8,9 @@ interface AssetImageProps extends Omit<ComponentPropsWithoutRef<"img">, "src"> {
 
 const AssetImage = ({ imagePath, ...imageProps }: AssetImageProps) => {
   const normalizedImagePath = imagePath?.startsWith("@/") ? `/src/${imagePath.slice(2)}` : imagePath; //* 🌀:1
-  const isDirectUrl = normalizedImagePath?.startsWith("https://") || normalizedImagePath?.startsWith("data:") || normalizedImagePath?.includes("/assets/");
-  console.log("🚀 ~ AssetImage ~ isDirectUrl:", isDirectUrl);
 
+  const isDirectUrl = normalizedImagePath?.startsWith("https://") || normalizedImagePath?.startsWith("data:") || normalizedImagePath?.includes("/assets/");
   const resolvedSrc = normalizedImagePath ? (isDirectUrl ? normalizedImagePath : getProjectImageSrc(normalizedImagePath)) : null;
-  console.log("🚀 ~ AssetImage ~ resolvedSrc:", resolvedSrc);
 
   if (!imagePath) {
     console.warn("AssetImage: No imagePath provided.");

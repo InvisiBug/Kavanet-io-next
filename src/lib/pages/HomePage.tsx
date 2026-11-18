@@ -12,7 +12,9 @@ const HomePage = () => {
   return (
     <div className="grid gap-6">
       <HeroRotator projects={projects} />
-      <AboutMeCard imageSrc={workExperienceImageSrc} blurb={workExperienceSummary} />
+      <div className="hidden sm:block">
+        <AboutMeCard imageSrc={workExperienceImageSrc} blurb={workExperienceSummary} />
+      </div>
 
       <section className="grid grid-cols-1 md:grid-cols-[repeat(auto-fit,minmax(220px,1fr))] items-start gap-4" aria-label="Project categories">
         {categories.map((category) => {
