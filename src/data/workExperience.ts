@@ -1,6 +1,5 @@
-import workExperienceImage from "@/lib/images/me.jpg";
-
-export const workExperienceSummary = `I'm an experienced Web Developer with my main focus being frontend development with hands-on experience in backend development, hosting, and infrastructure.
+export const workExperienceSummary = `
+    I'm an experienced Web Developer with my main focus being frontend development with hands-on experience in backend development, hosting, and infrastructure.
 
     In my free time I design and build many different things including websites, 3D models, electronic projects and larger community events.
     I have been a passionate photographer for many years and take photos at various events.
@@ -10,7 +9,7 @@ export const workExperienceSummary = `I'm an experienced Web Developer with my m
     I spent some time travelling in south east Asia and lived in Hongkong for about a year and a half.`;
 
 // export const workExperienceImageSrc = workExperienceImage;
-export const workExperienceImageSrc = "/src/lib/images/me.jpg";
+export const workExperienceImageSrc = "@/lib/images/me.jpg";
 
 export const skillBadgeSections = [
   {
@@ -90,7 +89,7 @@ export const skillBadgeSections = [
 export const experience = [
   {
     company: "Sky Betting & Gaming",
-    imageSrc: "/src/lib/images/aboutMe/sky.jpeg",
+    imageSrc: "@/lib/images/aboutMe/sky.jpeg",
     entries: [
       {
         period: "2020 - 2025",
@@ -109,7 +108,7 @@ export const experience = [
   },
   {
     company: "Core Control Solutions",
-    imageSrc: "/src/lib/images/aboutMe/core.jpeg",
+    imageSrc: "@/lib/images/aboutMe/core.jpeg",
     entries: [
       {
         period: "2019 - 2020",
@@ -129,7 +128,7 @@ export const experience = [
 export const education = [
   {
     company: "RWE AG",
-    imageSrc: "/src/lib/images/aboutMe/rwe.jpeg",
+    imageSrc: "@/lib/images/aboutMe/rwe.jpeg",
     entries: [
       {
         title: "Graduate",
@@ -152,7 +151,7 @@ export const education = [
   },
   {
     company: "The University of Sheffield",
-    imageSrc: "/src/lib/images/aboutMe/uni.jpeg",
+    imageSrc: "@/lib/images/aboutMe/uni.jpeg",
     entries: [
       {
         title: "Student",
@@ -164,7 +163,7 @@ export const education = [
   },
   {
     company: "RWE Npower",
-    imageSrc: "/src/lib/images/aboutMe/npower.png",
+    imageSrc: "@/lib/images/aboutMe/npower.png",
     entries: [
       {
         period: "2008 - 2012",
