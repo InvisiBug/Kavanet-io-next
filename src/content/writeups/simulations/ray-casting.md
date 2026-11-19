@@ -1,1 +1,0 @@
-The entities move about randomly and cast a series of rays outwards all around themselves. When these rays hit a wall a point is drawn where they intersect and the ray is stopped 
