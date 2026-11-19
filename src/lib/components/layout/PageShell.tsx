@@ -1,6 +1,6 @@
 import type { PropsWithChildren } from "react";
 import { useLocation } from "react-router-dom";
-import { SiteHeader } from "@/lib/components";
+import { NavBar } from "@/lib/components";
 
 const PageShell = ({ children }: PropsWithChildren) => {
   const location = useLocation();
@@ -8,7 +8,7 @@ const PageShell = ({ children }: PropsWithChildren) => {
 
   return (
     <div className={["page-shell min-h-screen", isLightboxEnabledRoute ? "lightbox-enabled" : ""].join(" ")}>
-      <SiteHeader />
+      <NavBar />
       <main className="mx-auto w-[min(1120px,calc(100%-2rem))] px-0 pt-5 pb-12 max-[680px]:w-[min(1120px,calc(100%-1rem))]">{children}</main>
     </div>
   );
