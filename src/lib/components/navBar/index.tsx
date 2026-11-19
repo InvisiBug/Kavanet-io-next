@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState, type FC } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import { SocialIconLink, Dropdown, ThemeToggleButton } from "./components";
+import { SocialIconLink, Dropdown, ThemeToggleButton, Hamburger } from "./components";
 import { siteConfig } from "@/data";
 import { useContext } from "@/lib/context";
 import { getToggledTheme } from "@/lib/helpers";
-import Hamburger from "./components/hamburger";
+
 import { MenuOpenIcon, MenuClosedIcon } from "@/lib/components";
 
 const SiteHeader: FC = () => {

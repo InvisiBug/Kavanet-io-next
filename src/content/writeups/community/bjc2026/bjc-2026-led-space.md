@@ -1,5 +1,5 @@
 # Overview
-![LED Space Intro](./led-space.mp4)
+![LED Space Intro](./videos/led-space.mp4)
 BJC 2026 LED Space was created by the Flowception crew and I was the one who sorted the technical aspects of the space.
 
 The plan was to make an LED space that we'd want to spin in, and we definitely achieved that.
@@ -7,7 +7,7 @@ The plan was to make an LED space that we'd want to spin in, and we definitely a
 The space had a series of DMX lights around the outside (to provide the background lighting), some LED columns (too add some fancy LED elements) and the LED "archways" that we didn't use as arches but instead used the to provide light directed into the space instead of just around.
 
 ## Components
-- 5 x [3D printed LED columns](http://localhost:5173/personal/led-columns)
+- 5 x [3D printed LED columns](https://kavanet.io/personal/led-columns)
 - 5 x LED archway
 - An interactive projection that used a kinect as a 3d camera
 - A bunch of other DMX lights
@@ -30,7 +30,7 @@ Using the Kinect as an input to a bunch of Touch Designer
 ### LED Towers & Arches
 The towers and arches ran off an ESP32 micro controller running WLED, which can take receive Art-Net instructions over WiFi
 
-I have a detailed write up of the LED towers [here](http://localhost:5173/personal/led-columns)
+I have a detailed write up of the LED towers [here](https://kavanet.io/personal/led-columns)
 
 ### Background Lights
 The background lights were simply controlled by DMX which works by chaining all the lights together with one data cable
@@ -42,8 +42,14 @@ In the end I decided to track an image of someone juggling different coloured ba
 
 
 
+![Modules](./images/modules.jpg)
 
-![video](./towersAndArches.mp4)
+![IO](./images/io.jpg)
+
+
+
+
+![video](./videos/towersAndArches.mp4)
 
 
 <!-- ![towers](./tower.jpg) -->

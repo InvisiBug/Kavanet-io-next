@@ -3,7 +3,7 @@ services:
     image: kavanet-io
     build:
       context: .
-      dockerfile: ./Dockerfile.local
+      dockerfile: ./Dockerfile.argo.live
     # environment:
       # NODE_ENV: production
     ports:

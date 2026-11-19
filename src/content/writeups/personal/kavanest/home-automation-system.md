@@ -11,7 +11,7 @@ The system, I’m calling KavaNest is a zone based heating system that controls 
 
 - Every room can be heated independently of the others
 - A central place to control various lights around my house
-- Act as a timer for my heated mattress in the winter
+- Act as a timer for my heated blanket in the winter
 - Historical data viewable in Grafana
 - A way to access my computer when I'm away from home
 - All built and run internally to my home network, no phoning home to nasty companies that will sell your data
@@ -23,13 +23,13 @@ Each room has a temperature sensor and a thermostatic radiator valve which allow
 ## The components of the system
 
 - Physical devices like temperature sensors and radiator valves connect to my home wifi and communicate via MQTT.
-- A Node.js app listens to the MQTT messages and updates a mongo store thats keeps track of the state of the system, this app also sends push messages to the client when something changes.
+- A Node.js app listens to the MQTT messages and updates a mongo store that's keeps track of the state of the system, this app also sends push messages to the client when something changes.
 - A GraphQL API is used to interface with the system which reads and updates the data in the mongo store along with communicating with the physical devices via the MQTT network.
 - Another Node.js app acts at the automation controller for the system. It uses the GraphQL API to read the current system state and update anything that needs changing like radiator valves.
 - A React client app is used to interact with the system, which has been designed for mobile and desktop use. The client app mainly uses the GraphQL API, along with push messages that are sent to the client, via a web socket connection, every time something changes with the system.
 - There is a Grafana dashboard that trends various data points like room temperatures and radiator valve states. This historical data has proven useful for optimising the system, and diagnosing issues if anything strange is happening. Prometheus is used to monitor the different Raspberry Pi’s in my cluster as well as some other devices all of which have their own status dashboard.
 - Along side all of this is a test environment with a simulator that replicates the physical devices. This test environment is used when I want to try out new features, this way I won’t have to go without heating when I break something.
-- The system is fully dockerized and is capable of being run on pretty much any platform. I have it running on my K3s cluster consisting of 3 Raspberry Pi 4Bs. Running things locally means that everything will work so long as the wifi signal is present, with no need for internet access and no company selling your data.
+- The system is fully dockerized and capable of being run on pretty much any platform. I have it running on my K3s cluster consisting of 3 Raspberry Pi 4Bs. Running things locally means that everything will work so long as the wifi signal is present, with no need for internet access and no company selling your data.
 
 # The React app
 
@@ -86,7 +86,7 @@ Have a look at the above repo for more info.
 
 [https://github.com/InvisiBug/kavanest-grafana](https://github.com/InvisiBug/kavanest-grafana)
 
-I created a grafana dashboard as a way of viewing historical data, which has come in handy more than a few times when something goes wrong. Its also cool to see whats been happening over time.
+I created a grafana dashboard as a way of viewing historical data, which has come in handy more than a few times when something goes wrong. Its also cool to see what's been happening over time.
 
 I also setup some prometheus monitoring for the nodes in my cluster with an email notification if anything goes wrong.
 

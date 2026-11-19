@@ -1,5 +1,5 @@
 import type { ComponentPropsWithoutRef, FC } from "react";
-import AssetImage from "../../AssetImage";
+import AssetImage from "../../assetImage";
 
 export const MarkdownImage: FC<ComponentPropsWithoutRef<"img">> = ({ className, src = "", alt = "", ...props }) => {
   if (/\.(mp4|webm|mov)(?:$|[?#])/i.test(src)) {

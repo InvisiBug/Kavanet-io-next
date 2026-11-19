@@ -9,7 +9,7 @@ The clubs were made from some thin laser cut mdf with a pattern made by one of t
 
 The clubs were programmed with [WLED](https://kno.wled.ge/) which is pretty much the best LED software for micro controllers. It has loads of built in effects and can connect to each other via WiFi and be synced together. They can also receive a signal via [art-net](https://art-net.org.uk/), which is what most stage lighting control software uses.
 
-We used [xLights](https://xlights.org/) to control the coordination of the lights, which was originally made for people to control insane christmas light shows. It made syncing the club effects to music super easy and came with its own effects to choose from.
+We used [xLights](https://xlights.org/) to coordinate the lights, which was originally made for people to control insane christmas light shows. It made syncing the club effects to music super easy and came with its own effects to choose from.
 
 The whole system works really well and the clubs look really impressive. They've been used at loads of events and my friend who organised the whole thing has them set up in their house and uses them as ambient lights, controlled by WLED.
 

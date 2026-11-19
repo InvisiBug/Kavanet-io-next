@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { siteConfig } from "@/data";
 import { useContext } from "@/lib/context";
 import { getToggledTheme } from "@/lib/helpers";
-import { Dropdown, ThemeToggleButton } from "./";
+import { Dropdown, ThemeToggleButton } from ".";
 import { AssetImage } from "@/lib/components";
 
 const Hamburger: FC<HamburgerProps> = ({ isMenuOpen, setIsMenuOpen, menuRef, menuButtonRef, mobileMenuRef }) => {

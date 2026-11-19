@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { type ProjectEntry } from "@/lib/types";
-import AssetImage from "../AssetImage";
-import Meta from "./Meta";
+import AssetImage from "../assetImage";
+import Meta from "./meta";
 import type { FC } from "react";
 
 const FullPictureCard: FC<FeaturedCardProps> = ({ project }) => {

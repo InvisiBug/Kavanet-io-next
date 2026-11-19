@@ -1,10 +1,10 @@
 <img src="./images/columns.jpg" alt="drawing" style="width:100%"/>
 
-These are some columns I made for the BJC LED Space 2026.
+These are the columns I made for the BJC LED Space 2026.
 
-Each column has an ESP32 running W-LED that controls a strip of LEDs running down the middle which is made from EVA foam with some light weight mesh to act as a diffuser. There are 2kg dumbbell weights in the base to help the lights stay upright incase they are knocked.
+Each column has an ESP32 running W-LED that controls a strip of LEDs running down the middle, which is made from EVA foam with some light weight mesh to act as a diffuser. There's a 2kg dumbbell weight in the base to help the lights stay upright in case they are knocked.
 
-I designed the battery holder to make it super easy to connect everything, so battery slides into a slot and connects automatically. Ive had to deal with messy connectors for too long so I wanted to make things as easy as possible this time
+I designed the battery holder to make it super easy to connect everything, so the battery slides into a slot and connects automatically. Ive had to deal with messy connectors for too long so I wanted to make things as easy as possible this time
 
 ## 3D Printed Parts
 ### Foam
@@ -32,4 +32,4 @@ The base was quite simple. Its got a spot for 3 wooden dowels to act as legs, wh
 <img src="./images/baseModule.jpg" alt="drawing" style="width:500px;"/>
 
 ## Final Thoughts
-The completed columns are pretty cool and act as a nice lighting accent for a space (they dont give off enough light to be considered an actual lamp). The foam is too fragile and becomes annoying for transport and the top cap comes off too easy so I need to come up with a mechanical way of fixing the 3D printed parts to the foam instead of relying on friction
+The completed columns are pretty cool and act as a nice lighting accent for a space (they don't give off enough light to be considered an actual lamp). The foam is too fragile and becomes annoying for transport and the top cap comes off too easy so I need to come up with a mechanical way of fixing the 3D printed parts to the foam instead of relying on friction

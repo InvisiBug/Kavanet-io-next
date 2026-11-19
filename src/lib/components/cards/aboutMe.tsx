@@ -1,5 +1,5 @@
 import type { FC, ReactNode } from "react";
-import AssetImage from "../AssetImage";
+import AssetImage from "../assetImage";
 
 const AboutMe: FC<AboutMeProps> = ({ imageSrc, blurb }) => {
   return (

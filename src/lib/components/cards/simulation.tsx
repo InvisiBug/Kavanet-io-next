@@ -2,7 +2,7 @@ import type { FC } from "react";
 import { Link } from "react-router-dom";
 import { P5Canvas, simLoader } from "@/lib/components";
 import { type ProjectEntry } from "@/lib/types";
-import Meta from "./Meta";
+import Meta from "./meta";
 
 const SimulationCard: FC<SimulationCardProps> = ({ project }) => {
   return (
