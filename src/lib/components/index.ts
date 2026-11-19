@@ -8,7 +8,7 @@ export { default as PageShell } from "./layout/PageShell";
 export { default as ErrorPage } from "./errorPages";
 export { default as ExperienceDetails } from "./ExperienceDetails";
 
-export { default as SiteHeader } from "./navBar";
+export { default as NavBar } from "./navBar";
 export { default as ScrollToTop } from "./ScrollToTop";
 export * from "./Icons";
 
