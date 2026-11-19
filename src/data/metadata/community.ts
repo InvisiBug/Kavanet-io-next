@@ -4,7 +4,7 @@ export const communityProjects: ProjectEntry[] = [
   {
     slug: "ejc-clubs-2024",
     title: "EJC Clubs 2024",
-    summary: "Giant LED clubs that were part of the stage at the EJC Gire Gala 2024",
+    summary: "Giant LED clubs that were part of the stage at the EJC Fire Gala 2024",
     category: "community",
     date: "2024-06-01",
     tags: ["LED", "Circus"],
