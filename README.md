@@ -1,4 +1,4 @@
-# Twiddlesticks
+# Kavanet.io
 This is my personal website I'm using as a form of CV / project showcase
 
 
