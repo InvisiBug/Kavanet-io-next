@@ -1,4 +1,4 @@
-import type { SketchFactory } from "@/lib/components/P5Canvas";
+import type { SketchFactory } from "@/lib/components/p5Canvas";
 import type { SimulationKey } from "@/lib/types";
 
 import { sketch as lisajous } from "@/content/simulations/lisajous/";

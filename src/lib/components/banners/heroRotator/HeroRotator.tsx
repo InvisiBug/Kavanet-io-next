@@ -1,6 +1,6 @@
 import react, { type FC } from "react";
-import HeroRotatorControls from "@/lib/components/banners/heroRotator/HeroRotatorControls";
-import HeroRotatorSlide from "@/lib/components/banners/heroRotator/HeroRotatorSlide";
+import HeroRotatorControls from "@/lib/components/banners/heroRotator/heroRotatorControls";
+import HeroRotatorSlide from "@/lib/components/banners/heroRotator/heroRotatorSlide";
 import { useHeroRotator } from "@/lib/components/banners/heroRotator/useHeroRotator";
 import type { ProjectEntry } from "@/lib/types";
 

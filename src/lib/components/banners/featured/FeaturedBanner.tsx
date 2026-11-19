@@ -1,5 +1,5 @@
 import type { FC, ReactNode } from "react";
-import FeaturedBannerContainer from "./Container";
+import FeaturedBannerContainer from "./container";
 import { FullPictureCard, SimulationCard } from "@/lib/components";
 import type { CategoryKey, ProjectEntry } from "@/lib/types";
 

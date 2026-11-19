@@ -1,4 +1,4 @@
-export { default as SocialIconLink } from "./SocialIcon";
-export { default as Dropdown } from "./Dropdown";
-export { default as ThemeToggleButton } from "./ThemeToggle";
-export { default as Hamburger } from "./Hamburger";
+export { default as SocialIconLink } from "./socialIcon";
+export { default as Dropdown } from "./dropdown";
+export { default as ThemeToggleButton } from "./themeToggle";
+export { default as Hamburger } from "./hamburger";
