@@ -94,8 +94,7 @@ export const experience = [
         period: "2020 - 2025",
         title: "Software Engineer",
         location: "Leeds",
-        details: `* Senior engineer for 3 years
-                  * On call for 4 years
+        details: `* On call for 4 years
                   * Provisioned virtual machines to host third party software
                   * Created a GraphQL api to serve aggregated data to the front-end
                   * Was the teams SME for in-house hosting services
