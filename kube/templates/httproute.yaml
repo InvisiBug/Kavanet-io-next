@@ -7,10 +7,7 @@ spec:
   parentRefs:
     - name: {{ .Values.httpRoute.gatewayName }}
       namespace: {{ .Values.httpRoute.gatewayNamespace }}
-      sectionName: http
-    - name: {{ .Values.httpRoute.gatewayName }}
-      namespace: {{ .Values.httpRoute.gatewayNamespace }}
-      sectionName: https
+      sectionName: {{ .Values.httpRoute.gatewaySectionName }}
   hostnames:
     - {{ .Values.httpRoute.host | quote }}
   rules:

@@ -23,6 +23,7 @@ httpRoute:
   name: kavanet-io
   gatewayName: kavanetes-gateway
   gatewayNamespace: nginx-gateway
+  gatewaySectionName: kavanet-https
   host: kavanet.io
   path: /
   serviceName: kavanet-io
