@@ -21,14 +21,15 @@ deployment:
 
 httpRoute:
   name: kavanet-io
-  gateWayName: kavanetes-gateway
+  gatewayName: kavanetes-gateway
+  gatewayNamespace: nginx-gateway
   host: kavanet.io
   path: /
   serviceName: kavanet-io
   servicePort: 80
 
 service:
-  clusterIP:
-    - name: kavanet-io
-      selector: kavanet-io
-      port: 80
+  name: kavanet-io
+  selector: kavanet-io
+  port: 80
+  targetPort: 80
