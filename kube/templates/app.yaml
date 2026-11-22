@@ -1,4 +1,3 @@
-{{ include "library.clusterIP" . }}
 {{ include "library.loadBalancer" . }}
 {{ include "library.nodePort" . }}
 {{ include "library.configmap" .}}

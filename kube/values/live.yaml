@@ -29,7 +29,7 @@ httpRoute:
   servicePort: 80
 
 service:
-  clusterIP:
-    - name: kavanet-io
-      selector: kavanet-io
-      port: 80
+  name: kavanet-io
+  selector: kavanet-io
+  port: 80
+  targetPort: 80
