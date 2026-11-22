@@ -12,15 +12,21 @@ deployment:
     # env:
     # Handled in Dockerfile.live
 
-ingress:
-  - name: kavanet-io
-    selector: kavanet-io
-    path: /
-    port: 80
-    host: kavanet.io
+gateway:
+  name: kavanet-gateway
+  gatewayClassName: nginx
+  host: kavanet.io
+  tlsSecretName: kavanet.io-tls
+
+httpRoute:
+  name: kavanet-io
+  host: kavanet.io
+  path: /
+  serviceName: kavanet-io
+  servicePort: 80
 
 service:
-  loadBalancer:
+  clusterIP:
     - name: kavanet-io
       selector: kavanet-io
       port: 80
