@@ -11,15 +11,17 @@ deployment:
       - port: 80
     # env:
     # Handled in Dockerfile.live
+    # Coredump
 
-gateway:
-  name: kavanet-gateway
-  gatewayClassName: nginx
-  host: kavanet.io
-  tlsSecretName: kavanet.io-tls
+# gateway:
+#   name: kavanet-gateway
+#   gatewayClassName: nginx
+#   host: kavanet.io
+#   tlsSecretName: kavanet.io-tls
 
 httpRoute:
   name: kavanet-io
+  gateWayName: kavanetes-gateway
   host: kavanet.io
   path: /
   serviceName: kavanet-io
