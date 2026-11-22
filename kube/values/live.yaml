@@ -21,7 +21,8 @@ deployment:
 
 httpRoute:
   name: kavanet-io
-  gateWayName: kavanetes-gateway
+  gatewayName: kavanetes-gateway
+  gatewayNamespace: nginx-gateway
   host: kavanet.io
   path: /
   serviceName: kavanet-io
