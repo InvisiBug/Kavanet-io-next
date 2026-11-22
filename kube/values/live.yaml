@@ -2,7 +2,7 @@ name: kavanet-io
 
 namespace: kavanet-io
 env:
-  APP_VERSION: 424a23ff0a95487b256a8683746df7497a54a63e
+  APP_VERSION: 25169c40b882ba046d45763a55bc2177e760365d
 
 deployment:
   - name: kavanet-io
@@ -11,16 +11,24 @@ deployment:
       - port: 80
     # env:
     # Handled in Dockerfile.live
+    # Coredump
 
-ingress:
-  - name: kavanet-io
-    selector: kavanet-io
-    path: /
-    port: 80
-    host: kavanet.io
+# gateway:
+#   name: kavanet-gateway
+#   gatewayClassName: nginx
+#   host: kavanet.io
+#   tlsSecretName: kavanet.io-tls
+
+httpRoute:
+  name: kavanet-io
+  gateWayName: kavanetes-gateway
+  host: kavanet.io
+  path: /
+  serviceName: kavanet-io
+  servicePort: 80
 
 service:
-  loadBalancer:
+  clusterIP:
     - name: kavanet-io
       selector: kavanet-io
       port: 80
