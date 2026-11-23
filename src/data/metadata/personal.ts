@@ -13,6 +13,17 @@ export const personalProjects: ProjectEntry[] = [
     display: false,
   },
   {
+    slug: "winter-flow-space",
+    title: "Winterflowspace",
+    summary: "A web app I made to show me when the training space in a Pure Gym is free",
+    category: "personal",
+    tags: ["Web Development", "React", "TypeScript"],
+    imagePath: "@/lib/images/personal/winterFlowSpace.jpg",
+    writeUpPath: "@/content/writeups/personal/winterFlowSpace/winterFlowSpace.md",
+    featured: false,
+    display: true,
+  },
+  {
     slug: "twiddles",
     title: "Twiddlesticks",
     summary: "A fidget toy that help keep the hands busy and the brain quiet.",
