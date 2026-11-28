@@ -6,6 +6,7 @@ import type { CategoryKey, ProjectEntry } from "@/lib/types";
 
 const CategoryPage: FC<CategoryPageProps> = ({ category }) => {
   const projects = getProjectsByCategory(category);
+  console.log("🚀 ~ CategoryPage ~ projects:", projects);
   const metadata = categoryMeta[category];
   const categorySettings = getCategorySettings(category);
   const { categoryPageShowOnlyFeatured } = siteConfig.options;
